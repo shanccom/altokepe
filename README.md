@@ -7,6 +7,7 @@ Sistema Altokepe es una plataforma inteligente para gestionar pedidos en restaur
 - Luque Condori Luis Guillermo -> dev-Luis
 - Garambel Marin Fernando Miguel -> dev-Fernando
 - Jorge Luis Mamani Huarsaya -> dev-jorge
+- Sergio Danilo Hancco Mullisaca - > dev-Sergio
 
 ## Programación de Entregables:
 Primera Semana: Aún por establecer
