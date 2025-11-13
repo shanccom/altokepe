@@ -1,4 +1,5 @@
 #include "ClienteManagerApp.h"
+#include "../network/ClienteTCP.h"
 #include <QJsonObject>
 #include <QJsonArray>
 #include <QDebug>
