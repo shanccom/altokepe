@@ -12,6 +12,7 @@
 *.exp
 *.ilk
 
+
 # Qt build folders
 *build/
 *build-*/
