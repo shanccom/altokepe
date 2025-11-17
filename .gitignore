@@ -1,4 +1,4 @@
-# === QT build artifacts ===
+# QT build artifacts
 *.o
 *.obj
 *.so
@@ -12,7 +12,8 @@
 *.exp
 *.ilk
 
-# === Qt build folders ===
+
+# Qt build folders
 *build/
 *build-*/
 *build-*/
@@ -24,7 +25,7 @@ Makefile*
 *.qmake.stash
 *.qmake.cache
 
-# === CMake ===
+# CMake
 CMakeFiles/
 CMakeCache.txt
 cmake_install.cmake
@@ -33,7 +34,7 @@ Makefile
 *.cmake
 compile_commands.json
 
-# === QtCreator ===
+# QtCreator
 *.autosave
 *.creator.*
 *.creator
@@ -44,16 +45,16 @@ compile_commands.json
 *.directory
 .qmake.stash
 
-# === Logs and backups ===
+# Logs and backups
 *.log
 *.tmp
 *.swp
 *~
 
-# === VSCode ===
+# VSCode
 .vscode/
 
-# === OS-specific ===
+# OS-specific
 .DS_Store
 Thumbs.db
 desktop.ini
