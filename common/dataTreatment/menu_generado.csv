@@ -6,3 +6,11 @@ id_plato,item_name,item_price,tiempo_preparacion_min,categoria
 5,Frankie,50,21,Principal
 6,Sandwich,60,12,Principal
 7,Cold coffee,40,18,Otro
+8,Hamburguesa,45,15,Principal
+9,Pizza Margherita,70,20,Principal
+10,Ensalada César,35,12,Entrada
+11,Spaghetti Bolognese,65,22,Principal
+12,Tacos,40,14,Snack
+13,Pollo a la Parrilla,80,25,Principal
+14,Sopa de Tomate,30,10,Entrada
+15,Agua Mineral,10,2,Bebida
