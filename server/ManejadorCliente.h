@@ -1,31 +1,26 @@
 #ifndef MANEJADORCLIENTE_H
 #define MANEJADORCLIENTE_H
-#include <QObject>
-#include <QTcpSocket>
 
-class ManejadorCliente : public QObject {
-  Q_OBJECT
+#include <string>
+#include <vector>
+
+class ManejadorCliente {
+
 public:
-  explicit ManejadorCliente(qintptr socketDescriptor, QObject* parent = nullptr);
-  virtual ~ManejadorCliente();
+    explicit ManejadorCliente(int socketDescriptor);
+    virtual ~ManejadorCliente();
 
-public slots:
-  void procesar();
-  void enviarMensaje(const QJsonObject& mensaje);
-
-private slots:
-  void listoParaLeer();
-  void desconectado();
-
-signals:
-  void finished();
+    void procesar();
+    void enviarMensaje(const std::string& mensaje);
 
 private:
-  void procesarBuffer();
+    void leerDatos();
+    void procesarBuffer();
+    void desconectado();
 
-  qintptr m_socketDescriptor;
-  QTcpSocket* m_socket = nullptr;
-  QByteArray m_buffer;
+private:
+    int m_socketDescriptor;
+    std::string m_buffer;
 };
 
 #endif
