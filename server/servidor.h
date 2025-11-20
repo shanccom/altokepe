@@ -1,18 +1,15 @@
-#ifndef SERVIDOR_STUB_H
-#define SERVIDOR_STUB_H
+#ifndef SERVIDOR_H
+#define SERVIDOR_H
 
 #include <QTcpServer>
-#include <QDebug>
 
 class Servidor : public QTcpServer {
-    Q_OBJECT
+  Q_OBJECT
 public:
-    explicit Servidor(QObject* parent = nullptr) : QTcpServer(parent) {}
+  explicit Servidor(QObject* parent = nullptr);
 
 protected:
-    void incomingConnection(qintptr socketDescriptor) override {
-        qDebug() << "Nueva conexión entrante con descriptor:" << socketDescriptor;
-    }
+  void incomingConnection(qintptr socketDescriptor) override;
 };
 
 #endif
