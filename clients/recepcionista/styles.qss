@@ -1,0 +1,87 @@
+QWidget {
+    background-color: #F9F9F9;
+    font-family: 'Segoe UI';
+    font-size: 16px;
+    color: #333;
+}
+
+QLabel {
+    font-weight: bold;
+    font-size: 18px;
+    color: #000;
+}
+
+/* Título principal */
+QLabel#tituloPrincipal {
+    font-size: 24px;
+    color: #000;
+}
+
+QPushButton {
+    background-color: #FBB450; /* naranja más claro */
+    border: none;
+    border-radius: 6px;
+    color: white;
+    padding: 8px;
+}
+
+QPushButton:hover {
+    background-color: #FFC266;
+}
+
+QLineEdit, QListWidget, QTableWidget {
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+/* Cabecera de tablas */
+QHeaderView::section {
+    background-color: #F7931E;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    padding: 6px;
+}
+
+/* Tablas */
+QTableWidget {
+    gridline-color: #ccc;
+    background-color: white;
+    font-size: 16px;
+}
+
+/* Botón eliminar */
+QPushButton.eliminarBoton {
+    background-color: white;
+    color: #F44336;
+    border: none;
+}
+
+/* Botón eliminar incluso si la fila está seleccionada */
+QTableWidget::item:selected QPushButton.eliminarBoton {
+    background-color: white;
+    color: #F44336;
+}
+
+/* Botón eliminar hover */
+QPushButton.eliminarBoton:hover {
+    background-color: #f5f5f5;
+}
+
+/* Estilo mesas */
+QPushButton.mesa {
+    background-color: #FBB450;
+    border-radius: 8px;
+    color: white;
+    font-size: 18px;
+    min-width: 250px;
+    min-height: 300px;
+}
+
+/* Plato seleccionado */
+QListWidget::item:selected {
+    border: 2px solid #F7931E;
+    background-color: transparent;
+    color: #333;
+}
