@@ -2,7 +2,7 @@
 #include <QJsonArray>
 #include <QJsonObject>
 #include <QObject>
-#include <QTimer> // Solo para la simulación de hoy
+#include <QTimer> // Solo para la simulación
 
 class RankingClient : public QObject {
   Q_OBJECT
@@ -10,7 +10,6 @@ class RankingClient : public QObject {
 public:
   explicit RankingClient(QObject *parent = nullptr);
 
-  // Método para simular que el servidor nos manda datos (Patrón: Mocking)
   void iniciarSimulacion();
 
 signals:
