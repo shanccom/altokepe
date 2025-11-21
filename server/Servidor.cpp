@@ -1,5 +1,6 @@
 #include "Servidor.h"
 #include "ManejadorCliente.h"
+#include "LogicaNegocio.h"
 #include <QThread>
 #include <QDebug>
 
@@ -10,14 +11,22 @@ void Servidor::incomingConnection(qintptr socketDescriptor) {
 
   QThread* thread = new QThread;
   ManejadorCliente* manejador = new ManejadorCliente(socketDescriptor);
+  
+  manejador->moveToThread(thread);
 
   connect(thread, &QThread::started, manejador, &ManejadorCliente::procesar);
   connect(manejador, &ManejadorCliente::finished, thread, &QThread::quit);
   connect(manejador, &ManejadorCliente::finished, manejador, &ManejadorCliente::deleteLater);
   connect(thread, &QThread::finished, thread, &QThread::deleteLater);
 
-  // En un futuro aca tiene que ir la logica de negocio
+  connect(LogicaNegocio::instance(), &LogicaNegocio::enviarRespuesta, manejador,
+    [manejador](ManejadorCliente* clienteDestino, const QJsonObject& mensaje) {
+      // La lambda se ejecuta para CADA manejador.
+      // Solo si este manejador es el destinatario, se envía el mensaje.
+      if (manejador == clienteDestino) {
+        manejador->enviarMensaje(mensaje);
+      }
+    }, Qt::QueuedConnection);
 
   thread->start();
-
 }

@@ -25,6 +25,7 @@ add_executable(ServidorAltokepe
   main.cpp
   Servidor.cpp
   ManejadorCliente.cpp
+  LogicaNegocio.cpp
   ${COMMON_SERIALIZER_PATH}
 )
 

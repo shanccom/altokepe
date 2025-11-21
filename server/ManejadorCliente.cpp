@@ -1,6 +1,7 @@
 #include "common/network/Protocolo.h"
 #include "common/models/Estados.h"
 #include "ManejadorCliente.h"
+#include "LogicaNegocio.h"
 #include <QJsonDocument>
 #include <QJsonObject>
 #include <QDebug>
@@ -28,6 +29,7 @@ void ManejadorCliente::procesar() {
   connect(m_socket, &QTcpSocket::readyRead, this, &ManejadorCliente::listoParaLeer);
   connect(m_socket, &QTcpSocket::disconnected, this, &ManejadorCliente::desconectado);
 
+  LogicaNegocio::instance()->registrarManejador(this);
   qDebug() << "Cliente conectado en socket" << m_socketDescriptor;
 }
 
@@ -35,7 +37,6 @@ void ManejadorCliente::listoParaLeer() {
   m_buffer.append(m_socket->readAll());
   procesarBuffer();
 }
-
 
 void ManejadorCliente::procesarBuffer() {
   while (m_buffer.contains('\n')) {
@@ -51,6 +52,9 @@ void ManejadorCliente::procesarBuffer() {
     }
 
     QJsonObject mensaje = doc.object();
+    qDebug() << "Mensaje recibido:" << mensaje;  // ← AGREGA ESTO
+    qDebug() << "Comando:" << mensaje[Protocolo::COMANDO].toString();
+
     if (m_tipoActor == TipoActor::DESCONOCIDO) {
       if (mensaje[Protocolo::COMANDO].toString() == Protocolo::IDENTIFICARSE) {
         identificarCliente(mensaje);
@@ -58,7 +62,7 @@ void ManejadorCliente::procesarBuffer() {
         qWarning() << "Cliente no identificado intentó enviar un comando. Se ignora.";
       }
     } else {
-      // Luego se hara la logica de negocio aca
+      LogicaNegocio::instance()->procesarMensaje(mensaje, this);
     }
   }
 }
@@ -114,13 +118,13 @@ void ManejadorCliente::identificarCliente(const QJsonObject& data) {
       break;
   }
   
-  // Le pediremos a la lógica de negocio que le envíe el estado inicial
-
+  // Le pedimos a la lógica de negocio que le envíe el estado inicial
+  if (m_tipoActor != TipoActor::DESCONOCIDO) LogicaNegocio::instance()->enviarEstadoInicial(this);
 }
-
 
 void ManejadorCliente::desconectado() {
   qDebug() << "Cliente desconectado del socket" << m_socketDescriptor;
+  LogicaNegocio::instance()->eliminarManejador(this);
   m_socket->deleteLater();
   emit finished();
 }
