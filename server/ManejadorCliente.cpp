@@ -1,3 +1,42 @@
+#include "common/network/Protocolo.h"
+#include "common/models/Estados.h"
+#include "ManejadorCliente.h"
+#include <QJsonDocument>
+#include <QJsonObject>
+#include <QDebug>
+
+ManejadorCliente::ManejadorCliente(qintptr socketDescriptor, QObject* parent)
+  : QObject(parent), m_socketDescriptor(socketDescriptor) {
+}
+
+ManejadorCliente::~ManejadorCliente() {
+  qDebug() << "Manejador de cliente destruido para socket" << m_socketDescriptor;
+}
+
+TipoActor ManejadorCliente::getTipoActor() const { return m_tipoActor; }
+int ManejadorCliente::getIdActor() const { return m_idActor; }
+QString ManejadorCliente::getNombreEstacion() const { return m_nombreEstacion; }
+
+void ManejadorCliente::procesar() {
+  m_socket = new QTcpSocket();
+  if (!m_socket->setSocketDescriptor(m_socketDescriptor)) {
+    qCritical() << "No se pudo establecer el descriptor de socket" << m_socketDescriptor;
+    emit finished();
+    return;
+  }
+
+  connect(m_socket, &QTcpSocket::readyRead, this, &ManejadorCliente::listoParaLeer);
+  connect(m_socket, &QTcpSocket::disconnected, this, &ManejadorCliente::desconectado);
+
+  qDebug() << "Cliente conectado en socket" << m_socketDescriptor;
+}
+
+void ManejadorCliente::listoParaLeer() {
+  m_buffer.append(m_socket->readAll());
+  procesarBuffer();
+}
+
+
 void ManejadorCliente::procesarBuffer() {
   while (m_buffer.contains('\n')) {
     int newlinePos = m_buffer.indexOf('\n');
@@ -19,7 +58,7 @@ void ManejadorCliente::procesarBuffer() {
         qWarning() << "Cliente no identificado intentó enviar un comando. Se ignora.";
       }
     } else {
-      LogicaNegocio::instance()->procesarMensaje(mensaje, this);
+      // Luego se hara la logica de negocio aca
     }
   }
 }
@@ -50,6 +89,7 @@ void ManejadorCliente::identificarCliente(const QJsonObject& data) {
         m_socket->disconnectFromHost();
         return;
       }
+      qDebug() << "Cliente" << m_socketDescriptor << "identificado como RECEPCIONISTA con ID:" << m_idActor;
       break;
 
     case TipoActor::ESTACION_COCINA:
@@ -59,13 +99,35 @@ void ManejadorCliente::identificarCliente(const QJsonObject& data) {
         m_socket->disconnectFromHost();
         return;
       }
+      qDebug() << "Cliente" << m_socketDescriptor << "identificado como ESTACION_COCINA con Nombre:" << m_nombreEstacion;
+      break;
+
+    case TipoActor::MANAGER_CHEF:
+      qDebug() << "Cliente" << m_socketDescriptor << "identificado como MANAGER_CHEF.";
+      break;
+    
+    case TipoActor::RANKING:
+      qDebug() << "Cliente" << m_socketDescriptor << "identificado como RANKING.";
       break;
 
     default:
       break;
   }
+  
+  // Le pediremos a la lógica de negocio que le envíe el estado inicial
 
-  // Enviar estado inicial
-  if (m_tipoActor != TipoActor::DESCONOCIDO)
-    LogicaNegocio::instance()->enviarEstadoInicial(this);
+}
+
+
+void ManejadorCliente::desconectado() {
+  qDebug() << "Cliente desconectado del socket" << m_socketDescriptor;
+  m_socket->deleteLater();
+  emit finished();
+}
+
+void ManejadorCliente::enviarMensaje(const QJsonObject& mensaje) {
+  if (m_socket && m_socket->isOpen()) {
+    QJsonDocument doc(mensaje); 
+    m_socket->write(doc.toJson(QJsonDocument::Compact) + "\n");
+  }
 }
