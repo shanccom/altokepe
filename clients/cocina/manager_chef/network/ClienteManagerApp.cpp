@@ -4,6 +4,9 @@
 #include <QJsonArray>
 #include <QDebug>
 
+#include "common/network/Protocolo.h"
+#include "common/network/SerializadorJSON.h"
+
 ClienteManagerApp::ClienteManagerApp(QObject* parent) : QObject(parent) {
   m_clienteTCP = new ClienteTCP(this);
 
@@ -18,14 +21,16 @@ void ClienteManagerApp::iniciar() {
 void ClienteManagerApp::onConectado() {
   qDebug() << "Conexión exitosa. Identificándose como ManagerChef...";
   QJsonObject identificacion;
-
-  // Test
+  identificacion[Protocolo::COMANDO] = Protocolo::IDENTIFICARSE;
   identificacion["rol"] = "ManagerChef";
+
   m_clienteTCP->enviarMensaje(identificacion);
 }
 
 void ClienteManagerApp::onMensajeRecibido(const QJsonObject& mensaje) {
-  QString evento = mensaje["rol"].toString();
+  QString evento = mensaje[Protocolo::EVENTO].toString();
+  QJsonObject data = mensaje[Protocolo::DATA].toObject();
 
   qDebug() << "Evento recibido:" << evento;
+  qDebug() << "Data recibida:" << data;
 }
