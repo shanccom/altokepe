@@ -2,7 +2,6 @@
 #include <QDebug>
 
 RankingClient::RankingClient(QObject *parent) : QObject(parent) {
-  // Aquí iría la inicialización del Socket TCP real en el futuro
   m_simuladorTimer = new QTimer(this);
   connect(m_simuladorTimer, &QTimer::timeout, this,
           &RankingClient::generarDatosFalsos);
@@ -14,13 +13,12 @@ void RankingClient::iniciarSimulacion() {
 }
 
 void RankingClient::generarDatosFalsos() {
-  // Creamos un JSON falso como si viniera del servidor (Protocolo limpio)
   QJsonArray ranking;
 
   // Dato 1
   QJsonObject plato1;
   plato1["nombre"] = "Lomo Saltado";
-  plato1["cantidad"] = rand() % 20; // Cantidad aleatoria
+  plato1["cantidad"] = rand() % 20;
   ranking.append(plato1);
 
   // Dato 2
@@ -32,6 +30,5 @@ void RankingClient::generarDatosFalsos() {
   qDebug()
       << "RankingClient: Recibido evento (simulado), notificando a la UI...";
 
-  // DISPARAMOS EL EVENTO (Push)
   emit rankingActualizado(ranking);
 }

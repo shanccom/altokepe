@@ -1,17 +1,23 @@
 #include <QCoreApplication>
+#include "Servidor.h"
+#include <QTimer>
 #include <QDebug>
-#include "servidor.h"
 
 int main(int argc, char* argv[]) {
-    QCoreApplication a(argc, argv);
-    Servidor servidor;
+  QCoreApplication a(argc, argv);
+  a.setApplicationName("Servidor Altokepe");
 
-    quint16 port = 5555;
-    if (!servidor.listen(QHostAddress::Any, port)) {
-        qCritical() << "No se pudo iniciar el servidor en el puerto" << port;
-        return 1;
-    }
+  
+  Servidor servidor;  
+  quint16 port = 5555;
 
-    qInfo() << "Servidor escuchando en el puerto" << port;
-    return a.exec();
+  if (!servidor.listen(QHostAddress::Any, port)) {
+    qCritical() << "No se pudo iniciar el servidor en el puerto" << port;
+    return 1;
+  }
+
+  qInfo() << "Servidor escuchando en el puerto" << port;
+
+
+  return a.exec();
 }

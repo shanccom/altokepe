@@ -1,10 +1,9 @@
 #include "RankingWindow.h"
 
 RankingWindow::RankingWindow(QWidget *parent) : QWidget(parent) {
-  // Configuración básica de la ventana
   auto layout = new QVBoxLayout(this);
 
-  m_titulo = new QLabel("🏆 Ranking de Platos (En Vivo)", this);
+  m_titulo = new QLabel("Ranking de Platos (En Vivo)", this);
   QFont font = m_titulo->font();
   font.setPointSize(16);
   font.setBold(true);
@@ -20,9 +19,8 @@ RankingWindow::RankingWindow(QWidget *parent) : QWidget(parent) {
 }
 
 void RankingWindow::actualizarLista(const QJsonArray &rankingData) {
-  m_lista->clear(); // Limpiamos la lista vieja
+  m_lista->clear();
 
-  // Recorremos el array limpio que nos llegó
   for (const auto &val : rankingData) {
     QJsonObject obj = val.toObject();
     QString nombre = obj["nombre"].toString();
