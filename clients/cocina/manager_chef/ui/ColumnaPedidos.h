@@ -12,6 +12,8 @@ public:
   explicit ColumnaPedidos(const QString& titulo, QWidget* parent = nullptr);
   void agregarPedido(TarjetaPedido* pedido);
   void limpiarPedidos();
+  bool estaVacia() const;
+  TarjetaPedido* getPrimerPedido() const;
 
 private:
   QVBoxLayout* m_layoutContenido;
