@@ -2,6 +2,10 @@
 #define VENTANAMANAGER_H
 
 #include <QWidget>
+#include <vector>
+#include <unordered_map>
+#include "common/models/PedidoMesa.h"
+#include "common/models/PlatoDefinicion.h"
 
 class ColumnaPedidos;
 
@@ -11,14 +15,16 @@ public:
   explicit VentanaManager(QWidget* parent = nullptr);
 
 public slots:
-  void actualizarVistas(); // Slot para recibir datos del backend y redibujar
+  void actualizarVistas(const std::vector<PedidoMesa>& pendientes,
+                      const std::vector<PedidoMesa>& enProgreso,
+                      const std::vector<PedidoMesa>& terminados,
+                      const std::unordered_map<int, PlatoDefinicion>& menu);
 
-private slots:
-  // Slots para manejar las acciones emitidas por las tarjetas
-  void onPrepararPedido(long long idPedido);
-  void onCancelarPedido(long long idPedido);
-  void onEnviarPedido(long long idPedido);
-  void onRechazarPedido(long long idPedido);
+signals:
+  void prepararPedidoSolicitado(long long idPedido);
+  void cancelarPedidoSolicitado(long long idPedido);
+  void enviarPedidoSolicitado(long long idPedido);
+  void rechazarPedidoSolicitado(long long idPedido);
 
 private:
   void setupUI();
