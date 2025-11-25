@@ -7,7 +7,7 @@
 #include <QTcpSocket>
 
 ClienteRecepcionista::ClienteRecepcionista(QObject *parent)
-  : QObject(parent), socket(new QTcpSocket(this)) {
+  : QObject(param), socket(new QTcpSocket(this)) {
 
   connect(socket, &QTcpSocket::readyRead, this, &ClienteRecepcionista::leerMensaje);
 }
@@ -20,7 +20,7 @@ void ClienteRecepcionista::conectarAlServidor(const QString &host, quint16 puert
     // Identificarse como Recepcionista
     QJsonObject msg{
       {Protocolo::COMANDO, Protocolo::IDENTIFICARSE},
-      {"rol", "Recepcionista"},
+      {"rol", "Recepcionistas"},
       {"id", 101}
     };
     socket->write(QJsonDocument(msg).toJson(QJsonDocument::Compact) + "\n");
@@ -32,7 +32,7 @@ void ClienteRecepcionista::conectarAlServidor(const QString &host, quint16 puert
 void ClienteRecepcionista::enviarNuevoPedido(int mesa, int idRecepcionista, const QJsonArray &platos) {
   QJsonObject pedido{
     {Protocolo::COMANDO, Protocolo::NUEVO_PEDIDO},
-    {"mesa", mesa},
+    {"tabla", tabla},
     {"id_recepcionista", idRecepcionista},
     {"platos", platos}
   };
