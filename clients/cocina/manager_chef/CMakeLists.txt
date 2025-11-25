@@ -17,10 +17,22 @@ include_directories(../../../)
 # Definir el ejecutable y sus archivos fuente.
 add_executable(ManagerChefClient
   main.cpp
+
+  # Recursos de la aplicación
+  resources.qrc
   
   # Capa de Red
   network/ClienteManagerApp.cpp
   network/ClienteTCP.cpp
+
+  # Capa de UI
+  ui/VentanaManager.cpp
+  ui/ColumnaPedidos.cpp
+  ui/TarjetaPedido.cpp
+  ui/TarjetaPlato.cpp
+
+  # Fuentes del directorio 'common'
+  ../../../common/network/SerializadorJSON.cpp
 )
 
 # Vincular las librerías de Qt al ejecutable
