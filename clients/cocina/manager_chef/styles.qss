@@ -1,0 +1,85 @@
+/* Estilos Generales */
+QWidget {
+  background-color: #f0f0f0;
+  font-family: "Arial";
+}
+
+/* Columnas (Tableros) */
+.ColumnaPedidos {
+  border-radius: 8px;
+  padding: 8px;
+}
+
+#columnaPendiente {
+  background-color: #f5e6d3; /* Crema */
+}
+
+#columnaEnProgreso {
+  background-color: #e3f5e3; /* Verde claro */
+}
+
+#columnaTerminado {
+  background-color: #dbeaf5; /* Azul claro */
+}
+
+/* Títulos de las Columnas */
+.TituloColumna {
+  font-size: 20px;
+  font-weight: bold;
+  color: #333;
+  padding: 8px;
+  background-color: rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+/* Tarjetas de Pedido */
+.TarjetaPedido {
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  margin-bottom: 10px;
+  padding: 10px;
+}
+
+.TituloPedido {
+  font-weight: bold;
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+
+/* Tarjetas de Plato */
+.TarjetaPlato {
+  background-color: #fafafa;
+  padding: 8px;
+  margin-top: 5px;
+  border-radius: 4px;
+}
+
+/* Botones */
+QPushButton {
+  background-color: #a0a0a0;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  font-weight: bold;
+}
+
+QPushButton:hover {
+  background-color: #888888;
+}
+
+#btnPreparar, #btnEnviar {
+  background-color: #28a745; /* Verde */
+}
+#btnPreparar:hover, #btnEnviar:hover {
+  background-color: #218838;
+}
+
+#btnCancelar, #btnRechazar {
+  background-color: #dc3545; /* Rojo */
+}
+#btnCancelar:hover, #btnRechazar:hover {
+  background-color: #c82333;
+}
