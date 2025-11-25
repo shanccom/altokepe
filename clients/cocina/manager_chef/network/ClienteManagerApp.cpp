@@ -88,6 +88,14 @@ void ClienteManagerApp::onMensajeRecibido(const QJsonObject& mensaje) {
   }
 }
 
+void ClienteManagerApp::onPrepararPedido(long long idPedido) {
+  qDebug() << "Solicitando preparar pedido con ID:" << idPedido;
+  QJsonObject comando;
+  comando[Protocolo::COMANDO] = Protocolo::PREPARAR_PEDIDO;
+  comando["id_pedido"] = QJsonValue::fromVariant(QVariant::fromValue(idPedido));
+  m_clienteTCP->enviarMensaje(comando);
+}
+
 void ClienteManagerApp::onCancelarPedido(long long idPedido) {
   qDebug() << "Solicitando cancelar pedido con ID:" << idPedido;
   QJsonObject comando;
