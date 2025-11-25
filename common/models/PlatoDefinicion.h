@@ -9,6 +9,7 @@ struct PlatoDefinicion {
   std::string nombre;
   double costo;
   int tiempo_preparacion_estimado;
+  std::string estacion;
 };
 
 #endif
