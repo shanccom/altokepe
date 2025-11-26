@@ -414,7 +414,7 @@ void LogicaNegocio::procesarConfirmarEntrega(const QJsonObject& mensaje, Manejad
 void LogicaNegocio::procesarConfirmarEntrega(const QJsonObject& mensaje, ManejadorCliente* remitente) {
     std::lock_guard<std::mutex> lock(m_mutex);
 
-    if (!mensaje.contains("data")) {
+    if (!mensaje.contains("data") || !mensaje["data"].isObject()) {
         qWarning() << "CONFIRMAR_ENTREGA sin data";
         return;
     }
@@ -422,16 +422,43 @@ void LogicaNegocio::procesarConfirmarEntrega(const QJsonObject& mensaje, Manejad
     QJsonObject data = mensaje["data"].toObject();
 
     if (!data.contains("id_pedido")) {
-        qWarning() << "Sin id_pedido en CONFIRMAR_ENTREGA";
+        qWarning() << "CONFIRMAR_ENTREGA sin id_pedido";
         return;
     }
 
     long long idPedido = data["id_pedido"].toInt();
 
-    if (m_pedidosActivos.find(idPedido) == m_pedidosActivos.end()) {
-        qWarning() << "Pedido no encontrado:" << idPedido;
+    auto it = m_pedidosActivos.find(idPedido);
+    if (it == m_pedidosActivos.end()) {
+        qWarning() << "Pedido no encontrado en CONFIRMAR_ENTREGA:" << idPedido;
         return;
     }
 
-    qInfo() << "[PRELIMINAR] CONFIRMAR_ENTREGA recibido para pedido" << idPedido;
+    PedidoMesa& pedido = it->second;
+
+    if (pedido.estado == EstadoPedido::CANCELADO) {
+        qWarning() << "No se puede confirmar entrega de un pedido CANCELADO:" << idPedido;
+        return;
+    }
+
+    pedido.estado = EstadoPedido::ENTREGADO;
+
+    for (auto& inst : pedido.instancias) {
+        inst.estado = EstadoPlato::ENTREGADO;
+    }
+
+    QJsonObject msg;
+    msg[Protocolo::EVENTO] = "PEDIDO_ENTREGADO";
+    msg["id_pedido"] = (int)idPedido;
+
+    for (auto cli : m_manejadoresActivos) {
+        emit enviarRespuesta(cli, msg);
+    }
+
+    for (const auto& inst : pedido.instancias) {
+        m_conteoPlatosRanking[inst.id_plato]++;
+    }
+
+    qInfo() << "[v2] Pedido ENTREGADO, pero con validación incompleta de estado:" << idPedido;
 }
+
