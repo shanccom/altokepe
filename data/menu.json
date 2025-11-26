@@ -1,0 +1,310 @@
+[
+  {
+    "id": 1,
+    "nombre": "Aalopuri",
+    "costo": 20.0,
+    "tiempo_preparacion_estimado": 24,
+    "estacion": "Snack"
+  },
+  {
+    "id": 2,
+    "nombre": "Vadapav",
+    "costo": 20.0,
+    "tiempo_preparacion_estimado": 18,
+    "estacion": "Snack"
+  },
+  {
+    "id": 3,
+    "nombre": "Sugarcane juice",
+    "costo": 25.0,
+    "tiempo_preparacion_estimado": 18,
+    "estacion": "Bebida"
+  },
+  {
+    "id": 4,
+    "nombre": "Panipuri",
+    "costo": 20.0,
+    "tiempo_preparacion_estimado": 17,
+    "estacion": "Snack"
+  },
+  {
+    "id": 5,
+    "nombre": "Frankie",
+    "costo": 50.0,
+    "tiempo_preparacion_estimado": 23,
+    "estacion": "Principal"
+  },
+  {
+    "id": 6,
+    "nombre": "Sandwich",
+    "costo": 60.0,
+    "tiempo_preparacion_estimado": 12,
+    "estacion": "Principal"
+  },
+  {
+    "id": 7,
+    "nombre": "Cold coffee",
+    "costo": 40.0,
+    "tiempo_preparacion_estimado": 23,
+    "estacion": "Otro"
+  },
+  {
+    "id": 8,
+    "nombre": "Samosa",
+    "costo": 15.0,
+    "tiempo_preparacion_estimado": 20,
+    "estacion": "Snack"
+  },
+  {
+    "id": 9,
+    "nombre": "Lassi",
+    "costo": 30.0,
+    "tiempo_preparacion_estimado": 10,
+    "estacion": "Bebida"
+  },
+  {
+    "id": 10,
+    "nombre": "Paneer Tikka",
+    "costo": 70.0,
+    "tiempo_preparacion_estimado": 25,
+    "estacion": "Principal"
+  },
+  {
+    "id": 11,
+    "nombre": "Masala Chai",
+    "costo": 18.0,
+    "tiempo_preparacion_estimado": 8,
+    "estacion": "Bebida"
+  },
+  {
+    "id": 12,
+    "nombre": "Dosa",
+    "costo": 40.0,
+    "tiempo_preparacion_estimado": 30,
+    "estacion": "Principal"
+  },
+  {
+    "id": 13,
+    "nombre": "Jalebi",
+    "costo": 25.0,
+    "tiempo_preparacion_estimado": 15,
+    "estacion": "Snack"
+  },
+  {
+    "id": 14,
+    "nombre": "Mango Shake",
+    "costo": 35.0,
+    "tiempo_preparacion_estimado": 12,
+    "estacion": "Bebida"
+  },
+  {
+    "id": 15,
+    "nombre": "Chole Bhature",
+    "costo": 55.0,
+    "tiempo_preparacion_estimado": 28,
+    "estacion": "Principal"
+  },
+  {
+    "id": 16,
+    "nombre": "Papdi Chaat",
+    "costo": 22.0,
+    "tiempo_preparacion_estimado": 16,
+    "estacion": "Snack"
+  },
+  {
+    "id": 17,
+    "nombre": "Masala Soda",
+    "costo": 20.0,
+    "tiempo_preparacion_estimado": 7,
+    "estacion": "Bebida"
+  },
+  {
+    "id": 18,
+    "nombre": "Idli",
+    "costo": 30.0,
+    "tiempo_preparacion_estimado": 20,
+    "estacion": "Principal"
+  },
+  {
+    "id": 19,
+    "nombre": "Filter Coffee",
+    "costo": 25.0,
+    "tiempo_preparacion_estimado": 10,
+    "estacion": "Bebida"
+  },
+  {
+    "id": 20,
+    "nombre": "Vada",
+    "costo": 18.0,
+    "tiempo_preparacion_estimado": 15,
+    "estacion": "Snack"
+  },
+  {
+    "id": 21,
+    "nombre": "Falooda",
+    "costo": 45.0,
+    "tiempo_preparacion_estimado": 18,
+    "estacion": "Bebida"
+  },
+  {
+    "id": 22,
+    "nombre": "Paneer Butter Masala",
+    "costo": 80.0,
+    "tiempo_preparacion_estimado": 35,
+    "estacion": "Principal"
+  },
+  {
+    "id": 23,
+    "nombre": "Bhel Puri",
+    "costo": 25.0,
+    "tiempo_preparacion_estimado": 14,
+    "estacion": "Snack"
+  },
+  {
+    "id": 24,
+    "nombre": "Nimbu Pani",
+    "costo": 15.0,
+    "tiempo_preparacion_estimado": 5,
+    "estacion": "Bebida"
+  },
+  {
+    "id": 25,
+    "nombre": "Rajma Chawal",
+    "costo": 50.0,
+    "tiempo_preparacion_estimado": 30,
+    "estacion": "Principal"
+  },
+  {
+    "id": 26,
+    "nombre": "Sweet Lassi",
+    "costo": 28.0,
+    "tiempo_preparacion_estimado": 12,
+    "estacion": "Bebida"
+  },
+  {
+    "id": 27,
+    "nombre": "Kachori",
+    "costo": 18.0,
+    "tiempo_preparacion_estimado": 20,
+    "estacion": "Snack"
+  },
+  {
+    "id": 28,
+    "nombre": "Cold Drink",
+    "costo": 20.0,
+    "tiempo_preparacion_estimado": 3,
+    "estacion": "Otro"
+  },
+  {
+    "id": 29,
+    "nombre": "Butter Naan",
+    "costo": 15.0,
+    "tiempo_preparacion_estimado": 12,
+    "estacion": "Principal"
+  },
+  {
+    "id": 30,
+    "nombre": "Pav Bhaji",
+    "costo": 60.0,
+    "tiempo_preparacion_estimado": 25,
+    "estacion": "Principal"
+  },
+  {
+    "id": 31,
+    "nombre": "Falafel",
+    "costo": 35.0,
+    "tiempo_preparacion_estimado": 20,
+    "estacion": "Snack"
+  },
+  {
+    "id": 32,
+    "nombre": "Chaas",
+    "costo": 18.0,
+    "tiempo_preparacion_estimado": 8,
+    "estacion": "Bebida"
+  },
+  {
+    "id": 33,
+    "nombre": "Masala Dosa",
+    "costo": 45.0,
+    "tiempo_preparacion_estimado": 30,
+    "estacion": "Principal"
+  },
+  {
+    "id": 34,
+    "nombre": "Cold Lemon Tea",
+    "costo": 22.0,
+    "tiempo_preparacion_estimado": 10,
+    "estacion": "Bebida"
+  },
+  {
+    "id": 35,
+    "nombre": "Paneer Pakora",
+    "costo": 40.0,
+    "tiempo_preparacion_estimado": 18,
+    "estacion": "Snack"
+  },
+  {
+    "id": 36,
+    "nombre": "Ice Cream Sundae",
+    "costo": 50.0,
+    "tiempo_preparacion_estimado": 10,
+    "estacion": "Otro"
+  },
+  {
+    "id": 37,
+    "nombre": "Chocolate Shake",
+    "costo": 45.0,
+    "tiempo_preparacion_estimado": 12,
+    "estacion": "Otro"
+  },
+  {
+    "id": 38,
+    "nombre": "Fruit Salad",
+    "costo": 35.0,
+    "tiempo_preparacion_estimado": 8,
+    "estacion": "Otro"
+  },
+  {
+    "id": 39,
+    "nombre": "Veg Spring Roll",
+    "costo": 30.0,
+    "tiempo_preparacion_estimado": 15,
+    "estacion": "Otro"
+  },
+  {
+    "id": 40,
+    "nombre": "Chocolate Brownie",
+    "costo": 40.0,
+    "tiempo_preparacion_estimado": 18,
+    "estacion": "Otro"
+  },
+  {
+    "id": 41,
+    "nombre": "Cheese Platter",
+    "costo": 60.0,
+    "tiempo_preparacion_estimado": 20,
+    "estacion": "Otro"
+  },
+  {
+    "id": 42,
+    "nombre": "Garlic Bread",
+    "costo": 25.0,
+    "tiempo_preparacion_estimado": 12,
+    "estacion": "Otro"
+  },
+  {
+    "id": 43,
+    "nombre": "Mozzarella Sticks",
+    "costo": 45.0,
+    "tiempo_preparacion_estimado": 15,
+    "estacion": "Otro"
+  },
+  {
+    "id": 44,
+    "nombre": "Peanut Butter Cookies",
+    "costo": 20.0,
+    "tiempo_preparacion_estimado": 10,
+    "estacion": "Otro"
+  }
+]
