@@ -53,6 +53,8 @@ private:
   long long m_siguienteIdInstanciaPlato;
 
   void cargarMenu();
+  void procesarNuevoPedido(const QJsonObject& mensaje, ManejadorCliente* remitente);
+
 };
 
 #endif
