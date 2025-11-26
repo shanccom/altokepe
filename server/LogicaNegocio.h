@@ -14,7 +14,7 @@
 #include "common/models/Estados.h"
 
 class ManejadorCliente;
-
+//
 using ColaPrioridadPlatos = std::priority_queue<InfoPlatoPrioridad, std::vector<InfoPlatoPrioridad>,
       std::greater<InfoPlatoPrioridad>>;
 
