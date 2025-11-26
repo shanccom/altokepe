@@ -410,7 +410,6 @@ void LogicaNegocio::procesarConfirmarEntrega(const QJsonObject& mensaje, Manejad
 
     qInfo() << "Pedido" << idPedido << "ENTREGADO correctamente.";
 }
-
 void LogicaNegocio::procesarConfirmarEntrega(const QJsonObject& mensaje, ManejadorCliente* remitente) {
     std::lock_guard<std::mutex> lock(m_mutex);
 
@@ -436,8 +435,8 @@ void LogicaNegocio::procesarConfirmarEntrega(const QJsonObject& mensaje, Manejad
 
     PedidoMesa& pedido = it->second;
 
-    if (pedido.estado == EstadoPedido::CANCELADO) {
-        qWarning() << "No se puede confirmar entrega de un pedido CANCELADO:" << idPedido;
+    if (pedido.estado != EstadoPedido::LISTO) {
+        qWarning() << "No se puede confirmar entrega: pedido no está LISTO. Estado actual:" << (int)pedido.estado;
         return;
     }
 
@@ -459,6 +458,5 @@ void LogicaNegocio::procesarConfirmarEntrega(const QJsonObject& mensaje, Manejad
         m_conteoPlatosRanking[inst.id_plato]++;
     }
 
-    qInfo() << "[v2] Pedido ENTREGADO, pero con validación incompleta de estado:" << idPedido;
+    qInfo() << "Pedido" << idPedido << "ENTREGADO correctamente.";
 }
-
