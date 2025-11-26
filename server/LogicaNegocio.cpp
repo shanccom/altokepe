@@ -369,22 +369,44 @@ void LogicaNegocio::procesarMarcarPlatoTerminado(const QJsonObject& mensaje, Man
 
 void LogicaNegocio::procesarConfirmarEntrega(const QJsonObject& mensaje, ManejadorCliente* remitente) {
 
+    std::lock_guard<std::mutex> lock(m_mutex);
+
+    if (!mensaje.contains("data") || !mensaje["data"].isObject()) {
+        return;
+    }
+
     QJsonObject data = mensaje["data"].toObject();
 
-    long long idPedido = mensaje["id_pedido"].toInt();
+    if (!data.contains("id_pedido")) {
+        return;
+    }
+
+    long long idPedido = data["id_pedido"].toInt();
+
+    if (m_pedidosActivos.find(idPedido) == m_pedidosActivos.end()) {
+        return;
+    }
 
     PedidoMesa& pedido = m_pedidosActivos[idPedido];
 
+    if (pedido.estado != EstadoPedido::LISTO) {
+        return;
+    }
+
     pedido.estado = EstadoPedido::ENTREGADO;
 
+    for (auto& inst : pedido.instancias)
+        inst.estado = EstadoPlato::ENTREGADO;
+
     QJsonObject msg;
-    msg["evento"] = "PEDIDO_ENTREGADO";
-    msg["id"] = idPedido;
+    msg[Protocolo::EVENTO] = "PEDIDO_ENTREGADO";
+    msg["id_pedido"] = (int)idPedido;
 
-    emit enviarRespuesta(remitente, msg);
+    for (auto cli : m_manejadoresActivos)
+        emit enviarRespuesta(cli, msg);
 
-    for (auto inst : pedido.instancias)
-        m_conteoPlatosRanking[0]++;
+    for (const auto& inst : pedido.instancias)
+        m_conteoPlatosRanking[inst.id_plato]++;
 
-    qInfo() << "Pedido entregado.";
+    qInfo() << "Pedido" << idPedido << "ENTREGADO correctamente.";
 }
