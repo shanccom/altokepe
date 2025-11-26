@@ -280,4 +280,14 @@ void LogicaNegocio::procesarCancelarPedido(const QJsonObject& mensaje, Manejador
     for (auto& inst : pedido.instancias) {
         inst.estado = EstadoPlato::CANCELADO;
     }
+
+    QJsonObject msg;
+    msg[Protocolo::EVENTO] = "PEDIDO_CANCELADO";
+    msg["id_pedido"] = (int)idPedido;
+
+    // Notifica a todos los roles
+    for (auto cli : m_manejadoresActivos)
+        emit enviarRespuesta(cli, msg);
+
+    qInfo() << "Pedido" << idPedido << "ha sido CANCELADO.";
 }
