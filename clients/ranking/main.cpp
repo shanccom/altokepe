@@ -13,7 +13,8 @@ int main(int argc, char *argv[]) {
   QObject::connect(&cliente, &RankingClient::rankingActualizado, &ventana,
                    &RankingWindow::actualizarLista);
 
-  cliente.iniciarSimulacion();
+  // Conectar al servidor local (Puerto 5555)
+  cliente.conectar("127.0.0.1", 5555);
 
   return app.exec();
 }
