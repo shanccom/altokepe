@@ -14,7 +14,7 @@
 #include "common/models/Estados.h"
 
 class ManejadorCliente;
-
+//
 using ColaPrioridadPlatos = std::priority_queue<InfoPlatoPrioridad, std::vector<InfoPlatoPrioridad>,
       std::greater<InfoPlatoPrioridad>>;
 
@@ -39,7 +39,6 @@ public:
 signals:
   void enviarRespuesta(ManejadorCliente* cliente, const QJsonObject& mensaje);
 
-
 private:
   std::mutex m_mutex;
   std::vector<ManejadorCliente*> m_manejadoresActivos;
@@ -52,6 +51,16 @@ private:
 
   long long m_siguienteIdPedido;
   long long m_siguienteIdInstanciaPlato;
+
+  void cargarMenu();
+  void procesarNuevoPedido(const QJsonObject& mensaje, ManejadorCliente* remitente);
+  void procesarPrepararPedido(const QJsonObject& mensaje, ManejadorCliente* remitente);
+  void procesarCancelarPedido(const QJsonObject& mensaje, ManejadorCliente* remitente);
+  void procesarMarcarPlatoTerminado(const QJsonObject& mensaje, ManejadorCliente* remitente);
+  void procesarConfirmarEntrega(const QJsonObject& mensaje, ManejadorCliente* remitente);
+  void procesarConfirmarEntrega(const QJsonObject& mensaje, ManejadorCliente* remitente);
+  void procesarDevolverPlato(const QJsonObject& mensaje, ManejadorCliente* remitente);
+
 };
 
 #endif
