@@ -5,7 +5,6 @@ project(ServidorAltokepe VERSION 1.0)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-# Habilitar manejo automático de MOC, UIC, y RCC de Qt
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
 set(CMAKE_AUTOUIC ON)
@@ -15,7 +14,6 @@ include_directories("${PROJECT_ROOT_DIR}")
 
 find_package(Qt6 REQUIRED COMPONENTS Core Network)
 
-# Verificar existencia de menu.json
 set(MENU_JSON_PATH "${PROJECT_ROOT_DIR}/data/menu.json")
 if(NOT EXISTS "${MENU_JSON_PATH}")
   message(FATAL_ERROR "El archivo 'menu.json' no se encuentra en: ${MENU_JSON_PATH}")
@@ -40,8 +38,6 @@ target_link_libraries(ServidorAltokepe PRIVATE
   Qt6::Network
 )
 
-# Instrucción para copiar menu.json al directorio de compilación
-# Esto asegura que el ejecutable pueda encontrarlo al iniciar.
 add_custom_command(
   TARGET ServidorAltokepe POST_BUILD
   COMMAND ${CMAKE_COMMAND} -E copy
