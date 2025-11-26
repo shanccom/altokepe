@@ -250,3 +250,34 @@ void LogicaNegocio::procesarPrepararPedido(const QJsonObject& mensaje, Manejador
 
     qInfo() << "Plato" << idInstancia << "del pedido" << idPedido << "pasó a EN_PREPARACION.";
 }
+
+void LogicaNegocio::procesarCancelarPedido(const QJsonObject& mensaje, ManejadorCliente* remitente) {
+    std::lock_guard<std::mutex> lock(m_mutex);
+
+    if (!mensaje.contains("data") || !mensaje["data"].isObject()) {
+        qWarning() << "CANCELAR_PEDIDO sin data";
+        return;
+    }
+
+    QJsonObject data = mensaje["data"].toObject();
+
+    if (!data.contains("id_pedido")) {
+        qWarning() << "CANCELAR_PEDIDO sin id_pedido";
+        return;
+    }
+
+    long long idPedido = data["id_pedido"].toInt();
+
+    if (m_pedidosActivos.find(idPedido) == m_pedidosActivos.end()) {
+        qWarning() << "Pedido no existe:" << idPedido;
+        return;
+    }
+
+    PedidoMesa& pedido = m_pedidosActivos[idPedido];
+
+    pedido.estado = EstadoPedido::CANCELADO;
+
+    for (auto& inst : pedido.instancias) {
+        inst.estado = EstadoPlato::CANCELADO;
+    }
+}
