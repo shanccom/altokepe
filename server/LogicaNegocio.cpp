@@ -410,3 +410,28 @@ void LogicaNegocio::procesarConfirmarEntrega(const QJsonObject& mensaje, Manejad
 
     qInfo() << "Pedido" << idPedido << "ENTREGADO correctamente.";
 }
+
+void LogicaNegocio::procesarConfirmarEntrega(const QJsonObject& mensaje, ManejadorCliente* remitente) {
+    std::lock_guard<std::mutex> lock(m_mutex);
+
+    if (!mensaje.contains("data")) {
+        qWarning() << "CONFIRMAR_ENTREGA sin data";
+        return;
+    }
+
+    QJsonObject data = mensaje["data"].toObject();
+
+    if (!data.contains("id_pedido")) {
+        qWarning() << "Sin id_pedido en CONFIRMAR_ENTREGA";
+        return;
+    }
+
+    long long idPedido = data["id_pedido"].toInt();
+
+    if (m_pedidosActivos.find(idPedido) == m_pedidosActivos.end()) {
+        qWarning() << "Pedido no encontrado:" << idPedido;
+        return;
+    }
+
+    qInfo() << "[PRELIMINAR] CONFIRMAR_ENTREGA recibido para pedido" << idPedido;
+}

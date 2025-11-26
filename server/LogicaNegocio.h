@@ -58,6 +58,7 @@ private:
   void procesarCancelarPedido(const QJsonObject& mensaje, ManejadorCliente* remitente);
   void procesarMarcarPlatoTerminado(const QJsonObject& mensaje, ManejadorCliente* remitente);
   void procesarConfirmarEntrega(const QJsonObject& mensaje, ManejadorCliente* remitente);
+  void procesarConfirmarEntrega(const QJsonObject& mensaje, ManejadorCliente* remitente);
 
 };
 
