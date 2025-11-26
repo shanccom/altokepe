@@ -40,8 +40,10 @@ void LogicaNegocio::enviarEstadoInicial(ManejadorCliente* cliente) {
   QJsonObject estado;
   TipoActor tipo = cliente->getTipoActor();
 
-  if (tipo == TipoActor::MANAGER_CHEF || tipo == TipoActor::RANKING) {
-      //estado = getEstadoParaManagerYRanking(true);
+  if (tipo == TipoActor::MANAGER_CHEF) {
+      //estado = getEstadoParaManager(true);
+  } else if (tipo == TipoActor::RANKING) {
+      estado = getEstadoParaRanking();
   } else if (tipo == TipoActor::ESTACION_COCINA) {
       //estado = getEstadoParaEstacion(cliente->getNombreEstacion().toStdString());
   } else if (tipo == TipoActor::RECEPCIONISTA) {
@@ -71,6 +73,53 @@ void LogicaNegocio::enviarEstadoInicial(ManejadorCliente* cliente) {
   }
 }
 
+QJsonObject LogicaNegocio::getEstadoParaRanking() {
+    // Nota: NO usamos lock aquí porque el llamador (enviarEstadoInicial) ya tiene el lock
+    
+    // 1. Convertir Mapa a Vector para ordenar
+    struct ItemRanking {
+        QString nombre;
+        int cantidad;
+    };
+    std::vector<ItemRanking> lista;
+
+    for (auto const& [id, cantidad] : m_conteoPlatosRanking) {
+        if (m_menu.find(id) != m_menu.end()) {
+            lista.push_back({QString::fromStdString(m_menu[id].nombre), cantidad});
+        }
+    }
+
+    // 2. Ordenar (Mayor a menor cantidad)
+    std::sort(lista.begin(), lista.end(), [](const ItemRanking& a, const ItemRanking& b) {
+        return a.cantidad > b.cantidad;
+    });
+
+    // 3. Construir JSON
+    QJsonArray rankingArray;
+    for (const auto& item : lista) {
+        QJsonObject obj;
+        obj["nombre"] = item.nombre;
+        obj["cantidad"] = item.cantidad;
+        rankingArray.append(obj);
+    }
+
+    QJsonObject mensaje;
+    mensaje["evento"] = "ACTUALIZACION_RANKING";
+    mensaje["data"] = QJsonObject{ {"ranking", rankingArray} };
+    
+    return mensaje;
+}
+
+void LogicaNegocio::registrarVenta(int idPlato) {
+    {
+        std::lock_guard<std::mutex> lock(m_mutex);
+        m_conteoPlatosRanking[idPlato]++;
+    }
+
+    // Notificar a todos (Observer)
+    emit enviarRespuesta(nullptr, getEstadoParaRanking());
+}
+
 
 void LogicaNegocio::procesarMensaje(const QJsonObject& mensaje, ManejadorCliente* remitente) {
   QString comando = mensaje[Protocolo::COMANDO].toString();
@@ -89,7 +138,12 @@ void LogicaNegocio::procesarMensaje(const QJsonObject& mensaje, ManejadorCliente
     //procesarDevolverPlato(mensaje, remitente);
   } else if (comando == "SOLICITAR_ESTADO") {
     //enviarEstadoInicial(remitente);  // <<=== NUEVO
-  }else{
+  } else if (comando == "SIMULAR_VENTA") {
+    // Comando de DEBUG para probar el ranking sin implementar todo el flujo de pedidos
+    int idPlato = mensaje["id_plato"].toInt(1); // Por defecto plato ID 1
+    qDebug() << "DEBUG: Simulando venta del plato ID:" << idPlato;
+    registrarVenta(idPlato);
+  } else {
     qWarning() << "Comando desconocido recibido:" << comando;
     return;
   }

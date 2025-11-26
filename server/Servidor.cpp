@@ -3,6 +3,7 @@
 #include "LogicaNegocio.h"
 #include <QThread>
 #include <QDebug>
+#include <QJsonObject>
 
 Servidor::Servidor(QObject* parent) : QTcpServer(parent) {}
 
@@ -21,10 +22,19 @@ void Servidor::incomingConnection(qintptr socketDescriptor) {
 
   connect(LogicaNegocio::instance(), &LogicaNegocio::enviarRespuesta, manejador,
     [manejador](ManejadorCliente* clienteDestino, const QJsonObject& mensaje) {
-      // La lambda se ejecuta para CADA manejador.
-      // Solo si este manejador es el destinatario, se envía el mensaje.
-      if (manejador == clienteDestino) {
+      
+      // Caso 1: Mensaje directo a un cliente específico
+      if (clienteDestino == manejador) {
         manejador->enviarMensaje(mensaje);
+        return;
+      }
+      // Caso 2: Broadcast (clienteDestino == nullptr)
+      if (clienteDestino == nullptr) {
+        if (mensaje.value("evento").toString() == "ACTUALIZACION_RANKING") {
+             if (manejador->getTipoActor() == TipoActor::RANKING) {
+                 manejador->enviarMensaje(mensaje);
+             }
+        }
       }
     }, Qt::QueuedConnection);
 
