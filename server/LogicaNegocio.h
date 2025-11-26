@@ -39,7 +39,6 @@ public:
 signals:
   void enviarRespuesta(ManejadorCliente* cliente, const QJsonObject& mensaje);
 
-
 private:
   std::mutex m_mutex;
   std::vector<ManejadorCliente*> m_manejadoresActivos;
@@ -52,6 +51,8 @@ private:
 
   long long m_siguienteIdPedido;
   long long m_siguienteIdInstanciaPlato;
+
+  void cargarMenu();
 };
 
 #endif

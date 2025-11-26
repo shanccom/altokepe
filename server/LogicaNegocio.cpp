@@ -14,7 +14,11 @@
 LogicaNegocio* LogicaNegocio::s_instance = nullptr;
 
 LogicaNegocio::LogicaNegocio(QObject* parent) 
-  : QObject(parent), m_siguienteIdPedido(1), m_siguienteIdInstanciaPlato(1) {
+  : QObject(parent), 
+    m_siguienteIdPedido(1), 
+    m_siguienteIdInstanciaPlato(1) 
+{
+    cargarMenu();
 }
 
 LogicaNegocio* LogicaNegocio::instance() {
@@ -49,28 +53,27 @@ void LogicaNegocio::enviarEstadoInicial(ManejadorCliente* cliente) {
       QJsonArray menuArray;
 
       for (const auto& par : m_menu) {
-      const PlatoDefinicion& plato = par.second;
-      QJsonObject platoJson;
-      platoJson["id"] = plato.id;
-      platoJson["nombre"] = QString::fromStdString(plato.nombre);
-      platoJson["precio"] = plato.costo;
-      platoJson["tiempo_preparacion"] = plato.tiempo_preparacion_estimado;
-      platoJson["categoria"] = QString::fromStdString(plato.estacion);
-      menuArray.append(platoJson);
+          const PlatoDefinicion& plato = par.second;
+          QJsonObject platoJson;
+          platoJson["id"] = plato.id;
+          platoJson["nombre"] = QString::fromStdString(plato.nombre);
+          platoJson["precio"] = plato.costo;
+          platoJson["tiempo_preparacion"] = plato.tiempo_preparacion_estimado;
+          platoJson["categoria"] = QString::fromStdString(plato.estacion);
+          menuArray.append(platoJson);
       }
 
       mensaje[Protocolo::EVENTO] = "ACTUALIZACION_MENU";
       mensaje[Protocolo::DATA] = QJsonObject{ {"menu", menuArray} };
 
       emit enviarRespuesta(cliente, mensaje);
-      return; // Ya enviamos el estado especial para el recepcionista, salimos
+      return;
   }
 
   if (!estado.isEmpty()) {
       emit enviarRespuesta(cliente, estado);
   }
 }
-
 
 void LogicaNegocio::procesarMensaje(const QJsonObject& mensaje, ManejadorCliente* remitente) {
   QString comando = mensaje[Protocolo::COMANDO].toString();
@@ -88,9 +91,46 @@ void LogicaNegocio::procesarMensaje(const QJsonObject& mensaje, ManejadorCliente
   } else if (comando == Protocolo::DEVOLVER_PLATO) {
     //procesarDevolverPlato(mensaje, remitente);
   } else if (comando == "SOLICITAR_ESTADO") {
-    //enviarEstadoInicial(remitente);  // <<=== NUEVO
-  }else{
+    //enviarEstadoInicial(remitente);
+  } else {
     qWarning() << "Comando desconocido recibido:" << comando;
     return;
   }
+}
+
+void LogicaNegocio::cargarMenu() {
+    QString ruta = "menu.json";
+    QFile archivo(ruta);
+
+    if (!archivo.open(QIODevice::ReadOnly)) {
+        qCritical() << "No se pudo abrir menu.json para cargar el menú.";
+        return;
+    }
+
+    QByteArray contenido = archivo.readAll();
+    archivo.close();
+
+    QJsonDocument doc = QJsonDocument::fromJson(contenido);
+    if (!doc.isObject()) {
+        qCritical() << "menu.json no tiene un formato JSON válido.";
+        return;
+    }
+
+    QJsonObject obj = doc.object();
+    QJsonArray arr = obj["menu"].toArray();
+
+    for (const auto& item : arr) {
+        QJsonObject platoJson = item.toObject();
+        PlatoDefinicion p;
+
+        p.id = platoJson["id"].toInt();
+        p.nombre = platoJson["nombre"].toString().toStdString();
+        p.estacion = platoJson["categoria"].toString().toStdString();
+        p.costo = platoJson["precio"].toDouble();
+        p.tiempo_preparacion_estimado = platoJson["tiempo_preparacion"].toInt();
+
+        m_menu[p.id] = p;
+    }
+
+    qInfo() << "Menú cargado correctamente con" << m_menu.size() << "platos.";
 }
