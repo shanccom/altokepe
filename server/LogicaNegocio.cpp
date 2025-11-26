@@ -291,3 +291,100 @@ void LogicaNegocio::procesarCancelarPedido(const QJsonObject& mensaje, Manejador
 
     qInfo() << "Pedido" << idPedido << "ha sido CANCELADO.";
 }
+
+void LogicaNegocio::procesarMarcarPlatoTerminado(const QJsonObject& mensaje, ManejadorCliente* remitente) {
+
+    std::lock_guard<std::mutex> lock(m_mutex);
+
+    if (!mensaje.contains("data") || !mensaje["data"].isObject()) {
+        qWarning() << "MARCAR_PLATO_TERMINADO sin data";
+        return;
+    }
+
+    QJsonObject data = mensaje["data"].toObject();
+
+    if (!data.contains("id_pedido") || !data.contains("id_instancia")) {
+        qWarning() << "Faltan datos en MARCAR_PLATO_TERMINADO";
+        return;
+    }
+
+    long long idPedido = data["id_pedido"].toInt();
+    long long idInstancia = data["id_instancia"].toInt();
+
+    if (m_pedidosActivos.find(idPedido) == m_pedidosActivos.end()) {
+        qWarning() << "Pedido no encontrado:" << idPedido;
+        return;
+    }
+
+    PedidoMesa& pedido = m_pedidosActivos[idPedido];
+
+    bool encontrado = false;
+
+    for (auto& inst : pedido.instancias) {
+
+        if (inst.id_instancia == idInstancia) {
+
+            // ✔ Validar estación
+            if (inst.estacion != remitente->getNombreEstacion().toStdString()) {
+                qWarning() << "Estación no autorizada para marcar plato terminado";
+                return;
+            }
+
+            inst.estado = EstadoPlato::TERMINADO;
+            encontrado = true;
+            break;
+        }
+    }
+
+    if (!encontrado) {
+        qWarning() << "Instancia no encontrada:" << idInstancia;
+        return;
+    }
+
+    bool todoTerminado = true;
+
+    for (const auto& inst : pedido.instancias) {
+        if (inst.estado != EstadoPlato::TERMINADO) {
+            todoTerminado = false;
+            break;
+        }
+    }
+
+    if (todoTerminado) {
+        pedido.estado = EstadoPedido::LISTO;
+    }
+
+    QJsonObject msg;
+    msg[Protocolo::EVENTO] = "PLATO_TERMINADO";
+    msg["id_pedido"] = (int)idPedido;
+    msg["id_instancia"] = (int)idInstancia;
+    msg["pedido_listo"] = todoTerminado;
+
+    for (auto cli : m_manejadoresActivos)
+        emit enviarRespuesta(cli, msg);
+
+    qInfo() << "Plato" << idInstancia << "terminado. Pedido" 
+            << idPedido << (todoTerminado ? "LISTO" : "AÚN EN PROCESO");
+}
+
+void LogicaNegocio::procesarConfirmarEntrega(const QJsonObject& mensaje, ManejadorCliente* remitente) {
+
+    QJsonObject data = mensaje["data"].toObject();
+
+    long long idPedido = mensaje["id_pedido"].toInt();
+
+    PedidoMesa& pedido = m_pedidosActivos[idPedido];
+
+    pedido.estado = EstadoPedido::ENTREGADO;
+
+    QJsonObject msg;
+    msg["evento"] = "PEDIDO_ENTREGADO";
+    msg["id"] = idPedido;
+
+    emit enviarRespuesta(remitente, msg);
+
+    for (auto inst : pedido.instancias)
+        m_conteoPlatosRanking[0]++;
+
+    qInfo() << "Pedido entregado.";
+}
