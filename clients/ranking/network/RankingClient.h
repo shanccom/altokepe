@@ -2,7 +2,7 @@
 #include <QJsonArray>
 #include <QJsonObject>
 #include <QObject>
-#include <QTimer> // Solo para la simulación de hoy
+#include <QTcpSocket>
 
 class RankingClient : public QObject {
   Q_OBJECT
@@ -10,18 +10,18 @@ class RankingClient : public QObject {
 public:
   explicit RankingClient(QObject *parent = nullptr);
 
-  // Método para simular que el servidor nos manda datos (Patrón: Mocking)
-  void iniciarSimulacion();
+  void conectar(const QString &host, quint16 puerto);
 
 signals:
   // SEÑAL DEL OBSERVER: La Vista se suscribirá a esto.
-  // No le importa de dónde vienen los datos (red o simulación), solo que
-  // llegaron.
+  // Facade: Ocultamos la complejidad del protocolo de red.
   void rankingActualizado(const QJsonArray &rankingData);
 
 private slots:
-  void generarDatosFalsos();
+  void onConectado();
+  void onDatosRecibidos();
 
 private:
-  QTimer *m_simuladorTimer;
+  QTcpSocket *m_socket;
+  QByteArray m_buffer;
 };

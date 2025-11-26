@@ -36,6 +36,10 @@ public:
   void procesarMensaje(const QJsonObject& mensaje, ManejadorCliente* remitente);
   void enviarEstadoInicial(ManejadorCliente* cliente);
 
+  // Facade para Ranking
+  QJsonObject getEstadoParaRanking();
+  void registrarVenta(int idPlato);
+
 signals:
   void enviarRespuesta(ManejadorCliente* cliente, const QJsonObject& mensaje);
 

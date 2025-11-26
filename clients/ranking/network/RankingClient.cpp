@@ -1,37 +1,55 @@
 #include "RankingClient.h"
+#include <QJsonDocument>
+#include <QJsonObject>
+#include <QTcpSocket>
 #include <QDebug>
 
 RankingClient::RankingClient(QObject *parent) : QObject(parent) {
-  // Aquí iría la inicialización del Socket TCP real en el futuro
-  m_simuladorTimer = new QTimer(this);
-  connect(m_simuladorTimer, &QTimer::timeout, this,
-          &RankingClient::generarDatosFalsos);
+  m_socket = new QTcpSocket(this);
+
+  connect(m_socket, &QTcpSocket::connected, this, &RankingClient::onConectado);
+  connect(m_socket, &QTcpSocket::readyRead, this, &RankingClient::onDatosRecibidos);
 }
 
-void RankingClient::iniciarSimulacion() {
-  qDebug() << "Simulación iniciada: Esperando datos...";
-  m_simuladorTimer->start(3000); // Generar datos cada 3 segundos
+void RankingClient::conectar(const QString &host, quint16 puerto) {
+  qDebug() << "Conectando al servidor en" << host << ":" << puerto;
+  m_socket->connectToHost(host, puerto);
 }
 
-void RankingClient::generarDatosFalsos() {
-  // Creamos un JSON falso como si viniera del servidor (Protocolo limpio)
-  QJsonArray ranking;
+void RankingClient::onConectado() {
+  qDebug() << "Conectado al servidor. Identificándose...";
+  
+  // Protocolo: Enviar identificación
+  QJsonObject mensaje;
+  mensaje["comando"] = "IDENTIFICARSE";
+  mensaje["rol"] = "Ranking";
 
-  // Dato 1
-  QJsonObject plato1;
-  plato1["nombre"] = "Lomo Saltado";
-  plato1["cantidad"] = rand() % 20; // Cantidad aleatoria
-  ranking.append(plato1);
+  QJsonDocument doc(mensaje);
+  m_socket->write(doc.toJson(QJsonDocument::Compact) + "\n");
+}
 
-  // Dato 2
-  QJsonObject plato2;
-  plato2["nombre"] = "Ceviche";
-  plato2["cantidad"] = rand() % 20;
-  ranking.append(plato2);
+void RankingClient::onDatosRecibidos() {
+  m_buffer.append(m_socket->readAll());
 
-  qDebug()
-      << "RankingClient: Recibido evento (simulado), notificando a la UI...";
+  while (m_buffer.contains('\n')) {
+    int pos = m_buffer.indexOf('\n');
+    QByteArray linea = m_buffer.left(pos);
+    m_buffer.remove(0, pos + 1);
 
-  // DISPARAMOS EL EVENTO (Push)
-  emit rankingActualizado(ranking);
+    if (linea.isEmpty()) continue;
+
+    QJsonDocument doc = QJsonDocument::fromJson(linea);
+    if (!doc.isObject()) continue;
+
+    QJsonObject obj = doc.object();
+    
+    // Verificar si es una actualización de ranking
+    if (obj["evento"].toString() == "ACTUALIZACION_RANKING") {
+       QJsonObject data = obj["data"].toObject();
+       QJsonArray ranking = data["ranking"].toArray();
+       
+       qDebug() << "Ranking recibido con" << ranking.size() << "elementos.";
+       emit rankingActualizado(ranking);
+    }
+  }
 }
