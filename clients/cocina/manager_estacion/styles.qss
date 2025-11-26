@@ -1,0 +1,103 @@
+/* Fondo general */
+QMainWindow {
+    background-color: #f5f5f5;
+}
+
+/* Etiquetas */
+QLabel {
+    font-family: 'Segoe UI';
+    font-size: 14px;
+    color: #222;
+}
+
+/* Tablas */
+QTableWidget {
+    border: 1px solid #ccc;
+    background-color: #ffffff;
+    font-size: 14px;
+    selection-background-color: #f89e4f;
+    selection-color: white;
+}
+
+QTableWidget::item {
+    color: #222222;
+    background-color: #ffffff;
+    padding: 4px;
+}
+
+QTableWidget::item:selected {
+    background-color: #f89e4f;
+    color: white;
+}
+
+QTableWidget::item:hover {
+    background-color: #ffe0ba;
+}
+
+/* Encabezado de tabla */
+QHeaderView::section {
+    background-color: #f89e4f;
+    color: white;
+    font-weight: bold;
+    padding: 5px;
+    border: none;
+}
+
+/* Botones */
+QPushButton {
+    background-color: #f89e4f;
+    color: white;
+    padding: 8px 12px;
+    font-size: 14px;
+    font-weight: bold;
+    border-radius: 5px;
+    border: 1px solid #e07d26;
+}
+
+QPushButton:hover {
+    background-color: #ffa856;
+}
+
+QPushButton:pressed {
+    background-color: #e27a25;
+}
+
+/* GroupBoxes */
+QGroupBox {
+    font-weight: bold;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    margin-top: 10px;
+}
+
+QGroupBox::title {
+    subcontrol-origin: margin;
+    subcontrol-position: top left;
+    padding: 0 10px;
+}
+
+/* Tabs */
+QTabWidget::pane {
+    border-top: 2px solid #f89e4f;
+    padding: 5px;
+}
+
+QTabBar::tab {
+    background: #444;
+    color: #fff;
+    padding: 6px 12px;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    margin-right: 2px;
+}
+
+QTabBar::tab:selected {
+    background: #f89e4f;
+    color: white;
+    font-weight: bold;
+}
+
+QTabBar::tab:hover {
+    background: #666;
+}
