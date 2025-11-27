@@ -1,5 +1,6 @@
 #include <QCoreApplication>
 #include "Servidor.h"
+#include "LogicaNegocio.h"
 #include <QTimer>
 #include <QDebug>
 
@@ -7,7 +8,9 @@ int main(int argc, char* argv[]) {
   QCoreApplication a(argc, argv);
   a.setApplicationName("Servidor Altokepe");
 
-  
+  // El menú se carga automáticamente en el constructor de LogicaNegocio
+  // LogicaNegocio::instance()->cargarMenuDesdeArchivo(":/menu.json");
+
   Servidor servidor;  
   quint16 port = 5555;
 

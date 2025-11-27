@@ -1,0 +1,11002 @@
+[
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 4,
+    "id_recepcionista": 4,
+    "platos": [
+      {
+        "id": 1,
+        "cantidad": 13
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 7,
+    "id_recepcionista": 5,
+    "platos": [
+      {
+        "id": 2,
+        "cantidad": 15
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 5,
+    "id_recepcionista": 6,
+    "platos": [
+      {
+        "id": 2,
+        "cantidad": 1
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 7,
+    "id_recepcionista": 4,
+    "platos": [
+      {
+        "id": 3,
+        "cantidad": 6
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 1,
+    "id_recepcionista": 4,
+    "platos": [
+      {
+        "id": 3,
+        "cantidad": 8
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 5,
+    "id_recepcionista": 5,
+    "platos": [
+      {
+        "id": 2,
+        "cantidad": 10
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 9,
+    "id_recepcionista": 4,
+    "platos": [
+      {
+        "id": 3,
+        "cantidad": 9
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 5,
+    "id_recepcionista": 5,
+    "platos": [
+      {
+        "id": 4,
+        "cantidad": 14
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 2,
+    "id_recepcionista": 2,
+    "platos": [
+      {
+        "id": 4,
+        "cantidad": 1
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 4,
+    "id_recepcionista": 2,
+    "platos": [
+      {
+        "id": 4,
+        "cantidad": 5
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 4,
+    "id_recepcionista": 4,
+    "platos": [
+      {
+        "id": 5,
+        "cantidad": 8
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 4,
+    "id_recepcionista": 2,
+    "platos": [
+      {
+        "id": 2,
+        "cantidad": 8
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 2,
+    "id_recepcionista": 2,
+    "platos": [
+      {
+        "id": 4,
+        "cantidad": 9
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 9,
+    "id_recepcionista": 9,
+    "platos": [
+      {
+        "id": 5,
+        "cantidad": 4
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 7,
+    "id_recepcionista": 4,
+    "platos": [
+      {
+        "id": 1,
+        "cantidad": 3
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 2,
+    "id_recepcionista": 1,
+    "platos": [
+      {
+        "id": 6,
+        "cantidad": 11
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 7,
+    "id_recepcionista": 9,
+    "platos": [
+      {
+        "id": 4,
+        "cantidad": 11
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 5,
+    "id_recepcionista": 5,
+    "platos": [
+      {
+        "id": 4,
+        "cantidad": 10
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 6,
+    "id_recepcionista": 6,
+    "platos": [
+      {
+        "id": 4,
+        "cantidad": 11
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 8,
+    "id_recepcionista": 8,
+    "platos": [
+      {
+        "id": 7,
+        "cantidad": 10
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 7,
+    "id_recepcionista": 5,
+    "platos": [
+      {
+        "id": 7,
+        "cantidad": 15
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 1,
+    "id_recepcionista": 2,
+    "platos": [
+      {
+        "id": 3,
+        "cantidad": 12
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 3,
+    "id_recepcionista": 9,
+    "platos": [
+      {
+        "id": 6,
+        "cantidad": 3
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 4,
+    "id_recepcionista": 10,
+    "platos": [
+      {
+        "id": 3,
+        "cantidad": 10
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 2,
+    "id_recepcionista": 7,
+    "platos": [
+      {
+        "id": 6,
+        "cantidad": 1
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 2,
+    "id_recepcionista": 10,
+    "platos": [
+      {
+        "id": 3,
+        "cantidad": 4
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 7,
+    "id_recepcionista": 2,
+    "platos": [
+      {
+        "id": 7,
+        "cantidad": 11
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 9,
+    "id_recepcionista": 1,
+    "platos": [
+      {
+        "id": 7,
+        "cantidad": 10
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 2,
+    "id_recepcionista": 5,
+    "platos": [
+      {
+        "id": 3,
+        "cantidad": 9
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 9,
+    "id_recepcionista": 10,
+    "platos": [
+      {
+        "id": 5,
+        "cantidad": 2
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 4,
+    "id_recepcionista": 1,
+    "platos": [
+      {
+        "id": 7,
+        "cantidad": 13
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 6,
+    "id_recepcionista": 10,
+    "platos": [
+      {
+        "id": 1,
+        "cantidad": 4
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 8,
+    "id_recepcionista": 3,
+    "platos": [
+      {
+        "id": 1,
+        "cantidad": 13
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 6,
+    "id_recepcionista": 3,
+    "platos": [
+      {
+        "id": 5,
+        "cantidad": 12
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 5,
+    "id_recepcionista": 3,
+    "platos": [
+      {
+        "id": 2,
+        "cantidad": 8
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 7,
+    "id_recepcionista": 4,
+    "platos": [
+      {
+        "id": 7,
+        "cantidad": 10
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 8,
+    "id_recepcionista": 7,
+    "platos": [
+      {
+        "id": 5,
+        "cantidad": 10
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 6,
+    "id_recepcionista": 10,
+    "platos": [
+      {
+        "id": 4,
+        "cantidad": 12
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 7,
+    "id_recepcionista": 1,
+    "platos": [
+      {
+        "id": 2,
+        "cantidad": 2
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 3,
+    "id_recepcionista": 2,
+    "platos": [
+      {
+        "id": 6,
+        "cantidad": 5
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 8,
+    "id_recepcionista": 5,
+    "platos": [
+      {
+        "id": 7,
+        "cantidad": 11
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 6,
+    "id_recepcionista": 2,
+    "platos": [
+      {
+        "id": 1,
+        "cantidad": 8
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 4,
+    "id_recepcionista": 2,
+    "platos": [
+      {
+        "id": 2,
+        "cantidad": 1
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 8,
+    "id_recepcionista": 8,
+    "platos": [
+      {
+        "id": 7,
+        "cantidad": 12
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 6,
+    "id_recepcionista": 3,
+    "platos": [
+      {
+        "id": 3,
+        "cantidad": 6
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 2,
+    "id_recepcionista": 5,
+    "platos": [
+      {
+        "id": 2,
+        "cantidad": 7
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 1,
+    "id_recepcionista": 10,
+    "platos": [
+      {
+        "id": 6,
+        "cantidad": 7
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 9,
+    "id_recepcionista": 9,
+    "platos": [
+      {
+        "id": 6,
+        "cantidad": 14
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 4,
+    "id_recepcionista": 6,
+    "platos": [
+      {
+        "id": 5,
+        "cantidad": 4
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 5,
+    "id_recepcionista": 5,
+    "platos": [
+      {
+        "id": 2,
+        "cantidad": 8
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 5,
+    "id_recepcionista": 9,
+    "platos": [
+      {
+        "id": 5,
+        "cantidad": 15
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 8,
+    "id_recepcionista": 10,
+    "platos": [
+      {
+        "id": 3,
+        "cantidad": 12
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 4,
+    "id_recepcionista": 3,
+    "platos": [
+      {
+        "id": 1,
+        "cantidad": 13
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 5,
+    "id_recepcionista": 2,
+    "platos": [
+      {
+        "id": 4,
+        "cantidad": 14
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 8,
+    "id_recepcionista": 6,
+    "platos": [
+      {
+        "id": 6,
+        "cantidad": 10
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 5,
+    "id_recepcionista": 2,
+    "platos": [
+      {
+        "id": 4,
+        "cantidad": 11
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 7,
+    "id_recepcionista": 7,
+    "platos": [
+      {
+        "id": 4,
+        "cantidad": 14
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 6,
+    "id_recepcionista": 1,
+    "platos": [
+      {
+        "id": 2,
+        "cantidad": 6
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 3,
+    "id_recepcionista": 10,
+    "platos": [
+      {
+        "id": 2,
+        "cantidad": 5
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 1,
+    "id_recepcionista": 10,
+    "platos": [
+      {
+        "id": 7,
+        "cantidad": 2
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 4,
+    "id_recepcionista": 4,
+    "platos": [
+      {
+        "id": 2,
+        "cantidad": 14
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 1,
+    "id_recepcionista": 9,
+    "platos": [
+      {
+        "id": 3,
+        "cantidad": 3
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 7,
+    "id_recepcionista": 2,
+    "platos": [
+      {
+        "id": 6,
+        "cantidad": 7
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 8,
+    "id_recepcionista": 2,
+    "platos": [
+      {
+        "id": 7,
+        "cantidad": 1
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 8,
+    "id_recepcionista": 6,
+    "platos": [
+      {
+        "id": 1,
+        "cantidad": 4
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 5,
+    "id_recepcionista": 8,
+    "platos": [
+      {
+        "id": 5,
+        "cantidad": 2
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 1,
+    "id_recepcionista": 1,
+    "platos": [
+      {
+        "id": 1,
+        "cantidad": 9
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 4,
+    "id_recepcionista": 5,
+    "platos": [
+      {
+        "id": 7,
+        "cantidad": 2
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 7,
+    "id_recepcionista": 10,
+    "platos": [
+      {
+        "id": 2,
+        "cantidad": 7
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 8,
+    "id_recepcionista": 8,
+    "platos": [
+      {
+        "id": 7,
+        "cantidad": 14
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 4,
+    "id_recepcionista": 4,
+    "platos": [
+      {
+        "id": 7,
+        "cantidad": 6
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 5,
+    "id_recepcionista": 1,
+    "platos": [
+      {
+        "id": 5,
+        "cantidad": 13
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 3,
+    "id_recepcionista": 5,
+    "platos": [
+      {
+        "id": 4,
+        "cantidad": 5
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 2,
+    "id_recepcionista": 10,
+    "platos": [
+      {
+        "id": 7,
+        "cantidad": 10
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 9,
+    "id_recepcionista": 10,
+    "platos": [
+      {
+        "id": 7,
+        "cantidad": 6
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 2,
+    "id_recepcionista": 10,
+    "platos": [
+      {
+        "id": 2,
+        "cantidad": 9
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 1,
+    "id_recepcionista": 2,
+    "platos": [
+      {
+        "id": 3,
+        "cantidad": 12
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 7,
+    "id_recepcionista": 10,
+    "platos": [
+      {
+        "id": 2,
+        "cantidad": 4
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 9,
+    "id_recepcionista": 9,
+    "platos": [
+      {
+        "id": 4,
+        "cantidad": 6
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 3,
+    "id_recepcionista": 8,
+    "platos": [
+      {
+        "id": 5,
+        "cantidad": 13
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 8,
+    "id_recepcionista": 10,
+    "platos": [
+      {
+        "id": 5,
+        "cantidad": 12
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 1,
+    "id_recepcionista": 10,
+    "platos": [
+      {
+        "id": 5,
+        "cantidad": 3
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 5,
+    "id_recepcionista": 4,
+    "platos": [
+      {
+        "id": 5,
+        "cantidad": 11
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 9,
+    "id_recepcionista": 10,
+    "platos": [
+      {
+        "id": 4,
+        "cantidad": 13
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 8,
+    "id_recepcionista": 10,
+    "platos": [
+      {
+        "id": 1,
+        "cantidad": 3
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 8,
+    "id_recepcionista": 3,
+    "platos": [
+      {
+        "id": 1,
+        "cantidad": 15
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 3,
+    "id_recepcionista": 5,
+    "platos": [
+      {
+        "id": 1,
+        "cantidad": 8
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 3,
+    "id_recepcionista": 9,
+    "platos": [
+      {
+        "id": 7,
+        "cantidad": 10
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 9,
+    "id_recepcionista": 7,
+    "platos": [
+      {
+        "id": 1,
+        "cantidad": 14
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 5,
+    "id_recepcionista": 2,
+    "platos": [
+      {
+        "id": 2,
+        "cantidad": 15
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 4,
+    "id_recepcionista": 6,
+    "platos": [
+      {
+        "id": 7,
+        "cantidad": 6
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 1,
+    "id_recepcionista": 2,
+    "platos": [
+      {
+        "id": 1,
+        "cantidad": 15
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 8,
+    "id_recepcionista": 9,
+    "platos": [
+      {
+        "id": 7,
+        "cantidad": 2
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 4,
+    "id_recepcionista": 9,
+    "platos": [
+      {
+        "id": 1,
+        "cantidad": 15
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 9,
+    "id_recepcionista": 5,
+    "platos": [
+      {
+        "id": 3,
+        "cantidad": 8
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 2,
+    "id_recepcionista": 8,
+    "platos": [
+      {
+        "id": 6,
+        "cantidad": 15
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 4,
+    "id_recepcionista": 5,
+    "platos": [
+      {
+        "id": 7,
+        "cantidad": 13
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 6,
+    "id_recepcionista": 2,
+    "platos": [
+      {
+        "id": 2,
+        "cantidad": 1
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 7,
+    "id_recepcionista": 6,
+    "platos": [
+      {
+        "id": 3,
+        "cantidad": 3
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 8,
+    "id_recepcionista": 3,
+    "platos": [
+      {
+        "id": 4,
+        "cantidad": 11
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 9,
+    "id_recepcionista": 8,
+    "platos": [
+      {
+        "id": 2,
+        "cantidad": 3
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 7,
+    "id_recepcionista": 8,
+    "platos": [
+      {
+        "id": 7,
+        "cantidad": 14
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 9,
+    "id_recepcionista": 8,
+    "platos": [
+      {
+        "id": 7,
+        "cantidad": 8
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 9,
+    "id_recepcionista": 2,
+    "platos": [
+      {
+        "id": 7,
+        "cantidad": 13
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 7,
+    "id_recepcionista": 5,
+    "platos": [
+      {
+        "id": 4,
+        "cantidad": 8
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 5,
+    "id_recepcionista": 5,
+    "platos": [
+      {
+        "id": 5,
+        "cantidad": 9
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 7,
+    "id_recepcionista": 7,
+    "platos": [
+      {
+        "id": 6,
+        "cantidad": 4
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 9,
+    "id_recepcionista": 10,
+    "platos": [
+      {
+        "id": 4,
+        "cantidad": 5
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 3,
+    "id_recepcionista": 6,
+    "platos": [
+      {
+        "id": 7,
+        "cantidad": 12
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 6,
+    "id_recepcionista": 2,
+    "platos": [
+      {
+        "id": 4,
+        "cantidad": 2
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 7,
+    "id_recepcionista": 9,
+    "platos": [
+      {
+        "id": 6,
+        "cantidad": 8
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 4,
+    "id_recepcionista": 5,
+    "platos": [
+      {
+        "id": 6,
+        "cantidad": 7
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 3,
+    "id_recepcionista": 9,
+    "platos": [
+      {
+        "id": 1,
+        "cantidad": 8
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 1,
+    "id_recepcionista": 2,
+    "platos": [
+      {
+        "id": 1,
+        "cantidad": 10
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 2,
+    "id_recepcionista": 4,
+    "platos": [
+      {
+        "id": 1,
+        "cantidad": 13
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 7,
+    "id_recepcionista": 4,
+    "platos": [
+      {
+        "id": 3,
+        "cantidad": 13
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 6,
+    "id_recepcionista": 10,
+    "platos": [
+      {
+        "id": 5,
+        "cantidad": 7
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 5,
+    "id_recepcionista": 5,
+    "platos": [
+      {
+        "id": 6,
+        "cantidad": 1
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 9,
+    "id_recepcionista": 9,
+    "platos": [
+      {
+        "id": 4,
+        "cantidad": 10
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 1,
+    "id_recepcionista": 3,
+    "platos": [
+      {
+        "id": 5,
+        "cantidad": 2
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 5,
+    "id_recepcionista": 5,
+    "platos": [
+      {
+        "id": 7,
+        "cantidad": 8
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 6,
+    "id_recepcionista": 1,
+    "platos": [
+      {
+        "id": 4,
+        "cantidad": 3
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 8,
+    "id_recepcionista": 10,
+    "platos": [
+      {
+        "id": 7,
+        "cantidad": 6
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 7,
+    "id_recepcionista": 6,
+    "platos": [
+      {
+        "id": 3,
+        "cantidad": 13
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 9,
+    "id_recepcionista": 9,
+    "platos": [
+      {
+        "id": 2,
+        "cantidad": 7
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 9,
+    "id_recepcionista": 5,
+    "platos": [
+      {
+        "id": 4,
+        "cantidad": 11
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 8,
+    "id_recepcionista": 2,
+    "platos": [
+      {
+        "id": 1,
+        "cantidad": 1
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 1,
+    "id_recepcionista": 1,
+    "platos": [
+      {
+        "id": 2,
+        "cantidad": 11
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 6,
+    "id_recepcionista": 5,
+    "platos": [
+      {
+        "id": 4,
+        "cantidad": 13
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 9,
+    "id_recepcionista": 6,
+    "platos": [
+      {
+        "id": 3,
+        "cantidad": 7
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 3,
+    "id_recepcionista": 10,
+    "platos": [
+      {
+        "id": 6,
+        "cantidad": 8
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 9,
+    "id_recepcionista": 8,
+    "platos": [
+      {
+        "id": 2,
+        "cantidad": 4
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 9,
+    "id_recepcionista": 4,
+    "platos": [
+      {
+        "id": 1,
+        "cantidad": 5
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 6,
+    "id_recepcionista": 10,
+    "platos": [
+      {
+        "id": 1,
+        "cantidad": 12
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 2,
+    "id_recepcionista": 3,
+    "platos": [
+      {
+        "id": 1,
+        "cantidad": 8
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 3,
+    "id_recepcionista": 2,
+    "platos": [
+      {
+        "id": 1,
+        "cantidad": 15
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 1,
+    "id_recepcionista": 7,
+    "platos": [
+      {
+        "id": 3,
+        "cantidad": 6
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 2,
+    "id_recepcionista": 9,
+    "platos": [
+      {
+        "id": 6,
+        "cantidad": 15
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 7,
+    "id_recepcionista": 7,
+    "platos": [
+      {
+        "id": 5,
+        "cantidad": 11
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 3,
+    "id_recepcionista": 1,
+    "platos": [
+      {
+        "id": 5,
+        "cantidad": 13
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 3,
+    "id_recepcionista": 5,
+    "platos": [
+      {
+        "id": 1,
+        "cantidad": 4
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 4,
+    "id_recepcionista": 2,
+    "platos": [
+      {
+        "id": 3,
+        "cantidad": 12
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 1,
+    "id_recepcionista": 4,
+    "platos": [
+      {
+        "id": 5,
+        "cantidad": 8
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 2,
+    "id_recepcionista": 7,
+    "platos": [
+      {
+        "id": 4,
+        "cantidad": 10
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 5,
+    "id_recepcionista": 5,
+    "platos": [
+      {
+        "id": 6,
+        "cantidad": 14
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 7,
+    "id_recepcionista": 4,
+    "platos": [
+      {
+        "id": 5,
+        "cantidad": 4
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 4,
+    "id_recepcionista": 6,
+    "platos": [
+      {
+        "id": 4,
+        "cantidad": 7
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 7,
+    "id_recepcionista": 2,
+    "platos": [
+      {
+        "id": 6,
+        "cantidad": 13
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 8,
+    "id_recepcionista": 2,
+    "platos": [
+      {
+        "id": 6,
+        "cantidad": 7
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 1,
+    "id_recepcionista": 9,
+    "platos": [
+      {
+        "id": 7,
+        "cantidad": 14
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 4,
+    "id_recepcionista": 4,
+    "platos": [
+      {
+        "id": 5,
+        "cantidad": 13
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 3,
+    "id_recepcionista": 4,
+    "platos": [
+      {
+        "id": 7,
+        "cantidad": 9
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 2,
+    "id_recepcionista": 10,
+    "platos": [
+      {
+        "id": 4,
+        "cantidad": 1
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 2,
+    "id_recepcionista": 10,
+    "platos": [
+      {
+        "id": 2,
+        "cantidad": 3
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 4,
+    "id_recepcionista": 7,
+    "platos": [
+      {
+        "id": 3,
+        "cantidad": 10
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 4,
+    "id_recepcionista": 3,
+    "platos": [
+      {
+        "id": 4,
+        "cantidad": 14
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 8,
+    "id_recepcionista": 1,
+    "platos": [
+      {
+        "id": 5,
+        "cantidad": 7
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 1,
+    "id_recepcionista": 9,
+    "platos": [
+      {
+        "id": 1,
+        "cantidad": 2
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 4,
+    "id_recepcionista": 5,
+    "platos": [
+      {
+        "id": 3,
+        "cantidad": 1
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 4,
+    "id_recepcionista": 1,
+    "platos": [
+      {
+        "id": 2,
+        "cantidad": 10
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 3,
+    "id_recepcionista": 2,
+    "platos": [
+      {
+        "id": 3,
+        "cantidad": 12
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 6,
+    "id_recepcionista": 5,
+    "platos": [
+      {
+        "id": 1,
+        "cantidad": 11
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 2,
+    "id_recepcionista": 8,
+    "platos": [
+      {
+        "id": 5,
+        "cantidad": 6
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 9,
+    "id_recepcionista": 7,
+    "platos": [
+      {
+        "id": 3,
+        "cantidad": 7
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 1,
+    "id_recepcionista": 6,
+    "platos": [
+      {
+        "id": 6,
+        "cantidad": 11
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 2,
+    "id_recepcionista": 2,
+    "platos": [
+      {
+        "id": 4,
+        "cantidad": 6
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 2,
+    "id_recepcionista": 5,
+    "platos": [
+      {
+        "id": 7,
+        "cantidad": 6
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 2,
+    "id_recepcionista": 8,
+    "platos": [
+      {
+        "id": 6,
+        "cantidad": 4
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 8,
+    "id_recepcionista": 6,
+    "platos": [
+      {
+        "id": 2,
+        "cantidad": 6
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 7,
+    "id_recepcionista": 2,
+    "platos": [
+      {
+        "id": 1,
+        "cantidad": 6
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 5,
+    "id_recepcionista": 5,
+    "platos": [
+      {
+        "id": 2,
+        "cantidad": 11
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 9,
+    "id_recepcionista": 9,
+    "platos": [
+      {
+        "id": 3,
+        "cantidad": 6
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 9,
+    "id_recepcionista": 10,
+    "platos": [
+      {
+        "id": 7,
+        "cantidad": 2
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 7,
+    "id_recepcionista": 8,
+    "platos": [
+      {
+        "id": 1,
+        "cantidad": 2
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 1,
+    "id_recepcionista": 8,
+    "platos": [
+      {
+        "id": 5,
+        "cantidad": 12
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 4,
+    "id_recepcionista": 8,
+    "platos": [
+      {
+        "id": 4,
+        "cantidad": 1
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 2,
+    "id_recepcionista": 3,
+    "platos": [
+      {
+        "id": 4,
+        "cantidad": 11
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 8,
+    "id_recepcionista": 10,
+    "platos": [
+      {
+        "id": 1,
+        "cantidad": 2
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 9,
+    "id_recepcionista": 10,
+    "platos": [
+      {
+        "id": 3,
+        "cantidad": 5
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 4,
+    "id_recepcionista": 9,
+    "platos": [
+      {
+        "id": 2,
+        "cantidad": 6
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 7,
+    "id_recepcionista": 10,
+    "platos": [
+      {
+        "id": 7,
+        "cantidad": 7
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 1,
+    "id_recepcionista": 8,
+    "platos": [
+      {
+        "id": 7,
+        "cantidad": 1
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 6,
+    "id_recepcionista": 3,
+    "platos": [
+      {
+        "id": 3,
+        "cantidad": 5
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 3,
+    "id_recepcionista": 2,
+    "platos": [
+      {
+        "id": 7,
+        "cantidad": 8
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 7,
+    "id_recepcionista": 7,
+    "platos": [
+      {
+        "id": 3,
+        "cantidad": 15
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 8,
+    "id_recepcionista": 7,
+    "platos": [
+      {
+        "id": 5,
+        "cantidad": 2
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 4,
+    "id_recepcionista": 10,
+    "platos": [
+      {
+        "id": 1,
+        "cantidad": 15
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 9,
+    "id_recepcionista": 7,
+    "platos": [
+      {
+        "id": 4,
+        "cantidad": 14
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 7,
+    "id_recepcionista": 10,
+    "platos": [
+      {
+        "id": 2,
+        "cantidad": 12
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 6,
+    "id_recepcionista": 7,
+    "platos": [
+      {
+        "id": 7,
+        "cantidad": 1
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 9,
+    "id_recepcionista": 5,
+    "platos": [
+      {
+        "id": 3,
+        "cantidad": 14
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 4,
+    "id_recepcionista": 2,
+    "platos": [
+      {
+        "id": 2,
+        "cantidad": 2
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 4,
+    "id_recepcionista": 1,
+    "platos": [
+      {
+        "id": 7,
+        "cantidad": 15
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 7,
+    "id_recepcionista": 5,
+    "platos": [
+      {
+        "id": 2,
+        "cantidad": 4
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 2,
+    "id_recepcionista": 10,
+    "platos": [
+      {
+        "id": 6,
+        "cantidad": 4
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 2,
+    "id_recepcionista": 2,
+    "platos": [
+      {
+        "id": 6,
+        "cantidad": 3
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 6,
+    "id_recepcionista": 4,
+    "platos": [
+      {
+        "id": 4,
+        "cantidad": 10
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 9,
+    "id_recepcionista": 5,
+    "platos": [
+      {
+        "id": 5,
+        "cantidad": 15
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 3,
+    "id_recepcionista": 3,
+    "platos": [
+      {
+        "id": 5,
+        "cantidad": 6
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 6,
+    "id_recepcionista": 3,
+    "platos": [
+      {
+        "id": 7,
+        "cantidad": 10
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 2,
+    "id_recepcionista": 10,
+    "platos": [
+      {
+        "id": 4,
+        "cantidad": 8
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 9,
+    "id_recepcionista": 6,
+    "platos": [
+      {
+        "id": 1,
+        "cantidad": 9
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 7,
+    "id_recepcionista": 9,
+    "platos": [
+      {
+        "id": 2,
+        "cantidad": 6
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 5,
+    "id_recepcionista": 10,
+    "platos": [
+      {
+        "id": 7,
+        "cantidad": 7
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 4,
+    "id_recepcionista": 3,
+    "platos": [
+      {
+        "id": 2,
+        "cantidad": 4
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 3,
+    "id_recepcionista": 5,
+    "platos": [
+      {
+        "id": 1,
+        "cantidad": 4
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 9,
+    "id_recepcionista": 5,
+    "platos": [
+      {
+        "id": 7,
+        "cantidad": 8
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 5,
+    "id_recepcionista": 5,
+    "platos": [
+      {
+        "id": 7,
+        "cantidad": 13
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 4,
+    "id_recepcionista": 8,
+    "platos": [
+      {
+        "id": 1,
+        "cantidad": 2
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 9,
+    "id_recepcionista": 10,
+    "platos": [
+      {
+        "id": 3,
+        "cantidad": 15
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 1,
+    "id_recepcionista": 10,
+    "platos": [
+      {
+        "id": 1,
+        "cantidad": 12
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 3,
+    "id_recepcionista": 9,
+    "platos": [
+      {
+        "id": 7,
+        "cantidad": 12
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 1,
+    "id_recepcionista": 9,
+    "platos": [
+      {
+        "id": 2,
+        "cantidad": 3
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 1,
+    "id_recepcionista": 10,
+    "platos": [
+      {
+        "id": 3,
+        "cantidad": 14
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 9,
+    "id_recepcionista": 2,
+    "platos": [
+      {
+        "id": 3,
+        "cantidad": 7
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 6,
+    "id_recepcionista": 10,
+    "platos": [
+      {
+        "id": 4,
+        "cantidad": 9
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 4,
+    "id_recepcionista": 5,
+    "platos": [
+      {
+        "id": 7,
+        "cantidad": 10
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 2,
+    "id_recepcionista": 1,
+    "platos": [
+      {
+        "id": 7,
+        "cantidad": 13
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 7,
+    "id_recepcionista": 4,
+    "platos": [
+      {
+        "id": 1,
+        "cantidad": 9
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 6,
+    "id_recepcionista": 3,
+    "platos": [
+      {
+        "id": 3,
+        "cantidad": 1
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 4,
+    "id_recepcionista": 1,
+    "platos": [
+      {
+        "id": 6,
+        "cantidad": 1
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 8,
+    "id_recepcionista": 3,
+    "platos": [
+      {
+        "id": 6,
+        "cantidad": 6
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 8,
+    "id_recepcionista": 7,
+    "platos": [
+      {
+        "id": 4,
+        "cantidad": 13
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 7,
+    "id_recepcionista": 3,
+    "platos": [
+      {
+        "id": 3,
+        "cantidad": 14
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 1,
+    "id_recepcionista": 2,
+    "platos": [
+      {
+        "id": 5,
+        "cantidad": 11
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 5,
+    "id_recepcionista": 8,
+    "platos": [
+      {
+        "id": 1,
+        "cantidad": 13
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 7,
+    "id_recepcionista": 3,
+    "platos": [
+      {
+        "id": 7,
+        "cantidad": 5
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 5,
+    "id_recepcionista": 9,
+    "platos": [
+      {
+        "id": 4,
+        "cantidad": 8
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 4,
+    "id_recepcionista": 6,
+    "platos": [
+      {
+        "id": 4,
+        "cantidad": 7
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 1,
+    "id_recepcionista": 5,
+    "platos": [
+      {
+        "id": 5,
+        "cantidad": 6
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 9,
+    "id_recepcionista": 1,
+    "platos": [
+      {
+        "id": 3,
+        "cantidad": 3
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 9,
+    "id_recepcionista": 2,
+    "platos": [
+      {
+        "id": 2,
+        "cantidad": 13
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 7,
+    "id_recepcionista": 8,
+    "platos": [
+      {
+        "id": 4,
+        "cantidad": 5
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 8,
+    "id_recepcionista": 2,
+    "platos": [
+      {
+        "id": 4,
+        "cantidad": 10
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 1,
+    "id_recepcionista": 8,
+    "platos": [
+      {
+        "id": 6,
+        "cantidad": 10
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 3,
+    "id_recepcionista": 7,
+    "platos": [
+      {
+        "id": 2,
+        "cantidad": 12
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 1,
+    "id_recepcionista": 9,
+    "platos": [
+      {
+        "id": 4,
+        "cantidad": 13
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 6,
+    "id_recepcionista": 9,
+    "platos": [
+      {
+        "id": 2,
+        "cantidad": 13
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 6,
+    "id_recepcionista": 7,
+    "platos": [
+      {
+        "id": 5,
+        "cantidad": 4
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 1,
+    "id_recepcionista": 1,
+    "platos": [
+      {
+        "id": 6,
+        "cantidad": 10
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 3,
+    "id_recepcionista": 10,
+    "platos": [
+      {
+        "id": 3,
+        "cantidad": 2
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 3,
+    "id_recepcionista": 2,
+    "platos": [
+      {
+        "id": 7,
+        "cantidad": 4
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 1,
+    "id_recepcionista": 5,
+    "platos": [
+      {
+        "id": 4,
+        "cantidad": 5
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 1,
+    "id_recepcionista": 7,
+    "platos": [
+      {
+        "id": 6,
+        "cantidad": 10
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 3,
+    "id_recepcionista": 4,
+    "platos": [
+      {
+        "id": 2,
+        "cantidad": 2
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 2,
+    "id_recepcionista": 9,
+    "platos": [
+      {
+        "id": 2,
+        "cantidad": 10
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 5,
+    "id_recepcionista": 10,
+    "platos": [
+      {
+        "id": 3,
+        "cantidad": 6
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 2,
+    "id_recepcionista": 7,
+    "platos": [
+      {
+        "id": 5,
+        "cantidad": 5
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 8,
+    "id_recepcionista": 7,
+    "platos": [
+      {
+        "id": 3,
+        "cantidad": 3
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 9,
+    "id_recepcionista": 9,
+    "platos": [
+      {
+        "id": 3,
+        "cantidad": 6
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 4,
+    "id_recepcionista": 4,
+    "platos": [
+      {
+        "id": 7,
+        "cantidad": 13
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 1,
+    "id_recepcionista": 2,
+    "platos": [
+      {
+        "id": 2,
+        "cantidad": 8
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 2,
+    "id_recepcionista": 7,
+    "platos": [
+      {
+        "id": 3,
+        "cantidad": 13
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 9,
+    "id_recepcionista": 8,
+    "platos": [
+      {
+        "id": 7,
+        "cantidad": 12
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 1,
+    "id_recepcionista": 10,
+    "platos": [
+      {
+        "id": 2,
+        "cantidad": 7
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 5,
+    "id_recepcionista": 3,
+    "platos": [
+      {
+        "id": 1,
+        "cantidad": 3
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 7,
+    "id_recepcionista": 7,
+    "platos": [
+      {
+        "id": 6,
+        "cantidad": 10
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 1,
+    "id_recepcionista": 3,
+    "platos": [
+      {
+        "id": 2,
+        "cantidad": 14
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 1,
+    "id_recepcionista": 1,
+    "platos": [
+      {
+        "id": 6,
+        "cantidad": 4
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 2,
+    "id_recepcionista": 3,
+    "platos": [
+      {
+        "id": 3,
+        "cantidad": 2
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 2,
+    "id_recepcionista": 8,
+    "platos": [
+      {
+        "id": 5,
+        "cantidad": 9
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 9,
+    "id_recepcionista": 1,
+    "platos": [
+      {
+        "id": 2,
+        "cantidad": 5
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 2,
+    "id_recepcionista": 4,
+    "platos": [
+      {
+        "id": 4,
+        "cantidad": 2
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 4,
+    "id_recepcionista": 1,
+    "platos": [
+      {
+        "id": 3,
+        "cantidad": 12
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 4,
+    "id_recepcionista": 2,
+    "platos": [
+      {
+        "id": 2,
+        "cantidad": 6
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 9,
+    "id_recepcionista": 4,
+    "platos": [
+      {
+        "id": 5,
+        "cantidad": 10
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 8,
+    "id_recepcionista": 10,
+    "platos": [
+      {
+        "id": 2,
+        "cantidad": 1
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 7,
+    "id_recepcionista": 3,
+    "platos": [
+      {
+        "id": 7,
+        "cantidad": 12
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 3,
+    "id_recepcionista": 7,
+    "platos": [
+      {
+        "id": 4,
+        "cantidad": 2
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 6,
+    "id_recepcionista": 6,
+    "platos": [
+      {
+        "id": 6,
+        "cantidad": 13
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 1,
+    "id_recepcionista": 2,
+    "platos": [
+      {
+        "id": 2,
+        "cantidad": 13
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 1,
+    "id_recepcionista": 8,
+    "platos": [
+      {
+        "id": 5,
+        "cantidad": 5
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 2,
+    "id_recepcionista": 3,
+    "platos": [
+      {
+        "id": 4,
+        "cantidad": 15
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 3,
+    "id_recepcionista": 6,
+    "platos": [
+      {
+        "id": 3,
+        "cantidad": 10
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 7,
+    "id_recepcionista": 1,
+    "platos": [
+      {
+        "id": 2,
+        "cantidad": 15
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 2,
+    "id_recepcionista": 7,
+    "platos": [
+      {
+        "id": 3,
+        "cantidad": 6
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 6,
+    "id_recepcionista": 5,
+    "platos": [
+      {
+        "id": 7,
+        "cantidad": 13
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 1,
+    "id_recepcionista": 4,
+    "platos": [
+      {
+        "id": 5,
+        "cantidad": 6
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 4,
+    "id_recepcionista": 9,
+    "platos": [
+      {
+        "id": 2,
+        "cantidad": 15
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 2,
+    "id_recepcionista": 5,
+    "platos": [
+      {
+        "id": 4,
+        "cantidad": 14
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 3,
+    "id_recepcionista": 9,
+    "platos": [
+      {
+        "id": 6,
+        "cantidad": 3
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 1,
+    "id_recepcionista": 8,
+    "platos": [
+      {
+        "id": 2,
+        "cantidad": 13
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 9,
+    "id_recepcionista": 6,
+    "platos": [
+      {
+        "id": 4,
+        "cantidad": 2
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 9,
+    "id_recepcionista": 7,
+    "platos": [
+      {
+        "id": 5,
+        "cantidad": 7
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 4,
+    "id_recepcionista": 4,
+    "platos": [
+      {
+        "id": 1,
+        "cantidad": 3
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 8,
+    "id_recepcionista": 7,
+    "platos": [
+      {
+        "id": 2,
+        "cantidad": 6
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 1,
+    "id_recepcionista": 8,
+    "platos": [
+      {
+        "id": 1,
+        "cantidad": 3
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 6,
+    "id_recepcionista": 8,
+    "platos": [
+      {
+        "id": 6,
+        "cantidad": 7
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 5,
+    "id_recepcionista": 4,
+    "platos": [
+      {
+        "id": 1,
+        "cantidad": 7
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 3,
+    "id_recepcionista": 6,
+    "platos": [
+      {
+        "id": 4,
+        "cantidad": 7
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 1,
+    "id_recepcionista": 3,
+    "platos": [
+      {
+        "id": 5,
+        "cantidad": 8
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 3,
+    "id_recepcionista": 9,
+    "platos": [
+      {
+        "id": 5,
+        "cantidad": 2
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 8,
+    "id_recepcionista": 2,
+    "platos": [
+      {
+        "id": 4,
+        "cantidad": 8
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 2,
+    "id_recepcionista": 10,
+    "platos": [
+      {
+        "id": 1,
+        "cantidad": 1
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 1,
+    "id_recepcionista": 1,
+    "platos": [
+      {
+        "id": 6,
+        "cantidad": 7
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 2,
+    "id_recepcionista": 3,
+    "platos": [
+      {
+        "id": 4,
+        "cantidad": 7
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 9,
+    "id_recepcionista": 6,
+    "platos": [
+      {
+        "id": 6,
+        "cantidad": 10
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 4,
+    "id_recepcionista": 6,
+    "platos": [
+      {
+        "id": 3,
+        "cantidad": 9
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 7,
+    "id_recepcionista": 3,
+    "platos": [
+      {
+        "id": 1,
+        "cantidad": 1
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 2,
+    "id_recepcionista": 9,
+    "platos": [
+      {
+        "id": 1,
+        "cantidad": 8
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 5,
+    "id_recepcionista": 8,
+    "platos": [
+      {
+        "id": 4,
+        "cantidad": 7
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 4,
+    "id_recepcionista": 6,
+    "platos": [
+      {
+        "id": 1,
+        "cantidad": 14
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 5,
+    "id_recepcionista": 2,
+    "platos": [
+      {
+        "id": 3,
+        "cantidad": 1
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 7,
+    "id_recepcionista": 4,
+    "platos": [
+      {
+        "id": 2,
+        "cantidad": 15
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 6,
+    "id_recepcionista": 3,
+    "platos": [
+      {
+        "id": 4,
+        "cantidad": 4
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 7,
+    "id_recepcionista": 4,
+    "platos": [
+      {
+        "id": 7,
+        "cantidad": 8
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 1,
+    "id_recepcionista": 4,
+    "platos": [
+      {
+        "id": 2,
+        "cantidad": 8
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 6,
+    "id_recepcionista": 6,
+    "platos": [
+      {
+        "id": 6,
+        "cantidad": 13
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 4,
+    "id_recepcionista": 10,
+    "platos": [
+      {
+        "id": 6,
+        "cantidad": 8
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 4,
+    "id_recepcionista": 1,
+    "platos": [
+      {
+        "id": 2,
+        "cantidad": 4
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 3,
+    "id_recepcionista": 2,
+    "platos": [
+      {
+        "id": 5,
+        "cantidad": 7
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 6,
+    "id_recepcionista": 8,
+    "platos": [
+      {
+        "id": 7,
+        "cantidad": 1
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 4,
+    "id_recepcionista": 4,
+    "platos": [
+      {
+        "id": 7,
+        "cantidad": 1
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 4,
+    "id_recepcionista": 7,
+    "platos": [
+      {
+        "id": 5,
+        "cantidad": 8
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 9,
+    "id_recepcionista": 6,
+    "platos": [
+      {
+        "id": 7,
+        "cantidad": 13
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 4,
+    "id_recepcionista": 7,
+    "platos": [
+      {
+        "id": 5,
+        "cantidad": 4
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 2,
+    "id_recepcionista": 1,
+    "platos": [
+      {
+        "id": 1,
+        "cantidad": 12
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 2,
+    "id_recepcionista": 3,
+    "platos": [
+      {
+        "id": 1,
+        "cantidad": 10
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 8,
+    "id_recepcionista": 9,
+    "platos": [
+      {
+        "id": 5,
+        "cantidad": 15
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 1,
+    "id_recepcionista": 10,
+    "platos": [
+      {
+        "id": 3,
+        "cantidad": 7
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 9,
+    "id_recepcionista": 2,
+    "platos": [
+      {
+        "id": 5,
+        "cantidad": 12
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 9,
+    "id_recepcionista": 6,
+    "platos": [
+      {
+        "id": 7,
+        "cantidad": 11
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 2,
+    "id_recepcionista": 1,
+    "platos": [
+      {
+        "id": 1,
+        "cantidad": 4
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 7,
+    "id_recepcionista": 3,
+    "platos": [
+      {
+        "id": 3,
+        "cantidad": 15
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 2,
+    "id_recepcionista": 4,
+    "platos": [
+      {
+        "id": 1,
+        "cantidad": 12
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 5,
+    "id_recepcionista": 8,
+    "platos": [
+      {
+        "id": 6,
+        "cantidad": 8
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 1,
+    "id_recepcionista": 5,
+    "platos": [
+      {
+        "id": 5,
+        "cantidad": 15
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 7,
+    "id_recepcionista": 2,
+    "platos": [
+      {
+        "id": 2,
+        "cantidad": 3
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 9,
+    "id_recepcionista": 7,
+    "platos": [
+      {
+        "id": 4,
+        "cantidad": 7
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 2,
+    "id_recepcionista": 8,
+    "platos": [
+      {
+        "id": 4,
+        "cantidad": 8
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 1,
+    "id_recepcionista": 2,
+    "platos": [
+      {
+        "id": 4,
+        "cantidad": 4
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 5,
+    "id_recepcionista": 2,
+    "platos": [
+      {
+        "id": 1,
+        "cantidad": 2
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 3,
+    "id_recepcionista": 2,
+    "platos": [
+      {
+        "id": 3,
+        "cantidad": 11
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 2,
+    "id_recepcionista": 2,
+    "platos": [
+      {
+        "id": 7,
+        "cantidad": 4
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 5,
+    "id_recepcionista": 6,
+    "platos": [
+      {
+        "id": 7,
+        "cantidad": 11
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 4,
+    "id_recepcionista": 8,
+    "platos": [
+      {
+        "id": 3,
+        "cantidad": 13
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 5,
+    "id_recepcionista": 3,
+    "platos": [
+      {
+        "id": 1,
+        "cantidad": 14
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 9,
+    "id_recepcionista": 7,
+    "platos": [
+      {
+        "id": 3,
+        "cantidad": 12
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 7,
+    "id_recepcionista": 3,
+    "platos": [
+      {
+        "id": 3,
+        "cantidad": 1
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 5,
+    "id_recepcionista": 9,
+    "platos": [
+      {
+        "id": 7,
+        "cantidad": 4
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 7,
+    "id_recepcionista": 4,
+    "platos": [
+      {
+        "id": 5,
+        "cantidad": 9
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 1,
+    "id_recepcionista": 6,
+    "platos": [
+      {
+        "id": 2,
+        "cantidad": 7
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 1,
+    "id_recepcionista": 3,
+    "platos": [
+      {
+        "id": 3,
+        "cantidad": 5
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 3,
+    "id_recepcionista": 5,
+    "platos": [
+      {
+        "id": 7,
+        "cantidad": 14
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 6,
+    "id_recepcionista": 2,
+    "platos": [
+      {
+        "id": 4,
+        "cantidad": 14
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 9,
+    "id_recepcionista": 3,
+    "platos": [
+      {
+        "id": 7,
+        "cantidad": 12
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 3,
+    "id_recepcionista": 8,
+    "platos": [
+      {
+        "id": 5,
+        "cantidad": 7
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 3,
+    "id_recepcionista": 2,
+    "platos": [
+      {
+        "id": 2,
+        "cantidad": 1
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 5,
+    "id_recepcionista": 6,
+    "platos": [
+      {
+        "id": 4,
+        "cantidad": 5
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 5,
+    "id_recepcionista": 1,
+    "platos": [
+      {
+        "id": 7,
+        "cantidad": 8
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 4,
+    "id_recepcionista": 10,
+    "platos": [
+      {
+        "id": 5,
+        "cantidad": 5
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 8,
+    "id_recepcionista": 2,
+    "platos": [
+      {
+        "id": 5,
+        "cantidad": 11
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 5,
+    "id_recepcionista": 7,
+    "platos": [
+      {
+        "id": 2,
+        "cantidad": 4
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 6,
+    "id_recepcionista": 1,
+    "platos": [
+      {
+        "id": 4,
+        "cantidad": 14
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 8,
+    "id_recepcionista": 9,
+    "platos": [
+      {
+        "id": 7,
+        "cantidad": 4
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 4,
+    "id_recepcionista": 4,
+    "platos": [
+      {
+        "id": 3,
+        "cantidad": 14
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 3,
+    "id_recepcionista": 5,
+    "platos": [
+      {
+        "id": 6,
+        "cantidad": 9
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 4,
+    "id_recepcionista": 8,
+    "platos": [
+      {
+        "id": 1,
+        "cantidad": 6
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 9,
+    "id_recepcionista": 10,
+    "platos": [
+      {
+        "id": 1,
+        "cantidad": 13
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 8,
+    "id_recepcionista": 2,
+    "platos": [
+      {
+        "id": 7,
+        "cantidad": 2
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 6,
+    "id_recepcionista": 5,
+    "platos": [
+      {
+        "id": 6,
+        "cantidad": 15
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 8,
+    "id_recepcionista": 5,
+    "platos": [
+      {
+        "id": 3,
+        "cantidad": 2
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 1,
+    "id_recepcionista": 5,
+    "platos": [
+      {
+        "id": 5,
+        "cantidad": 9
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 4,
+    "id_recepcionista": 6,
+    "platos": [
+      {
+        "id": 7,
+        "cantidad": 2
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 9,
+    "id_recepcionista": 10,
+    "platos": [
+      {
+        "id": 4,
+        "cantidad": 10
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 1,
+    "id_recepcionista": 3,
+    "platos": [
+      {
+        "id": 3,
+        "cantidad": 10
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 2,
+    "id_recepcionista": 9,
+    "platos": [
+      {
+        "id": 4,
+        "cantidad": 6
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 7,
+    "id_recepcionista": 10,
+    "platos": [
+      {
+        "id": 7,
+        "cantidad": 2
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 8,
+    "id_recepcionista": 5,
+    "platos": [
+      {
+        "id": 6,
+        "cantidad": 2
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 5,
+    "id_recepcionista": 1,
+    "platos": [
+      {
+        "id": 4,
+        "cantidad": 5
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 6,
+    "id_recepcionista": 6,
+    "platos": [
+      {
+        "id": 2,
+        "cantidad": 5
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 9,
+    "id_recepcionista": 5,
+    "platos": [
+      {
+        "id": 5,
+        "cantidad": 12
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 6,
+    "id_recepcionista": 4,
+    "platos": [
+      {
+        "id": 3,
+        "cantidad": 12
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 5,
+    "id_recepcionista": 4,
+    "platos": [
+      {
+        "id": 5,
+        "cantidad": 10
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 3,
+    "id_recepcionista": 5,
+    "platos": [
+      {
+        "id": 4,
+        "cantidad": 13
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 4,
+    "id_recepcionista": 7,
+    "platos": [
+      {
+        "id": 5,
+        "cantidad": 15
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 8,
+    "id_recepcionista": 8,
+    "platos": [
+      {
+        "id": 3,
+        "cantidad": 3
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 1,
+    "id_recepcionista": 7,
+    "platos": [
+      {
+        "id": 2,
+        "cantidad": 2
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 9,
+    "id_recepcionista": 6,
+    "platos": [
+      {
+        "id": 7,
+        "cantidad": 14
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 4,
+    "id_recepcionista": 4,
+    "platos": [
+      {
+        "id": 6,
+        "cantidad": 5
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 4,
+    "id_recepcionista": 1,
+    "platos": [
+      {
+        "id": 2,
+        "cantidad": 1
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 8,
+    "id_recepcionista": 4,
+    "platos": [
+      {
+        "id": 7,
+        "cantidad": 9
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 3,
+    "id_recepcionista": 6,
+    "platos": [
+      {
+        "id": 1,
+        "cantidad": 7
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 7,
+    "id_recepcionista": 2,
+    "platos": [
+      {
+        "id": 3,
+        "cantidad": 1
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 2,
+    "id_recepcionista": 2,
+    "platos": [
+      {
+        "id": 2,
+        "cantidad": 5
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 5,
+    "id_recepcionista": 4,
+    "platos": [
+      {
+        "id": 5,
+        "cantidad": 5
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 6,
+    "id_recepcionista": 5,
+    "platos": [
+      {
+        "id": 3,
+        "cantidad": 14
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 4,
+    "id_recepcionista": 2,
+    "platos": [
+      {
+        "id": 6,
+        "cantidad": 14
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 2,
+    "id_recepcionista": 1,
+    "platos": [
+      {
+        "id": 6,
+        "cantidad": 12
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 1,
+    "id_recepcionista": 6,
+    "platos": [
+      {
+        "id": 3,
+        "cantidad": 5
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 6,
+    "id_recepcionista": 8,
+    "platos": [
+      {
+        "id": 1,
+        "cantidad": 1
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 8,
+    "id_recepcionista": 4,
+    "platos": [
+      {
+        "id": 1,
+        "cantidad": 15
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 4,
+    "id_recepcionista": 3,
+    "platos": [
+      {
+        "id": 3,
+        "cantidad": 10
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 8,
+    "id_recepcionista": 6,
+    "platos": [
+      {
+        "id": 6,
+        "cantidad": 1
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 1,
+    "id_recepcionista": 10,
+    "platos": [
+      {
+        "id": 6,
+        "cantidad": 3
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 7,
+    "id_recepcionista": 9,
+    "platos": [
+      {
+        "id": 5,
+        "cantidad": 15
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 6,
+    "id_recepcionista": 4,
+    "platos": [
+      {
+        "id": 1,
+        "cantidad": 2
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 1,
+    "id_recepcionista": 10,
+    "platos": [
+      {
+        "id": 4,
+        "cantidad": 6
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 8,
+    "id_recepcionista": 3,
+    "platos": [
+      {
+        "id": 4,
+        "cantidad": 9
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 8,
+    "id_recepcionista": 5,
+    "platos": [
+      {
+        "id": 7,
+        "cantidad": 15
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 3,
+    "id_recepcionista": 4,
+    "platos": [
+      {
+        "id": 3,
+        "cantidad": 8
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 2,
+    "id_recepcionista": 9,
+    "platos": [
+      {
+        "id": 5,
+        "cantidad": 7
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 3,
+    "id_recepcionista": 7,
+    "platos": [
+      {
+        "id": 7,
+        "cantidad": 3
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 5,
+    "id_recepcionista": 3,
+    "platos": [
+      {
+        "id": 5,
+        "cantidad": 7
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 1,
+    "id_recepcionista": 8,
+    "platos": [
+      {
+        "id": 3,
+        "cantidad": 10
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 4,
+    "id_recepcionista": 4,
+    "platos": [
+      {
+        "id": 7,
+        "cantidad": 4
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 6,
+    "id_recepcionista": 7,
+    "platos": [
+      {
+        "id": 3,
+        "cantidad": 2
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 9,
+    "id_recepcionista": 4,
+    "platos": [
+      {
+        "id": 2,
+        "cantidad": 4
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 6,
+    "id_recepcionista": 6,
+    "platos": [
+      {
+        "id": 1,
+        "cantidad": 9
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 8,
+    "id_recepcionista": 5,
+    "platos": [
+      {
+        "id": 1,
+        "cantidad": 15
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 3,
+    "id_recepcionista": 8,
+    "platos": [
+      {
+        "id": 4,
+        "cantidad": 12
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 4,
+    "id_recepcionista": 10,
+    "platos": [
+      {
+        "id": 3,
+        "cantidad": 14
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 9,
+    "id_recepcionista": 9,
+    "platos": [
+      {
+        "id": 1,
+        "cantidad": 10
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 4,
+    "id_recepcionista": 2,
+    "platos": [
+      {
+        "id": 7,
+        "cantidad": 13
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 6,
+    "id_recepcionista": 6,
+    "platos": [
+      {
+        "id": 2,
+        "cantidad": 8
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 6,
+    "id_recepcionista": 6,
+    "platos": [
+      {
+        "id": 6,
+        "cantidad": 9
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 9,
+    "id_recepcionista": 4,
+    "platos": [
+      {
+        "id": 4,
+        "cantidad": 3
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 1,
+    "id_recepcionista": 9,
+    "platos": [
+      {
+        "id": 7,
+        "cantidad": 7
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 4,
+    "id_recepcionista": 2,
+    "platos": [
+      {
+        "id": 3,
+        "cantidad": 14
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 1,
+    "id_recepcionista": 1,
+    "platos": [
+      {
+        "id": 5,
+        "cantidad": 13
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 7,
+    "id_recepcionista": 5,
+    "platos": [
+      {
+        "id": 7,
+        "cantidad": 2
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 6,
+    "id_recepcionista": 8,
+    "platos": [
+      {
+        "id": 7,
+        "cantidad": 7
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 1,
+    "id_recepcionista": 4,
+    "platos": [
+      {
+        "id": 5,
+        "cantidad": 7
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 3,
+    "id_recepcionista": 9,
+    "platos": [
+      {
+        "id": 3,
+        "cantidad": 9
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 6,
+    "id_recepcionista": 8,
+    "platos": [
+      {
+        "id": 4,
+        "cantidad": 14
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 2,
+    "id_recepcionista": 1,
+    "platos": [
+      {
+        "id": 5,
+        "cantidad": 14
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 3,
+    "id_recepcionista": 8,
+    "platos": [
+      {
+        "id": 6,
+        "cantidad": 2
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 6,
+    "id_recepcionista": 3,
+    "platos": [
+      {
+        "id": 3,
+        "cantidad": 8
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 6,
+    "id_recepcionista": 8,
+    "platos": [
+      {
+        "id": 7,
+        "cantidad": 3
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 7,
+    "id_recepcionista": 9,
+    "platos": [
+      {
+        "id": 6,
+        "cantidad": 4
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 8,
+    "id_recepcionista": 6,
+    "platos": [
+      {
+        "id": 4,
+        "cantidad": 6
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 1,
+    "id_recepcionista": 5,
+    "platos": [
+      {
+        "id": 4,
+        "cantidad": 6
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 4,
+    "id_recepcionista": 10,
+    "platos": [
+      {
+        "id": 4,
+        "cantidad": 14
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 4,
+    "id_recepcionista": 10,
+    "platos": [
+      {
+        "id": 1,
+        "cantidad": 12
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 2,
+    "id_recepcionista": 10,
+    "platos": [
+      {
+        "id": 6,
+        "cantidad": 1
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 9,
+    "id_recepcionista": 4,
+    "platos": [
+      {
+        "id": 5,
+        "cantidad": 10
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 7,
+    "id_recepcionista": 5,
+    "platos": [
+      {
+        "id": 7,
+        "cantidad": 1
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 2,
+    "id_recepcionista": 7,
+    "platos": [
+      {
+        "id": 7,
+        "cantidad": 5
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 5,
+    "id_recepcionista": 3,
+    "platos": [
+      {
+        "id": 5,
+        "cantidad": 13
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 6,
+    "id_recepcionista": 1,
+    "platos": [
+      {
+        "id": 1,
+        "cantidad": 7
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 6,
+    "id_recepcionista": 1,
+    "platos": [
+      {
+        "id": 1,
+        "cantidad": 1
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 4,
+    "id_recepcionista": 7,
+    "platos": [
+      {
+        "id": 3,
+        "cantidad": 7
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 5,
+    "id_recepcionista": 5,
+    "platos": [
+      {
+        "id": 3,
+        "cantidad": 12
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 3,
+    "id_recepcionista": 9,
+    "platos": [
+      {
+        "id": 5,
+        "cantidad": 4
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 3,
+    "id_recepcionista": 1,
+    "platos": [
+      {
+        "id": 6,
+        "cantidad": 14
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 2,
+    "id_recepcionista": 5,
+    "platos": [
+      {
+        "id": 7,
+        "cantidad": 9
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 3,
+    "id_recepcionista": 2,
+    "platos": [
+      {
+        "id": 5,
+        "cantidad": 6
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 5,
+    "id_recepcionista": 5,
+    "platos": [
+      {
+        "id": 2,
+        "cantidad": 6
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 5,
+    "id_recepcionista": 7,
+    "platos": [
+      {
+        "id": 5,
+        "cantidad": 4
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 9,
+    "id_recepcionista": 4,
+    "platos": [
+      {
+        "id": 3,
+        "cantidad": 1
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 7,
+    "id_recepcionista": 5,
+    "platos": [
+      {
+        "id": 3,
+        "cantidad": 10
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 6,
+    "id_recepcionista": 3,
+    "platos": [
+      {
+        "id": 5,
+        "cantidad": 5
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 9,
+    "id_recepcionista": 1,
+    "platos": [
+      {
+        "id": 6,
+        "cantidad": 1
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 1,
+    "id_recepcionista": 10,
+    "platos": [
+      {
+        "id": 6,
+        "cantidad": 1
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 6,
+    "id_recepcionista": 5,
+    "platos": [
+      {
+        "id": 7,
+        "cantidad": 11
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 5,
+    "id_recepcionista": 10,
+    "platos": [
+      {
+        "id": 7,
+        "cantidad": 13
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 2,
+    "id_recepcionista": 3,
+    "platos": [
+      {
+        "id": 7,
+        "cantidad": 11
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 9,
+    "id_recepcionista": 9,
+    "platos": [
+      {
+        "id": 3,
+        "cantidad": 8
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 7,
+    "id_recepcionista": 3,
+    "platos": [
+      {
+        "id": 2,
+        "cantidad": 14
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 4,
+    "id_recepcionista": 9,
+    "platos": [
+      {
+        "id": 1,
+        "cantidad": 2
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 4,
+    "id_recepcionista": 1,
+    "platos": [
+      {
+        "id": 3,
+        "cantidad": 5
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 4,
+    "id_recepcionista": 3,
+    "platos": [
+      {
+        "id": 2,
+        "cantidad": 3
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 1,
+    "id_recepcionista": 7,
+    "platos": [
+      {
+        "id": 6,
+        "cantidad": 6
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 6,
+    "id_recepcionista": 5,
+    "platos": [
+      {
+        "id": 3,
+        "cantidad": 13
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 3,
+    "id_recepcionista": 2,
+    "platos": [
+      {
+        "id": 3,
+        "cantidad": 12
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 4,
+    "id_recepcionista": 2,
+    "platos": [
+      {
+        "id": 4,
+        "cantidad": 6
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 9,
+    "id_recepcionista": 8,
+    "platos": [
+      {
+        "id": 1,
+        "cantidad": 11
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 4,
+    "id_recepcionista": 8,
+    "platos": [
+      {
+        "id": 4,
+        "cantidad": 2
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 8,
+    "id_recepcionista": 6,
+    "platos": [
+      {
+        "id": 6,
+        "cantidad": 7
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 2,
+    "id_recepcionista": 6,
+    "platos": [
+      {
+        "id": 2,
+        "cantidad": 8
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 1,
+    "id_recepcionista": 8,
+    "platos": [
+      {
+        "id": 4,
+        "cantidad": 7
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 7,
+    "id_recepcionista": 9,
+    "platos": [
+      {
+        "id": 4,
+        "cantidad": 10
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 6,
+    "id_recepcionista": 8,
+    "platos": [
+      {
+        "id": 6,
+        "cantidad": 5
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 9,
+    "id_recepcionista": 7,
+    "platos": [
+      {
+        "id": 3,
+        "cantidad": 15
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 2,
+    "id_recepcionista": 9,
+    "platos": [
+      {
+        "id": 7,
+        "cantidad": 6
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 8,
+    "id_recepcionista": 5,
+    "platos": [
+      {
+        "id": 1,
+        "cantidad": 10
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 9,
+    "id_recepcionista": 4,
+    "platos": [
+      {
+        "id": 6,
+        "cantidad": 15
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 4,
+    "id_recepcionista": 10,
+    "platos": [
+      {
+        "id": 3,
+        "cantidad": 9
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 6,
+    "id_recepcionista": 7,
+    "platos": [
+      {
+        "id": 6,
+        "cantidad": 11
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 5,
+    "id_recepcionista": 4,
+    "platos": [
+      {
+        "id": 2,
+        "cantidad": 12
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 8,
+    "id_recepcionista": 9,
+    "platos": [
+      {
+        "id": 3,
+        "cantidad": 4
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 1,
+    "id_recepcionista": 3,
+    "platos": [
+      {
+        "id": 1,
+        "cantidad": 1
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 6,
+    "id_recepcionista": 1,
+    "platos": [
+      {
+        "id": 4,
+        "cantidad": 9
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 1,
+    "id_recepcionista": 2,
+    "platos": [
+      {
+        "id": 7,
+        "cantidad": 5
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 8,
+    "id_recepcionista": 1,
+    "platos": [
+      {
+        "id": 1,
+        "cantidad": 6
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 1,
+    "id_recepcionista": 4,
+    "platos": [
+      {
+        "id": 2,
+        "cantidad": 6
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 7,
+    "id_recepcionista": 7,
+    "platos": [
+      {
+        "id": 6,
+        "cantidad": 9
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 8,
+    "id_recepcionista": 4,
+    "platos": [
+      {
+        "id": 7,
+        "cantidad": 10
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 3,
+    "id_recepcionista": 5,
+    "platos": [
+      {
+        "id": 5,
+        "cantidad": 13
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 8,
+    "id_recepcionista": 6,
+    "platos": [
+      {
+        "id": 7,
+        "cantidad": 8
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 5,
+    "id_recepcionista": 7,
+    "platos": [
+      {
+        "id": 2,
+        "cantidad": 2
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 6,
+    "id_recepcionista": 10,
+    "platos": [
+      {
+        "id": 6,
+        "cantidad": 15
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 2,
+    "id_recepcionista": 4,
+    "platos": [
+      {
+        "id": 7,
+        "cantidad": 2
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 9,
+    "id_recepcionista": 6,
+    "platos": [
+      {
+        "id": 7,
+        "cantidad": 10
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 5,
+    "id_recepcionista": 5,
+    "platos": [
+      {
+        "id": 1,
+        "cantidad": 13
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 1,
+    "id_recepcionista": 1,
+    "platos": [
+      {
+        "id": 7,
+        "cantidad": 10
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 3,
+    "id_recepcionista": 8,
+    "platos": [
+      {
+        "id": 6,
+        "cantidad": 7
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 6,
+    "id_recepcionista": 3,
+    "platos": [
+      {
+        "id": 5,
+        "cantidad": 1
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 7,
+    "id_recepcionista": 8,
+    "platos": [
+      {
+        "id": 6,
+        "cantidad": 8
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 5,
+    "id_recepcionista": 10,
+    "platos": [
+      {
+        "id": 2,
+        "cantidad": 4
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 6,
+    "id_recepcionista": 9,
+    "platos": [
+      {
+        "id": 3,
+        "cantidad": 14
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 6,
+    "id_recepcionista": 10,
+    "platos": [
+      {
+        "id": 4,
+        "cantidad": 13
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 1,
+    "id_recepcionista": 8,
+    "platos": [
+      {
+        "id": 1,
+        "cantidad": 13
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 3,
+    "id_recepcionista": 4,
+    "platos": [
+      {
+        "id": 7,
+        "cantidad": 8
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 8,
+    "id_recepcionista": 10,
+    "platos": [
+      {
+        "id": 5,
+        "cantidad": 4
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 2,
+    "id_recepcionista": 7,
+    "platos": [
+      {
+        "id": 7,
+        "cantidad": 12
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 3,
+    "id_recepcionista": 1,
+    "platos": [
+      {
+        "id": 1,
+        "cantidad": 14
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 5,
+    "id_recepcionista": 7,
+    "platos": [
+      {
+        "id": 6,
+        "cantidad": 1
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 5,
+    "id_recepcionista": 10,
+    "platos": [
+      {
+        "id": 2,
+        "cantidad": 11
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 9,
+    "id_recepcionista": 7,
+    "platos": [
+      {
+        "id": 6,
+        "cantidad": 14
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 3,
+    "id_recepcionista": 4,
+    "platos": [
+      {
+        "id": 4,
+        "cantidad": 4
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 1,
+    "id_recepcionista": 2,
+    "platos": [
+      {
+        "id": 4,
+        "cantidad": 3
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 2,
+    "id_recepcionista": 5,
+    "platos": [
+      {
+        "id": 7,
+        "cantidad": 5
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 3,
+    "id_recepcionista": 3,
+    "platos": [
+      {
+        "id": 7,
+        "cantidad": 8
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 1,
+    "id_recepcionista": 8,
+    "platos": [
+      {
+        "id": 6,
+        "cantidad": 7
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 7,
+    "id_recepcionista": 9,
+    "platos": [
+      {
+        "id": 3,
+        "cantidad": 12
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 8,
+    "id_recepcionista": 10,
+    "platos": [
+      {
+        "id": 4,
+        "cantidad": 13
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 2,
+    "id_recepcionista": 9,
+    "platos": [
+      {
+        "id": 1,
+        "cantidad": 6
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 3,
+    "id_recepcionista": 9,
+    "platos": [
+      {
+        "id": 7,
+        "cantidad": 10
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 1,
+    "id_recepcionista": 9,
+    "platos": [
+      {
+        "id": 4,
+        "cantidad": 11
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 3,
+    "id_recepcionista": 1,
+    "platos": [
+      {
+        "id": 4,
+        "cantidad": 14
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 3,
+    "id_recepcionista": 1,
+    "platos": [
+      {
+        "id": 4,
+        "cantidad": 13
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 3,
+    "id_recepcionista": 10,
+    "platos": [
+      {
+        "id": 5,
+        "cantidad": 6
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 3,
+    "id_recepcionista": 6,
+    "platos": [
+      {
+        "id": 1,
+        "cantidad": 13
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 6,
+    "id_recepcionista": 5,
+    "platos": [
+      {
+        "id": 2,
+        "cantidad": 3
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 6,
+    "id_recepcionista": 3,
+    "platos": [
+      {
+        "id": 6,
+        "cantidad": 10
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 5,
+    "id_recepcionista": 1,
+    "platos": [
+      {
+        "id": 3,
+        "cantidad": 6
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 2,
+    "id_recepcionista": 7,
+    "platos": [
+      {
+        "id": 3,
+        "cantidad": 7
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 6,
+    "id_recepcionista": 3,
+    "platos": [
+      {
+        "id": 1,
+        "cantidad": 12
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 3,
+    "id_recepcionista": 5,
+    "platos": [
+      {
+        "id": 4,
+        "cantidad": 6
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 5,
+    "id_recepcionista": 7,
+    "platos": [
+      {
+        "id": 7,
+        "cantidad": 10
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 5,
+    "id_recepcionista": 9,
+    "platos": [
+      {
+        "id": 4,
+        "cantidad": 13
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 7,
+    "id_recepcionista": 3,
+    "platos": [
+      {
+        "id": 5,
+        "cantidad": 2
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 2,
+    "id_recepcionista": 2,
+    "platos": [
+      {
+        "id": 2,
+        "cantidad": 2
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 6,
+    "id_recepcionista": 6,
+    "platos": [
+      {
+        "id": 6,
+        "cantidad": 4
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 3,
+    "id_recepcionista": 4,
+    "platos": [
+      {
+        "id": 3,
+        "cantidad": 7
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 6,
+    "id_recepcionista": 6,
+    "platos": [
+      {
+        "id": 4,
+        "cantidad": 3
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 7,
+    "id_recepcionista": 8,
+    "platos": [
+      {
+        "id": 4,
+        "cantidad": 7
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 1,
+    "id_recepcionista": 3,
+    "platos": [
+      {
+        "id": 4,
+        "cantidad": 3
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 3,
+    "id_recepcionista": 9,
+    "platos": [
+      {
+        "id": 2,
+        "cantidad": 13
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 4,
+    "id_recepcionista": 10,
+    "platos": [
+      {
+        "id": 4,
+        "cantidad": 12
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 3,
+    "id_recepcionista": 1,
+    "platos": [
+      {
+        "id": 3,
+        "cantidad": 9
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 9,
+    "id_recepcionista": 1,
+    "platos": [
+      {
+        "id": 1,
+        "cantidad": 15
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 3,
+    "id_recepcionista": 10,
+    "platos": [
+      {
+        "id": 6,
+        "cantidad": 15
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 8,
+    "id_recepcionista": 7,
+    "platos": [
+      {
+        "id": 6,
+        "cantidad": 13
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 9,
+    "id_recepcionista": 1,
+    "platos": [
+      {
+        "id": 1,
+        "cantidad": 1
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 1,
+    "id_recepcionista": 7,
+    "platos": [
+      {
+        "id": 7,
+        "cantidad": 10
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 1,
+    "id_recepcionista": 9,
+    "platos": [
+      {
+        "id": 7,
+        "cantidad": 14
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 6,
+    "id_recepcionista": 2,
+    "platos": [
+      {
+        "id": 3,
+        "cantidad": 3
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 1,
+    "id_recepcionista": 2,
+    "platos": [
+      {
+        "id": 7,
+        "cantidad": 15
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 1,
+    "id_recepcionista": 10,
+    "platos": [
+      {
+        "id": 3,
+        "cantidad": 7
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 9,
+    "id_recepcionista": 4,
+    "platos": [
+      {
+        "id": 3,
+        "cantidad": 15
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 2,
+    "id_recepcionista": 9,
+    "platos": [
+      {
+        "id": 4,
+        "cantidad": 14
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 3,
+    "id_recepcionista": 4,
+    "platos": [
+      {
+        "id": 4,
+        "cantidad": 4
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 6,
+    "id_recepcionista": 6,
+    "platos": [
+      {
+        "id": 6,
+        "cantidad": 6
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 1,
+    "id_recepcionista": 7,
+    "platos": [
+      {
+        "id": 2,
+        "cantidad": 9
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 5,
+    "id_recepcionista": 7,
+    "platos": [
+      {
+        "id": 6,
+        "cantidad": 2
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 9,
+    "id_recepcionista": 9,
+    "platos": [
+      {
+        "id": 4,
+        "cantidad": 5
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 5,
+    "id_recepcionista": 4,
+    "platos": [
+      {
+        "id": 7,
+        "cantidad": 5
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 8,
+    "id_recepcionista": 7,
+    "platos": [
+      {
+        "id": 3,
+        "cantidad": 1
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 8,
+    "id_recepcionista": 10,
+    "platos": [
+      {
+        "id": 4,
+        "cantidad": 1
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 7,
+    "id_recepcionista": 7,
+    "platos": [
+      {
+        "id": 5,
+        "cantidad": 4
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 2,
+    "id_recepcionista": 4,
+    "platos": [
+      {
+        "id": 5,
+        "cantidad": 7
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 5,
+    "id_recepcionista": 6,
+    "platos": [
+      {
+        "id": 7,
+        "cantidad": 2
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 6,
+    "id_recepcionista": 5,
+    "platos": [
+      {
+        "id": 4,
+        "cantidad": 15
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 5,
+    "id_recepcionista": 7,
+    "platos": [
+      {
+        "id": 5,
+        "cantidad": 3
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 3,
+    "id_recepcionista": 2,
+    "platos": [
+      {
+        "id": 7,
+        "cantidad": 7
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 1,
+    "id_recepcionista": 5,
+    "platos": [
+      {
+        "id": 4,
+        "cantidad": 12
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 4,
+    "id_recepcionista": 7,
+    "platos": [
+      {
+        "id": 7,
+        "cantidad": 15
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 4,
+    "id_recepcionista": 6,
+    "platos": [
+      {
+        "id": 3,
+        "cantidad": 4
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 4,
+    "id_recepcionista": 3,
+    "platos": [
+      {
+        "id": 3,
+        "cantidad": 1
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 1,
+    "id_recepcionista": 6,
+    "platos": [
+      {
+        "id": 6,
+        "cantidad": 15
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 4,
+    "id_recepcionista": 9,
+    "platos": [
+      {
+        "id": 5,
+        "cantidad": 2
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 9,
+    "id_recepcionista": 7,
+    "platos": [
+      {
+        "id": 1,
+        "cantidad": 1
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 9,
+    "id_recepcionista": 10,
+    "platos": [
+      {
+        "id": 2,
+        "cantidad": 1
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 4,
+    "id_recepcionista": 8,
+    "platos": [
+      {
+        "id": 4,
+        "cantidad": 12
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 3,
+    "id_recepcionista": 7,
+    "platos": [
+      {
+        "id": 7,
+        "cantidad": 7
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 2,
+    "id_recepcionista": 5,
+    "platos": [
+      {
+        "id": 5,
+        "cantidad": 5
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 2,
+    "id_recepcionista": 1,
+    "platos": [
+      {
+        "id": 4,
+        "cantidad": 2
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 3,
+    "id_recepcionista": 1,
+    "platos": [
+      {
+        "id": 4,
+        "cantidad": 10
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 3,
+    "id_recepcionista": 4,
+    "platos": [
+      {
+        "id": 3,
+        "cantidad": 13
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 2,
+    "id_recepcionista": 5,
+    "platos": [
+      {
+        "id": 1,
+        "cantidad": 13
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 9,
+    "id_recepcionista": 1,
+    "platos": [
+      {
+        "id": 5,
+        "cantidad": 8
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 7,
+    "id_recepcionista": 7,
+    "platos": [
+      {
+        "id": 7,
+        "cantidad": 15
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 1,
+    "id_recepcionista": 7,
+    "platos": [
+      {
+        "id": 2,
+        "cantidad": 11
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 2,
+    "id_recepcionista": 8,
+    "platos": [
+      {
+        "id": 6,
+        "cantidad": 15
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 7,
+    "id_recepcionista": 5,
+    "platos": [
+      {
+        "id": 1,
+        "cantidad": 10
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 8,
+    "id_recepcionista": 5,
+    "platos": [
+      {
+        "id": 5,
+        "cantidad": 11
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 6,
+    "id_recepcionista": 10,
+    "platos": [
+      {
+        "id": 7,
+        "cantidad": 5
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 2,
+    "id_recepcionista": 2,
+    "platos": [
+      {
+        "id": 4,
+        "cantidad": 15
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 4,
+    "id_recepcionista": 6,
+    "platos": [
+      {
+        "id": 6,
+        "cantidad": 13
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 1,
+    "id_recepcionista": 2,
+    "platos": [
+      {
+        "id": 3,
+        "cantidad": 7
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 7,
+    "id_recepcionista": 5,
+    "platos": [
+      {
+        "id": 3,
+        "cantidad": 9
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 1,
+    "id_recepcionista": 5,
+    "platos": [
+      {
+        "id": 5,
+        "cantidad": 6
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 4,
+    "id_recepcionista": 8,
+    "platos": [
+      {
+        "id": 5,
+        "cantidad": 9
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 2,
+    "id_recepcionista": 9,
+    "platos": [
+      {
+        "id": 7,
+        "cantidad": 1
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 3,
+    "id_recepcionista": 9,
+    "platos": [
+      {
+        "id": 4,
+        "cantidad": 10
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 6,
+    "id_recepcionista": 4,
+    "platos": [
+      {
+        "id": 7,
+        "cantidad": 8
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 4,
+    "id_recepcionista": 6,
+    "platos": [
+      {
+        "id": 5,
+        "cantidad": 13
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 8,
+    "id_recepcionista": 10,
+    "platos": [
+      {
+        "id": 4,
+        "cantidad": 6
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 6,
+    "id_recepcionista": 1,
+    "platos": [
+      {
+        "id": 1,
+        "cantidad": 12
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 8,
+    "id_recepcionista": 4,
+    "platos": [
+      {
+        "id": 1,
+        "cantidad": 10
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 6,
+    "id_recepcionista": 1,
+    "platos": [
+      {
+        "id": 2,
+        "cantidad": 10
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 4,
+    "id_recepcionista": 8,
+    "platos": [
+      {
+        "id": 5,
+        "cantidad": 10
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 1,
+    "id_recepcionista": 3,
+    "platos": [
+      {
+        "id": 7,
+        "cantidad": 15
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 2,
+    "id_recepcionista": 4,
+    "platos": [
+      {
+        "id": 7,
+        "cantidad": 6
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 1,
+    "id_recepcionista": 5,
+    "platos": [
+      {
+        "id": 2,
+        "cantidad": 9
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 1,
+    "id_recepcionista": 2,
+    "platos": [
+      {
+        "id": 1,
+        "cantidad": 1
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 5,
+    "id_recepcionista": 1,
+    "platos": [
+      {
+        "id": 1,
+        "cantidad": 14
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 1,
+    "id_recepcionista": 6,
+    "platos": [
+      {
+        "id": 5,
+        "cantidad": 13
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 2,
+    "id_recepcionista": 2,
+    "platos": [
+      {
+        "id": 1,
+        "cantidad": 2
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 2,
+    "id_recepcionista": 10,
+    "platos": [
+      {
+        "id": 1,
+        "cantidad": 3
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 1,
+    "id_recepcionista": 3,
+    "platos": [
+      {
+        "id": 2,
+        "cantidad": 5
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 1,
+    "id_recepcionista": 3,
+    "platos": [
+      {
+        "id": 2,
+        "cantidad": 2
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 7,
+    "id_recepcionista": 2,
+    "platos": [
+      {
+        "id": 6,
+        "cantidad": 14
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 3,
+    "id_recepcionista": 5,
+    "platos": [
+      {
+        "id": 2,
+        "cantidad": 6
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 5,
+    "id_recepcionista": 4,
+    "platos": [
+      {
+        "id": 3,
+        "cantidad": 2
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 4,
+    "id_recepcionista": 5,
+    "platos": [
+      {
+        "id": 5,
+        "cantidad": 1
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 6,
+    "id_recepcionista": 3,
+    "platos": [
+      {
+        "id": 3,
+        "cantidad": 4
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 6,
+    "id_recepcionista": 1,
+    "platos": [
+      {
+        "id": 4,
+        "cantidad": 12
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 1,
+    "id_recepcionista": 5,
+    "platos": [
+      {
+        "id": 1,
+        "cantidad": 2
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 7,
+    "id_recepcionista": 5,
+    "platos": [
+      {
+        "id": 4,
+        "cantidad": 13
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 2,
+    "id_recepcionista": 4,
+    "platos": [
+      {
+        "id": 7,
+        "cantidad": 15
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 2,
+    "id_recepcionista": 10,
+    "platos": [
+      {
+        "id": 6,
+        "cantidad": 9
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 4,
+    "id_recepcionista": 3,
+    "platos": [
+      {
+        "id": 6,
+        "cantidad": 15
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 8,
+    "id_recepcionista": 2,
+    "platos": [
+      {
+        "id": 7,
+        "cantidad": 15
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 7,
+    "id_recepcionista": 1,
+    "platos": [
+      {
+        "id": 3,
+        "cantidad": 15
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 8,
+    "id_recepcionista": 3,
+    "platos": [
+      {
+        "id": 7,
+        "cantidad": 10
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 9,
+    "id_recepcionista": 6,
+    "platos": [
+      {
+        "id": 3,
+        "cantidad": 9
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 2,
+    "id_recepcionista": 1,
+    "platos": [
+      {
+        "id": 5,
+        "cantidad": 7
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 8,
+    "id_recepcionista": 6,
+    "platos": [
+      {
+        "id": 7,
+        "cantidad": 13
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 8,
+    "id_recepcionista": 5,
+    "platos": [
+      {
+        "id": 4,
+        "cantidad": 9
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 1,
+    "id_recepcionista": 10,
+    "platos": [
+      {
+        "id": 7,
+        "cantidad": 3
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 5,
+    "id_recepcionista": 9,
+    "platos": [
+      {
+        "id": 4,
+        "cantidad": 13
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 7,
+    "id_recepcionista": 3,
+    "platos": [
+      {
+        "id": 2,
+        "cantidad": 15
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 9,
+    "id_recepcionista": 9,
+    "platos": [
+      {
+        "id": 7,
+        "cantidad": 12
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 4,
+    "id_recepcionista": 2,
+    "platos": [
+      {
+        "id": 1,
+        "cantidad": 7
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 4,
+    "id_recepcionista": 1,
+    "platos": [
+      {
+        "id": 7,
+        "cantidad": 11
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 8,
+    "id_recepcionista": 3,
+    "platos": [
+      {
+        "id": 2,
+        "cantidad": 14
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 5,
+    "id_recepcionista": 5,
+    "platos": [
+      {
+        "id": 6,
+        "cantidad": 15
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 5,
+    "id_recepcionista": 9,
+    "platos": [
+      {
+        "id": 2,
+        "cantidad": 15
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 8,
+    "id_recepcionista": 3,
+    "platos": [
+      {
+        "id": 7,
+        "cantidad": 10
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 7,
+    "id_recepcionista": 2,
+    "platos": [
+      {
+        "id": 3,
+        "cantidad": 2
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 9,
+    "id_recepcionista": 9,
+    "platos": [
+      {
+        "id": 4,
+        "cantidad": 5
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 3,
+    "id_recepcionista": 8,
+    "platos": [
+      {
+        "id": 6,
+        "cantidad": 9
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 8,
+    "id_recepcionista": 6,
+    "platos": [
+      {
+        "id": 2,
+        "cantidad": 14
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 5,
+    "id_recepcionista": 10,
+    "platos": [
+      {
+        "id": 2,
+        "cantidad": 3
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 1,
+    "id_recepcionista": 10,
+    "platos": [
+      {
+        "id": 6,
+        "cantidad": 7
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 5,
+    "id_recepcionista": 2,
+    "platos": [
+      {
+        "id": 5,
+        "cantidad": 9
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 2,
+    "id_recepcionista": 6,
+    "platos": [
+      {
+        "id": 6,
+        "cantidad": 13
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 4,
+    "id_recepcionista": 4,
+    "platos": [
+      {
+        "id": 6,
+        "cantidad": 10
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 5,
+    "id_recepcionista": 6,
+    "platos": [
+      {
+        "id": 7,
+        "cantidad": 13
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 2,
+    "id_recepcionista": 1,
+    "platos": [
+      {
+        "id": 5,
+        "cantidad": 10
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 7,
+    "id_recepcionista": 7,
+    "platos": [
+      {
+        "id": 2,
+        "cantidad": 9
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 9,
+    "id_recepcionista": 6,
+    "platos": [
+      {
+        "id": 3,
+        "cantidad": 12
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 2,
+    "id_recepcionista": 1,
+    "platos": [
+      {
+        "id": 6,
+        "cantidad": 6
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 4,
+    "id_recepcionista": 4,
+    "platos": [
+      {
+        "id": 7,
+        "cantidad": 7
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 1,
+    "id_recepcionista": 2,
+    "platos": [
+      {
+        "id": 1,
+        "cantidad": 12
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 2,
+    "id_recepcionista": 9,
+    "platos": [
+      {
+        "id": 4,
+        "cantidad": 2
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 3,
+    "id_recepcionista": 10,
+    "platos": [
+      {
+        "id": 6,
+        "cantidad": 9
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 4,
+    "id_recepcionista": 7,
+    "platos": [
+      {
+        "id": 5,
+        "cantidad": 7
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 2,
+    "id_recepcionista": 2,
+    "platos": [
+      {
+        "id": 4,
+        "cantidad": 3
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 2,
+    "id_recepcionista": 3,
+    "platos": [
+      {
+        "id": 3,
+        "cantidad": 1
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 7,
+    "id_recepcionista": 7,
+    "platos": [
+      {
+        "id": 5,
+        "cantidad": 10
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 2,
+    "id_recepcionista": 8,
+    "platos": [
+      {
+        "id": 1,
+        "cantidad": 14
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 2,
+    "id_recepcionista": 1,
+    "platos": [
+      {
+        "id": 4,
+        "cantidad": 9
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 4,
+    "id_recepcionista": 1,
+    "platos": [
+      {
+        "id": 2,
+        "cantidad": 3
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 1,
+    "id_recepcionista": 6,
+    "platos": [
+      {
+        "id": 1,
+        "cantidad": 4
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 2,
+    "id_recepcionista": 6,
+    "platos": [
+      {
+        "id": 6,
+        "cantidad": 11
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 4,
+    "id_recepcionista": 1,
+    "platos": [
+      {
+        "id": 4,
+        "cantidad": 15
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 6,
+    "id_recepcionista": 4,
+    "platos": [
+      {
+        "id": 6,
+        "cantidad": 2
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 5,
+    "id_recepcionista": 3,
+    "platos": [
+      {
+        "id": 7,
+        "cantidad": 3
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 4,
+    "id_recepcionista": 8,
+    "platos": [
+      {
+        "id": 6,
+        "cantidad": 12
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 9,
+    "id_recepcionista": 6,
+    "platos": [
+      {
+        "id": 3,
+        "cantidad": 13
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 9,
+    "id_recepcionista": 4,
+    "platos": [
+      {
+        "id": 6,
+        "cantidad": 12
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 3,
+    "id_recepcionista": 9,
+    "platos": [
+      {
+        "id": 5,
+        "cantidad": 7
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 7,
+    "id_recepcionista": 10,
+    "platos": [
+      {
+        "id": 7,
+        "cantidad": 3
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 4,
+    "id_recepcionista": 10,
+    "platos": [
+      {
+        "id": 1,
+        "cantidad": 3
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 4,
+    "id_recepcionista": 6,
+    "platos": [
+      {
+        "id": 6,
+        "cantidad": 12
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 3,
+    "id_recepcionista": 10,
+    "platos": [
+      {
+        "id": 7,
+        "cantidad": 4
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 4,
+    "id_recepcionista": 9,
+    "platos": [
+      {
+        "id": 5,
+        "cantidad": 9
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 8,
+    "id_recepcionista": 3,
+    "platos": [
+      {
+        "id": 1,
+        "cantidad": 14
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 4,
+    "id_recepcionista": 10,
+    "platos": [
+      {
+        "id": 5,
+        "cantidad": 15
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 3,
+    "id_recepcionista": 8,
+    "platos": [
+      {
+        "id": 2,
+        "cantidad": 5
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 3,
+    "id_recepcionista": 5,
+    "platos": [
+      {
+        "id": 1,
+        "cantidad": 3
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 1,
+    "id_recepcionista": 5,
+    "platos": [
+      {
+        "id": 7,
+        "cantidad": 5
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 7,
+    "id_recepcionista": 3,
+    "platos": [
+      {
+        "id": 2,
+        "cantidad": 10
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 1,
+    "id_recepcionista": 1,
+    "platos": [
+      {
+        "id": 5,
+        "cantidad": 5
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 8,
+    "id_recepcionista": 7,
+    "platos": [
+      {
+        "id": 2,
+        "cantidad": 6
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 7,
+    "id_recepcionista": 6,
+    "platos": [
+      {
+        "id": 2,
+        "cantidad": 9
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 6,
+    "id_recepcionista": 4,
+    "platos": [
+      {
+        "id": 6,
+        "cantidad": 7
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 6,
+    "id_recepcionista": 7,
+    "platos": [
+      {
+        "id": 5,
+        "cantidad": 14
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 2,
+    "id_recepcionista": 6,
+    "platos": [
+      {
+        "id": 3,
+        "cantidad": 13
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 4,
+    "id_recepcionista": 5,
+    "platos": [
+      {
+        "id": 4,
+        "cantidad": 14
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 5,
+    "id_recepcionista": 7,
+    "platos": [
+      {
+        "id": 4,
+        "cantidad": 10
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 7,
+    "id_recepcionista": 7,
+    "platos": [
+      {
+        "id": 3,
+        "cantidad": 3
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 8,
+    "id_recepcionista": 7,
+    "platos": [
+      {
+        "id": 3,
+        "cantidad": 5
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 4,
+    "id_recepcionista": 4,
+    "platos": [
+      {
+        "id": 4,
+        "cantidad": 10
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 4,
+    "id_recepcionista": 10,
+    "platos": [
+      {
+        "id": 7,
+        "cantidad": 1
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 6,
+    "id_recepcionista": 7,
+    "platos": [
+      {
+        "id": 5,
+        "cantidad": 6
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 6,
+    "id_recepcionista": 2,
+    "platos": [
+      {
+        "id": 3,
+        "cantidad": 14
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 9,
+    "id_recepcionista": 5,
+    "platos": [
+      {
+        "id": 7,
+        "cantidad": 13
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 6,
+    "id_recepcionista": 4,
+    "platos": [
+      {
+        "id": 4,
+        "cantidad": 10
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 6,
+    "id_recepcionista": 1,
+    "platos": [
+      {
+        "id": 6,
+        "cantidad": 1
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 4,
+    "id_recepcionista": 2,
+    "platos": [
+      {
+        "id": 6,
+        "cantidad": 6
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 2,
+    "id_recepcionista": 8,
+    "platos": [
+      {
+        "id": 5,
+        "cantidad": 8
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 2,
+    "id_recepcionista": 10,
+    "platos": [
+      {
+        "id": 4,
+        "cantidad": 2
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 6,
+    "id_recepcionista": 2,
+    "platos": [
+      {
+        "id": 6,
+        "cantidad": 5
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 4,
+    "id_recepcionista": 3,
+    "platos": [
+      {
+        "id": 7,
+        "cantidad": 6
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 9,
+    "id_recepcionista": 3,
+    "platos": [
+      {
+        "id": 6,
+        "cantidad": 15
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 4,
+    "id_recepcionista": 4,
+    "platos": [
+      {
+        "id": 1,
+        "cantidad": 3
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 6,
+    "id_recepcionista": 8,
+    "platos": [
+      {
+        "id": 2,
+        "cantidad": 3
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 6,
+    "id_recepcionista": 7,
+    "platos": [
+      {
+        "id": 3,
+        "cantidad": 14
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 3,
+    "id_recepcionista": 9,
+    "platos": [
+      {
+        "id": 3,
+        "cantidad": 14
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 9,
+    "id_recepcionista": 4,
+    "platos": [
+      {
+        "id": 6,
+        "cantidad": 1
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 4,
+    "id_recepcionista": 3,
+    "platos": [
+      {
+        "id": 4,
+        "cantidad": 9
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 9,
+    "id_recepcionista": 8,
+    "platos": [
+      {
+        "id": 3,
+        "cantidad": 15
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 6,
+    "id_recepcionista": 3,
+    "platos": [
+      {
+        "id": 1,
+        "cantidad": 2
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 3,
+    "id_recepcionista": 2,
+    "platos": [
+      {
+        "id": 2,
+        "cantidad": 15
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 8,
+    "id_recepcionista": 9,
+    "platos": [
+      {
+        "id": 5,
+        "cantidad": 14
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 5,
+    "id_recepcionista": 6,
+    "platos": [
+      {
+        "id": 4,
+        "cantidad": 12
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 2,
+    "id_recepcionista": 5,
+    "platos": [
+      {
+        "id": 2,
+        "cantidad": 15
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 7,
+    "id_recepcionista": 7,
+    "platos": [
+      {
+        "id": 7,
+        "cantidad": 10
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 7,
+    "id_recepcionista": 9,
+    "platos": [
+      {
+        "id": 5,
+        "cantidad": 10
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 5,
+    "id_recepcionista": 7,
+    "platos": [
+      {
+        "id": 2,
+        "cantidad": 6
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 5,
+    "id_recepcionista": 6,
+    "platos": [
+      {
+        "id": 4,
+        "cantidad": 1
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 7,
+    "id_recepcionista": 4,
+    "platos": [
+      {
+        "id": 1,
+        "cantidad": 5
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 1,
+    "id_recepcionista": 8,
+    "platos": [
+      {
+        "id": 2,
+        "cantidad": 1
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 8,
+    "id_recepcionista": 8,
+    "platos": [
+      {
+        "id": 6,
+        "cantidad": 7
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 8,
+    "id_recepcionista": 3,
+    "platos": [
+      {
+        "id": 5,
+        "cantidad": 13
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 7,
+    "id_recepcionista": 9,
+    "platos": [
+      {
+        "id": 5,
+        "cantidad": 10
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 1,
+    "id_recepcionista": 1,
+    "platos": [
+      {
+        "id": 4,
+        "cantidad": 7
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 6,
+    "id_recepcionista": 6,
+    "platos": [
+      {
+        "id": 5,
+        "cantidad": 10
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 4,
+    "id_recepcionista": 9,
+    "platos": [
+      {
+        "id": 5,
+        "cantidad": 7
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 1,
+    "id_recepcionista": 10,
+    "platos": [
+      {
+        "id": 4,
+        "cantidad": 11
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 2,
+    "id_recepcionista": 5,
+    "platos": [
+      {
+        "id": 4,
+        "cantidad": 13
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 5,
+    "id_recepcionista": 7,
+    "platos": [
+      {
+        "id": 5,
+        "cantidad": 13
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 3,
+    "id_recepcionista": 10,
+    "platos": [
+      {
+        "id": 6,
+        "cantidad": 4
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 5,
+    "id_recepcionista": 2,
+    "platos": [
+      {
+        "id": 1,
+        "cantidad": 11
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 9,
+    "id_recepcionista": 5,
+    "platos": [
+      {
+        "id": 1,
+        "cantidad": 9
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 3,
+    "id_recepcionista": 10,
+    "platos": [
+      {
+        "id": 1,
+        "cantidad": 5
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 2,
+    "id_recepcionista": 3,
+    "platos": [
+      {
+        "id": 4,
+        "cantidad": 14
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 7,
+    "id_recepcionista": 5,
+    "platos": [
+      {
+        "id": 4,
+        "cantidad": 1
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 3,
+    "id_recepcionista": 8,
+    "platos": [
+      {
+        "id": 5,
+        "cantidad": 10
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 6,
+    "id_recepcionista": 10,
+    "platos": [
+      {
+        "id": 1,
+        "cantidad": 2
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 4,
+    "id_recepcionista": 5,
+    "platos": [
+      {
+        "id": 3,
+        "cantidad": 5
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 4,
+    "id_recepcionista": 7,
+    "platos": [
+      {
+        "id": 7,
+        "cantidad": 3
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 3,
+    "id_recepcionista": 6,
+    "platos": [
+      {
+        "id": 6,
+        "cantidad": 14
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 7,
+    "id_recepcionista": 5,
+    "platos": [
+      {
+        "id": 2,
+        "cantidad": 11
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 6,
+    "id_recepcionista": 1,
+    "platos": [
+      {
+        "id": 5,
+        "cantidad": 1
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 7,
+    "id_recepcionista": 7,
+    "platos": [
+      {
+        "id": 2,
+        "cantidad": 2
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 7,
+    "id_recepcionista": 6,
+    "platos": [
+      {
+        "id": 4,
+        "cantidad": 2
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 4,
+    "id_recepcionista": 5,
+    "platos": [
+      {
+        "id": 3,
+        "cantidad": 1
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 2,
+    "id_recepcionista": 5,
+    "platos": [
+      {
+        "id": 3,
+        "cantidad": 14
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 1,
+    "id_recepcionista": 4,
+    "platos": [
+      {
+        "id": 1,
+        "cantidad": 12
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 1,
+    "id_recepcionista": 1,
+    "platos": [
+      {
+        "id": 3,
+        "cantidad": 10
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 9,
+    "id_recepcionista": 7,
+    "platos": [
+      {
+        "id": 3,
+        "cantidad": 11
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 9,
+    "id_recepcionista": 6,
+    "platos": [
+      {
+        "id": 2,
+        "cantidad": 3
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 3,
+    "id_recepcionista": 3,
+    "platos": [
+      {
+        "id": 3,
+        "cantidad": 13
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 8,
+    "id_recepcionista": 9,
+    "platos": [
+      {
+        "id": 3,
+        "cantidad": 1
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 5,
+    "id_recepcionista": 3,
+    "platos": [
+      {
+        "id": 6,
+        "cantidad": 3
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 9,
+    "id_recepcionista": 2,
+    "platos": [
+      {
+        "id": 2,
+        "cantidad": 12
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 1,
+    "id_recepcionista": 5,
+    "platos": [
+      {
+        "id": 2,
+        "cantidad": 14
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 5,
+    "id_recepcionista": 4,
+    "platos": [
+      {
+        "id": 6,
+        "cantidad": 7
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 1,
+    "id_recepcionista": 8,
+    "platos": [
+      {
+        "id": 6,
+        "cantidad": 13
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 6,
+    "id_recepcionista": 3,
+    "platos": [
+      {
+        "id": 6,
+        "cantidad": 10
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 6,
+    "id_recepcionista": 8,
+    "platos": [
+      {
+        "id": 5,
+        "cantidad": 8
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 2,
+    "id_recepcionista": 3,
+    "platos": [
+      {
+        "id": 6,
+        "cantidad": 14
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 4,
+    "id_recepcionista": 9,
+    "platos": [
+      {
+        "id": 5,
+        "cantidad": 8
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 5,
+    "id_recepcionista": 6,
+    "platos": [
+      {
+        "id": 1,
+        "cantidad": 8
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 2,
+    "id_recepcionista": 8,
+    "platos": [
+      {
+        "id": 4,
+        "cantidad": 5
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 8,
+    "id_recepcionista": 10,
+    "platos": [
+      {
+        "id": 7,
+        "cantidad": 9
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 1,
+    "id_recepcionista": 10,
+    "platos": [
+      {
+        "id": 7,
+        "cantidad": 7
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 8,
+    "id_recepcionista": 4,
+    "platos": [
+      {
+        "id": 2,
+        "cantidad": 1
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 9,
+    "id_recepcionista": 4,
+    "platos": [
+      {
+        "id": 6,
+        "cantidad": 6
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 4,
+    "id_recepcionista": 7,
+    "platos": [
+      {
+        "id": 5,
+        "cantidad": 10
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 5,
+    "id_recepcionista": 4,
+    "platos": [
+      {
+        "id": 4,
+        "cantidad": 13
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 1,
+    "id_recepcionista": 2,
+    "platos": [
+      {
+        "id": 5,
+        "cantidad": 13
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 4,
+    "id_recepcionista": 5,
+    "platos": [
+      {
+        "id": 6,
+        "cantidad": 13
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 8,
+    "id_recepcionista": 6,
+    "platos": [
+      {
+        "id": 3,
+        "cantidad": 13
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 9,
+    "id_recepcionista": 6,
+    "platos": [
+      {
+        "id": 1,
+        "cantidad": 10
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 3,
+    "id_recepcionista": 3,
+    "platos": [
+      {
+        "id": 1,
+        "cantidad": 5
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 9,
+    "id_recepcionista": 8,
+    "platos": [
+      {
+        "id": 1,
+        "cantidad": 8
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 5,
+    "id_recepcionista": 6,
+    "platos": [
+      {
+        "id": 2,
+        "cantidad": 8
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 1,
+    "id_recepcionista": 6,
+    "platos": [
+      {
+        "id": 1,
+        "cantidad": 2
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 3,
+    "id_recepcionista": 2,
+    "platos": [
+      {
+        "id": 6,
+        "cantidad": 14
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 5,
+    "id_recepcionista": 8,
+    "platos": [
+      {
+        "id": 1,
+        "cantidad": 2
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 7,
+    "id_recepcionista": 4,
+    "platos": [
+      {
+        "id": 3,
+        "cantidad": 7
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 6,
+    "id_recepcionista": 2,
+    "platos": [
+      {
+        "id": 3,
+        "cantidad": 7
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 1,
+    "id_recepcionista": 4,
+    "platos": [
+      {
+        "id": 4,
+        "cantidad": 3
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 9,
+    "id_recepcionista": 8,
+    "platos": [
+      {
+        "id": 2,
+        "cantidad": 3
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 1,
+    "id_recepcionista": 6,
+    "platos": [
+      {
+        "id": 2,
+        "cantidad": 2
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 3,
+    "id_recepcionista": 3,
+    "platos": [
+      {
+        "id": 6,
+        "cantidad": 6
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 9,
+    "id_recepcionista": 5,
+    "platos": [
+      {
+        "id": 3,
+        "cantidad": 5
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 2,
+    "id_recepcionista": 2,
+    "platos": [
+      {
+        "id": 2,
+        "cantidad": 9
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 9,
+    "id_recepcionista": 5,
+    "platos": [
+      {
+        "id": 3,
+        "cantidad": 14
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 4,
+    "id_recepcionista": 4,
+    "platos": [
+      {
+        "id": 7,
+        "cantidad": 11
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 5,
+    "id_recepcionista": 7,
+    "platos": [
+      {
+        "id": 5,
+        "cantidad": 12
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 2,
+    "id_recepcionista": 8,
+    "platos": [
+      {
+        "id": 4,
+        "cantidad": 1
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 8,
+    "id_recepcionista": 9,
+    "platos": [
+      {
+        "id": 7,
+        "cantidad": 14
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 6,
+    "id_recepcionista": 7,
+    "platos": [
+      {
+        "id": 1,
+        "cantidad": 7
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 5,
+    "id_recepcionista": 2,
+    "platos": [
+      {
+        "id": 6,
+        "cantidad": 7
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 2,
+    "id_recepcionista": 4,
+    "platos": [
+      {
+        "id": 2,
+        "cantidad": 5
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 5,
+    "id_recepcionista": 1,
+    "platos": [
+      {
+        "id": 7,
+        "cantidad": 12
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 4,
+    "id_recepcionista": 9,
+    "platos": [
+      {
+        "id": 3,
+        "cantidad": 1
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 3,
+    "id_recepcionista": 10,
+    "platos": [
+      {
+        "id": 2,
+        "cantidad": 3
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 6,
+    "id_recepcionista": 5,
+    "platos": [
+      {
+        "id": 5,
+        "cantidad": 1
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 5,
+    "id_recepcionista": 9,
+    "platos": [
+      {
+        "id": 4,
+        "cantidad": 1
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 3,
+    "id_recepcionista": 4,
+    "platos": [
+      {
+        "id": 4,
+        "cantidad": 10
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 2,
+    "id_recepcionista": 1,
+    "platos": [
+      {
+        "id": 2,
+        "cantidad": 3
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 7,
+    "id_recepcionista": 3,
+    "platos": [
+      {
+        "id": 1,
+        "cantidad": 13
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 4,
+    "id_recepcionista": 5,
+    "platos": [
+      {
+        "id": 4,
+        "cantidad": 5
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 4,
+    "id_recepcionista": 2,
+    "platos": [
+      {
+        "id": 4,
+        "cantidad": 10
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 5,
+    "id_recepcionista": 2,
+    "platos": [
+      {
+        "id": 2,
+        "cantidad": 13
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 6,
+    "id_recepcionista": 1,
+    "platos": [
+      {
+        "id": 7,
+        "cantidad": 12
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 3,
+    "id_recepcionista": 3,
+    "platos": [
+      {
+        "id": 3,
+        "cantidad": 11
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 8,
+    "id_recepcionista": 6,
+    "platos": [
+      {
+        "id": 1,
+        "cantidad": 12
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 4,
+    "id_recepcionista": 5,
+    "platos": [
+      {
+        "id": 5,
+        "cantidad": 6
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 9,
+    "id_recepcionista": 3,
+    "platos": [
+      {
+        "id": 2,
+        "cantidad": 10
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 4,
+    "id_recepcionista": 4,
+    "platos": [
+      {
+        "id": 1,
+        "cantidad": 3
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 4,
+    "id_recepcionista": 8,
+    "platos": [
+      {
+        "id": 1,
+        "cantidad": 12
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 3,
+    "id_recepcionista": 1,
+    "platos": [
+      {
+        "id": 4,
+        "cantidad": 12
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 4,
+    "id_recepcionista": 8,
+    "platos": [
+      {
+        "id": 4,
+        "cantidad": 11
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 2,
+    "id_recepcionista": 4,
+    "platos": [
+      {
+        "id": 2,
+        "cantidad": 2
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 6,
+    "id_recepcionista": 5,
+    "platos": [
+      {
+        "id": 4,
+        "cantidad": 14
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 8,
+    "id_recepcionista": 5,
+    "platos": [
+      {
+        "id": 6,
+        "cantidad": 15
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 2,
+    "id_recepcionista": 10,
+    "platos": [
+      {
+        "id": 6,
+        "cantidad": 12
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 8,
+    "id_recepcionista": 1,
+    "platos": [
+      {
+        "id": 4,
+        "cantidad": 6
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 3,
+    "id_recepcionista": 9,
+    "platos": [
+      {
+        "id": 7,
+        "cantidad": 6
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 9,
+    "id_recepcionista": 4,
+    "platos": [
+      {
+        "id": 7,
+        "cantidad": 9
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 9,
+    "id_recepcionista": 7,
+    "platos": [
+      {
+        "id": 5,
+        "cantidad": 5
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 7,
+    "id_recepcionista": 2,
+    "platos": [
+      {
+        "id": 3,
+        "cantidad": 4
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 5,
+    "id_recepcionista": 2,
+    "platos": [
+      {
+        "id": 4,
+        "cantidad": 2
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 1,
+    "id_recepcionista": 5,
+    "platos": [
+      {
+        "id": 3,
+        "cantidad": 14
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 6,
+    "id_recepcionista": 3,
+    "platos": [
+      {
+        "id": 3,
+        "cantidad": 7
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 4,
+    "id_recepcionista": 2,
+    "platos": [
+      {
+        "id": 2,
+        "cantidad": 2
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 8,
+    "id_recepcionista": 10,
+    "platos": [
+      {
+        "id": 1,
+        "cantidad": 7
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 5,
+    "id_recepcionista": 9,
+    "platos": [
+      {
+        "id": 7,
+        "cantidad": 9
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 4,
+    "id_recepcionista": 2,
+    "platos": [
+      {
+        "id": 3,
+        "cantidad": 4
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 2,
+    "id_recepcionista": 4,
+    "platos": [
+      {
+        "id": 7,
+        "cantidad": 15
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 8,
+    "id_recepcionista": 6,
+    "platos": [
+      {
+        "id": 2,
+        "cantidad": 9
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 9,
+    "id_recepcionista": 6,
+    "platos": [
+      {
+        "id": 4,
+        "cantidad": 2
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 3,
+    "id_recepcionista": 7,
+    "platos": [
+      {
+        "id": 3,
+        "cantidad": 1
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 2,
+    "id_recepcionista": 2,
+    "platos": [
+      {
+        "id": 3,
+        "cantidad": 13
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 6,
+    "id_recepcionista": 3,
+    "platos": [
+      {
+        "id": 7,
+        "cantidad": 6
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 1,
+    "id_recepcionista": 10,
+    "platos": [
+      {
+        "id": 1,
+        "cantidad": 5
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 4,
+    "id_recepcionista": 7,
+    "platos": [
+      {
+        "id": 4,
+        "cantidad": 11
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 8,
+    "id_recepcionista": 5,
+    "platos": [
+      {
+        "id": 5,
+        "cantidad": 9
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 4,
+    "id_recepcionista": 2,
+    "platos": [
+      {
+        "id": 7,
+        "cantidad": 10
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 5,
+    "id_recepcionista": 6,
+    "platos": [
+      {
+        "id": 2,
+        "cantidad": 3
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 6,
+    "id_recepcionista": 7,
+    "platos": [
+      {
+        "id": 1,
+        "cantidad": 15
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 6,
+    "id_recepcionista": 6,
+    "platos": [
+      {
+        "id": 3,
+        "cantidad": 8
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 7,
+    "id_recepcionista": 2,
+    "platos": [
+      {
+        "id": 7,
+        "cantidad": 3
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 7,
+    "id_recepcionista": 10,
+    "platos": [
+      {
+        "id": 7,
+        "cantidad": 14
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 6,
+    "id_recepcionista": 10,
+    "platos": [
+      {
+        "id": 2,
+        "cantidad": 5
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 5,
+    "id_recepcionista": 10,
+    "platos": [
+      {
+        "id": 1,
+        "cantidad": 11
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 8,
+    "id_recepcionista": 6,
+    "platos": [
+      {
+        "id": 3,
+        "cantidad": 14
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 8,
+    "id_recepcionista": 4,
+    "platos": [
+      {
+        "id": 7,
+        "cantidad": 9
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 5,
+    "id_recepcionista": 10,
+    "platos": [
+      {
+        "id": 6,
+        "cantidad": 11
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 9,
+    "id_recepcionista": 7,
+    "platos": [
+      {
+        "id": 7,
+        "cantidad": 5
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 5,
+    "id_recepcionista": 1,
+    "platos": [
+      {
+        "id": 3,
+        "cantidad": 8
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 3,
+    "id_recepcionista": 5,
+    "platos": [
+      {
+        "id": 5,
+        "cantidad": 7
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 5,
+    "id_recepcionista": 9,
+    "platos": [
+      {
+        "id": 5,
+        "cantidad": 9
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 7,
+    "id_recepcionista": 10,
+    "platos": [
+      {
+        "id": 7,
+        "cantidad": 9
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 1,
+    "id_recepcionista": 8,
+    "platos": [
+      {
+        "id": 3,
+        "cantidad": 6
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 3,
+    "id_recepcionista": 7,
+    "platos": [
+      {
+        "id": 5,
+        "cantidad": 10
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 3,
+    "id_recepcionista": 5,
+    "platos": [
+      {
+        "id": 5,
+        "cantidad": 15
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 4,
+    "id_recepcionista": 10,
+    "platos": [
+      {
+        "id": 1,
+        "cantidad": 13
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 3,
+    "id_recepcionista": 2,
+    "platos": [
+      {
+        "id": 4,
+        "cantidad": 9
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 3,
+    "id_recepcionista": 4,
+    "platos": [
+      {
+        "id": 7,
+        "cantidad": 5
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 1,
+    "id_recepcionista": 7,
+    "platos": [
+      {
+        "id": 2,
+        "cantidad": 14
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 5,
+    "id_recepcionista": 4,
+    "platos": [
+      {
+        "id": 6,
+        "cantidad": 12
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 4,
+    "id_recepcionista": 1,
+    "platos": [
+      {
+        "id": 3,
+        "cantidad": 1
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 3,
+    "id_recepcionista": 2,
+    "platos": [
+      {
+        "id": 7,
+        "cantidad": 4
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 2,
+    "id_recepcionista": 7,
+    "platos": [
+      {
+        "id": 2,
+        "cantidad": 15
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 7,
+    "id_recepcionista": 8,
+    "platos": [
+      {
+        "id": 7,
+        "cantidad": 8
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 3,
+    "id_recepcionista": 10,
+    "platos": [
+      {
+        "id": 3,
+        "cantidad": 14
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 8,
+    "id_recepcionista": 8,
+    "platos": [
+      {
+        "id": 6,
+        "cantidad": 6
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 4,
+    "id_recepcionista": 4,
+    "platos": [
+      {
+        "id": 7,
+        "cantidad": 9
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 7,
+    "id_recepcionista": 10,
+    "platos": [
+      {
+        "id": 3,
+        "cantidad": 5
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 4,
+    "id_recepcionista": 2,
+    "platos": [
+      {
+        "id": 6,
+        "cantidad": 2
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 3,
+    "id_recepcionista": 9,
+    "platos": [
+      {
+        "id": 4,
+        "cantidad": 9
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 4,
+    "id_recepcionista": 5,
+    "platos": [
+      {
+        "id": 1,
+        "cantidad": 5
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 3,
+    "id_recepcionista": 8,
+    "platos": [
+      {
+        "id": 2,
+        "cantidad": 12
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 7,
+    "id_recepcionista": 6,
+    "platos": [
+      {
+        "id": 3,
+        "cantidad": 4
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 2,
+    "id_recepcionista": 5,
+    "platos": [
+      {
+        "id": 3,
+        "cantidad": 4
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 9,
+    "id_recepcionista": 10,
+    "platos": [
+      {
+        "id": 1,
+        "cantidad": 3
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 7,
+    "id_recepcionista": 9,
+    "platos": [
+      {
+        "id": 2,
+        "cantidad": 8
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 8,
+    "id_recepcionista": 5,
+    "platos": [
+      {
+        "id": 2,
+        "cantidad": 10
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 7,
+    "id_recepcionista": 6,
+    "platos": [
+      {
+        "id": 3,
+        "cantidad": 5
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 2,
+    "id_recepcionista": 9,
+    "platos": [
+      {
+        "id": 7,
+        "cantidad": 11
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 8,
+    "id_recepcionista": 4,
+    "platos": [
+      {
+        "id": 3,
+        "cantidad": 7
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 8,
+    "id_recepcionista": 5,
+    "platos": [
+      {
+        "id": 3,
+        "cantidad": 12
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 8,
+    "id_recepcionista": 6,
+    "platos": [
+      {
+        "id": 6,
+        "cantidad": 15
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 7,
+    "id_recepcionista": 5,
+    "platos": [
+      {
+        "id": 3,
+        "cantidad": 11
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 3,
+    "id_recepcionista": 2,
+    "platos": [
+      {
+        "id": 1,
+        "cantidad": 13
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 1,
+    "id_recepcionista": 7,
+    "platos": [
+      {
+        "id": 1,
+        "cantidad": 6
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 6,
+    "id_recepcionista": 10,
+    "platos": [
+      {
+        "id": 5,
+        "cantidad": 8
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 5,
+    "id_recepcionista": 5,
+    "platos": [
+      {
+        "id": 1,
+        "cantidad": 7
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 3,
+    "id_recepcionista": 5,
+    "platos": [
+      {
+        "id": 3,
+        "cantidad": 9
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 9,
+    "id_recepcionista": 4,
+    "platos": [
+      {
+        "id": 2,
+        "cantidad": 7
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 7,
+    "id_recepcionista": 10,
+    "platos": [
+      {
+        "id": 5,
+        "cantidad": 4
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 5,
+    "id_recepcionista": 3,
+    "platos": [
+      {
+        "id": 1,
+        "cantidad": 15
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 9,
+    "id_recepcionista": 10,
+    "platos": [
+      {
+        "id": 1,
+        "cantidad": 4
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 3,
+    "id_recepcionista": 10,
+    "platos": [
+      {
+        "id": 5,
+        "cantidad": 15
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 8,
+    "id_recepcionista": 9,
+    "platos": [
+      {
+        "id": 6,
+        "cantidad": 15
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 1,
+    "id_recepcionista": 2,
+    "platos": [
+      {
+        "id": 7,
+        "cantidad": 4
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 9,
+    "id_recepcionista": 5,
+    "platos": [
+      {
+        "id": 6,
+        "cantidad": 7
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 6,
+    "id_recepcionista": 5,
+    "platos": [
+      {
+        "id": 7,
+        "cantidad": 12
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 5,
+    "id_recepcionista": 3,
+    "platos": [
+      {
+        "id": 4,
+        "cantidad": 1
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 5,
+    "id_recepcionista": 10,
+    "platos": [
+      {
+        "id": 6,
+        "cantidad": 1
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 8,
+    "id_recepcionista": 6,
+    "platos": [
+      {
+        "id": 1,
+        "cantidad": 6
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 1,
+    "id_recepcionista": 3,
+    "platos": [
+      {
+        "id": 5,
+        "cantidad": 15
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 4,
+    "id_recepcionista": 4,
+    "platos": [
+      {
+        "id": 6,
+        "cantidad": 14
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 1,
+    "id_recepcionista": 10,
+    "platos": [
+      {
+        "id": 7,
+        "cantidad": 7
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 7,
+    "id_recepcionista": 5,
+    "platos": [
+      {
+        "id": 7,
+        "cantidad": 15
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 2,
+    "id_recepcionista": 10,
+    "platos": [
+      {
+        "id": 2,
+        "cantidad": 15
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 8,
+    "id_recepcionista": 8,
+    "platos": [
+      {
+        "id": 4,
+        "cantidad": 6
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 6,
+    "id_recepcionista": 9,
+    "platos": [
+      {
+        "id": 2,
+        "cantidad": 8
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 5,
+    "id_recepcionista": 10,
+    "platos": [
+      {
+        "id": 5,
+        "cantidad": 13
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 9,
+    "id_recepcionista": 1,
+    "platos": [
+      {
+        "id": 2,
+        "cantidad": 14
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 7,
+    "id_recepcionista": 1,
+    "platos": [
+      {
+        "id": 5,
+        "cantidad": 5
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 9,
+    "id_recepcionista": 8,
+    "platos": [
+      {
+        "id": 7,
+        "cantidad": 3
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 2,
+    "id_recepcionista": 2,
+    "platos": [
+      {
+        "id": 4,
+        "cantidad": 14
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 7,
+    "id_recepcionista": 7,
+    "platos": [
+      {
+        "id": 5,
+        "cantidad": 4
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 7,
+    "id_recepcionista": 10,
+    "platos": [
+      {
+        "id": 5,
+        "cantidad": 15
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 4,
+    "id_recepcionista": 9,
+    "platos": [
+      {
+        "id": 7,
+        "cantidad": 6
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 8,
+    "id_recepcionista": 8,
+    "platos": [
+      {
+        "id": 6,
+        "cantidad": 11
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 8,
+    "id_recepcionista": 1,
+    "platos": [
+      {
+        "id": 5,
+        "cantidad": 9
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 4,
+    "id_recepcionista": 6,
+    "platos": [
+      {
+        "id": 3,
+        "cantidad": 10
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 5,
+    "id_recepcionista": 3,
+    "platos": [
+      {
+        "id": 1,
+        "cantidad": 15
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 6,
+    "id_recepcionista": 2,
+    "platos": [
+      {
+        "id": 6,
+        "cantidad": 9
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 3,
+    "id_recepcionista": 10,
+    "platos": [
+      {
+        "id": 3,
+        "cantidad": 15
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 7,
+    "id_recepcionista": 1,
+    "platos": [
+      {
+        "id": 7,
+        "cantidad": 4
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 4,
+    "id_recepcionista": 10,
+    "platos": [
+      {
+        "id": 6,
+        "cantidad": 12
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 2,
+    "id_recepcionista": 2,
+    "platos": [
+      {
+        "id": 4,
+        "cantidad": 2
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 1,
+    "id_recepcionista": 8,
+    "platos": [
+      {
+        "id": 4,
+        "cantidad": 4
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 5,
+    "id_recepcionista": 8,
+    "platos": [
+      {
+        "id": 3,
+        "cantidad": 14
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 5,
+    "id_recepcionista": 5,
+    "platos": [
+      {
+        "id": 2,
+        "cantidad": 15
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 1,
+    "id_recepcionista": 2,
+    "platos": [
+      {
+        "id": 3,
+        "cantidad": 14
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 7,
+    "id_recepcionista": 9,
+    "platos": [
+      {
+        "id": 7,
+        "cantidad": 10
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 8,
+    "id_recepcionista": 7,
+    "platos": [
+      {
+        "id": 5,
+        "cantidad": 6
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 8,
+    "id_recepcionista": 8,
+    "platos": [
+      {
+        "id": 2,
+        "cantidad": 6
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 3,
+    "id_recepcionista": 10,
+    "platos": [
+      {
+        "id": 1,
+        "cantidad": 2
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 8,
+    "id_recepcionista": 7,
+    "platos": [
+      {
+        "id": 7,
+        "cantidad": 2
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 4,
+    "id_recepcionista": 2,
+    "platos": [
+      {
+        "id": 6,
+        "cantidad": 8
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 2,
+    "id_recepcionista": 1,
+    "platos": [
+      {
+        "id": 1,
+        "cantidad": 11
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 1,
+    "id_recepcionista": 6,
+    "platos": [
+      {
+        "id": 6,
+        "cantidad": 10
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 4,
+    "id_recepcionista": 3,
+    "platos": [
+      {
+        "id": 4,
+        "cantidad": 1
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 3,
+    "id_recepcionista": 10,
+    "platos": [
+      {
+        "id": 5,
+        "cantidad": 6
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 4,
+    "id_recepcionista": 8,
+    "platos": [
+      {
+        "id": 4,
+        "cantidad": 11
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 2,
+    "id_recepcionista": 9,
+    "platos": [
+      {
+        "id": 1,
+        "cantidad": 14
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 1,
+    "id_recepcionista": 7,
+    "platos": [
+      {
+        "id": 6,
+        "cantidad": 2
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 1,
+    "id_recepcionista": 5,
+    "platos": [
+      {
+        "id": 1,
+        "cantidad": 3
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 9,
+    "id_recepcionista": 2,
+    "platos": [
+      {
+        "id": 3,
+        "cantidad": 7
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 8,
+    "id_recepcionista": 6,
+    "platos": [
+      {
+        "id": 5,
+        "cantidad": 13
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 4,
+    "id_recepcionista": 5,
+    "platos": [
+      {
+        "id": 4,
+        "cantidad": 3
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 6,
+    "id_recepcionista": 6,
+    "platos": [
+      {
+        "id": 6,
+        "cantidad": 11
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 4,
+    "id_recepcionista": 2,
+    "platos": [
+      {
+        "id": 2,
+        "cantidad": 8
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 1,
+    "id_recepcionista": 5,
+    "platos": [
+      {
+        "id": 3,
+        "cantidad": 15
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 6,
+    "id_recepcionista": 8,
+    "platos": [
+      {
+        "id": 5,
+        "cantidad": 13
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 2,
+    "id_recepcionista": 9,
+    "platos": [
+      {
+        "id": 5,
+        "cantidad": 13
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 7,
+    "id_recepcionista": 3,
+    "platos": [
+      {
+        "id": 2,
+        "cantidad": 6
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 8,
+    "id_recepcionista": 5,
+    "platos": [
+      {
+        "id": 7,
+        "cantidad": 8
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 5,
+    "id_recepcionista": 8,
+    "platos": [
+      {
+        "id": 5,
+        "cantidad": 5
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 9,
+    "id_recepcionista": 8,
+    "platos": [
+      {
+        "id": 4,
+        "cantidad": 11
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 8,
+    "id_recepcionista": 2,
+    "platos": [
+      {
+        "id": 7,
+        "cantidad": 14
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 9,
+    "id_recepcionista": 7,
+    "platos": [
+      {
+        "id": 7,
+        "cantidad": 15
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 1,
+    "id_recepcionista": 5,
+    "platos": [
+      {
+        "id": 7,
+        "cantidad": 11
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 9,
+    "id_recepcionista": 5,
+    "platos": [
+      {
+        "id": 1,
+        "cantidad": 5
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 2,
+    "id_recepcionista": 5,
+    "platos": [
+      {
+        "id": 5,
+        "cantidad": 2
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 8,
+    "id_recepcionista": 1,
+    "platos": [
+      {
+        "id": 1,
+        "cantidad": 1
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 3,
+    "id_recepcionista": 2,
+    "platos": [
+      {
+        "id": 3,
+        "cantidad": 1
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 9,
+    "id_recepcionista": 7,
+    "platos": [
+      {
+        "id": 2,
+        "cantidad": 13
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 8,
+    "id_recepcionista": 7,
+    "platos": [
+      {
+        "id": 1,
+        "cantidad": 1
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 4,
+    "id_recepcionista": 8,
+    "platos": [
+      {
+        "id": 3,
+        "cantidad": 11
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 5,
+    "id_recepcionista": 5,
+    "platos": [
+      {
+        "id": 1,
+        "cantidad": 1
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 1,
+    "id_recepcionista": 4,
+    "platos": [
+      {
+        "id": 5,
+        "cantidad": 2
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 8,
+    "id_recepcionista": 1,
+    "platos": [
+      {
+        "id": 1,
+        "cantidad": 13
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 4,
+    "id_recepcionista": 8,
+    "platos": [
+      {
+        "id": 2,
+        "cantidad": 9
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 6,
+    "id_recepcionista": 1,
+    "platos": [
+      {
+        "id": 4,
+        "cantidad": 15
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 5,
+    "id_recepcionista": 6,
+    "platos": [
+      {
+        "id": 3,
+        "cantidad": 14
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 2,
+    "id_recepcionista": 6,
+    "platos": [
+      {
+        "id": 7,
+        "cantidad": 10
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 2,
+    "id_recepcionista": 7,
+    "platos": [
+      {
+        "id": 5,
+        "cantidad": 3
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 5,
+    "id_recepcionista": 7,
+    "platos": [
+      {
+        "id": 5,
+        "cantidad": 1
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 2,
+    "id_recepcionista": 7,
+    "platos": [
+      {
+        "id": 3,
+        "cantidad": 13
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 5,
+    "id_recepcionista": 5,
+    "platos": [
+      {
+        "id": 2,
+        "cantidad": 3
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 6,
+    "id_recepcionista": 10,
+    "platos": [
+      {
+        "id": 5,
+        "cantidad": 13
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 9,
+    "id_recepcionista": 5,
+    "platos": [
+      {
+        "id": 7,
+        "cantidad": 13
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 4,
+    "id_recepcionista": 6,
+    "platos": [
+      {
+        "id": 2,
+        "cantidad": 10
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 3,
+    "id_recepcionista": 3,
+    "platos": [
+      {
+        "id": 6,
+        "cantidad": 7
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 6,
+    "id_recepcionista": 6,
+    "platos": [
+      {
+        "id": 6,
+        "cantidad": 5
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 9,
+    "id_recepcionista": 2,
+    "platos": [
+      {
+        "id": 5,
+        "cantidad": 3
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 1,
+    "id_recepcionista": 9,
+    "platos": [
+      {
+        "id": 4,
+        "cantidad": 2
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 5,
+    "id_recepcionista": 6,
+    "platos": [
+      {
+        "id": 3,
+        "cantidad": 1
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 6,
+    "id_recepcionista": 2,
+    "platos": [
+      {
+        "id": 5,
+        "cantidad": 10
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 4,
+    "id_recepcionista": 10,
+    "platos": [
+      {
+        "id": 6,
+        "cantidad": 7
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 7,
+    "id_recepcionista": 1,
+    "platos": [
+      {
+        "id": 6,
+        "cantidad": 13
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 8,
+    "id_recepcionista": 9,
+    "platos": [
+      {
+        "id": 4,
+        "cantidad": 5
+      }
+    ]
+  },
+  {
+    "COMANDO": "NUEVO_PEDIDO",
+    "mesa": 8,
+    "id_recepcionista": 4,
+    "platos": [
+      {
+        "id": 1,
+        "cantidad": 3
+      }
+    ]
+  }
+]
