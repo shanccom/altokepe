@@ -33,6 +33,8 @@ public:
   void registrarManejador(ManejadorCliente* manejador);
   void eliminarManejador(ManejadorCliente* manejador);
 
+  void cargarMenuDesdeArchivo(const QString& rutaArchivo);
+
   void procesarMensaje(const QJsonObject& mensaje, ManejadorCliente* remitente);
   void enviarEstadoInicial(ManejadorCliente* cliente);
 

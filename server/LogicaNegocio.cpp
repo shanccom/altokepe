@@ -18,7 +18,7 @@ LogicaNegocio::LogicaNegocio(QObject* parent)
     m_siguienteIdPedido(1), 
     m_siguienteIdInstanciaPlato(1) 
 {
-    cargarMenu();
+    cargarMenuDesdeArchivo(":/menu.json");
 }
 
 LogicaNegocio* LogicaNegocio::instance() {
@@ -26,6 +26,30 @@ LogicaNegocio* LogicaNegocio::instance() {
     s_instance = new LogicaNegocio();
   }
   return s_instance;
+}
+
+void LogicaNegocio::cargarMenuDesdeArchivo(const QString& rutaArchivo) {
+  std::lock_guard<std::mutex> lock(m_mutex);
+  QFile archivo(rutaArchivo);
+  if (!archivo.open(QIODevice::ReadOnly)) {
+    qCritical() << "No se pudo abrir el archivo de menú:" << rutaArchivo;
+    return;
+  }
+
+  QByteArray data = archivo.readAll();
+  QJsonDocument doc = QJsonDocument::fromJson(data);
+  if (!doc.isArray()) {
+    qCritical() << "El archivo de menú no es un array JSON válido.";
+    return;
+  }
+
+  m_menu.clear();
+  QJsonArray menuArray = doc.array();
+  for (const QJsonValue& val : menuArray) {
+    PlatoDefinicion plato = SerializadorJSON::jsonToPlatoDefinicion(val.toObject());
+    m_menu[plato.id] = plato;
+  }
+  qInfo() << "Menú cargado desde" << rutaArchivo << "con" << m_menu.size() << "platos.";
 }
 
 void LogicaNegocio::registrarManejador(ManejadorCliente* manejador) {
