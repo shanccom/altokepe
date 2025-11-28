@@ -8,13 +8,14 @@
 #include <mutex>
 #include <vector>
 #include <functional>
+#include <QJsonObject>
 #include "common/models/PedidoMesa.h"
 #include "common/models/PlatoDefinicion.h"
 #include "common/models/InfoPlatoPrioridad.h"
 #include "common/models/Estados.h"
 
 class ManejadorCliente;
-//
+
 using ColaPrioridadPlatos = std::priority_queue<InfoPlatoPrioridad, std::vector<InfoPlatoPrioridad>,
       std::greater<InfoPlatoPrioridad>>;
 
@@ -35,7 +36,13 @@ public:
 
   void cargarMenuDesdeArchivo(const QString& rutaArchivo);
 
-  void procesarMensaje(const QJsonObject& mensaje, ManejadorCliente* remitente);
+  void procesarNuevoPedido(const QJsonObject& mensaje, ManejadorCliente* remitente);
+  void procesarPrepararPedido(const QJsonObject& mensaje, ManejadorCliente* remitente);
+  void procesarCancelarPedido(const QJsonObject& mensaje, ManejadorCliente* remitente);
+  void procesarMarcarPlatoTerminado(const QJsonObject& mensaje, ManejadorCliente* remitente);
+  void procesarConfirmarEntrega(const QJsonObject& mensaje, ManejadorCliente* remitente);
+  void procesarDevolverPlato(const QJsonObject& mensaje, ManejadorCliente* remitente);
+
   void enviarEstadoInicial(ManejadorCliente* cliente);
 
   // Facade para Ranking
@@ -57,16 +64,6 @@ private:
 
   long long m_siguienteIdPedido;
   long long m_siguienteIdInstanciaPlato;
-
-  void cargarMenu();
-  void procesarNuevoPedido(const QJsonObject& mensaje, ManejadorCliente* remitente);
-  void procesarPrepararPedido(const QJsonObject& mensaje, ManejadorCliente* remitente);
-  void procesarCancelarPedido(const QJsonObject& mensaje, ManejadorCliente* remitente);
-  void procesarMarcarPlatoTerminado(const QJsonObject& mensaje, ManejadorCliente* remitente);
-  void procesarConfirmarEntrega(const QJsonObject& mensaje, ManejadorCliente* remitente);
-  void procesarConfirmarEntrega(const QJsonObject& mensaje, ManejadorCliente* remitente);
-  void procesarDevolverPlato(const QJsonObject& mensaje, ManejadorCliente* remitente);
-
 };
 
 #endif
