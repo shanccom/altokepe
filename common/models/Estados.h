@@ -6,13 +6,15 @@ enum class EstadoPlato {
   EN_PROGRESO,
   FINALIZADO,
   CANCELADO,
-  ENTREGADO
+  ENTREGADO,
+  DEVUELTO
 };
 
 enum class EstadoPedido {
   PENDIENTE,
   EN_PROGRESO,
-  COMPLETADO,
+  LISTO,
+  ENTREGADO,
   CANCELADO
 };
 
