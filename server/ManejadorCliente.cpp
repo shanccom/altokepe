@@ -4,9 +4,12 @@
 #include "LogicaNegocio.h"
 #include "patterns/CommandFactory.h"
 #include "patterns/ICommand.h"
+#include "identifier/IdentificadorCliente.h"
+
 #include <QJsonDocument>
 #include <QJsonObject>
 #include <QDebug>
+
 
 ManejadorCliente::ManejadorCliente(qintptr socketDescriptor, QObject* parent)
   : QObject(parent), m_socketDescriptor(socketDescriptor) {
@@ -32,7 +35,6 @@ void ManejadorCliente::procesar() {
   connect(m_socket, &QTcpSocket::disconnected, this, &ManejadorCliente::desconectado);
 
   LogicaNegocio::instance()->registrarManejador(this);
-  qDebug() << "Cliente conectado en socket" << m_socketDescriptor;
 }
 
 void ManejadorCliente::listoParaLeer() {
@@ -74,6 +76,7 @@ void ManejadorCliente::procesarBuffer() {
   }
 }
 
+/** 
 void ManejadorCliente::identificarCliente(const QJsonObject& data) {
   QString rolString = data["rol"].toString();
 
@@ -127,6 +130,31 @@ void ManejadorCliente::identificarCliente(const QJsonObject& data) {
   
   // Le pedimos a la lógica de negocio que le envíe el estado inicial
   if (m_tipoActor != TipoActor::DESCONOCIDO) LogicaNegocio::instance()->enviarEstadoInicial(this);
+}
+*/
+
+void ManejadorCliente::identificarCliente(const QJsonObject& data){
+  QString rolString = data["rol"].toString();
+  IdentificadorCliente* identificador = IdentificadorClienteFactory::crearIdentificador(rolString);
+
+  if (identificador == nullptr) {
+    qWarning() << "Rol desconocido recibido - Desconectado...";
+    m_socket->disconnectFromHost();
+    return;
+  }
+
+  bool exito = identificador->identificar(data, m_tipoActor, m_idActor, m_nombreEstacion);
+  delete identificador;
+
+  if(!exito){
+    qWarning() << "Fallo la validacion de datos para rol:" << rolString << ". Desconectando.";
+    m_socket->disconnectFromHost();
+    return;
+  }
+  
+  if (m_tipoActor != TipoActor::DESCONOCIDO) {
+    LogicaNegocio::instance()->enviarEstadoInicial(this);
+  }
 }
 
 void ManejadorCliente::desconectado() {
