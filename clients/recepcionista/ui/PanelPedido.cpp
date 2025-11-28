@@ -1,4 +1,5 @@
 #include "PanelPedido.h"
+#include "../facade/RecepcionistaFacade.h"  // PATRÓN FACADE
 #include <QVBoxLayout>
 #include <QHBoxLayout>
 #include <QLabel>
@@ -9,12 +10,30 @@
 #include <QSpinBox>
 #include <QMessageBox>
 
-PanelPedido::PanelPedido(QWidget *parent)
-  : QWidget(parent) {
-  cliente.conectarAlServidor("127.0.0.1", 5555);
+/**
+ * Constructor de PanelPedido - PATRÓN FACADE APLICADO
+ * 
+ * ANTES:
+ * - Creaba su propia instancia de ClienteRecepcionista
+ * - Llamaba directamente a cliente.conectarAlServidor()
+ * - Múltiples conexiones TCP si había varios paneles
+ * 
+ * AHORA:
+ * - Recibe RecepcionistaFacade ya configurado (Inyección de Dependencias)
+ * - NO gestiona conexiones de red
+ * - Comparte una única conexión TCP
+ * 
+ * BENEFICIOS:
+ * - Bajo acoplamiento: PanelPedido no conoce ClienteRecepcionista
+ * - Responsabilidad única: PanelPedido solo maneja UI
+ * - Fácil de testear: se puede inyectar un mock del Facade
+ */
+PanelPedido::PanelPedido(RecepcionistaFacade *facade, QWidget *parent)
+  : QWidget(parent), facade(facade) {
   configurarUI();
 
-  connect(&cliente, &ClienteRecepcionista::menuActualizado,
+  // Conectar señales del Facade (no del cliente interno)
+  connect(facade, &RecepcionistaFacade::menuActualizado,
           this, &PanelPedido::actualizarMenu);
 }
 
@@ -186,7 +205,10 @@ void PanelPedido::enviarPedido() {
   // Refactor: definir cómo se genera el ID
   const int idRecepcionista = 101; 
 
-  cliente.enviarNuevoPedido(mesaActual, idRecepcionista, platosJson);
+  // PATRÓN FACADE: Llamar al método simplificado del Facade
+  // En lugar de: cliente.enviarNuevoPedido(...)
+  // Ventaja: No necesitamos conocer detalles del protocolo TCP/JSON
+  facade->enviarNuevoPedido(mesaActual, idRecepcionista, platosJson);
 
   QMessageBox::information(this, "Enviado", "Pedido enviado correctamente.");
 

@@ -27,6 +27,10 @@ add_executable(ClienteRecepcionista
   network/ClienteRecepcionista.cpp
   network/ClienteRecepcionista.h 
 
+  # Patrón Facade - Interfaz simplificada para subsistema de red
+  facade/RecepcionistaFacade.cpp
+  facade/RecepcionistaFacade.h
+
   # Archivos de 'common' necesarios
   ../../common/network/SerializadorJSON.cpp
 )
