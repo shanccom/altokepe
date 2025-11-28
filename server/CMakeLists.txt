@@ -31,6 +31,8 @@ add_executable(ServidorAltokepe
   Servidor.cpp
   ManejadorCliente.cpp
   LogicaNegocio.cpp
+  patterns/ServerCommands.cpp
+  patterns/CommandFactory.cpp
   resources.qrc
   ${COMMON_SERIALIZER_PATH}
 )
