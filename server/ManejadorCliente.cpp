@@ -2,6 +2,8 @@
 #include "common/models/Estados.h"
 #include "ManejadorCliente.h"
 #include "LogicaNegocio.h"
+#include "patterns/CommandFactory.h"
+#include "patterns/ICommand.h"
 #include <QJsonDocument>
 #include <QJsonObject>
 #include <QDebug>
@@ -52,9 +54,8 @@ void ManejadorCliente::procesarBuffer() {
     }
 
     QJsonObject mensaje = doc.object();
-    qDebug() << "Mensaje recibido:" << mensaje;  // ← AGREGA ESTO
-    qDebug() << "Comando:" << mensaje[Protocolo::COMANDO].toString();
 
+    // La identificación se mantiene separada del patrón Command de negocio
     if (m_tipoActor == TipoActor::DESCONOCIDO) {
       if (mensaje[Protocolo::COMANDO].toString() == Protocolo::IDENTIFICARSE) {
         identificarCliente(mensaje);
@@ -62,7 +63,13 @@ void ManejadorCliente::procesarBuffer() {
         qWarning() << "Cliente no identificado intentó enviar un comando. Se ignora.";
       }
     } else {
-      LogicaNegocio::instance()->procesarMensaje(mensaje, this);
+      // Usamos la Factory para crear y ejecutar el comando
+      std::unique_ptr<ICommand> command = CommandFactory::create(mensaje, this);
+      if (command) {
+        command->execute();
+      } else {
+        qWarning() << "Comando no reconocido o factoría devolvió null.";
+      }
     }
   }
 }
