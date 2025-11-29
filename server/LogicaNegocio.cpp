@@ -221,27 +221,52 @@ void LogicaNegocio::procesarNuevoPedido(const QJsonObject& mensaje, ManejadorCli
 void LogicaNegocio::procesarPrepararPedido(const QJsonObject& mensaje, ManejadorCliente* remitente) {
   std::lock_guard<std::mutex> lock(m_mutex);
 
-  ResultadoValidacion pedido = validarYObtenerPlato(mensaje, remitente, true);
-  if (!pedido.exito) return;
+  if (!mensaje.contains(Protocolo::DATA) || !mensaje[Protocolo::DATA].isObject()) {
+    enviarError(remitente, "Payload inválido en PREPARAR_PEDIDO");
+    return;
+  }
+  QJsonObject data = mensaje[Protocolo::DATA].toObject();
 
-  pedido.plato->estado = EstadoPlato::EN_PROGRESO;
+  if (!data.contains("id_pedido")) {
+    enviarError(remitente, "Falta id_pedido en PREPARAR_PEDIDO");
+    return;
+  }
+  long long idPedido = data["id_pedido"].toInt();
 
-  if (pedido.pedido->estado_general == EstadoPedido::PENDIENTE) {
-    pedido.pedido->estado_general = EstadoPedido::EN_PROGRESO;
+  if (m_pedidosActivos.find(idPedido) == m_pedidosActivos.end()) {
+    enviarError(remitente, "Pedido no encontrado para preparar", data);
+    return;
   }
 
-  QJsonObject data;
-  data["id_pedido"] = static_cast<int>(pedido.idPedido);
-  data["id_instancia"] = static_cast<int>(pedido.idInstancia);
-  data["nuevo_estado"] = SerializadorJSON::estadoPlatoToString(EstadoPlato::EN_PROGRESO);
+  PedidoMesa& pedido = m_pedidosActivos[idPedido];
+  if (pedido.estado_general == EstadoPedido::PENDIENTE) {
+    pedido.estado_general = EstadoPedido::EN_PROGRESO;
+  }
 
-  QJsonObject msg;
-  msg[Protocolo::EVENTO] = Protocolo::PLATO_EN_PREPARACION;
-  msg[Protocolo::DATA] = data;
+  int platosIniciados = 0;
+  for (auto& inst : pedido.platos) {
+    if (inst.estado == EstadoPlato::EN_ESPERA) {
+      inst.estado = EstadoPlato::EN_PROGRESO;
+      platosIniciados++;
 
-  for (auto cli : m_manejadoresActivos) emit enviarRespuesta(cli, msg);
+      QJsonObject data;
+      data["id_pedido"] = static_cast<int>(idPedido);
+      data["id_instancia"] = static_cast<int>(inst.id_instancia);
+      data["nuevo_estado"] = SerializadorJSON::estadoPlatoToString(EstadoPlato::EN_PROGRESO);
 
-  qInfo() << "Plato" << pedido.idInstancia << "del pedido" << pedido.idPedido << "pasó a EN_PREPARACION.";
+      QJsonObject msg;
+      msg[Protocolo::EVENTO] = Protocolo::PLATO_EN_PREPARACION;
+      msg[Protocolo::DATA] = data;
+
+      for (auto cli : m_manejadoresActivos) emit enviarRespuesta(cli, msg);
+    }
+  }
+
+  if (platosIniciados > 0) {
+    qInfo() << "Se iniciaron" << platosIniciados << "platos del pedido" << idPedido;
+  } else {
+    qInfo() << "Solicitud de preparar pedido" << idPedido << "recibida, pero no había platos en espera.";
+  }
 }
 
 void LogicaNegocio::procesarCancelarPedido(const QJsonObject& mensaje, ManejadorCliente* remitente) {
