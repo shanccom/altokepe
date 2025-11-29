@@ -29,6 +29,7 @@ add_executable(ServidorAltokepe
   Servidor.cpp
   ManejadorCliente.cpp
   LogicaNegocio.cpp
+  LogicaNegocioHandlers.cpp
   patterns/ServerCommands.cpp
   patterns/CommandFactory.cpp
   identifier/IdentificadorCliente.cpp
