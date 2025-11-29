@@ -76,13 +76,8 @@ void LogicaNegocio::enviarEstadoInicial(ManejadorCliente* cliente) {
   } else if (tipo == TipoActor::ESTACION_COCINA) {
     //estado = getEstadoParaEstacion(cliente->getNombreEstacion().toStdString());
   } else if (tipo == TipoActor::RECEPCIONISTA) {
-<<<<<<< HEAD
-    QJsonObject mensaje;
-    QJsonArray menuArray;
-=======
       QJsonObject mensaje;
       QJsonArray menuArray;
->>>>>>> 3566dddfb41ca6b69f95f9061bbe6ec424c1fc44
 
     for (const auto& par : m_menu) {
       const PlatoDefinicion& plato = par.second;
@@ -133,13 +128,6 @@ QJsonObject LogicaNegocio::getEstadoParaRanking() {
 }
 
 void LogicaNegocio::registrarVenta(int idPlato) {
-<<<<<<< HEAD
-  QJsonObject rankingMsg;
-  {
-    std::lock_guard<std::mutex> lock(m_mutex);
-    m_conteoPlatosRanking[idPlato]++;
-    rankingMsg = getEstadoParaRanking(); // Generar bajo lock
-=======
     {
         std::lock_guard<std::mutex> lock(m_mutex);
         m_conteoPlatosRanking[idPlato]++;
@@ -180,7 +168,6 @@ void LogicaNegocio::procesarMensaje(const QJsonObject& mensaje, ManejadorCliente
   } else {
     qWarning() << "Comando desconocido recibido:" << comando;
     return;
->>>>>>> 3566dddfb41ca6b69f95f9061bbe6ec424c1fc44
   }
 
   // Notificar a todos (Observer)
