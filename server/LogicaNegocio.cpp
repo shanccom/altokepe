@@ -8,7 +8,6 @@
 #include <QJsonObject>
 #include <QJsonArray>
 #include <QDebug>
-#include <chrono>
 #include <algorithm>
 
 LogicaNegocio* LogicaNegocio::s_instance = nullptr;
@@ -82,16 +81,10 @@ void LogicaNegocio::enviarEstadoInicial(ManejadorCliente* cliente) {
 
     for (const auto& par : m_menu) {
       const PlatoDefinicion& plato = par.second;
-      QJsonObject platoJson;
-      platoJson["id"] = plato.id;
-      platoJson["nombre"] = QString::fromStdString(plato.nombre);
-      platoJson["precio"] = plato.costo;
-      platoJson["tiempo_preparacion"] = plato.tiempo_preparacion_estimado;
-      platoJson["categoria"] = QString::fromStdString(plato.estacion);
-      menuArray.append(platoJson);
+      menuArray.append(SerializadorJSON::platoDefinicionToJson(plato));
     }
 
-    mensaje[Protocolo::EVENTO] = "ACTUALIZACION_MENU";
+    mensaje[Protocolo::EVENTO] = Protocolo::ACTUALIZACION_MENU;
     mensaje[Protocolo::DATA] = QJsonObject{ {"menu", menuArray} };
 
     emit enviarRespuesta(cliente, mensaje);
@@ -100,7 +93,6 @@ void LogicaNegocio::enviarEstadoInicial(ManejadorCliente* cliente) {
 }
 
 QJsonObject LogicaNegocio::getEstadoParaRanking() {
-    
   // Convertir Mapa a Vector para ordenar
   struct ItemRanking {
     QString nombre;
@@ -130,7 +122,7 @@ QJsonObject LogicaNegocio::getEstadoParaRanking() {
 
   QJsonObject mensaje;
   mensaje[Protocolo::EVENTO] = Protocolo::ACTUALIZACION_RANKING;
-  mensaje["data"] = QJsonObject{ {"ranking", rankingArray} };
+  mensaje[Protocolo::DATA] = QJsonObject{ {"ranking", rankingArray} };
   
   return mensaje;
 }
@@ -152,12 +144,12 @@ void LogicaNegocio::registrarVenta(int idPlato) {
 void LogicaNegocio::procesarNuevoPedido(const QJsonObject& mensaje, ManejadorCliente* remitente) {
   std::lock_guard<std::mutex> lock(m_mutex);
 
-  if (!mensaje.contains("data") || !mensaje["data"].isObject()) {
+  if (!mensaje.contains(Protocolo::DATA) || !mensaje[Protocolo::DATA].isObject()) {
     qWarning() << "NUEVO_PEDIDO sin data";
     return;
   }
 
-  QJsonObject data = mensaje["data"].toObject();
+  QJsonObject data = mensaje[Protocolo::DATA].toObject();
 
   if (!data.contains("platos") || !data["platos"].isArray()) {
     qWarning() << "NUEVO_PEDIDO sin platos";
@@ -214,12 +206,12 @@ void LogicaNegocio::procesarNuevoPedido(const QJsonObject& mensaje, ManejadorCli
 void LogicaNegocio::procesarPrepararPedido(const QJsonObject& mensaje, ManejadorCliente* remitente) {
   std::lock_guard<std::mutex> lock(m_mutex);
 
-  if (!mensaje.contains("data") || !mensaje["data"].isObject()) {
+  if (!mensaje.contains(Protocolo::DATA) || !mensaje[Protocolo::DATA].isObject()) {
     qWarning() << "PREPARAR_PEDIDO sin data";
     return;
   }
 
-  QJsonObject data = mensaje["data"].toObject();
+  QJsonObject data = mensaje[Protocolo::DATA].toObject();
 
   if (!data.contains("id_instancia") || !data.contains("id_pedido")) {
     qWarning() << "PREPARAR_PEDIDO incompleto";
@@ -274,12 +266,12 @@ void LogicaNegocio::procesarPrepararPedido(const QJsonObject& mensaje, Manejador
 void LogicaNegocio::procesarCancelarPedido(const QJsonObject& mensaje, ManejadorCliente* remitente) {
   std::lock_guard<std::mutex> lock(m_mutex);
 
-  if (!mensaje.contains("data") || !mensaje["data"].isObject()) {
+  if (!mensaje.contains(Protocolo::DATA) || !mensaje[Protocolo::DATA].isObject()) {
     qWarning() << "CANCELAR_PEDIDO sin data";
     return;
   }
 
-  QJsonObject data = mensaje["data"].toObject();
+  QJsonObject data = mensaje[Protocolo::DATA].toObject();
 
   if (!data.contains("id_pedido")) {
     qWarning() << "CANCELAR_PEDIDO sin id_pedido";
@@ -314,12 +306,12 @@ void LogicaNegocio::procesarCancelarPedido(const QJsonObject& mensaje, Manejador
 void LogicaNegocio::procesarMarcarPlatoTerminado(const QJsonObject& mensaje, ManejadorCliente* remitente) {
   std::lock_guard<std::mutex> lock(m_mutex);
 
-  if (!mensaje.contains("data") || !mensaje["data"].isObject()) {
+  if (!mensaje.contains(Protocolo::DATA) || !mensaje[Protocolo::DATA].isObject()) {
     qWarning() << "MARCAR_PLATO_TERMINADO sin data";
     return;
   }
 
-  QJsonObject data = mensaje["data"].toObject();
+  QJsonObject data = mensaje[Protocolo::DATA].toObject();
 
   if (!data.contains("id_pedido") || !data.contains("id_instancia")) {
     qWarning() << "Faltan datos en MARCAR_PLATO_TERMINADO";
@@ -385,12 +377,12 @@ void LogicaNegocio::procesarMarcarPlatoTerminado(const QJsonObject& mensaje, Man
 void LogicaNegocio::procesarConfirmarEntrega(const QJsonObject& mensaje, ManejadorCliente* remitente) {
   std::lock_guard<std::mutex> lock(m_mutex);
 
-  if (!mensaje.contains("data") || !mensaje["data"].isObject()) {
+  if (!mensaje.contains(Protocolo::DATA) || !mensaje[Protocolo::DATA].isObject()) {
     qWarning() << "CONFIRMAR_ENTREGA sin data";
     return;
   }
 
-  QJsonObject data = mensaje["data"].toObject();
+  QJsonObject data = mensaje[Protocolo::DATA].toObject();
 
   if (!data.contains("id_pedido")) {
     qWarning() << "CONFIRMAR_ENTREGA sin id_pedido";
@@ -435,12 +427,12 @@ void LogicaNegocio::procesarConfirmarEntrega(const QJsonObject& mensaje, Manejad
 void LogicaNegocio::procesarDevolverPlato(const QJsonObject& mensaje, ManejadorCliente* remitente) {
   std::lock_guard<std::mutex> lock(m_mutex);
 
-  if (!mensaje.contains("data") || !mensaje["data"].isObject()) {
+  if (!mensaje.contains(Protocolo::DATA) || !mensaje[Protocolo::DATA].isObject()) {
     qWarning() << "DEVOLVER_PLATO sin data";
     return;
   }
 
-  QJsonObject data = mensaje["data"].toObject();
+  QJsonObject data = mensaje[Protocolo::DATA].toObject();
 
   if (!data.contains("id_pedido") || !data.contains("id_instancia")) {
     qWarning() << "DEVOLVER_PLATO incompleto";
