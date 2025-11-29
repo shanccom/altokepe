@@ -100,33 +100,45 @@ void ClienteManagerApp::onMensajeRecibido(const QJsonObject& mensaje) {
 
 void ClienteManagerApp::onPrepararPedido(long long idPedido) {
   qDebug() << "Solicitando preparar pedido con ID:" << idPedido;
+
+  QJsonObject data;
+  data["id_pedido"] = QJsonValue::fromVariant(QVariant::fromValue(idPedido));
   QJsonObject comando;
   comando[Protocolo::COMANDO] = Protocolo::PREPARAR_PEDIDO;
-  comando["id_pedido"] = QJsonValue::fromVariant(QVariant::fromValue(idPedido));
+  comando[Protocolo::DATA] = data;
   m_clienteTCP->enviarMensaje(comando);
 }
 
 void ClienteManagerApp::onCancelarPedido(long long idPedido) {
   qDebug() << "Solicitando cancelar pedido con ID:" << idPedido;
+
+  QJsonObject data;
+  data["id_pedido"] = QJsonValue::fromVariant(QVariant::fromValue(idPedido));
   QJsonObject comando;
   comando[Protocolo::COMANDO] = Protocolo::CANCELAR_PEDIDO;
-  comando["id_pedido"] = QJsonValue::fromVariant(QVariant::fromValue(idPedido));
+  comando[Protocolo::DATA] = data;
   m_clienteTCP->enviarMensaje(comando);
 }
 
 void ClienteManagerApp::onEnviarPedido(long long idPedido) {
   qDebug() << "Solicitando ENVIAR platos del pedido:" << idPedido;
+
+  QJsonObject data;
+  data["id_pedido"] = QJsonValue::fromVariant(QVariant::fromValue(idPedido));
   QJsonObject comando;
   comando[Protocolo::COMANDO] = Protocolo::CONFIRMAR_ENTREGA;
-  comando["id_pedido"] = QJsonValue::fromVariant(QVariant::fromValue(idPedido));
+  comando[Protocolo::DATA] = data;
   m_clienteTCP->enviarMensaje(comando);
 }
 
 void ClienteManagerApp::onRechazarPedido(long long idPedido) {
   qDebug() << "Solicitando RECHAZAR/DEVOLVER platos del pedido:" << idPedido;
+
+  QJsonObject data;
+  data["id_pedido"] = QJsonValue::fromVariant(QVariant::fromValue(idPedido));
   QJsonObject comando;
   comando[Protocolo::COMANDO] = Protocolo::DEVOLVER_PLATO;
-  comando["id_pedido"] = QJsonValue::fromVariant(QVariant::fromValue(idPedido));
+  comando[Protocolo::DATA] = data;
   // En una implementación más detallada, se podría especificar qué plato devolver.
   // Por ahora, se asume que se devuelven todos los que no estén entregados.
   m_clienteTCP->enviarMensaje(comando);

@@ -81,6 +81,11 @@ private:
 
   // Construye menú y pedidos clasificados para el Manager Chef.
   QJsonObject construirEstadoManagerChef();
+  
+  void enviarError(ManejadorCliente* cliente, const QString& mensajeError, const QJsonObject& dataContexto = QJsonObject());
+
+  // Emitir broadcast de ranking
+  void notificarActualizacionRanking();
 };
 
 #endif
