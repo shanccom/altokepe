@@ -20,6 +20,7 @@ ClienteManagerApp::ClienteManagerApp(QObject* parent) : QObject(parent) {
   connect(m_ventana, &VentanaManager::cancelarPedidoSolicitado, this, &ClienteManagerApp::onCancelarPedido);
   connect(m_ventana, &VentanaManager::enviarPedidoSolicitado, this, &ClienteManagerApp::onEnviarPedido);
   connect(m_ventana, &VentanaManager::rechazarPedidoSolicitado, this, &ClienteManagerApp::onRechazarPedido);
+  connect(m_ventana, &VentanaManager::rechazarPlatoSolicitado, this, &ClienteManagerApp::onRechazarPlato);
 }
 
 void ClienteManagerApp::iniciar() {
@@ -141,5 +142,19 @@ void ClienteManagerApp::onRechazarPedido(long long idPedido) {
   comando[Protocolo::DATA] = data;
   // En una implementación más detallada, se podría especificar qué plato devolver.
   // Por ahora, se asume que se devuelven todos los que no estén entregados.
+  m_clienteTCP->enviarMensaje(comando);
+}
+
+void ClienteManagerApp::onRechazarPlato(long long idPedido, long long idInstancia) {
+  qDebug() << "Solicitando DEVOLVER plato específico:" << idInstancia << "del pedido:" << idPedido;
+
+  QJsonObject data;
+  data["id_pedido"] = QJsonValue::fromVariant(QVariant::fromValue(idPedido));
+  data["id_instancia"] = QJsonValue::fromVariant(QVariant::fromValue(idInstancia));
+
+  QJsonObject comando;
+  comando[Protocolo::COMANDO] = Protocolo::DEVOLVER_PLATO;
+  comando[Protocolo::DATA] = data;
+
   m_clienteTCP->enviarMensaje(comando);
 }
