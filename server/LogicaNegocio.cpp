@@ -189,9 +189,11 @@ void LogicaNegocio::procesarNuevoPedido(const QJsonObject& mensaje, ManejadorCli
   m_pedidosActivos[idPedido] = pedido;
   m_colaManagerChef.push(idPedido);
 
+  QJsonObject pedidoJson = m_serializador.pedidoMesaToJson(pedido);
+
   QJsonObject msg;
   msg[Protocolo::EVENTO] = Protocolo::PEDIDO_REGISTRADO;
-  msg["id_pedido"] = (int)idPedido;
+  msg["id_pedido"] = pedidoJson;
 
   emit enviarRespuesta(remitente, msg);
 

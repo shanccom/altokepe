@@ -54,7 +54,7 @@ void ClienteManagerApp::onMensajeRecibido(const QJsonObject& mensaje) {
       qDebug() << "Menú inicial recibido con" << m_menu.size() << "platos.";
     }
 
-    auto deserializarPedidos = [](const QJsonObject& data, const QString& clave) {
+    auto deserializarPedidos = [this](const QJsonObject& data, const QString& clave) {
       std::vector<PedidoMesa> pedidos;
       QJsonArray pedidosJson = data[clave].toArray();
       for (const QJsonValue& val : pedidosJson) {
@@ -68,23 +68,33 @@ void ClienteManagerApp::onMensajeRecibido(const QJsonObject& mensaje) {
     std::vector<PedidoMesa> terminados = deserializarPedidos(data, "pedidos_terminados");
 
     m_ventana->cargarEstadoInicial(pendientes, enProgreso, terminados, m_menu);
-  } else if (evento == "PEDIDO_NUEVO") {
+
+  } else if (evento == Protocolo::PEDIDO_REGISTRADO) {
     PedidoMesa pedido = m_serializador.jsonToPedidoMesa(data);
     m_ventana->onPedidoNuevo(pedido, m_menu);
-  } else if (evento == "PEDIDO_A_PROGRESO") {
+
+  } else if (evento == Protocolo::PLATO_EN_PREPARACION) {
     long long idPedido = data["id_pedido"].toVariant().toLongLong();
+    long long idInstancia = data["id_instancia"].toInt();
+    m_ventana->onActualizarEstadoPlato(idPedido, idInstancia, "EN_PROGRESO");
     m_ventana->onPedidoAMover(idPedido, "progreso");
-  } else if (evento == "PEDIDO_COMPLETADO") {
+
+  } else if (evento == Protocolo::PLATO_TERMINADO) {
     long long idPedido = data["id_pedido"].toVariant().toLongLong();
-    m_ventana->onPedidoAMover(idPedido, "terminado");
-  } else if (evento == "PEDIDO_CANCELADO" || evento == "PEDIDO_ENTREGADO") {
+    long long idInstancia = data["id_instancia"].toInt();
+    bool pedidoListo = data["pedido_listo"].toBool();
+    m_ventana->onActualizarEstadoPlato(idPedido, idInstancia, "FINALIZADO");
+    if (pedidoListo) m_ventana->onPedidoAMover(idPedido, "terminado");
+
+  } else if (evento == Protocolo::PEDIDO_CANCELADO || evento == Protocolo::PEDIDO_ENTREGADO) {
     long long idPedido = data["id_pedido"].toVariant().toLongLong();
     m_ventana->onPedidoAEliminar(idPedido);
-  } else if (evento == "PLATO_ESTADO_CAMBIADO") {
+
+  } else if (evento == Protocolo::PLATO_DEVUELTO) {
     long long idPedido = data["id_pedido"].toVariant().toLongLong();
     long long idInstancia = data["id_instancia"].toVariant().toLongLong();
-    QString nuevoEstado = data["nuevo_estado"].toString();
-    m_ventana->onActualizarEstadoPlato(idPedido, idInstancia, nuevoEstado);
+    m_ventana->onActualizarEstadoPlato(idPedido, idInstancia, "DEVUELTO");
+    m_ventana->onPedidoAMover(idPedido, "progreso");
   }
 }
 
