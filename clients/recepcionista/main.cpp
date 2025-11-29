@@ -2,20 +2,22 @@
 #include "ui/VentanaRecepcionista.h"
 #include <QFile>
 #include <QTextStream>
+#include "data/GestorPedidos.h"
 
 int main(int argc, char *argv[]) {
-  QApplication app(argc, argv);
+    QApplication app(argc, argv);
 
-  // Cargar archivo QSS
-  QFile file(":/styles.qss");
-  if (file.open(QFile::ReadOnly | QFile::Text)) {
-    QTextStream stream(&file);
-    QString styleSheet = stream.readAll();
-    app.setStyleSheet(styleSheet);
-  }
+    QFile file(":/styles.qss");
+    if (file.open(QFile::ReadOnly | QFile::Text)) {
+        QTextStream stream(&file);
+        QString styleSheet = stream.readAll();
+        app.setStyleSheet(styleSheet);
+    }
 
-  VentanaRecepcionista ventana;
-  ventana.showMaximized();
+    gestorPedidos.cargarDesdeHistorial();
 
-  return app.exec();
+    VentanaRecepcionista ventana;
+    ventana.showMaximized();
+
+    return app.exec();
 }

@@ -27,8 +27,15 @@ add_executable(ClienteRecepcionista
   network/ClienteRecepcionista.cpp
   network/ClienteRecepcionista.h 
 
+  # Patrón Facade - Interfaz simplificada para subsistema de red
+  facade/RecepcionistaFacade.cpp
+  facade/RecepcionistaFacade.h
+
   # Archivos de 'common' necesarios
   ../../common/network/SerializadorJSON.cpp
+  
+  # Historial
+  data/GestorPedidos.cpp
 )
 
 target_link_libraries(ClienteRecepcionista PRIVATE Qt6::Widgets Qt6::Network)

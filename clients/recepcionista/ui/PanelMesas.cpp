@@ -70,4 +70,3 @@ void PanelMesas::actualizarEstilos() {
         }
     }
 }
-
