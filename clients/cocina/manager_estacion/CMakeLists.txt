@@ -19,7 +19,7 @@ add_executable(ManagerChefClient
   main.cpp
   
   # Capa de Red
-  network/ClienteManagerApp.cpp
+  network/ClienteEstacionApp.cpp
   network/ClienteTCP.cpp
 )
 
