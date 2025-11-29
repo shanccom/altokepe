@@ -14,6 +14,7 @@
 #include "common/models/InfoPlatoPrioridad.h"
 #include "common/models/Estados.h"
 #include "common/adapter/AdaptadorSerializadorJSON.h"
+#include "LogicaNegocioHandlers.h"
 
 class ManejadorCliente;
 
@@ -49,6 +50,11 @@ public:
   // Facade para Ranking
   QJsonObject getEstadoParaRanking();
   void registrarVenta(int idPlato);
+
+  // Chain of Responsibility
+  PedidoMesa* obtenerPedido(long long idPedido);
+  PlatoInstancia* obtenerInstancia(PedidoMesa& pedido, long long idInstancia);
+  PlatoDefinicion* obtenerDefinicionPlato(int idPlato);
 
 signals:
   void enviarRespuesta(ManejadorCliente* cliente, const QJsonObject& mensaje);
