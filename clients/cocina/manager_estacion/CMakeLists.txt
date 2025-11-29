@@ -21,6 +21,16 @@ add_executable(ManagerChefClient
   # Capa de Red
   network/ClienteEstacionApp.cpp
   network/ClienteTCP.cpp
+  
+  # Capa de UI
+  ui/VentanaEstacion.cpp
+  ui/VentanaEstacionesUnificadas.cpp
+  
+  # Common/Shared
+  ../../../common/network/SerializadorJSON.cpp
+  
+  # Resources
+  resources.qrc
 )
 
 # Vincular las librerías de Qt al ejecutable
