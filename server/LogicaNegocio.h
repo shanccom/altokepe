@@ -13,6 +13,7 @@
 #include "common/models/PlatoDefinicion.h"
 #include "common/models/InfoPlatoPrioridad.h"
 #include "common/models/Estados.h"
+#include "common/adapter/AdaptadorSerializadorJSON.h"
 
 class ManejadorCliente;
 
@@ -64,6 +65,8 @@ private:
 
   long long m_siguienteIdPedido;
   long long m_siguienteIdInstanciaPlato;
+
+  AdaptadorSerializadorJSON m_serializador;
 };
 
 #endif

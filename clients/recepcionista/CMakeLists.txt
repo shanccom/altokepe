@@ -33,6 +33,7 @@ add_executable(ClienteRecepcionista
 
   # Archivos de 'common' necesarios
   ../../common/network/SerializadorJSON.cpp
+  ../../common/adapter/AdaptadorSerializadorJSON.cpp
 )
 
 target_link_libraries(ClienteRecepcionista PRIVATE Qt6::Widgets Qt6::Network)

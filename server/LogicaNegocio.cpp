@@ -2,7 +2,7 @@
 #include "ManejadorCliente.h"
 #include "common/network/Protocolo.h"
 #include "common/models/Estados.h"
-#include "common/network/SerializadorJSON.h"
+#include "common/adapter/AdaptadorSerializadorJSON.h"
 #include <QFile>
 #include <QJsonDocument>
 #include <QJsonObject>
@@ -46,7 +46,7 @@ void LogicaNegocio::cargarMenuDesdeArchivo(const QString& rutaArchivo) {
   m_menu.clear();
   QJsonArray menuArray = doc.array();
   for (const QJsonValue& val : menuArray) {
-    PlatoDefinicion plato = SerializadorJSON::jsonToPlatoDefinicion(val.toObject());
+    PlatoDefinicion plato = m_serializador.jsonToPlatoDefinicion(val.toObject());
     m_menu[plato.id] = plato;
   }
   qInfo() << "Menú cargado desde" << rutaArchivo << "con" << m_menu.size() << "platos.";
