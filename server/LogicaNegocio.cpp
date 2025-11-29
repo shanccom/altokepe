@@ -76,8 +76,13 @@ void LogicaNegocio::enviarEstadoInicial(ManejadorCliente* cliente) {
   } else if (tipo == TipoActor::ESTACION_COCINA) {
     //estado = getEstadoParaEstacion(cliente->getNombreEstacion().toStdString());
   } else if (tipo == TipoActor::RECEPCIONISTA) {
+<<<<<<< HEAD
     QJsonObject mensaje;
     QJsonArray menuArray;
+=======
+      QJsonObject mensaje;
+      QJsonArray menuArray;
+>>>>>>> 3566dddfb41ca6b69f95f9061bbe6ec424c1fc44
 
     for (const auto& par : m_menu) {
       const PlatoDefinicion& plato = par.second;
@@ -128,11 +133,54 @@ QJsonObject LogicaNegocio::getEstadoParaRanking() {
 }
 
 void LogicaNegocio::registrarVenta(int idPlato) {
+<<<<<<< HEAD
   QJsonObject rankingMsg;
   {
     std::lock_guard<std::mutex> lock(m_mutex);
     m_conteoPlatosRanking[idPlato]++;
     rankingMsg = getEstadoParaRanking(); // Generar bajo lock
+=======
+    {
+        std::lock_guard<std::mutex> lock(m_mutex);
+        m_conteoPlatosRanking[idPlato]++;
+    }
+
+    // Notificar a todos (Observer)
+    emit enviarRespuesta(nullptr, getEstadoParaRanking());
+}
+
+
+void LogicaNegocio::procesarMensaje(const QJsonObject& mensaje, ManejadorCliente* remitente) {
+  QString comando = mensaje[Protocolo::COMANDO].toString();
+
+  if (comando == Protocolo::NUEVO_PEDIDO) {
+    procesarNuevoPedido(mensaje, remitente);
+
+  } else if (comando == Protocolo::PREPARAR_PEDIDO) {
+    procesarPrepararPedido(mensaje, remitente);
+
+  } else if (comando == Protocolo::CANCELAR_PEDIDO) {
+    procesarCancelarPedido(mensaje, remitente);
+
+  } else if (comando == Protocolo::MARCAR_PLATO_TERMINADO) {
+    procesarMarcarPlatoTerminado(mensaje, remitente);
+
+  } else if (comando == Protocolo::CONFIRMAR_ENTREGA) {
+    procesarConfirmarEntrega(mensaje, remitente);
+
+  } else if (comando == Protocolo::DEVOLVER_PLATO) {
+    //procesarDevolverPlato(mensaje, remitente);
+  } else if (comando == "SOLICITAR_ESTADO") {
+    //enviarEstadoInicial(remitente);  // <<=== NUEVO
+  } else if (comando == "SIMULAR_VENTA") {
+    // Comando de DEBUG para probar el ranking sin implementar todo el flujo de pedidos
+    int idPlato = mensaje["id_plato"].toInt(1); // Por defecto plato ID 1
+    qDebug() << "DEBUG: Simulando venta del plato ID:" << idPlato;
+    registrarVenta(idPlato);
+  } else {
+    qWarning() << "Comando desconocido recibido:" << comando;
+    return;
+>>>>>>> 3566dddfb41ca6b69f95f9061bbe6ec424c1fc44
   }
 
   // Notificar a todos (Observer)
