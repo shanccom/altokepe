@@ -147,14 +147,12 @@ void LogicaNegocio::procesarNuevoPedido(const QJsonObject& mensaje, ManejadorCli
     qWarning() << "NUEVO_PEDIDO sin data";
     return;
   }
-
   QJsonObject data = mensaje[Protocolo::DATA].toObject();
 
   if (!data.contains("platos") || !data["platos"].isArray()) {
     qWarning() << "NUEVO_PEDIDO sin platos";
     return;
   }
-
   long long idPedido = m_siguienteIdPedido++;
 
   PedidoMesa pedido;
@@ -198,8 +196,7 @@ void LogicaNegocio::procesarNuevoPedido(const QJsonObject& mensaje, ManejadorCli
   emit enviarRespuesta(remitente, msg);
 
   for (auto cli : m_manejadoresActivos)
-    if (cli->getTipoActor() == TipoActor::MANAGER_CHEF)
-      emit enviarRespuesta(cli, msg);
+    if (cli->getTipoActor() == TipoActor::MANAGER_CHEF) emit enviarRespuesta(cli, msg);
 
   qInfo() << "Pedido" << idPedido << "registrado.";
 }
@@ -220,9 +217,9 @@ void LogicaNegocio::procesarPrepararPedido(const QJsonObject& mensaje, Manejador
   msg[Protocolo::EVENTO] = Protocolo::PLATO_EN_PREPARACION;
   msg["id_pedido"] = (int)pedido.idPedido;
   msg["id_instancia"] = (int)pedido.idInstancia;
+  msg["nuevo_estado"] = SerializadorJSON::estadoPlatoToString(EstadoPlato::EN_PROGRESO);
 
-  for (auto cli : m_manejadoresActivos)
-    emit enviarRespuesta(cli, msg);
+  for (auto cli : m_manejadoresActivos) emit enviarRespuesta(cli, msg);
 
   qInfo() << "Plato" << pedido.idInstancia << "del pedido" << pedido.idPedido << "pasó a EN_PREPARACION.";
 }
@@ -234,35 +231,29 @@ void LogicaNegocio::procesarCancelarPedido(const QJsonObject& mensaje, Manejador
     qWarning() << "CANCELAR_PEDIDO sin data";
     return;
   }
-
   QJsonObject data = mensaje[Protocolo::DATA].toObject();
 
   if (!data.contains("id_pedido")) {
     qWarning() << "CANCELAR_PEDIDO sin id_pedido";
     return;
   }
-
   long long idPedido = data["id_pedido"].toInt();
 
   if (m_pedidosActivos.find(idPedido) == m_pedidosActivos.end()) {
     qWarning() << "Pedido no existe:" << idPedido;
     return;
   }
-
   PedidoMesa& pedido = m_pedidosActivos[idPedido];
   pedido.estado_general = EstadoPedido::CANCELADO;
 
-  for (auto& inst : pedido.platos) {
-    inst.estado = EstadoPlato::CANCELADO;
-  }
+  for (auto& inst : pedido.platos) inst.estado = EstadoPlato::CANCELADO;
 
   QJsonObject msg;
   msg[Protocolo::EVENTO] = Protocolo::PEDIDO_CANCELADO;
   msg["id_pedido"] = (int)idPedido;
 
   // Notifica a todos los roles
-  for (auto cli : m_manejadoresActivos)
-    emit enviarRespuesta(cli, msg);
+  for (auto cli : m_manejadoresActivos) emit enviarRespuesta(cli, msg);
 
   qInfo() << "Pedido" << idPedido << "ha sido CANCELADO.";
 }
@@ -283,18 +274,16 @@ void LogicaNegocio::procesarMarcarPlatoTerminado(const QJsonObject& mensaje, Man
     }
   }
 
-  if (todoTerminado) {
-    pedido.pedido->estado_general = EstadoPedido::LISTO;
-  }
+  if (todoTerminado) pedido.pedido->estado_general = EstadoPedido::LISTO;
 
   QJsonObject msg;
   msg[Protocolo::EVENTO] = Protocolo::PLATO_TERMINADO;
   msg["id_pedido"] = (int)pedido.idPedido;
   msg["id_instancia"] = (int)pedido.idInstancia;
   msg["pedido_listo"] = todoTerminado;
+  msg["nuevo_estado"] = SerializadorJSON::estadoPlatoToString(EstadoPlato::FINALIZADO);
 
-  for (auto cli : m_manejadoresActivos)
-    emit enviarRespuesta(cli, msg);
+  for (auto cli : m_manejadoresActivos) emit enviarRespuesta(cli, msg);
 
   qInfo() << "Plato" << pedido.idInstancia << "terminado. Pedido"
           << pedido.idPedido << (todoTerminado ? "LISTO" : "AÚN EN PROCESO");
@@ -307,45 +296,36 @@ void LogicaNegocio::procesarConfirmarEntrega(const QJsonObject& mensaje, Manejad
     qWarning() << "CONFIRMAR_ENTREGA sin data";
     return;
   }
-
   QJsonObject data = mensaje[Protocolo::DATA].toObject();
 
   if (!data.contains("id_pedido")) {
     qWarning() << "CONFIRMAR_ENTREGA sin id_pedido";
     return;
   }
-
   long long idPedido = data["id_pedido"].toInt();
 
   if (m_pedidosActivos.find(idPedido) == m_pedidosActivos.end()) {
     qWarning() << "Pedido no encontrado en CONFIRMAR_ENTREGA:" << idPedido;
     return;
   }
-
   PedidoMesa& pedido = m_pedidosActivos[idPedido];
+
   if (pedido.estado_general != EstadoPedido::LISTO) {
     qWarning() << "No se puede confirmar entrega: pedido no está LISTO. Estado actual:" << (int)pedido.estado_general;
     return;
   }
-
   pedido.estado_general = EstadoPedido::ENTREGADO;
 
-  for (auto& inst : pedido.platos) {
-    inst.estado = EstadoPlato::ENTREGADO;
-  }
+  for (auto& inst : pedido.platos) inst.estado = EstadoPlato::ENTREGADO;
 
   QJsonObject msg;
   msg[Protocolo::EVENTO] = Protocolo::PEDIDO_ENTREGADO;
   msg["id_pedido"] = (int)idPedido;
 
-  for (auto cli : m_manejadoresActivos) {
-    emit enviarRespuesta(cli, msg);
-  }
+  for (auto cli : m_manejadoresActivos) emit enviarRespuesta(cli, msg);
 
   // Actualizar ranking
-  for (const auto& inst : pedido.platos) {
-    m_conteoPlatosRanking[inst.id_plato_definicion]++;
-  }
+  for (const auto& inst : pedido.platos) m_conteoPlatosRanking[inst.id_plato_definicion]++;
 
   qInfo() << "Pedido" << idPedido << "ENTREGADO correctamente.";
 }
@@ -360,7 +340,6 @@ void LogicaNegocio::procesarDevolverPlato(const QJsonObject& mensaje, ManejadorC
     qWarning() << "No se puede devolver un plato que NO está ENTREGADO.";
     return;
   }
-
   pedido.plato->estado = EstadoPlato::DEVUELTO;
 
   // Obtenemos info extra necesaria para la lógica de re-encolado
@@ -382,8 +361,7 @@ void LogicaNegocio::procesarDevolverPlato(const QJsonObject& mensaje, ManejadorC
   msg["id_instancia"] = (int)pedido.idInstancia;
   msg["estacion"] = QString::fromStdString(estacionObjetivo);
 
-  for (auto cli : m_manejadoresActivos)
-    emit enviarRespuesta(cli, msg);
+  for (auto cli : m_manejadoresActivos) emit enviarRespuesta(cli, msg);
 
   qInfo() << "Plato" << pedido.idInstancia << "del pedido" << pedido.idPedido << "ha sido DEVUELTO.";
 }
@@ -396,17 +374,16 @@ LogicaNegocio::ResultadoValidacion LogicaNegocio::validarYObtenerPlato(const QJs
     qWarning() << "Mensaje sin data válida";
     return resultado;
   }
-
   QJsonObject data = mensaje[Protocolo::DATA].toObject();
+
   if (!data.contains("id_pedido") || !data.contains("id_instancia")) {
     qWarning() << "Faltan IDs en el mensaje";
     return resultado;
   }
-
   resultado.idPedido = data["id_pedido"].toInt();
   resultado.idInstancia = data["id_instancia"].toInt();
-
   auto itPedido = m_pedidosActivos.find(resultado.idPedido);
+
   if (itPedido == m_pedidosActivos.end()) {
     qWarning() << "Pedido no encontrado:" << resultado.idPedido;
     return resultado;
