@@ -67,6 +67,18 @@ private:
   long long m_siguienteIdInstanciaPlato;
 
   AdaptadorSerializadorJSON m_serializador;
+
+  struct ResultadoValidacion {
+    PedidoMesa* pedido = nullptr;
+    PlatoInstancia* plato = nullptr;
+    long long idPedido = -1;
+    long long idInstancia = -1;
+    bool exito = false;
+  };
+
+  ResultadoValidacion validarYObtenerPlato(const QJsonObject& mensaje,
+      ManejadorCliente* remitente, bool validarEstacion);
+
 };
 
 #endif
