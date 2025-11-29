@@ -79,6 +79,8 @@ private:
   ResultadoValidacion validarYObtenerPlato(const QJsonObject& mensaje,
       ManejadorCliente* remitente, bool validarEstacion);
 
+  // Construye menú y pedidos clasificados para el Manager Chef.
+  QJsonObject construirEstadoManagerChef();
 };
 
 #endif

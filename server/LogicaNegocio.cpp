@@ -69,12 +69,13 @@ void LogicaNegocio::enviarEstadoInicial(ManejadorCliente* cliente) {
   TipoActor tipo = cliente->getTipoActor();
 
   if (tipo == TipoActor::MANAGER_CHEF) {
-    //estado = getEstadoParaManager(true);
+    estado = construirEstadoManagerChef();
+    emit enviarRespuesta(cliente, estado);
   } else if (tipo == TipoActor::RANKING) {
     estado = getEstadoParaRanking();
     emit enviarRespuesta(cliente, estado);
   } else if (tipo == TipoActor::ESTACION_COCINA) {
-    //estado = getEstadoParaEstacion(cliente->getNombreEstacion().toStdString());
+    // estado = getEstadoParaEstacion(cliente->getNombreEstacion().toStdString());
   } else if (tipo == TipoActor::RECEPCIONISTA) {
     QJsonObject mensaje;
     QJsonArray menuArray;
@@ -431,4 +432,51 @@ LogicaNegocio::ResultadoValidacion LogicaNegocio::validarYObtenerPlato(const QJs
   return resultado;
 }
 
+QJsonObject LogicaNegocio::construirEstadoManagerChef() {
+  QJsonArray menuArray;
+  for (const auto& par : m_menu) {
+    menuArray.append(SerializadorJSON::platoDefinicionToJson(par.second));
+  }
 
+  QJsonArray pendientes;
+  QJsonArray enProgreso;
+  QJsonArray terminados;
+
+  for (const auto& par : m_pedidosActivos) {
+    const PedidoMesa& pedido = par.second;
+    QJsonObject pedidoJson = SerializadorJSON::pedidoMesaToJson(pedido);
+
+    switch (pedido.estado_general) {
+      case EstadoPedido::PENDIENTE:
+        pendientes.append(pedidoJson);
+        break;
+
+      case EstadoPedido::EN_PROGRESO:
+        enProgreso.append(pedidoJson);
+        break;
+
+      // Agrupamos LISTO, ENTREGADO y CANCELADO en 'terminados' para que el Manager 
+      // pueda ver el historial de la sesión o gestionar entregas.
+      case EstadoPedido::LISTO:
+      case EstadoPedido::ENTREGADO:
+      case EstadoPedido::CANCELADO:
+        terminados.append(pedidoJson);
+        break;
+
+      default:
+        break;
+    }
+  }
+
+  QJsonObject data;
+  data["menu"] = menuArray;
+  data["pedidos_pendientes"] = pendientes;
+  data["pedidos_en_progreso"] = enProgreso;
+  data["pedidos_terminados"] = terminados;
+
+  QJsonObject mensaje;
+  mensaje[Protocolo::EVENTO] = Protocolo::ACTUALIZACION_ESTADO_GENERAL;
+  mensaje[Protocolo::DATA] = data;
+
+  return mensaje;
+}
