@@ -2,7 +2,7 @@
 #include "../ui/VentanaManager.h"
 #include "../network/ClienteTCP.h"
 #include "common/network/Protocolo.h"
-#include "common/network/SerializadorJSON.h"
+#include "common/adapter/AdaptadorSerializadorJSON.h"
 #include <QJsonObject>
 #include <QJsonArray>
 #include <QDebug>
@@ -48,7 +48,7 @@ void ClienteManagerApp::onMensajeRecibido(const QJsonObject& mensaje) {
       m_menu.clear();
       QJsonArray menuArray = data["menu"].toArray();
       for (const QJsonValue& val : menuArray) {
-        PlatoDefinicion plato = SerializadorJSON::jsonToPlatoDefinicion(val.toObject());
+        PlatoDefinicion plato = m_serializador.jsonToPlatoDefinicion(val.toObject());
         m_menu[plato.id] = plato;
       }
       qDebug() << "Menú inicial recibido con" << m_menu.size() << "platos.";
@@ -58,7 +58,7 @@ void ClienteManagerApp::onMensajeRecibido(const QJsonObject& mensaje) {
       std::vector<PedidoMesa> pedidos;
       QJsonArray pedidosJson = data[clave].toArray();
       for (const QJsonValue& val : pedidosJson) {
-        pedidos.push_back(SerializadorJSON::jsonToPedidoMesa(val.toObject()));
+        pedidos.push_back(m_serializador.jsonToPedidoMesa(val.toObject()));
       }
       return pedidos;
     };
@@ -69,7 +69,7 @@ void ClienteManagerApp::onMensajeRecibido(const QJsonObject& mensaje) {
 
     m_ventana->cargarEstadoInicial(pendientes, enProgreso, terminados, m_menu);
   } else if (evento == "PEDIDO_NUEVO") {
-    PedidoMesa pedido = SerializadorJSON::jsonToPedidoMesa(data);
+    PedidoMesa pedido = m_serializador.jsonToPedidoMesa(data);
     m_ventana->onPedidoNuevo(pedido, m_menu);
   } else if (evento == "PEDIDO_A_PROGRESO") {
     long long idPedido = data["id_pedido"].toVariant().toLongLong();
