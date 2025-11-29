@@ -3,11 +3,8 @@
 #include <QWidget>
 #include <QJsonArray>
 #include <QMap>
+#include "../network/ClienteRecepcionista.h"
 #include <QHeaderView>
-
-// PATRÓN FACADE: Forward declaration en lugar de include
-// Reduce acoplamiento y dependencias de compilación
-class RecepcionistaFacade;
 
 class QLabel;
 class QLineEdit;
@@ -18,9 +15,7 @@ class QPushButton;
 class PanelPedido : public QWidget {
   Q_OBJECT
 public:
-  // PATRÓN FACADE + INYECCIÓN DE DEPENDENCIAS:
-  // Recibe el Facade desde afuera en lugar de crearlo internamente
-  explicit PanelPedido(RecepcionistaFacade *facade, QWidget *parent = nullptr);
+  explicit PanelPedido(QWidget *parent = nullptr);
   void setNumeroMesa(int numero);
 
 private:
@@ -36,9 +31,7 @@ private:
   QTableWidget *tablaPedido;
   QPushButton *botonEnviar;
 
-  // PATRÓN FACADE: Puntero a Facade compartido (no instancia propia)
-  // Ventaja: Una sola conexión TCP para toda la aplicación
-  RecepcionistaFacade *facade;
+  ClienteRecepcionista cliente;
 
   void configurarUI();
   void agregarPlatoAlPedido(int idPlato, const QString &nombre);
