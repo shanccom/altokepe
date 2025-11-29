@@ -6,6 +6,7 @@
 
 ColumnaPedidos::ColumnaPedidos(const QString& titulo, QWidget* parent)
   : QWidget(parent) {
+  setAttribute(Qt::WA_StyledBackground, true); 
 
   this->setProperty("class", "ColumnaPedidos");
 
