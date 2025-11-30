@@ -105,9 +105,6 @@ void VentanaManager::onPedidoNuevo(
   m_columnaPendiente->agregarPedido(tarjeta);
   m_mapaTarjetas[pedido.id_pedido] = tarjeta;
 
-  // Ocultar botones inicialmente, luego la lógica de columna decide si se muestra
-  tarjeta->setModoProgreso();
-
   actualizarBotonesColumnaPendiente();
 }
 
@@ -155,8 +152,10 @@ void VentanaManager::onActualizarEstadoPlato(
 }
 
 void VentanaManager::actualizarBotonesColumnaPendiente() {
-  TarjetaPedido* primerPedido = m_columnaPendiente->getPrimerPedido();
-  if (primerPedido) {
-    primerPedido->setModoPendiente();
+  QList<TarjetaPedido*> pedidos = m_columnaPendiente->obtenerTodosLosPedidos();
+
+  for (int i = 0; i < pedidos.size(); ++i) {
+    TarjetaPedido* tarjeta = pedidos[i];
+    tarjeta->setConfiguracionPendiente(i == 0);
   }
 }

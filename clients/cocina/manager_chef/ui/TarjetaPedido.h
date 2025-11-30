@@ -17,12 +17,8 @@ public:
   void agregarPlato(long long idInstancia, const QString& nombrePlato, const QString& estado);
   void actualizarEstadoPlato(long long idInstancia, const QString& nuevoEstado);
 
-  void agregarAcciones(bool esPrimerPedido);
-  void agregarAccionesTerminado();
-  void quitarAcciones();
-
   // Métodos para cambiar modo visual en lugar de crear/destruir botones
-  void setModoPendiente();
+  void setConfiguracionPendiente(bool esElPrimero);
   void setModoTerminado();
   void setModoProgreso();
   

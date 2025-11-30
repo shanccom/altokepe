@@ -95,10 +95,12 @@ void TarjetaPedido::actualizarEstadoPlato(long long idInstancia, const QString& 
   }
 }
 
-void TarjetaPedido::setModoPendiente() {
+void TarjetaPedido::setConfiguracionPendiente(bool esElPrimero) {
   m_contenedorBotones->setVisible(true);
   m_btnCancelar->setVisible(true);
-  m_btnPreparar->setVisible(true);
+
+  // El botón Preparar SOLO está visible si es el primero en la cola (Lógica FIFO),
+  m_btnPreparar->setVisible(esElPrimero);
 
   m_btnRechazar->setVisible(false);
   m_btnEnviar->setVisible(false);
