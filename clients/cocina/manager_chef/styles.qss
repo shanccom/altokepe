@@ -85,6 +85,7 @@ QLabel[tipo="estado"] {
 /* Selectores basados en la propiedad dinámica 'estado_plato' */
 QLabel[estado_plato="EN_ESPERA"]   { background-color: #999999; }
 QLabel[estado_plato="EN_PROGRESO"] { background-color: #f0ad4e; } /* Naranja */
+QLabel[estado_plato="PREPARANDO"] { background-color: #9F8DEB; } /* Morado */
 QLabel[estado_plato="FINALIZADO"]  { background-color: #5cb85c; } /* Verde */
 QLabel[estado_plato="ENTREGADO"]   { background-color: #0275d8; } /* Azul */
 QLabel[estado_plato="DEVUELTO"]    { background-color: #d9534f; } /* Rojo */
