@@ -286,13 +286,38 @@ void LogicaNegocio::procesarCancelarPedido(const QJsonObject& mensaje, Manejador
   long long idPedido = data["id_pedido"].toInt();
 
   if (m_pedidosActivos.find(idPedido) == m_pedidosActivos.end()) {
-    qWarning() << "Pedido no existe:" << idPedido;
+    enviarError(remitente, "El pedido no existe.", data);
     return;
   }
-  PedidoMesa& pedido = m_pedidosActivos[idPedido];
-  pedido.estado_general = EstadoPedido::CANCELADO;
 
-  for (auto& inst : pedido.platos) inst.estado = EstadoPlato::CANCELADO;
+  PedidoMesa& pedido = m_pedidosActivos[idPedido];
+
+  bool cocinaTrabajando = false;
+  for (const auto& inst : pedido.platos) {
+    if (inst.estado == EstadoPlato::EN_PROGRESO || 
+      inst.estado == EstadoPlato::FINALIZADO || 
+      inst.estado == EstadoPlato::ENTREGADO) {
+      cocinaTrabajando = true;
+      break;
+    }
+  }
+
+  if (cocinaTrabajando) {
+    enviarError(remitente, "No se puede cancelar: La cocina ya está preparando este pedido.", data);
+    return;
+  }
+
+  if (pedido.estado_general == EstadoPedido::ENTREGADO || 
+      pedido.estado_general == EstadoPedido::CANCELADO) {
+    qWarning() << "Intento de cancelar pedido en estado final:" << idPedido;
+    return;
+  }
+
+  pedido.estado_general = EstadoPedido::CANCELADO;
+  for (auto& inst : pedido.platos) {
+    // Solo marcamos como cancelados los que no se han entregado/comido aún
+    if (inst.estado != EstadoPlato::ENTREGADO) inst.estado = EstadoPlato::CANCELADO;
+  }
 
   QJsonObject msg;
   msg[Protocolo::EVENTO] = Protocolo::PEDIDO_CANCELADO;
@@ -301,7 +326,7 @@ void LogicaNegocio::procesarCancelarPedido(const QJsonObject& mensaje, Manejador
   // Notifica a todos los roles
   for (auto cli : m_manejadoresActivos) emit enviarRespuesta(cli, msg);
 
-  qInfo() << "Pedido" << idPedido << "ha sido CANCELADO.";
+  qInfo() << "Pedido" << idPedido << "ha sido marcado como CANCELADO.";
 }
 
 void LogicaNegocio::procesarMarcarPlatoTerminado(const QJsonObject& mensaje, ManejadorCliente* remitente) {
