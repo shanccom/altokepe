@@ -273,6 +273,7 @@ void LogicaNegocio::procesarPrepararPedido(const QJsonObject& mensaje, Manejador
       dataResp["nombre"] = QString::fromStdString(platoDef.nombre);
       dataResp["score"] = platoDef.tiempo_preparacion_estimado; // O lógica de prioridad
       dataResp["nuevo_estado"] = SerializadorJSON::estadoPlatoToString(EstadoPlato::EN_PROGRESO);
+      dataResp["estacion"] = QString::fromStdString(platoDef.estacion);
 
       QJsonObject msg;
       msg[Protocolo::EVENTO] = Protocolo::NUEVO_PLATO_EN_COLA;
@@ -307,7 +308,7 @@ void LogicaNegocio::procesarPrepararPedido(const QJsonObject& mensaje, Manejador
             QJsonObject dataTop;
             dataTop["id_pedido"] = static_cast<int>(topInfo.id_pedido);
             dataTop["id_instancia"] = static_cast<int>(inst.id_instancia);
-            dataTop["nuevo_estado"] = "PREPARANDO";
+            dataTop["nuevo_estado"] = SerializadorJSON::estadoPlatoToString(EstadoPlato::PREPARANDO);
 
             QJsonObject msgTop;
             msgTop[Protocolo::EVENTO] = Protocolo::PLATO_ESTADO_CAMBIADO;
@@ -445,6 +446,11 @@ void LogicaNegocio::procesarMarcarPlatoTerminado(const QJsonObject& mensaje, Man
   if (!nombreEstacion.empty()) {
     auto& cola = m_colasPorEstacion[nombreEstacion];
 
+    if (cola.empty()) {
+      qWarning() << "La cola de estación" << QString::fromStdString(nombreEstacion) << "ya estaba vacía.";
+      return;
+    }
+
     if (cola.top().id_instancia_plato != idInstancia) {
       enviarError(remitente, "Solo se puede finalizar el plato que se está PREPARANDO.", data);
       return;
@@ -467,7 +473,7 @@ void LogicaNegocio::procesarMarcarPlatoTerminado(const QJsonObject& mensaje, Man
               QJsonObject dataTop;
               dataTop["id_pedido"] = static_cast<int>(nuevoTop.id_pedido);
               dataTop["id_instancia"] = static_cast<int>(instTop.id_instancia);
-              dataTop["nuevo_estado"] = "PREPARANDO";
+              dataTop["nuevo_estado"] = SerializadorJSON::estadoPlatoToString(EstadoPlato::PREPARANDO);
 
               QJsonObject msgTop;
               msgTop[Protocolo::EVENTO] = Protocolo::PLATO_ESTADO_CAMBIADO;
@@ -632,7 +638,7 @@ void LogicaNegocio::procesarDevolverPlato(const QJsonObject& mensaje, ManejadorC
     dataResp["nombre"] = QString::fromStdString(platoDef.nombre);
     dataResp["estacion"] = QString::fromStdString(estacionObjetivo);
     dataResp["score"] = nuevoScore;
-    dataResp["nuevo_estado"] = "DEVUELTO";
+    dataResp["nuevo_estado"] = SerializadorJSON::estadoPlatoToString(EstadoPlato::DEVUELTO);
 
     QJsonObject msg;
     msg[Protocolo::EVENTO] = Protocolo::PLATO_DEVUELTO;
@@ -663,7 +669,7 @@ void LogicaNegocio::procesarDevolverPlato(const QJsonObject& mensaje, ManejadorC
             QJsonObject dataTop;
             dataTop["id_pedido"] = static_cast<int>(topInfo.id_pedido);
             dataTop["id_instancia"] = static_cast<int>(instTop.id_instancia);
-            dataTop["nuevo_estado"] = "PREPARANDO";
+            dataTop["nuevo_estado"] = SerializadorJSON::estadoPlatoToString(EstadoPlato::PREPARANDO);
 
             QJsonObject msgTop;
             msgTop[Protocolo::EVENTO] = Protocolo::PLATO_ESTADO_CAMBIADO;
