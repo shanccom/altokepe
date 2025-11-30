@@ -306,35 +306,79 @@ void LogicaNegocio::procesarCancelarPedido(const QJsonObject& mensaje, Manejador
 void LogicaNegocio::procesarMarcarPlatoTerminado(const QJsonObject& mensaje, ManejadorCliente* remitente) {
   std::lock_guard<std::mutex> lock(m_mutex);
 
-  ResultadoValidacion pedido = validarYObtenerPlato(mensaje, remitente, true);
-  if (!pedido.exito) return;
+  if (!mensaje.contains(Protocolo::DATA) || !mensaje[Protocolo::DATA].isObject()) {
+    enviarError(remitente, "Mensaje sin data válida");
+    qWarning() << "Mensaje sin data válida";
+    return;
+  }
+  const QJsonObject data = mensaje[Protocolo::DATA].toObject();
 
-  pedido.plato->estado = EstadoPlato::FINALIZADO;
+  if (!data.contains("id_pedido") || !data.contains("id_instancia")) {
+    enviarError(remitente, "Faltan IDs (pedido o instancia) en el mensaje", data);
+    qWarning() << "Faltan IDs en el mensaje";
+    return;
+  }
+
+  const int idPedido = data["id_pedido"].toInt();
+  const int idInstancia = data["id_instancia"].toInt();
+
+  auto itPedido = m_pedidosActivos.find(idPedido);
+  if (itPedido == m_pedidosActivos.end()) {
+    enviarError(remitente, "Pedido no encontrado", data);
+    qWarning() << "Pedido no encontrado:" << idPedido;
+    return;
+  }
+
+  PedidoMesa& pedido = itPedido->second;
+  PlatoInstancia* instancia = nullptr;
+
+  for (auto& inst : pedido.platos) {
+    if (inst.id_instancia == idInstancia) {
+      const PlatoDefinicion& def = m_menu[inst.id_plato_definicion];
+      if (def.estacion != remitente->getNombreEstacion().toStdString()) {
+        qWarning() << "Estación" << remitente->getNombreEstacion()
+                   << "no autorizada para plato de"
+                   << QString::fromStdString(def.estacion);
+        return;
+      }
+
+      instancia = &inst;
+      break;
+    }
+  }
+
+  if (!instancia) {
+    enviarError(remitente, "Instancia de plato no encontrada en el pedido especificado", data);
+    qWarning() << "Instancia" << idInstancia << "no encontrada en pedido" << idPedido;
+    return;
+  }
+
+  instancia->estado = EstadoPlato::FINALIZADO;
 
   bool todoTerminado = true;
-  for (const auto& inst : pedido.pedido->platos) {
+  for (const auto& inst : pedido.platos) {
     if (inst.estado != EstadoPlato::FINALIZADO && inst.estado != EstadoPlato::CANCELADO) {
       todoTerminado = false;
       break;
     }
   }
 
-  if (todoTerminado) pedido.pedido->estado_general = EstadoPedido::LISTO;
+  if (todoTerminado) pedido.estado_general = EstadoPedido::LISTO;
 
-  QJsonObject data;
-  data["id_pedido"] = static_cast<int>(pedido.idPedido);
-  data["id_instancia"] = static_cast<int>(pedido.idInstancia);
-  data["pedido_listo"] = todoTerminado;
-  data["nuevo_estado"] = SerializadorJSON::estadoPlatoToString(EstadoPlato::FINALIZADO);
+  QJsonObject dataEnvio;
+  dataEnvio["id_pedido"] = static_cast<int>(idPedido);
+  dataEnvio["id_instancia"] = static_cast<int>(idInstancia);
+  dataEnvio["pedido_listo"] = todoTerminado;
+  dataEnvio["nuevo_estado"] = SerializadorJSON::estadoPlatoToString(EstadoPlato::FINALIZADO);
 
   QJsonObject msg;
   msg[Protocolo::EVENTO] = Protocolo::PLATO_TERMINADO;
-  msg[Protocolo::DATA] = data;
+  msg[Protocolo::DATA] = dataEnvio;
 
   for (auto cli : m_manejadoresActivos) emit enviarRespuesta(cli, msg);
 
-  qInfo() << "Plato" << pedido.idInstancia << "terminado. Pedido"
-          << pedido.idPedido << (todoTerminado ? "LISTO" : "AÚN EN PROCESO");
+  qInfo() << "Plato" << idInstancia << "terminado. Pedido"
+          << idPedido << (todoTerminado ? "LISTO" : "AÚN EN PROCESO");
 }
 
 void LogicaNegocio::procesarConfirmarEntrega(const QJsonObject& mensaje, ManejadorCliente* remitente) {
@@ -470,55 +514,6 @@ void LogicaNegocio::procesarDevolverPlato(const QJsonObject& mensaje, ManejadorC
   qInfo() << "Se devolvieron" << platosDevueltosCount << "del pedido" << idPedido;
 
   if (platosDevueltosCount > 0) notificarActualizacionRanking();
-}
-
-LogicaNegocio::ResultadoValidacion LogicaNegocio::validarYObtenerPlato(const QJsonObject& mensaje,
-    ManejadorCliente* remitente, bool validarEstacion) {
-  ResultadoValidacion resultado;
-
-  if (!mensaje.contains(Protocolo::DATA) || !mensaje[Protocolo::DATA].isObject()) {
-    enviarError(remitente, "Mensaje sin data válida");
-    qWarning() << "Mensaje sin data válida";
-    return resultado;
-  }
-  QJsonObject data = mensaje[Protocolo::DATA].toObject();
-
-  if (!data.contains("id_pedido") || !data.contains("id_instancia")) {
-    enviarError(remitente, "Faltan IDs (pedido o instancia) en el mensaje", data);
-    qWarning() << "Faltan IDs en el mensaje";
-    return resultado;
-  }
-  resultado.idPedido = data["id_pedido"].toInt();
-  resultado.idInstancia = data["id_instancia"].toInt();
-  auto itPedido = m_pedidosActivos.find(resultado.idPedido);
-
-  if (itPedido == m_pedidosActivos.end()) {
-    enviarError(remitente, "Pedido no encontrado", data);
-    qWarning() << "Pedido no encontrado:" << resultado.idPedido;
-    return resultado;
-  }
-  resultado.pedido = &(itPedido->second);
-
-  for (auto& inst : resultado.pedido->platos) {
-    if (inst.id_instancia == resultado.idInstancia) {
-      if (validarEstacion) {
-        const PlatoDefinicion& platoDef = m_menu[inst.id_plato_definicion];
-        if (platoDef.estacion != remitente->getNombreEstacion().toStdString()) {
-          qWarning() << "Estación" << remitente->getNombreEstacion()
-                     << "no autorizada para plato de" << QString::fromStdString(platoDef.estacion);
-          return resultado; // Fallo de autorización
-        }
-      }
-
-      resultado.plato = &inst;
-      resultado.exito = true;
-      return resultado;
-    }
-  }
-
-  enviarError(remitente, "Instancia de plato no encontrada en el pedido especificado", data);
-  qWarning() << "Instancia" << resultado.idInstancia << "no encontrada en pedido" << resultado.idPedido;
-  return resultado;
 }
 
 QJsonObject LogicaNegocio::construirEstadoManagerChef() {
