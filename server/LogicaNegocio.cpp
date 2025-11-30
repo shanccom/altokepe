@@ -188,11 +188,6 @@ void LogicaNegocio::procesarNuevoPedido(const QJsonObject& mensaje, ManejadorCli
       platoInst.estado = EstadoPlato::EN_ESPERA;
 
       pedido.platos.push_back(platoInst);
-
-      // Encolar tarea para cocina (una por cada instancia física del plato)
-      InfoPlatoPrioridad platoPrior(platoInst.id_instancia, platoDef.tiempo_preparacion_estimado);
-      platoPrior.id_pedido = idPedido;
-      m_colasPorEstacion[platoDef.estacion].push(platoPrior);
     }
   }
 
@@ -247,6 +242,12 @@ void LogicaNegocio::procesarPrepararPedido(const QJsonObject& mensaje, Manejador
   for (auto& inst : pedido.platos) {
     if (inst.estado == EstadoPlato::EN_ESPERA) {
       inst.estado = EstadoPlato::EN_PROGRESO;
+
+      const PlatoDefinicion& platoDef = m_menu[inst.id_plato_definicion];
+      InfoPlatoPrioridad platoPrior(inst.id_instancia, platoDef.tiempo_preparacion_estimado);
+      platoPrior.id_pedido = idPedido;
+      m_colasPorEstacion[platoDef.estacion].push(platoPrior);
+
       platosIniciados++;
 
       QJsonObject data;
