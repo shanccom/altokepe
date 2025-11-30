@@ -313,7 +313,14 @@ void LogicaNegocio::procesarPrepararPedido(const QJsonObject& mensaje, Manejador
             msgTop[Protocolo::EVENTO] = Protocolo::PLATO_ESTADO_CAMBIADO;
             msgTop[Protocolo::DATA] = dataTop;
 
-            for (auto cli : m_manejadoresActivos) emit enviarRespuesta(cli, msgTop);
+            QJsonObject msgPedido;
+            msgPedido[Protocolo::EVENTO] = Protocolo::PLATO_EN_PREPARACION;
+            msgPedido[Protocolo::DATA] = dataTop;
+
+            for (auto cli : m_manejadoresActivos) {
+              if (cli->getTipoActor() == TipoActor::MANAGER_CHEF) emit enviarRespuesta(cli, msgPedido);
+              else emit enviarRespuesta(cli, msgTop);
+            }
 
             qInfo() << "Plato" << inst.id_instancia << "de estación"
                     << QString::fromStdString(nombreEstacion) << "ahora está PREPARANDO.";
