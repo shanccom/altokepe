@@ -57,9 +57,12 @@ void ClienteEstacionApp::onMensajeRecibido(const QJsonObject& mensaje) {
         m_ventana->cargarPlatosIniciales(platos);
 
     } else if (evento == Protocolo::NUEVO_PLATO_EN_COLA) {
+        QString estacionDestino = data["estacion"].toString();
+        if (!estacionDestino.isEmpty() && estacionDestino != m_nombreEstacion) return;
+
         VentanaEstacion::InfoPlatoVisual visual;
         visual.nombrePlato = data["nombre"].toString();
-        visual.estado = "EN_ESPERA";
+        visual.estado = data["nuevo_estado"].toString();
         visual.prioridad = data["score"].toDouble();
         visual.id_pedido = data["id_pedido"].toVariant().toLongLong();
         visual.id_instancia = data["id_instancia"].toVariant().toLongLong();
@@ -67,14 +70,13 @@ void ClienteEstacionApp::onMensajeRecibido(const QJsonObject& mensaje) {
         m_ventana->agregarNuevoPlato(visual);
 
     } else if (evento == Protocolo::PLATO_ESTADO_CAMBIADO) {
-        long long idPedido = data["id_pedido"].toVariant().toLongLong();
         long long idInstancia = data["id_instancia"].toVariant().toLongLong();
         QString estado = data["nuevo_estado"].toString();
 
         qDebug() << "[DEBUG] Estado recibido para cambio:" << estado
-                << "Pedido:" << idPedido << "Instancia:" << idInstancia;
+                 << "Instancia:" << idInstancia;
 
-        m_ventana->actualizarEstadoPlato(idPedido, idInstancia, estado);
+        m_ventana->actualizarEstadoPlato(idInstancia, estado);
     }
 
 }
@@ -82,7 +84,11 @@ void ClienteEstacionApp::onMensajeRecibido(const QJsonObject& mensaje) {
 void ClienteEstacionApp::onMarcarListo(long long idPedido, long long idInstancia) {
     QJsonObject comando;
     comando[Protocolo::COMANDO] = Protocolo::MARCAR_PLATO_TERMINADO;
-    comando["id_pedido"] = QJsonValue::fromVariant(idPedido);
-    comando["id_instancia"] = QJsonValue::fromVariant(idInstancia);
+
+    QJsonObject data;
+    data["id_pedido"]   = QJsonValue::fromVariant(idPedido);
+    data["id_instancia"] = QJsonValue::fromVariant(idInstancia);
+    comando[Protocolo::DATA] = data;
+
     m_clienteTCP->enviarMensaje(comando);
 }
