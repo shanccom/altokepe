@@ -278,7 +278,14 @@ void LogicaNegocio::procesarPrepararPedido(const QJsonObject& mensaje, Manejador
       msg[Protocolo::EVENTO] = Protocolo::NUEVO_PLATO_EN_COLA;
       msg[Protocolo::DATA] = dataResp;
 
-      for (auto cli : m_manejadoresActivos) emit enviarRespuesta(cli, msg);
+      QJsonObject msgPedido;
+      msgPedido[Protocolo::EVENTO] = Protocolo::PLATO_EN_PREPARACION;
+      msgPedido[Protocolo::DATA] = dataResp;
+
+      for (auto cli : m_manejadoresActivos) {
+        if (cli->getTipoActor() == TipoActor::MANAGER_CHEF) emit enviarRespuesta(cli, msgPedido);
+        else emit enviarRespuesta(cli, msg);
+      }
     }
   }
 
@@ -316,18 +323,6 @@ void LogicaNegocio::procesarPrepararPedido(const QJsonObject& mensaje, Manejador
       }
     }
   }
-
-  QJsonObject msgPedido;
-  msgPedido[Protocolo::EVENTO] = Protocolo::PLATO_EN_PREPARACION;
-
-  QJsonObject dataPedido;
-  dataPedido["id_pedido"] = static_cast<int>(idPedido);
-  dataPedido["id_instancia"] = -1; // -1 indica actualización general del pedido
-  dataPedido["nuevo_estado"] = "EN_PROGRESO";
-  msgPedido[Protocolo::DATA] = dataPedido;
-
-  for (auto cli : m_manejadoresActivos)
-    if (cli->getTipoActor() == TipoActor::MANAGER_CHEF) emit enviarRespuesta(cli, msgPedido);
 
   if (platosIniciados > 0) qInfo() << "Se iniciaron" << platosIniciados << "platos del pedido" << idPedido;
   else qInfo() << "Solicitud de preparar pedido" << idPedido << "recibida, pero no había platos en espera.";
