@@ -13,6 +13,7 @@
 #include "common/models/PlatoDefinicion.h"
 #include "common/models/InfoPlatoPrioridad.h"
 #include "common/models/Estados.h"
+#include "common/adapter/AdaptadorSerializadorJSON.h"
 
 class ManejadorCliente;
 
@@ -64,6 +65,16 @@ private:
 
   long long m_siguienteIdPedido;
   long long m_siguienteIdInstanciaPlato;
+
+  AdaptadorSerializadorJSON m_serializador;
+
+  // Construye menú y pedidos clasificados para el Manager Chef.
+  QJsonObject construirEstadoManagerChef();
+  
+  void enviarError(ManejadorCliente* cliente, const QString& mensajeError, const QJsonObject& dataContexto = QJsonObject());
+
+  // Emitir broadcast de ranking
+  void notificarActualizacionRanking();
 };
 
 #endif

@@ -4,6 +4,7 @@
 #include <QObject>
 #include <unordered_map>
 #include "common/models/PlatoDefinicion.h"
+#include "common/adapter/AdaptadorSerializadorJSON.h"
 
 class VentanaManager;
 class ClienteTCP;
@@ -21,11 +22,13 @@ private slots:
   void onCancelarPedido(long long idPedido);
   void onEnviarPedido(long long idPedido);
   void onRechazarPedido(long long idPedido);
+  void onRechazarPlato(long long idPedido, long long idInstancia);
 
 private:
   VentanaManager* m_ventana;
   ClienteTCP* m_clienteTCP;
   std::unordered_map<int, PlatoDefinicion> m_menu;
+  AdaptadorSerializadorJSON m_serializador;
 };
 
 #endif
