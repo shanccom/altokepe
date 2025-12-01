@@ -74,17 +74,7 @@ void TarjetaPedido::agregarPlato(long long idInstancia, const QString& nombrePla
   TarjetaPlato* platoWidget = new TarjetaPlato(nombrePlato, estado, this);
   m_mapaPlatos[idInstancia] = platoWidget;
 
-  QPushButton* btnDevolver = new QPushButton("x", this);
-  btnDevolver->setObjectName("btnDevolverPlato");
-  btnDevolver->setFixedSize(24, 24);
-  btnDevolver->setToolTip("Devolver/Rechazar este plato");
-
-  connect(btnDevolver, &QPushButton::clicked, this, [this, idInstancia]() {
-    emit rechazarPlato(m_idPedido, idInstancia);
-  });
-
   filaLayout->addWidget(platoWidget, 1);
-  filaLayout->addWidget(btnDevolver, 0);
 
   m_layoutPlatos->addWidget(filaContainer);
 }
