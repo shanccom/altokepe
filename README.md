@@ -29,7 +29,11 @@ Desarrollar un sistema distribuido de gestión de pedidos que integre los módul
 - Luque Condori Luis Guillermo -> dev-Luis  
 - Garambel Marin Fernando Miguel -> dev-Fernando  
 - Jorge Luis Mamani Huarsaya -> dev-Jorge  
-- Sergio Danilo Hancco Mullisaca -> dev-Sergio  
+- Sergio Danilo Hancco Mullisaca -> dev-Sergio
+- Dolly Yadhira Mollo Chuquicaña -> dev-Dolly
+- Suclle Suca, Michael Benjamin -> dev-Michael
+
+  
 
 ---
 
