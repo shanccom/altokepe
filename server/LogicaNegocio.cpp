@@ -479,7 +479,14 @@ void LogicaNegocio::procesarMarcarPlatoTerminado(const QJsonObject& mensaje, Man
               msgTop[Protocolo::EVENTO] = Protocolo::PLATO_ESTADO_CAMBIADO;
               msgTop[Protocolo::DATA] = dataTop;
 
-              for (auto cli : m_manejadoresActivos) emit enviarRespuesta(cli, msgTop);
+              QJsonObject msgPedido;
+              msgPedido[Protocolo::EVENTO] = Protocolo::PLATO_EN_PREPARACION;
+              msgPedido[Protocolo::DATA] = dataTop;
+
+              for (auto cli : m_manejadoresActivos) {
+                if (cli->getTipoActor() == TipoActor::MANAGER_CHEF) emit enviarRespuesta(cli, msgPedido);
+                else emit enviarRespuesta(cli, msgTop);
+              }
 
               qInfo() << "Estación" << QString::fromStdString(nombreEstacion)
                       << ": Nuevo plato PREPARANDO (ID: " << instTop.id_instancia << ")";
@@ -642,7 +649,7 @@ void LogicaNegocio::procesarDevolverPlato(const QJsonObject& mensaje, ManejadorC
 
     QJsonObject msg;
     msg[Protocolo::EVENTO] = Protocolo::PLATO_DEVUELTO;
-    msg[Protocolo::DATA] = data;
+    msg[Protocolo::DATA] = dataResp;
 
     for (auto cli : m_manejadoresActivos) emit enviarRespuesta(cli, msg);
     platosDevueltosCount++;
@@ -675,7 +682,14 @@ void LogicaNegocio::procesarDevolverPlato(const QJsonObject& mensaje, ManejadorC
             msgTop[Protocolo::EVENTO] = Protocolo::PLATO_ESTADO_CAMBIADO;
             msgTop[Protocolo::DATA] = dataTop;
 
-            for (auto cli : m_manejadoresActivos) emit enviarRespuesta(cli, msgTop);
+            QJsonObject msgPedido;
+            msgPedido[Protocolo::EVENTO] = Protocolo::PLATO_EN_PREPARACION;
+            msgPedido[Protocolo::DATA] = dataTop;
+
+            for (auto cli : m_manejadoresActivos) {
+              if (cli->getTipoActor() == TipoActor::MANAGER_CHEF) emit enviarRespuesta(cli, msgPedido);
+              else emit enviarRespuesta(cli, msgTop);
+            }
 
             qInfo() << "Estación" << QString::fromStdString(nombreEstacion) 
                     << ": Plato devuelto ahora está PREPARANDO (ID:" << instTop.id_instancia << ")";
