@@ -14,6 +14,7 @@ VentanaEstacion::VentanaEstacion(const QString& nombreEstacion, QWidget* parent)
     : QWidget(parent), m_estacion(nombreEstacion) {
 
     setWindowTitle("Estación: " + nombreEstacion);
+    resize(1000, 700);
 
     tabla = new QTableWidget(0, 4, this);
     tabla->setHorizontalHeaderLabels({"Plato", "Prioridad", "Estado", "Observaciones"});
