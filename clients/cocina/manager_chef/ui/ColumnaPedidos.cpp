@@ -6,6 +6,7 @@
 
 ColumnaPedidos::ColumnaPedidos(const QString& titulo, QWidget* parent)
   : QWidget(parent) {
+  setAttribute(Qt::WA_StyledBackground, true); 
 
   this->setProperty("class", "ColumnaPedidos");
 
@@ -36,10 +37,16 @@ bool ColumnaPedidos::estaVacia() const {
   return m_layoutContenido->count() == 0;
 }
 
-TarjetaPedido* ColumnaPedidos::getPrimerPedido() const {
-  if (estaVacia()) return nullptr;
-  QLayoutItem* item = m_layoutContenido->itemAt(0);
-  return qobject_cast<TarjetaPedido*>(item->widget());
+QList<TarjetaPedido*> ColumnaPedidos::obtenerTodosLosPedidos() const {
+  QList<TarjetaPedido*> lista;
+  for (int i = 0; i < m_layoutContenido->count(); ++i) {
+    QLayoutItem* item = m_layoutContenido->itemAt(i);
+    if (item && item->widget()) {
+      TarjetaPedido* tarjeta = qobject_cast<TarjetaPedido*>(item->widget());
+      if (tarjeta) lista.append(tarjeta);
+    }
+  }
+  return lista;
 }
 
 void ColumnaPedidos::agregarPedido(TarjetaPedido* pedido) {

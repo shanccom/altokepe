@@ -9,6 +9,9 @@
 #include <QPushButton>
 #include <QSpinBox>
 #include <QMessageBox>
+#include <QJsonArray>
+#include <QJsonObject>
+#include <QJsonValue>
 
 /**
  * Constructor de PanelPedido - PATRÓN FACADE APLICADO
@@ -110,7 +113,8 @@ void PanelPedido::actualizarMenu(const QJsonArray &menu) {
 
     int id = plato["id"].toInt();
     QString nombre = plato["nombre"].toString();
-    double costo = plato["precio"].toDouble();
+    // El servidor envía la clave 'costo', no 'precio'
+    double costo = plato["costo"].toDouble();
 
     auto *item = new QListWidgetItem(nombre);
     item->setData(Qt::UserRole, id);
@@ -193,7 +197,10 @@ void PanelPedido::enviarPedido() {
     int cantidad = static_cast<QSpinBox *>(tablaPedido->cellWidget(i, 1))->value();
 
     if (cantidad >= 1) {
-      platosJson.append(QJsonObject{{"id", id}, {"cantidad", cantidad}});
+      QJsonObject platoObj;
+      platoObj["id"] = id;
+      platoObj["cantidad"] = cantidad;
+      platosJson.append(platoObj);
     }
   }
 

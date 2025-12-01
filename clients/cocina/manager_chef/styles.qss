@@ -1,85 +1,133 @@
-/* Estilos Generales */
 QWidget {
-  background-color: #f0f0f0;
-  font-family: "Arial";
+  background-color: #f4f7f6;
+  font-family: "Segoe UI", "Arial", sans-serif;
+  color: #333;
 }
 
-/* Columnas (Tableros) */
-.ColumnaPedidos {
-  border-radius: 8px;
-  padding: 8px;
+/* ScrollArea transparente para ver el fondo de la columna */
+QScrollArea {
+  background: transparent;
+  border: none;
 }
 
+QWidget[class="ColumnaPedidos"] {
+  border-radius: 10px;
+  border: 1px solid #dce1e6;
+  min-width: 320px;
+}
+
+/* Colores de fondo y borde superior específicos por columna */
 #columnaPendiente {
-  background-color: #f5e6d3; /* Crema */
+  background-color: #f0ad4e; /* Naranja suave */
+  border-top: 5px solid #f0ad4e;
 }
 
 #columnaEnProgreso {
-  background-color: #e3f5e3; /* Verde claro */
+  background-color: #8DEB8D; /* Verde suave */
+  border-top: 5px solid #8DEB8D;
 }
 
 #columnaTerminado {
-  background-color: #dbeaf5; /* Azul claro */
+  background-color: #9F8DEB; /* Morado suave */
+  border-top: 5px solid #9F8DEB;
 }
 
-/* Títulos de las Columnas */
 .TituloColumna {
-  font-size: 20px;
-  font-weight: bold;
-  color: #333;
-  padding: 8px;
-  background-color: rgba(0, 0, 0, 0.1);
-  border-radius: 5px;
-  margin-bottom: 10px;
+  font-size: 18px;
+  font-weight: 700;
+  color: #555;
+  padding: 12px;
+  background-color: rgba(255, 255, 255, 0.6);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
 }
 
-/* Tarjetas de Pedido */
-.TarjetaPedido {
-  background-color: white;
-  border: 1px solid #ddd;
-  border-radius: 6px;
-  margin-bottom: 10px;
+QFrame[class="TarjetaPedido"] {
+  background-color: #FFFFFF;
+  border: 3px solid #D2D2D2;
+  border-radius: 8px;
+  margin-bottom: 12px;
+}
+
+QLabel[class="HeaderPedido"] {
+  background-color: #D2D2D2;
   padding: 10px;
-}
-
-.TituloPedido {
+  border-bottom: 1px solid #eee;
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
   font-weight: bold;
-  font-size: 16px;
-  margin-bottom: 5px;
+  font-size: 15px;
+  color: #444;
 }
 
-/* Tarjetas de Plato */
-.TarjetaPlato {
-  background-color: #fafafa;
-  padding: 8px;
-  margin-top: 5px;
-  border-radius: 4px;
+QWidget[class="TarjetaPlato"] {
+  background-color: transparent;
+  border-bottom: 1px solid #f0f0f0;
 }
 
-/* Botones */
-QPushButton {
-  background-color: #a0a0a0;
+/* Etiqueta de Nombre del Plato */
+QLabel[tipo="nombre_plato"] {
+  font-size: 18px;
+  color: #333;
+  padding-left: 5px;
+}
+
+/* Etiqueta de Estado del Plato (Estilos Dinámicos) */
+QLabel[tipo="estado"] {
+  padding: 6px 8px;
+  border-radius: 6px;
   color: white;
-  border: none;
-  padding: 8px 16px;
-  border-radius: 4px;
   font-weight: bold;
+  font-size: 12px;
 }
 
-QPushButton:hover {
-  background-color: #888888;
+/* Selectores basados en la propiedad dinámica 'estado_plato' */
+QLabel[estado_plato="EN_ESPERA"]   { background-color: #999999; }
+QLabel[estado_plato="EN_PROGRESO"] { background-color: #f0ad4e; } /* Naranja */
+QLabel[estado_plato="PREPARANDO"] { background-color: #9F8DEB; } /* Morado */
+QLabel[estado_plato="FINALIZADO"]  { background-color: #5cb85c; } /* Verde */
+QLabel[estado_plato="ENTREGADO"]   { background-color: #0275d8; } /* Azul */
+QLabel[estado_plato="DEVUELTO"]    { background-color: #d9534f; } /* Rojo */
+QLabel[estado_plato="CANCELADO"]   { background-color: #333333; }
+
+QPushButton {
+  border-radius: 4px;
+  padding: 6px 12px;
+  font-weight: 600;
+  border: none;
+  font-size: 15px;
 }
 
-#btnPreparar, #btnEnviar {
-  background-color: #28a745; /* Verde */
+/* Botones de Acción Positiva (Preparar, Enviar) */
+QPushButton#btnAccionPositiva {
+  background-color: #28a745;
+  color: white;
 }
-#btnPreparar:hover, #btnEnviar:hover {
+QPushButton#btnAccionPositiva:hover {
   background-color: #218838;
 }
 
-#btnCancelar, #btnRechazar {
-  background-color: #dc3545; /* Rojo */
+/* Botones de Acción Negativa (Cancelar, Rechazar) */
+QPushButton#btnAccionNegativa {
+  background-color: #dc3545;
+  color: white;
 }
-#btnCancelar:hover, #btnRechazar:hover {
+QPushButton#btnAccionNegativa:hover {
   background-color: #c82333;
+}
+
+/* Botón pequeño de devolver plato individual */
+QPushButton#btnDevolverPlato {
+  background-color: transparent;
+  color: #dc3545;
+  font-weight: bold;
+  font-size: 12px;
+  border: 1px solid transparent;
+}
+
+QPushButton#btnDevolverPlato:hover {
+  background-color: #ffeaea;
+  border: 1px solid #dc3545;
+  border-radius: 4px;
 }
