@@ -6,6 +6,7 @@ VentanaEstacionesUnificadas::VentanaEstacionesUnificadas(QWidget* parent)
     : QWidget(parent) {
 
     setWindowTitle("Vista Unificada de Estaciones");
+    resize(1200, 800);
 
     tabs = new QTabWidget(this);
     btnSeparar = new QPushButton("Separar estaciones", this);

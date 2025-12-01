@@ -17,7 +17,7 @@
 
 ## Resumen Ejecutivo
 
-Este documento describe la implementación del módulo de **Ranking** para el sistema de gestión de restaurante Altokepe. La solución aplica dos patrones de diseño principales:
+Este documento describe la implementación del módulo de **Ranking** para el sistema de gestión de restaurante Altokepe. La solución aplica tres patrones de diseño principales:
 
 - **Observer Pattern**: Para notificaciones en tiempo real de cambios en el ranking
 - **Facade Pattern**: Para simplificar el acceso a datos complejos del ranking
@@ -33,44 +33,7 @@ Thread-safety en acceso a datos compartidos
 ---
 
 ## Arquitectura General
-
-┌─────────────────────────────────────────────────────────────┐
-│                    CLIENTE RANKING                          │
-│  ┌──────────────┐         ┌─────────────────┐              │
-│  │ RankingWindow│◄────────│ RankingClient   │              │
-│  │   (Vista)    │ Observer│   (Facade)      │              │
-│  └──────┬───────┘         └─────────────────┘              │
-│         │ Usa                                               │
-│  ┌──────▼───────┐                                           │
-│  │MenuRepository│◄─── Inyección                             │
-│  │ (Interface)  │                                           │
-│  └──────▲───────┘                                           │
-│         │ Implementa                                        │
-│  ┌──────┴───────────┐                                       │
-│  │JsonMenuRepository│                                       │
-│  └──────────────────┘                                       │
-│                                   │ TCP                     │
-└───────────────────────────────────┼─────────────────────────┘
-                                    │
-                                    │ Puerto 5555
-                                    │
-┌───────────────────────────────────┼─────────────────────────┐
-│                    SERVIDOR       │                         │
-│  ┌─────────────┐         ┌────────▼──────────┐             │
-│  │  Servidor   │────────►│ ManejadorCliente  │             │
-│  └─────────────┘         └───────────────────┘             │
-│                                   │                         │
-│                          ┌────────▼──────────┐             │
-│                          │  LogicaNegocio    │             │
-│                          │    (Facade +      │             │
-│                          │     Observer)     │             │
-│                          └───────────────────┘             │
-│                                   │                         │
-│                          ┌────────▼──────────┐             │
-│                          │ m_conteoPlatosRanking           │
-│                          │ m_menu            │             │
-│                          └───────────────────┘             │
-└─────────────────────────────────────────────────────────────┘
+<img width="650" height="837" alt="image" src="https://github.com/user-attachments/assets/a3695dde-fcb8-45d2-b341-0b964986b029" />
 
 ---
 
