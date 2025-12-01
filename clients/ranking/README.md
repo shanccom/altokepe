@@ -17,7 +17,7 @@
 
 ## Resumen Ejecutivo
 
-Este documento describe la implementación del módulo de **Ranking** para el sistema de gestión de restaurante Altokepe. La solución aplica dos patrones de diseño principales:
+Este documento describe la implementación del módulo de **Ranking** para el sistema de gestión de restaurante Altokepe. La solución aplica tres patrones de diseño principales:
 
 - **Observer Pattern**: Para notificaciones en tiempo real de cambios en el ranking
 - **Facade Pattern**: Para simplificar el acceso a datos complejos del ranking
