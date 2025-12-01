@@ -120,3 +120,23 @@ void VentanaEstacion::actualizarEstadoPlato(long long idInstancia, const QString
         }
     }
 }
+
+void VentanaEstacion::eliminarPlato(long long idInstancia) {
+    for (int fila = 0; fila < tabla->rowCount(); ++fila) {
+        auto* item = tabla->item(fila, 0);
+        if (item && item->data(Role_IdInstancia).toLongLong() == idInstancia) {
+            tabla->removeRow(fila);
+            break;
+        }
+    }
+}
+
+void VentanaEstacion::eliminarPlatosDePedido(long long idPedido) {
+    // Iteramos hacia atrás para evitar problemas de índice al borrar
+    for (int fila = tabla->rowCount() - 1; fila >= 0; --fila) {
+        auto* item = tabla->item(fila, 0);
+        if (item && item->data(Role_IdPedido).toLongLong() == idPedido) {
+            tabla->removeRow(fila);
+        }
+    }
+}
