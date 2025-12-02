@@ -2,9 +2,8 @@
 #define IESTRATEGIA_H
 
 #include <QJsonObject>
-
-class LogicaNegocio;
 class ManejadorCliente;
+class LogicaNegocio;
 
 class IEstrategia {
 public:
