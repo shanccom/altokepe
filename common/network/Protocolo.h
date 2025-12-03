@@ -10,7 +10,7 @@ namespace Protocolo {
   // Comandos Cliente a Servidor
   constexpr const char* IDENTIFICARSE = "IDENTIFICARSE";
   constexpr const char* NUEVO_PEDIDO = "NUEVO_PEDIDO";
-  constexpr const char* PEDIDO_REGISTRADO = "PEDIDO_REGISTRADO";
+  constexpr const char* PEDIDO_REGISTRADO = "NUEVO_PEDIDO";
   constexpr const char* PREPARAR_PEDIDO = "PREPARAR_PEDIDO";
   constexpr const char* CANCELAR_PEDIDO = "CANCELAR_PEDIDO";
   constexpr const char* MARCAR_PLATO_TERMINADO = "MARCAR_PLATO_TERMINADO";
@@ -30,7 +30,6 @@ namespace Protocolo {
   constexpr const char* PEDIDO_ENTREGADO = "PEDIDO_ENTREGADO";
   constexpr const char* ACTUALIZACION_ESTADO_GENERAL = "ACTUALIZACION_ESTADO_GENERAL";
   constexpr const char* ACTUALIZACION_ESTADO_ESTACION = "ACTUALIZACION_ESTADO_ESTACION";
-  constexpr const char* ACTUALIZACION_MENU = "ACTUALIZACION_MENU";
   
   // Respuestas Servidor a Cliente
   constexpr const char* OK = "OK";

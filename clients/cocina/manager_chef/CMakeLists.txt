@@ -33,7 +33,6 @@ add_executable(ManagerChefClient
 
   # Fuentes del directorio 'common'
   ../../../common/network/SerializadorJSON.cpp
-  ../../../common/adapter/AdaptadorSerializadorJSON.cpp
 )
 
 # Vincular las librerías de Qt al ejecutable

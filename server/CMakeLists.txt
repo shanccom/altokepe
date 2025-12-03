@@ -29,13 +29,11 @@ add_executable(ServidorAltokepe
   Servidor.cpp
   ManejadorCliente.cpp
   LogicaNegocio.cpp
-  LogicaNegocioHandlers.cpp
   patterns/ServerCommands.cpp
   patterns/CommandFactory.cpp
   identifier/IdentificadorCliente.cpp
   resources.qrc
   ${COMMON_SERIALIZER_PATH}
-  ${PROJECT_ROOT_DIR}/common/adapter/AdaptadorSerializadorJSON.cpp
 )
 
 target_link_libraries(ServidorAltokepe PRIVATE
