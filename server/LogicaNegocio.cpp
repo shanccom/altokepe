@@ -9,6 +9,7 @@
 #include <QJsonArray>
 #include <QDebug>
 #include <algorithm>
+#include <set>
 
 LogicaNegocio* LogicaNegocio::s_instance = nullptr;
 
