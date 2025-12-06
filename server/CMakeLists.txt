@@ -32,6 +32,8 @@ add_executable(ServidorAltokepe
   patterns/ServerCommands.cpp
   patterns/CommandFactory.cpp
   identifier/IdentificadorCliente.cpp
+  repository/MenuRepository.cpp
+  repository/PedidoRepository.cpp
   resources.qrc
   ${COMMON_SERIALIZER_PATH}
 )
