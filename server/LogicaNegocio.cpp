@@ -54,14 +54,22 @@ void LogicaNegocio::enviarEstadoInicial(ManejadorCliente* cliente) {
   if (tipo == TipoActor::MANAGER_CHEF) {
     estado = construirEstadoManagerChef();
     emit enviarRespuesta(cliente, estado);
+
   } else if (tipo == TipoActor::RANKING) {
     estado = getEstadoParaRanking();
     emit enviarRespuesta(cliente, estado);
+
   } else if (tipo == TipoActor::ESTACION_COCINA) {
     // estado = getEstadoParaEstacion(cliente->getNombreEstacion().toStdString());
+  
   } else if (tipo == TipoActor::RECEPCIONISTA) {
     QJsonObject mensaje;
-    QJsonArray menuArray = m_menuRepository.menuComoJson();
+    QJsonArray menuArray;
+
+    for (const auto& par : m_menuRepository.menu()) {
+      const PlatoDefinicion& plato = par.second;
+      menuArray.append(SerializadorJSON::platoDefinicionToJson(plato));
+    }
 
     mensaje[Protocolo::EVENTO] = Protocolo::ACTUALIZACION_MENU;
     mensaje[Protocolo::DATA] = QJsonObject{ {"menu", menuArray} };
@@ -434,6 +442,7 @@ void LogicaNegocio::procesarMarcarPlatoTerminado(const QJsonObject& mensaje, Man
   }
 
   instancia->estado = EstadoPlato::FINALIZADO;
+  m_rankingRepository.incrementar(instancia->id_plato_definicion);
 
   // Actualiza cola de estación 
   if (!nombreEstacion.empty()) {
@@ -521,6 +530,7 @@ void LogicaNegocio::procesarMarcarPlatoTerminado(const QJsonObject& mensaje, Man
 
   for (auto cli : m_manejadoresActivos) emit enviarRespuesta(cli, msg);
 
+  notificarActualizacionRanking();
   qInfo() << "Plato" << idInstancia << "terminado. Pedido"
           << idPedido << (todoTerminado ? "LISTO" : "AÚN EN PROCESO");
 }
@@ -712,46 +722,54 @@ void LogicaNegocio::procesarConfirmarEntrega(const QJsonObject& mensaje, Manejad
 }
 
 QJsonObject LogicaNegocio::construirEstadoManagerChef() {
-  QJsonArray menuArray = m_menuRepository.menuComoJson();
+  QJsonArray menuArray;
+  for (const auto& par : m_menuRepository.menu()) {
+    menuArray.append(SerializadorJSON::platoDefinicionToJson(par.second));
+  }
 
   QJsonArray pendientes;
   QJsonArray enProgreso;
   QJsonArray terminados;
 
-  const auto& pedidos = m_pedidoRepository.pedidos();
+  auto& pedidosRepo = m_pedidoRepository.pedidos();
 
-  for (const auto& [id, pedido] : pedidos) {
-    QJsonObject jsonPedido = SerializadorJSON::pedidoMesaToJson(pedido);
+  for (const auto& par : pedidosRepo) {
+    const PedidoMesa& pedido = par.second;
+    QJsonObject pedidoJson = SerializadorJSON::pedidoMesaToJson(pedido);
 
     switch (pedido.estado_general) {
       case EstadoPedido::PENDIENTE:
-        pendientes.append(jsonPedido);
+        pendientes.append(pedidoJson);
         break;
 
       case EstadoPedido::EN_PROGRESO:
-        enProgreso.append(jsonPedido);
+        enProgreso.append(pedidoJson);
         break;
 
       case EstadoPedido::LISTO:
       case EstadoPedido::ENTREGADO:
       case EstadoPedido::CANCELADO:
-        terminados.append(jsonPedido);
+        terminados.append(pedidoJson);
+        break;
+
+      default:
         break;
     }
   }
 
   QJsonObject data;
-  data["menu"]               = menuArray;
+  data["menu"] = menuArray;
   data["pedidos_pendientes"] = pendientes;
-  data["pedidos_en_progreso"]= enProgreso;
+  data["pedidos_en_progreso"] = enProgreso;
   data["pedidos_terminados"] = terminados;
 
-  QJsonObject msg;
-  msg[Protocolo::EVENTO] = Protocolo::ACTUALIZACION_ESTADO_GENERAL;
-  msg[Protocolo::DATA]   = data;
+  QJsonObject mensaje;
+  mensaje[Protocolo::EVENTO] = Protocolo::ACTUALIZACION_ESTADO_GENERAL;
+  mensaje[Protocolo::DATA] = data;
 
-  return msg;
+  return mensaje;
 }
+
 
 void LogicaNegocio::enviarError(ManejadorCliente* cliente, const QString& mensajeError, const QJsonObject& dataContexto) {
   QJsonObject msg;
