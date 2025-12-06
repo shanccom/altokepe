@@ -169,11 +169,11 @@ void LogicaNegocio::procesarNuevoPedido(const QJsonObject& mensaje, ManejadorCli
       continue;
     }
 
-    const PlatoDefinicion& platoDef = m_menu[idPlato];
+    const PlatoDefinicion& platoDef = menu.at(idPlato);
 
     for (int i = 0; i < cantidad; ++i) {
       PlatoInstancia platoInst;
-      instancia.id_instancia = m_pedidoRepository.generarNuevoIdInstancia();
+      platoInst.id_instancia = m_pedidoRepository.generarNuevoIdInstancia();
       platoInst.id_plato_definicion = platoDef.id;
       platoInst.estado = EstadoPlato::EN_ESPERA;
 
@@ -290,7 +290,7 @@ void LogicaNegocio::procesarPrepararPedido(const QJsonObject& mensaje, Manejador
 
     const InfoPlatoPrioridad& topInfo = colaPrioridad.top();
 
-    if (pedidos.find(top.id_pedido) != pedidos.end()) {
+    if (pedidos.find(topInfo.id_pedido) != pedidos.end()) {
       PedidoMesa& pedidoTop = pedidos[topInfo.id_pedido];
 
       for (auto& inst : pedidoTop.platos) {
