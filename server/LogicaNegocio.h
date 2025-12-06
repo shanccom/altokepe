@@ -14,6 +14,8 @@
 #include "common/models/InfoPlatoPrioridad.h"
 #include "common/models/Estados.h"
 #include "common/adapter/AdaptadorSerializadorJSON.h"
+#include "repository/MenuRepository.h"
+#include "repository/PedidoRepository.h"
 
 class ManejadorCliente;
 
@@ -56,7 +58,7 @@ signals:
 private:
   std::mutex m_mutex;
   std::vector<ManejadorCliente*> m_manejadoresActivos;
-  
+ /*
   std::unordered_map<int, PlatoDefinicion> m_menu;
   std::unordered_map<long long, PedidoMesa> m_pedidosActivos;
   std::queue<long long> m_colaManagerChef;
@@ -65,6 +67,9 @@ private:
 
   long long m_siguienteIdPedido;
   long long m_siguienteIdInstanciaPlato;
+*/
+  MenuRepository m_menuRepository;
+  PedidoRepository m_pedidoRepository;
 
   AdaptadorSerializadorJSON m_serializador;
 
