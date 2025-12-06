@@ -23,6 +23,9 @@ public:
     std::unordered_map<std::string, ColaPrioridadPlatos>& colasPorEstacion();
     const std::unordered_map<std::string, ColaPrioridadPlatos>& colasPorEstacion() const;
 
+    void incrementarConteoRanking(int idPlato);
+    void decrementarConteoRanking(int idPlato);
+    std::unordered_map<int,int> obtenerConteoRanking() const;
 
 private:
     long long m_siguienteIdPedido;
@@ -31,6 +34,7 @@ private:
     std::unordered_map<long long, PedidoMesa> m_pedidosActivos;
     std::queue<long long> m_colaManagerChef;
     std::unordered_map<std::string, ColaPrioridadPlatos> m_colasPorEstacion;
+    std::unordered_map<int,int> m_conteoPlatosRanking;
 };
 
 #endif
