@@ -7,7 +7,7 @@
 #include <queue>
 #include <string>
 
-using ColaPrioridadPlatos = std::priority_queue<InfoPlatoPrioridad>;
+using ColaPrioridadPlatos = std::priority_queue<InfoPlatoPrioridad,std::vector<InfoPlatoPrioridad>,std::greater<InfoPlatoPrioridad>>;
 
 class PedidoRepository {
 public:

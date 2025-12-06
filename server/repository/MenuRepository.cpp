@@ -5,7 +5,7 @@
 #include <QJsonArray>
 #include <QDebug>
 
-MenuRepository::MenuRepository(AdaptadorSerializadorJSON& serializador)
+MenuRepository::MenuRepository(SerializadorJSON& serializador)
     : m_serializador(serializador) {}
 
 bool MenuRepository::cargarDesdeArchivo(const QString& rutaArchivo) {

@@ -2,7 +2,7 @@
 #include "ManejadorCliente.h"
 #include "common/network/Protocolo.h"
 #include "common/models/Estados.h"
-#include "common/adapter/AdaptadorSerializadorJSON.h"
+#include "common/network/SerializadorJSON.h"
 #include <QFile>
 #include <QJsonDocument>
 #include <QJsonObject>

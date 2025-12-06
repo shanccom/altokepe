@@ -13,14 +13,11 @@
 #include "common/models/PlatoDefinicion.h"
 #include "common/models/InfoPlatoPrioridad.h"
 #include "common/models/Estados.h"
-#include "common/adapter/AdaptadorSerializadorJSON.h"
+#include "common/network/SerializadorJSON.h"
 #include "repository/MenuRepository.h"
 #include "repository/PedidoRepository.h"
 
 class ManejadorCliente;
-
-using ColaPrioridadPlatos = std::priority_queue<InfoPlatoPrioridad, std::vector<InfoPlatoPrioridad>,
-      std::greater<InfoPlatoPrioridad>>;
 
 class LogicaNegocio : public QObject {
   Q_OBJECT
@@ -71,7 +68,7 @@ private:
   MenuRepository m_menuRepository;
   PedidoRepository m_pedidoRepository;
 
-  AdaptadorSerializadorJSON m_serializador;
+  SerializadorJSON m_serializador;
 
   // Construye menú y pedidos clasificados para el Manager Chef.
   QJsonObject construirEstadoManagerChef();
