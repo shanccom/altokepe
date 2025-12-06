@@ -85,15 +85,14 @@ QJsonObject LogicaNegocio::getEstadoParaRanking() {
     QString nombre;
     int cantidad;
   };
-
   std::vector<ItemRanking> lista;
 
-  const auto& conteo = m_rankingRepository.conteo();
-  const auto& menu = m_menuRepository.menu();
+  auto conteo = m_rankingRepository.obtenerConteo();
 
   for (auto const& [id, cantidad] : conteo) {
-    if (menu.find(id) != menu.end()) {
-      lista.push_back({QString::fromStdString(menu.at(id).nombre), cantidad});
+    const PlatoDefinicion* def = m_menuRepository.obtener(id);
+    if (def) {
+      lista.push_back({QString::fromStdString(def->nombre), cantidad});
     }
   }
 
@@ -114,9 +113,10 @@ QJsonObject LogicaNegocio::getEstadoParaRanking() {
   QJsonObject mensaje;
   mensaje[Protocolo::EVENTO] = Protocolo::ACTUALIZACION_RANKING;
   mensaje[Protocolo::DATA] = QJsonObject{ {"ranking", rankingArray} };
-  
+
   return mensaje;
 }
+
 
 
 void LogicaNegocio::registrarVenta(int idPlato) {
@@ -556,17 +556,18 @@ void LogicaNegocio::procesarDevolverPlato(const QJsonObject& mensaje, ManejadorC
   }
   long long idPedido = data["id_pedido"].toInt();
 
-  if (m_pedidosActivos.find(idPedido) == m_pedidosActivos.end()) {
+  auto& pedidosRepo = m_pedidoRepository.pedidos();
+
+  if (pedidosRepo.find(idPedido) == pedidosRepo.end()) {
     enviarError(remitente, "Pedido no existe", data);
     return;
   }
 
-  PedidoMesa& pedido = m_pedidosActivos[idPedido];
+  PedidoMesa& pedido = pedidosRepo[idPedido];
   std::vector<PlatoInstancia*> platosADevolver;
 
   // Lógica dual (id_instancia específico O pedido completo)
   if (data.contains("id_instancia")) {
-    // Devolución de un plato específico (Logica original)
     long long idInstancia = data["id_instancia"].toInt();
     bool encontrado = false;
     for (auto& inst : pedido.platos) {
@@ -581,7 +582,6 @@ void LogicaNegocio::procesarDevolverPlato(const QJsonObject& mensaje, ManejadorC
       return;
     }
   } else {
-    // Devolución masiva (Cliente ManagerChef actual)
     for (auto& inst : pedido.platos) {
       if (inst.estado == EstadoPlato::ENTREGADO || inst.estado == EstadoPlato::FINALIZADO) {
         platosADevolver.push_back(&inst);
@@ -600,24 +600,28 @@ void LogicaNegocio::procesarDevolverPlato(const QJsonObject& mensaje, ManejadorC
   for (auto* plato : platosADevolver) {
     if (plato->estado == EstadoPlato::DEVUELTO) continue;
 
-    const PlatoDefinicion& platoDef = m_menu[plato->id_plato_definicion];
-    double nuevoScore = platoDef.tiempo_preparacion_estimado * 1.5;
-    std::string estacionObjetivo = platoDef.estacion;
+    const PlatoDefinicion* def = m_menuRepository.obtener(plato->id_plato_definicion);
+    if (!def) {
+      qWarning() << "Definición de plato no encontrada";
+      continue;
+    }
+
+    double nuevoScore = def->tiempo_preparacion_estimado * 1.5;
+    std::string estacionObjetivo = def->estacion;
     estacionesAfectadas.insert(estacionObjetivo);
 
     plato->estado = EstadoPlato::DEVUELTO;
 
-    // Re-encolar para cocina
     InfoPlatoPrioridad platoPrior(plato->id_instancia, nuevoScore);
     platoPrior.id_pedido = idPedido;
-    m_colasPorEstacion[estacionObjetivo].push(platoPrior);
+    m_pedidoRepository.colasPorEstacion()[estacionObjetivo].push(platoPrior);
 
-    m_conteoPlatosRanking[plato->id_plato_definicion]--;
+    m_rankingRepository.decrementar(plato->id_plato_definicion);
 
     QJsonObject dataResp;
     dataResp["id_pedido"] = static_cast<int>(idPedido);
     dataResp["id_instancia"] = static_cast<int>(plato->id_instancia);
-    dataResp["nombre"] = QString::fromStdString(platoDef.nombre);
+    dataResp["nombre"] = QString::fromStdString(def->nombre);
     dataResp["estacion"] = QString::fromStdString(estacionObjetivo);
     dataResp["score"] = nuevoScore;
     dataResp["nuevo_estado"] = SerializadorJSON::estadoPlatoToString(EstadoPlato::DEVUELTO);
@@ -632,19 +636,15 @@ void LogicaNegocio::procesarDevolverPlato(const QJsonObject& mensaje, ManejadorC
 
   // Al insertar con prioridad alta, es probable que el devuelto sea el nuevo Top.
   for (const std::string& nombreEstacion : estacionesAfectadas) {
-    auto& cola = m_colasPorEstacion[nombreEstacion];
+    auto& cola = m_pedidoRepository.colasPorEstacion()[nombreEstacion];
     if (cola.empty()) continue;
 
     const InfoPlatoPrioridad& topInfo = cola.top();
 
-    // Buscamos el plato Top real
-    if (m_pedidosActivos.find(topInfo.id_pedido) != m_pedidosActivos.end()) {
-      PedidoMesa& pedidoTop = m_pedidosActivos[topInfo.id_pedido];
+    if (pedidosRepo.find(topInfo.id_pedido) != pedidosRepo.end()) {
+      PedidoMesa& pedidoTop = pedidosRepo[topInfo.id_pedido];
       for (auto& instTop : pedidoTop.platos) {
         if (instTop.id_instancia == topInfo.id_instancia_plato) {
-
-          // Si el Top es el plato devuelto (o cualquier otro que estaba esperando),
-          // lo pasamos a PREPARANDO para que el cocinero sepa que es el siguiente.
           if (instTop.estado == EstadoPlato::DEVUELTO || instTop.estado == EstadoPlato::EN_PROGRESO) {
             instTop.estado = EstadoPlato::PREPARANDO;
 
@@ -662,11 +662,13 @@ void LogicaNegocio::procesarDevolverPlato(const QJsonObject& mensaje, ManejadorC
             msgPedido[Protocolo::DATA] = dataTop;
 
             for (auto cli : m_manejadoresActivos) {
-              if (cli->getTipoActor() == TipoActor::MANAGER_CHEF) emit enviarRespuesta(cli, msgPedido);
-              else emit enviarRespuesta(cli, msgTop);
+              if (cli->getTipoActor() == TipoActor::MANAGER_CHEF)
+                emit enviarRespuesta(cli, msgPedido);
+              else
+                emit enviarRespuesta(cli, msgTop);
             }
 
-            qInfo() << "Estación" << QString::fromStdString(nombreEstacion) 
+            qInfo() << "Estación" << QString::fromStdString(nombreEstacion)
                     << ": Plato devuelto ahora está PREPARANDO (ID:" << instTop.id_instancia << ")";
           }
           break;
@@ -677,7 +679,8 @@ void LogicaNegocio::procesarDevolverPlato(const QJsonObject& mensaje, ManejadorC
 
   qInfo() << "Se devolvieron" << platosDevueltosCount << "del pedido" << idPedido;
 
-  if (platosDevueltosCount > 0) notificarActualizacionRanking();
+  if (platosDevueltosCount > 0)
+    notificarActualizacionRanking();
 }
 
 void LogicaNegocio::procesarConfirmarEntrega(const QJsonObject& mensaje, ManejadorCliente* remitente) {
