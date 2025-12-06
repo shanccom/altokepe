@@ -2,9 +2,10 @@
 #define MENUREPOSITORY_H
 
 #include "common/models/PlatoDefinicion.h"
-#include "common/adapter/AdaptadorSerializadorJSON.h"
+#include "common/adapter/SerializadorJSON.h"
 #include <unordered_map>
 #include <QJsonArray>
+
 
 class MenuRepository {
 public:

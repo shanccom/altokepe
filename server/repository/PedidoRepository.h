@@ -5,6 +5,7 @@
 #include "common/models/InfoPlatoPrioridad.h"
 #include <unordered_map>
 #include <queue>
+#include <string>
 
 using ColaPrioridadPlatos = std::priority_queue<InfoPlatoPrioridad>;
 
