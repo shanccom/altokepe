@@ -75,6 +75,7 @@ QString SerializadorJSON::estadoPlatoToString(EstadoPlato estado) {
   switch(estado) {
     case EstadoPlato::EN_ESPERA: return "EN_ESPERA";
     case EstadoPlato::EN_PROGRESO: return "EN_PROGRESO";
+    case EstadoPlato::PREPARANDO: return "PREPARANDO";
     case EstadoPlato::FINALIZADO: return "FINALIZADO";
     case EstadoPlato::CANCELADO: return "CANCELADO";
     case EstadoPlato::ENTREGADO: return "ENTREGADO";

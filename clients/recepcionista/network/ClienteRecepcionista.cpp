@@ -30,13 +30,17 @@ void ClienteRecepcionista::conectarAlServidor(const QString &host, quint16 puert
 }
 
 void ClienteRecepcionista::enviarNuevoPedido(int mesa, int idRecepcionista, const QJsonArray &platos) {
-  QJsonObject pedido{
-    {Protocolo::COMANDO, Protocolo::NUEVO_PEDIDO},
-    {"mesa", mesa},
-    {"id_recepcionista", idRecepcionista},
-    {"platos", platos}
-  };
-  socket->write(QJsonDocument(pedido).toJson(QJsonDocument::Compact) + "\n");
+  QJsonObject data;
+  data["mesa"] = mesa;
+  data["id_recepcionista"] = idRecepcionista;
+  data["platos"] = platos;
+
+  // El mensaje principal contiene el COMANDO y el objeto DATA
+  QJsonObject mensaje;
+  mensaje[Protocolo::COMANDO] = Protocolo::NUEVO_PEDIDO;
+  mensaje[Protocolo::DATA] = data;
+
+  socket->write(QJsonDocument(mensaje).toJson(QJsonDocument::Compact) + "\n");
 }
 
 void ClienteRecepcionista::leerMensaje() {

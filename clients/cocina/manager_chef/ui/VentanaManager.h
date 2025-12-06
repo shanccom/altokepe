@@ -4,7 +4,6 @@
 #include <QWidget>
 #include <vector>
 #include <unordered_map>
-#include <QJsonObject>
 
 #include "common/models/PedidoMesa.h"
 #include "common/models/PlatoDefinicion.h"
@@ -25,27 +24,22 @@ public slots:
     const std::unordered_map<int, PlatoDefinicion>& menu
   );
 
-  void onPedidoNuevo(const PedidoMesa& pedido,
-                     const std::unordered_map<int, PlatoDefinicion>& menu);
-
+  void onPedidoNuevo(const PedidoMesa& pedido, const std::unordered_map<int, PlatoDefinicion>& menu);
   void onPedidoAMover(long long idPedido, const QString& columnaDestino);
-
   void onPedidoAEliminar(long long idPedido);
-
-  void onActualizarEstadoPlato(long long idPedido,
-                               long long idInstancia,
-                               const QString& nuevoEstado);
+  void onActualizarEstadoPlato(long long idPedido, long long idInstancia, const QString& nuevoEstado);
 
 signals:
   void prepararPedidoSolicitado(long long idPedido);
   void cancelarPedidoSolicitado(long long idPedido);
   void enviarPedidoSolicitado(long long idPedido);
   void rechazarPedidoSolicitado(long long idPedido);
+  void rechazarPlatoSolicitado(long long idPedido, long long idInstancia);
 
 private:
   void setupUI();
   TarjetaPedido* crearTarjeta(const PedidoMesa& pedido,
-                              const std::unordered_map<int, PlatoDefinicion>& menu);
+      const std::unordered_map<int, PlatoDefinicion>& menu);
 
   void actualizarBotonesColumnaPendiente();
 
