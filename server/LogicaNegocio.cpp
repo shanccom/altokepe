@@ -177,7 +177,7 @@ void LogicaNegocio::procesarNuevoPedido(const QJsonObject& mensaje, ManejadorCli
 
     for (int i = 0; i < cantidad; ++i) {
       PlatoInstancia platoInst;
-      platoInst.id_instancia = m_siguienteIdInstanciaPlato++;
+      instancia.id_instancia = m_pedidoRepository.generarNuevoIdInstancia();
       platoInst.id_plato_definicion = platoDef.id;
       platoInst.estado = EstadoPlato::EN_ESPERA;
 
@@ -190,8 +190,8 @@ void LogicaNegocio::procesarNuevoPedido(const QJsonObject& mensaje, ManejadorCli
     return;
   }
 
-  m_pedidosActivos[idPedido] = pedido;
-  m_colaManagerChef.push(idPedido);
+  m_pedidoRepository.pedidos()[idPedido] = pedido; //Se guarda en el repositorio
+  m_pedidoRepository.colaManagerChef().push(idPedido);//se inserta en managerchef
 
   QJsonObject pedidoJson = m_serializador.pedidoMesaToJson(pedido);
 
