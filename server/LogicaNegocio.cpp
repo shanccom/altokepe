@@ -80,19 +80,24 @@ void LogicaNegocio::enviarEstadoInicial(ManejadorCliente* cliente) {
 }
 
 QJsonObject LogicaNegocio::getEstadoParaRanking() {
-  std::unordered_map<int, int> conteo = m_pedidoRepository.obtenerConteoRanking();
-
+  // Convertir Mapa a Vector para ordenar
   struct ItemRanking {
     QString nombre;
     int cantidad;
   };
+
   std::vector<ItemRanking> lista;
 
-  for (const auto& [id, plato] : m_menuRepository.menu()) {
-    int cantidad = conteo.contains(id) ? conteo.at(id) : 0;
-    lista.push_back({ QString::fromStdString(plato.nombre), cantidad });
+  const auto& conteo = m_rankingRepository.conteo();
+  const auto& menu = m_menuRepository.menu();
+
+  for (auto const& [id, cantidad] : conteo) {
+    if (menu.find(id) != menu.end()) {
+      lista.push_back({QString::fromStdString(menu.at(id).nombre), cantidad});
+    }
   }
 
+  // Ordenar (Mayor a menor cantidad)
   std::sort(lista.begin(), lista.end(), [](const ItemRanking& a, const ItemRanking& b) {
     return a.cantidad > b.cantidad;
   });
@@ -113,10 +118,11 @@ QJsonObject LogicaNegocio::getEstadoParaRanking() {
   return mensaje;
 }
 
+
 void LogicaNegocio::registrarVenta(int idPlato) {
   {
     std::lock_guard<std::mutex> lock(m_mutex);
-    m_pedidoRepository.incrementarConteoRanking(idPlato);
+    m_rankingRepository.incrementar(idPlato);
   }
   notificarActualizacionRanking();
 }
