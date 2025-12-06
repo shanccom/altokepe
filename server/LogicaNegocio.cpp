@@ -145,7 +145,8 @@ void LogicaNegocio::procesarNuevoPedido(const QJsonObject& mensaje, ManejadorCli
     qWarning() << "NUEVO_PEDIDO sin platos";
     return;
   }
-  long long idPedido = m_siguienteIdPedido++;
+  
+  long long idPedido = m_pedidoRepository.generarNuevoIdPedido();
 
   PedidoMesa pedido;
   pedido.id_pedido = idPedido;
@@ -162,11 +163,11 @@ void LogicaNegocio::procesarNuevoPedido(const QJsonObject& mensaje, ManejadorCli
     int idPlato = platoObj["id"].toInt();
     int cantidad = platoObj["cantidad"].toInt();
 
-    if (m_menu.find(idPlato) == m_menu.end()) {
+    const auto& menu = m_menuRepository.menu();
+    if (menu.find(idPlato) == menu.end()) {
       qWarning() << "Plato inválido:" << idPlato;
       continue;
     }
-
     if (cantidad <= 0) {
       qWarning() << "Cantidad inválida para plato:" << idPlato;
       continue;
