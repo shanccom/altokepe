@@ -393,8 +393,10 @@ void LogicaNegocio::procesarMarcarPlatoTerminado(const QJsonObject& mensaje, Man
   const int idPedido = data["id_pedido"].toInt();
   const int idInstancia = data["id_instancia"].toInt();
 
-  auto itPedido = m_pedidosActivos.find(idPedido);
-  if (itPedido == m_pedidosActivos.end()) {
+  auto& pedidosRepo = m_pedidoRepository.pedidos();
+
+  auto itPedido = pedidosRepo.find(idPedido);
+  if (itPedido == pedidosRepo.end()) {
     enviarError(remitente, "Pedido no encontrado", data);
     return;
   }
@@ -405,12 +407,19 @@ void LogicaNegocio::procesarMarcarPlatoTerminado(const QJsonObject& mensaje, Man
 
   for (auto& inst : pedido.platos) {
     if (inst.id_instancia == idInstancia) {
-      const PlatoDefinicion& def = m_menu[inst.id_plato_definicion];
-      nombreEstacion = def.estacion;
-      if (def.estacion != remitente->getNombreEstacion().toStdString()) {
+
+      const PlatoDefinicion* def = m_menuRepository.obtener(inst.id_plato_definicion);
+      if (!def) {
+        enviarError(remitente, "Definición de plato no encontrada", data);
+        return;
+      }
+
+      nombreEstacion = def->estacion;
+
+      if (def->estacion != remitente->getNombreEstacion().toStdString()) {
         qWarning() << "Estación" << remitente->getNombreEstacion()
                    << "no autorizada para plato de"
-                   << QString::fromStdString(def.estacion);
+                   << QString::fromStdString(def->estacion);
         return;
       }
 
@@ -426,8 +435,9 @@ void LogicaNegocio::procesarMarcarPlatoTerminado(const QJsonObject& mensaje, Man
 
   instancia->estado = EstadoPlato::FINALIZADO;
 
+  // Actualiza cola de estación 
   if (!nombreEstacion.empty()) {
-    auto& cola = m_colasPorEstacion[nombreEstacion];
+    auto& cola = m_pedidoRepository.colasPorEstacion()[nombreEstacion];
 
     if (cola.empty()) {
       qWarning() << "La cola de estación" << QString::fromStdString(nombreEstacion) << "ya estaba vacía.";
@@ -438,21 +448,24 @@ void LogicaNegocio::procesarMarcarPlatoTerminado(const QJsonObject& mensaje, Man
       enviarError(remitente, "Solo se puede finalizar el plato que se está PREPARANDO.", data);
       return;
     }
+
     cola.pop();
 
-    // Actualizar el Nuevo Top
+    // Actualiza el Top
     if (!cola.empty()) {
       const InfoPlatoPrioridad& nuevoTop = cola.top();
 
-      // Buscamos la instancia real del nuevo top para actualizar su estado
-      if (m_pedidosActivos.find(nuevoTop.id_pedido) != m_pedidosActivos.end()) {
-        PedidoMesa& pedidoTop = m_pedidosActivos[nuevoTop.id_pedido];
+      if (pedidosRepo.find(nuevoTop.id_pedido) != pedidosRepo.end()) {
+        PedidoMesa& pedidoTop = pedidosRepo[nuevoTop.id_pedido];
+
         for (auto& instTop : pedidoTop.platos) {
           if (instTop.id_instancia == nuevoTop.id_instancia_plato) {
-            if (instTop.estado == EstadoPlato::EN_PROGRESO || instTop.estado == EstadoPlato::DEVUELTO) {
+
+            if (instTop.estado == EstadoPlato::EN_PROGRESO ||
+                instTop.estado == EstadoPlato::DEVUELTO)
+            {
               instTop.estado = EstadoPlato::PREPARANDO;
 
-              // Notificar a la cocina
               QJsonObject dataTop;
               dataTop["id_pedido"] = static_cast<int>(nuevoTop.id_pedido);
               dataTop["id_instancia"] = static_cast<int>(instTop.id_instancia);
@@ -467,8 +480,10 @@ void LogicaNegocio::procesarMarcarPlatoTerminado(const QJsonObject& mensaje, Man
               msgPedido[Protocolo::DATA] = dataTop;
 
               for (auto cli : m_manejadoresActivos) {
-                if (cli->getTipoActor() == TipoActor::MANAGER_CHEF) emit enviarRespuesta(cli, msgPedido);
-                else emit enviarRespuesta(cli, msgTop);
+                if (cli->getTipoActor() == TipoActor::MANAGER_CHEF)
+                  emit enviarRespuesta(cli, msgPedido);
+                else
+                  emit enviarRespuesta(cli, msgTop);
               }
 
               qInfo() << "Estación" << QString::fromStdString(nombreEstacion)
@@ -483,13 +498,16 @@ void LogicaNegocio::procesarMarcarPlatoTerminado(const QJsonObject& mensaje, Man
 
   bool todoTerminado = true;
   for (const auto& inst : pedido.platos) {
-    if (inst.estado != EstadoPlato::FINALIZADO && inst.estado != EstadoPlato::CANCELADO) {
+    if (inst.estado != EstadoPlato::FINALIZADO &&
+        inst.estado != EstadoPlato::CANCELADO) 
+    {
       todoTerminado = false;
       break;
     }
   }
 
-  if (todoTerminado) pedido.estado_general = EstadoPedido::LISTO;
+  if (todoTerminado)
+    pedido.estado_general = EstadoPedido::LISTO;
 
   QJsonObject dataEnvio;
   dataEnvio["id_pedido"] = static_cast<int>(idPedido);
@@ -505,48 +523,6 @@ void LogicaNegocio::procesarMarcarPlatoTerminado(const QJsonObject& mensaje, Man
 
   qInfo() << "Plato" << idInstancia << "terminado. Pedido"
           << idPedido << (todoTerminado ? "LISTO" : "AÚN EN PROCESO");
-}
-
-void LogicaNegocio::procesarConfirmarEntrega(const QJsonObject& mensaje, ManejadorCliente* remitente) {
-  std::lock_guard<std::mutex> lock(m_mutex);
-
-  if (!mensaje.contains(Protocolo::DATA) || !mensaje[Protocolo::DATA].isObject()) {
-    enviarError(remitente, "Payload inválido en CONFIRMAR_ENTREGA"); 
-    return;
-  }
-  QJsonObject data = mensaje[Protocolo::DATA].toObject();
-
-  if (!data.contains("id_pedido")) {
-    enviarError(remitente, "Falta id_pedido en CONFIRMAR_ENTREGA");
-    return;
-  }
-  long long idPedido = data["id_pedido"].toInt();
-
-  if (m_pedidosActivos.find(idPedido) == m_pedidosActivos.end()) {
-    enviarError(remitente, "Pedido no encontrado", data);
-    return;
-  }
-  PedidoMesa& pedido = m_pedidosActivos[idPedido];
-
-  if (pedido.estado_general != EstadoPedido::LISTO) {
-    enviarError(remitente, "El pedido no está LISTO para entrega", data);
-    return;
-  }
-
-  pedido.estado_general = EstadoPedido::ENTREGADO;
-  for (auto& inst : pedido.platos) inst.estado = EstadoPlato::ENTREGADO;
-
-  QJsonObject msg;
-  msg[Protocolo::EVENTO] = Protocolo::PEDIDO_ENTREGADO;
-  msg[Protocolo::DATA] = QJsonObject{ {"id_pedido", static_cast<int>(idPedido)} };
-
-  for (auto cli : m_manejadoresActivos) emit enviarRespuesta(cli, msg);
-
-  // Actualizar ranking
-  for (const auto& inst : pedido.platos) m_conteoPlatosRanking[inst.id_plato_definicion]++;
-  notificarActualizacionRanking();
-
-  qInfo() << "Pedido" << idPedido << "ENTREGADO correctamente.";
 }
 
 void LogicaNegocio::procesarDevolverPlato(const QJsonObject& mensaje, ManejadorCliente* remitente) {
