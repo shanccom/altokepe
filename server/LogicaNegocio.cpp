@@ -79,12 +79,7 @@ void LogicaNegocio::enviarEstadoInicial(ManejadorCliente* cliente) {
     // estado = getEstadoParaEstacion(cliente->getNombreEstacion().toStdString());
   } else if (tipo == TipoActor::RECEPCIONISTA) {
     QJsonObject mensaje;
-    QJsonArray menuArray;
-
-    for (const auto& par : m_menu) {
-      const PlatoDefinicion& plato = par.second;
-      menuArray.append(SerializadorJSON::platoDefinicionToJson(plato));
-    }
+    QJsonArray menuArray = m_menuRepository.menuComoJson();
 
     mensaje[Protocolo::EVENTO] = Protocolo::ACTUALIZACION_MENU;
     mensaje[Protocolo::DATA] = QJsonObject{ {"menu", menuArray} };
@@ -95,20 +90,19 @@ void LogicaNegocio::enviarEstadoInicial(ManejadorCliente* cliente) {
 }
 
 QJsonObject LogicaNegocio::getEstadoParaRanking() {
-  // Convertir Mapa a Vector para ordenar
+  std::unordered_map<int, int> conteo = m_pedidoRepository.obtenerConteoRanking();
+
   struct ItemRanking {
     QString nombre;
     int cantidad;
   };
   std::vector<ItemRanking> lista;
 
-  for (auto const& [id, cantidad] : m_conteoPlatosRanking) {
-    if (m_menu.find(id) != m_menu.end()) {
-      lista.push_back({QString::fromStdString(m_menu[id].nombre), cantidad});
-    }
+  for (const auto& [id, plato] : m_menuRepository.menu()) {
+    int cantidad = conteo.contains(id) ? conteo.at(id) : 0;
+    lista.push_back({ QString::fromStdString(plato.nombre), cantidad });
   }
 
-  // Ordenar (Mayor a menor cantidad)
   std::sort(lista.begin(), lista.end(), [](const ItemRanking& a, const ItemRanking& b) {
     return a.cantidad > b.cantidad;
   });
@@ -130,15 +124,13 @@ QJsonObject LogicaNegocio::getEstadoParaRanking() {
 }
 
 void LogicaNegocio::registrarVenta(int idPlato) {
-  QJsonObject rankingMsg;
   {
     std::lock_guard<std::mutex> lock(m_mutex);
-    m_conteoPlatosRanking[idPlato]++;
+    m_pedidoRepository.incrementarConteoRanking(idPlato);
   }
-
-  // Método centralizado
   notificarActualizacionRanking();
 }
+
 
 void LogicaNegocio::procesarNuevoPedido(const QJsonObject& mensaje, ManejadorCliente* remitente) {
   std::lock_guard<std::mutex> lock(m_mutex);
@@ -707,52 +699,45 @@ void LogicaNegocio::procesarDevolverPlato(const QJsonObject& mensaje, ManejadorC
 }
 
 QJsonObject LogicaNegocio::construirEstadoManagerChef() {
-  QJsonArray menuArray;
-  for (const auto& par : m_menu) {
-    menuArray.append(SerializadorJSON::platoDefinicionToJson(par.second));
-  }
+  QJsonArray menuArray = m_menuRepository.menuComoJson();
 
   QJsonArray pendientes;
   QJsonArray enProgreso;
   QJsonArray terminados;
 
-  for (const auto& par : m_pedidosActivos) {
-    const PedidoMesa& pedido = par.second;
-    QJsonObject pedidoJson = SerializadorJSON::pedidoMesaToJson(pedido);
+  const auto& pedidos = m_pedidoRepository.pedidos();
+
+  for (const auto& [id, pedido] : pedidos) {
+    QJsonObject jsonPedido = SerializadorJSON::pedidoMesaToJson(pedido);
 
     switch (pedido.estado_general) {
       case EstadoPedido::PENDIENTE:
-        pendientes.append(pedidoJson);
+        pendientes.append(jsonPedido);
         break;
 
       case EstadoPedido::EN_PROGRESO:
-        enProgreso.append(pedidoJson);
+        enProgreso.append(jsonPedido);
         break;
 
-      // Agrupamos LISTO, ENTREGADO y CANCELADO en 'terminados' para que el Manager 
-      // pueda ver el historial de la sesión o gestionar entregas.
       case EstadoPedido::LISTO:
       case EstadoPedido::ENTREGADO:
       case EstadoPedido::CANCELADO:
-        terminados.append(pedidoJson);
-        break;
-
-      default:
+        terminados.append(jsonPedido);
         break;
     }
   }
 
   QJsonObject data;
-  data["menu"] = menuArray;
+  data["menu"]               = menuArray;
   data["pedidos_pendientes"] = pendientes;
-  data["pedidos_en_progreso"] = enProgreso;
+  data["pedidos_en_progreso"]= enProgreso;
   data["pedidos_terminados"] = terminados;
 
-  QJsonObject mensaje;
-  mensaje[Protocolo::EVENTO] = Protocolo::ACTUALIZACION_ESTADO_GENERAL;
-  mensaje[Protocolo::DATA] = data;
+  QJsonObject msg;
+  msg[Protocolo::EVENTO] = Protocolo::ACTUALIZACION_ESTADO_GENERAL;
+  msg[Protocolo::DATA]   = data;
 
-  return mensaje;
+  return msg;
 }
 
 void LogicaNegocio::enviarError(ManejadorCliente* cliente, const QString& mensajeError, const QJsonObject& dataContexto) {
