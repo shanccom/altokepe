@@ -35,7 +35,8 @@ add_executable(ServidorAltokepe
   repository/MenuRepository.cpp
   repository/PedidoRepository.cpp
   resources.qrc
-  ${COMMON_SERIALIZER_PATH}
+  ${COMMON_SERIALIZER_PATH}  
+  ${PROJECT_ROOT_DIR}/common/adapter/AdaptadorSerializadorJSON.cpp
 )
 
 target_link_libraries(ServidorAltokepe PRIVATE

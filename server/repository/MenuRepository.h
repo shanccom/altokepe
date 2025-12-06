@@ -2,14 +2,14 @@
 #define MENUREPOSITORY_H
 
 #include "common/models/PlatoDefinicion.h"
-#include "common/network/SerializadorJSON.h"
+#include "common/adapter/AdaptadorSerializadorJSON.h"
 #include <unordered_map>
 #include <QJsonArray>
 
 
 class MenuRepository {
 public:
-    MenuRepository(SerializadorJSON& serializador);
+    MenuRepository(AdaptadorSerializadorJSON& serializador);
 
     bool cargarDesdeArchivo(const QString& rutaArchivo);
 
@@ -19,7 +19,7 @@ public:
     QJsonArray menuComoJson() const;
 
 private:
-    SerializadorJSON& m_serializador;
+    AdaptadorSerializadorJSON& m_serializador;
     std::unordered_map<int, PlatoDefinicion> m_menu;
 };
 

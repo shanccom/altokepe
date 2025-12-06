@@ -2,7 +2,7 @@
 #include "ManejadorCliente.h"
 #include "common/network/Protocolo.h"
 #include "common/models/Estados.h"
-#include "common/network/SerializadorJSON.h"
+#include "common/adapter/AdaptadorSerializadorJSON.h"
 #include <QFile>
 #include <QJsonDocument>
 #include <QJsonObject>
@@ -68,7 +68,7 @@ void LogicaNegocio::enviarEstadoInicial(ManejadorCliente* cliente) {
 
     for (const auto& par : m_menuRepository.menu()) {
       const PlatoDefinicion& plato = par.second;
-      menuArray.append(SerializadorJSON::platoDefinicionToJson(plato));
+      menuArray.append(m_serializador.platoDefinicionToJson(plato));
     }
 
     mensaje[Protocolo::EVENTO] = Protocolo::ACTUALIZACION_MENU;
@@ -267,7 +267,7 @@ void LogicaNegocio::procesarPrepararPedido(const QJsonObject& mensaje, Manejador
       dataResp["id_instancia"] = static_cast<int>(inst.id_instancia);
       dataResp["nombre"] = QString::fromStdString(platoDef.nombre);
       dataResp["score"] = platoDef.tiempo_preparacion_estimado; // O lógica de prioridad
-      dataResp["nuevo_estado"] = SerializadorJSON::estadoPlatoToString(EstadoPlato::EN_PROGRESO);
+      dataResp["nuevo_estado"] = m_serializador.estadoPlatoToString(EstadoPlato::EN_PROGRESO);
       dataResp["estacion"] = QString::fromStdString(platoDef.estacion);
 
       QJsonObject msg;
@@ -302,7 +302,7 @@ void LogicaNegocio::procesarPrepararPedido(const QJsonObject& mensaje, Manejador
           QJsonObject dataTop;
           dataTop["id_pedido"] = static_cast<int>(topInfo.id_pedido);
           dataTop["id_instancia"] = static_cast<int>(inst.id_instancia);
-          dataTop["nuevo_estado"] = SerializadorJSON::estadoPlatoToString(EstadoPlato::PREPARANDO);
+          dataTop["nuevo_estado"] = m_serializador.estadoPlatoToString(EstadoPlato::PREPARANDO);
 
           QJsonObject msgTop;
           msgTop[Protocolo::EVENTO] = Protocolo::PLATO_ESTADO_CAMBIADO;
@@ -481,7 +481,7 @@ void LogicaNegocio::procesarMarcarPlatoTerminado(const QJsonObject& mensaje, Man
               QJsonObject dataTop;
               dataTop["id_pedido"] = static_cast<int>(nuevoTop.id_pedido);
               dataTop["id_instancia"] = static_cast<int>(instTop.id_instancia);
-              dataTop["nuevo_estado"] = SerializadorJSON::estadoPlatoToString(EstadoPlato::PREPARANDO);
+              dataTop["nuevo_estado"] = m_serializador.estadoPlatoToString(EstadoPlato::PREPARANDO);
 
               QJsonObject msgTop;
               msgTop[Protocolo::EVENTO] = Protocolo::PLATO_ESTADO_CAMBIADO;
@@ -525,7 +525,7 @@ void LogicaNegocio::procesarMarcarPlatoTerminado(const QJsonObject& mensaje, Man
   dataEnvio["id_pedido"] = static_cast<int>(idPedido);
   dataEnvio["id_instancia"] = static_cast<int>(idInstancia);
   dataEnvio["pedido_listo"] = todoTerminado;
-  dataEnvio["nuevo_estado"] = SerializadorJSON::estadoPlatoToString(EstadoPlato::FINALIZADO);
+  dataEnvio["nuevo_estado"] = m_serializador.estadoPlatoToString(EstadoPlato::FINALIZADO);
 
   QJsonObject msg;
   msg[Protocolo::EVENTO] = Protocolo::PLATO_TERMINADO;
@@ -621,7 +621,7 @@ void LogicaNegocio::procesarDevolverPlato(const QJsonObject& mensaje, ManejadorC
     dataResp["nombre"] = QString::fromStdString(def->nombre);
     dataResp["estacion"] = QString::fromStdString(estacionObjetivo);
     dataResp["score"] = nuevoScore;
-    dataResp["nuevo_estado"] = SerializadorJSON::estadoPlatoToString(EstadoPlato::DEVUELTO);
+    dataResp["nuevo_estado"] = m_serializador.estadoPlatoToString(EstadoPlato::DEVUELTO);
 
     QJsonObject msg;
     msg[Protocolo::EVENTO] = Protocolo::PLATO_DEVUELTO;
@@ -648,7 +648,7 @@ void LogicaNegocio::procesarDevolverPlato(const QJsonObject& mensaje, ManejadorC
             QJsonObject dataTop;
             dataTop["id_pedido"] = static_cast<int>(topInfo.id_pedido);
             dataTop["id_instancia"] = static_cast<int>(instTop.id_instancia);
-            dataTop["nuevo_estado"] = SerializadorJSON::estadoPlatoToString(EstadoPlato::PREPARANDO);
+            dataTop["nuevo_estado"] = m_serializador.estadoPlatoToString(EstadoPlato::PREPARANDO);
 
             QJsonObject msgTop;
             msgTop[Protocolo::EVENTO] = Protocolo::PLATO_ESTADO_CAMBIADO;
@@ -730,7 +730,7 @@ void LogicaNegocio::procesarConfirmarEntrega(const QJsonObject& mensaje, Manejad
 QJsonObject LogicaNegocio::construirEstadoManagerChef() {
   QJsonArray menuArray;
   for (const auto& par : m_menuRepository.menu()) {
-    menuArray.append(SerializadorJSON::platoDefinicionToJson(par.second));
+    menuArray.append(m_serializador.platoDefinicionToJson(par.second));
   }
 
   QJsonArray pendientes;
@@ -741,7 +741,7 @@ QJsonObject LogicaNegocio::construirEstadoManagerChef() {
 
   for (const auto& par : pedidosRepo) {
     const PedidoMesa& pedido = par.second;
-    QJsonObject pedidoJson = SerializadorJSON::pedidoMesaToJson(pedido);
+    QJsonObject pedidoJson = m_serializador.pedidoMesaToJson(pedido);
 
     switch (pedido.estado_general) {
       case EstadoPedido::PENDIENTE:

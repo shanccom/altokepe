@@ -33,12 +33,9 @@ add_executable(ClienteRecepcionista
 
   # Archivos de 'common' necesarios
   ../../common/network/SerializadorJSON.cpp
-<<<<<<< HEAD
-=======
   
   # Historial
   data/GestorPedidos.cpp
->>>>>>> fbf1d3658d5f145ed08873dd1f488a0751640cc8
 )
 
 target_link_libraries(ClienteRecepcionista PRIVATE Qt6::Widgets Qt6::Network)

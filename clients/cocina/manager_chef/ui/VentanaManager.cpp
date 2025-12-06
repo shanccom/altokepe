@@ -1,7 +1,7 @@
 #include "VentanaManager.h"
 #include "ColumnaPedidos.h"
 #include "TarjetaPedido.h"
-#include "common/network/SerializadorJSON.h"
+#include "common/adapter/AdaptadorSerializadorJSON.h"
 
 #include <QHBoxLayout>
 #include <QDebug>
@@ -40,8 +40,6 @@ TarjetaPedido* VentanaManager::crearTarjeta(
   QString titulo = QString("Mesa %1 - Pedido #%2").arg(pedido.numero_mesa).arg(pedido.id_pedido);
   auto* tarjeta = new TarjetaPedido(pedido.id_pedido, titulo, this);
 
-<<<<<<< HEAD
-=======
   // Conectar señales de la tarjeta a la ventana
   connect(tarjeta, &TarjetaPedido::prepararPedido, this, &VentanaManager::prepararPedidoSolicitado);
   connect(tarjeta, &TarjetaPedido::cancelarPedido, this, &VentanaManager::cancelarPedidoSolicitado);
@@ -50,13 +48,12 @@ TarjetaPedido* VentanaManager::crearTarjeta(
   connect(tarjeta, &TarjetaPedido::rechazarPlato, this, &VentanaManager::rechazarPlatoSolicitado);
 
   AdaptadorSerializadorJSON adaptador;
->>>>>>> fbf1d3658d5f145ed08873dd1f488a0751640cc8
   for (const auto& platoInst : pedido.platos) {
     QString nombrePlato = menu.count(platoInst.id_plato_definicion)
       ? QString::fromStdString(menu.at(platoInst.id_plato_definicion).nombre)
       : "ID Desconocido";
 
-    QString estado = SerializadorJSON::estadoPlatoToString(platoInst.estado);
+    QString estado = adaptador.estadoPlatoToString(platoInst.estado);
     tarjeta->agregarPlato(platoInst.id_instancia, nombrePlato, estado);
   }
 

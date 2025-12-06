@@ -13,7 +13,7 @@
 #include "common/models/PlatoDefinicion.h"
 #include "common/models/InfoPlatoPrioridad.h"
 #include "common/models/Estados.h"
-#include "common/network/SerializadorJSON.h"
+#include "common/adapter/AdaptadorSerializadorJSON.h"
 #include "repository/MenuRepository.h"
 #include "repository/PedidoRepository.h"
 
@@ -68,7 +68,7 @@ private:
   MenuRepository m_menuRepository;
   PedidoRepository m_pedidoRepository;
 
-  SerializadorJSON m_serializador;
+  AdaptadorSerializadorJSON m_serializador;
 
   // Construye menú y pedidos clasificados para el Manager Chef.
   QJsonObject construirEstadoManagerChef();
