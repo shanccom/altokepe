@@ -664,6 +664,53 @@ void LogicaNegocio::procesarDevolverPlato(const QJsonObject& mensaje, ManejadorC
   if (platosDevueltosCount > 0) notificarActualizacionRanking();
 }
 
+void LogicaNegocio::procesarConfirmarEntrega(const QJsonObject& mensaje, ManejadorCliente* remitente) {
+  std::lock_guard<std::mutex> lock(m_mutex);
+
+  if (!mensaje.contains(Protocolo::DATA) || !mensaje[Protocolo::DATA].isObject()) {
+    enviarError(remitente, "Payload inválido en CONFIRMAR_ENTREGA"); 
+    return;
+  }
+  QJsonObject data = mensaje[Protocolo::DATA].toObject();
+
+  if (!data.contains("id_pedido")) {
+    enviarError(remitente, "Falta id_pedido en CONFIRMAR_ENTREGA");
+    return;
+  }
+  long long idPedido = data["id_pedido"].toInt();
+
+  auto& pedidosRepo = m_pedidoRepository.pedidos();
+
+  if (pedidosRepo.find(idPedido) == pedidosRepo.end()) {
+    enviarError(remitente, "Pedido no encontrado", data);
+    return;
+  }
+
+  PedidoMesa& pedido = pedidosRepo[idPedido];
+
+  if (pedido.estado_general != EstadoPedido::LISTO) {
+    enviarError(remitente, "El pedido no está LISTO para entrega", data);
+    return;
+  }
+
+  pedido.estado_general = EstadoPedido::ENTREGADO;
+  for (auto& inst : pedido.platos) inst.estado = EstadoPlato::ENTREGADO;
+
+  QJsonObject msg;
+  msg[Protocolo::EVENTO] = Protocolo::PEDIDO_ENTREGADO;
+  msg[Protocolo::DATA] = QJsonObject{ {"id_pedido", static_cast<int>(idPedido)} };
+
+  for (auto cli : m_manejadoresActivos) emit enviarRespuesta(cli, msg);
+
+  for (const auto& inst : pedido.platos) {
+    m_rankingRepository.incrementar(inst.id_plato_definicion);
+  }
+
+  notificarActualizacionRanking();
+
+  qInfo() << "Pedido" << idPedido << "ENTREGADO correctamente.";
+}
+
 QJsonObject LogicaNegocio::construirEstadoManagerChef() {
   QJsonArray menuArray = m_menuRepository.menuComoJson();
 
