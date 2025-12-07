@@ -1,5 +1,6 @@
 #include "common/network/Protocolo.h"
 #include "common/models/Estados.h"
+#include "common/ExcepcionesCommon.h"
 #include "ManejadorCliente.h"
 #include "LogicaNegocio.h"
 #include "patterns/CommandFactory.h"
@@ -66,12 +67,22 @@ void ManejadorCliente::procesarBuffer() {
       }
     } else {
       // Usamos la Factory para crear y ejecutar el comando
-      std::unique_ptr<ICommand> command = CommandFactory::create(mensaje, this);
-      if (command) {
-        command->execute();
-      } else {
-        qWarning() << "Comando no reconocido o factoría devolvió null.";
+      try {
+          std::unique_ptr<ICommand> command = CommandFactory::create(mensaje, this);
+          if (command) {
+              command->execute();
+          } else {
+              qWarning() << "Comando no reconocido o factoría devolvió null.";
+          }
       }
+      catch (const std::exception& e) {
+          qWarning() << "Error inesperado al ejecutar comando:" << e.what();
+          QJsonObject errorMsg;
+          errorMsg[Protocolo::EVENTO] = Protocolo::ERROR;
+          errorMsg[Protocolo::MENSAJE_ERROR] = "Error interno del servidor";
+          enviarMensaje(errorMsg);
+      }
+
     }
   }
 }
