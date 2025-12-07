@@ -147,58 +147,86 @@ PedidoMesa SerializadorJSON::jsonToPedidoMesa(const QJsonObject& json) {
 
 // Implementación de helpers para Enums
 QString SerializadorJSON::estadoPlatoToString(EstadoPlato estado) {
-  switch(estado) {
-    case EstadoPlato::EN_ESPERA: return "EN_ESPERA";
-    case EstadoPlato::EN_PROGRESO: return "EN_PROGRESO";
-    case EstadoPlato::FINALIZADO: return "FINALIZADO";
-    case EstadoPlato::CANCELADO: return "CANCELADO";
-    case EstadoPlato::ENTREGADO: return "ENTREGADO";
-    case EstadoPlato::DEVUELTO: return "DEVUELTO";
-    default: return "DESCONOCIDO";
-  }
+    switch(estado) {
+        case EstadoPlato::EN_ESPERA: return "EN_ESPERA";
+        case EstadoPlato::EN_PROGRESO: return "EN_PROGRESO";
+        case EstadoPlato::FINALIZADO: return "FINALIZADO";
+        case EstadoPlato::CANCELADO: return "CANCELADO";
+        case EstadoPlato::ENTREGADO: return "ENTREGADO";
+        case EstadoPlato::DEVUELTO: return "DEVUELTO";
+        default: throw ExcepcionValorEnumInvalido("EstadoPlato");
+    }
 }
 
 EstadoPlato SerializadorJSON::stringToEstadoPlato(const QString& str) {
-  if (str == "EN_ESPERA") return EstadoPlato::EN_ESPERA;
-  if (str == "EN_PROGRESO") return EstadoPlato::EN_PROGRESO;
-  if (str == "FINALIZADO") return EstadoPlato::FINALIZADO;
-  if (str == "CANCELADO") return EstadoPlato::CANCELADO;
-  if (str == "ENTREGADO") return EstadoPlato::ENTREGADO;
-  return EstadoPlato::EN_ESPERA; // Default
+    if (str == "EN_ESPERA") return EstadoPlato::EN_ESPERA;
+    if (str == "EN_PROGRESO") return EstadoPlato::EN_PROGRESO;
+    if (str == "FINALIZADO") return EstadoPlato::FINALIZADO;
+    if (str == "CANCELADO") return EstadoPlato::CANCELADO;
+    if (str == "ENTREGADO") return EstadoPlato::ENTREGADO;
+
+    throw ExcepcionValorEnumInvalido("EstadoPlato");
 }
 
 QString SerializadorJSON::estadoPedidoToString(EstadoPedido estado) {
-  switch(estado) {
-    case EstadoPedido::PENDIENTE: return "PENDIENTE";
-    case EstadoPedido::EN_PROGRESO: return "EN_PROGRESO";
-    case EstadoPedido::LISTO: return "LISTO";
-    case EstadoPedido::ENTREGADO: return "ENTREGADO";
-    case EstadoPedido::CANCELADO: return "CANCELADO";
-    default: return "DESCONOCIDO";
-  }
+    switch(estado) {
+        case EstadoPedido::PENDIENTE: return "PENDIENTE";
+        case EstadoPedido::EN_PROGRESO: return "EN_PROGRESO";
+        case EstadoPedido::LISTO: return "LISTO";
+        case EstadoPedido::ENTREGADO: return "ENTREGADO";
+        case EstadoPedido::CANCELADO: return "CANCELADO";
+        default: throw ExcepcionValorEnumInvalido("EstadoPedido");
+    }
 }
 
 EstadoPedido SerializadorJSON::stringToEstadoPedido(const QString& str) {
-  if (str == "PENDIENTE") return EstadoPedido::PENDIENTE;
-  if (str == "EN_PROGRESO") return EstadoPedido::EN_PROGRESO;
-  if (str == "LISTO") return EstadoPedido::LISTO;
-  if (str == "ENTREGADO" || str == "COMPLETADO") return EstadoPedido::ENTREGADO;
-  if (str == "CANCELADO") return EstadoPedido::CANCELADO;
-  return EstadoPedido::PENDIENTE; // Default
+    if (str == "PENDIENTE") return EstadoPedido::PENDIENTE;
+    if (str == "EN_PROGRESO") return EstadoPedido::EN_PROGRESO;
+    if (str == "LISTO") return EstadoPedido::LISTO;
+    if (str == "ENTREGADO" || str == "COMPLETADO") return EstadoPedido::ENTREGADO;
+    if (str == "CANCELADO") return EstadoPedido::CANCELADO;
+
+    throw ExcepcionValorEnumInvalido("EstadoPedido");
 }
 
 QJsonObject SerializadorJSON::infoPlatoPrioridadToJson(const InfoPlatoPrioridad& info) {
-  QJsonObject json;
-  json["id_pedido"] = QJsonValue::fromVariant(info.id_pedido);
-  json["id_instancia"] = QJsonValue::fromVariant(info.id_instancia_plato);
-  json["score"] = info.score_prioridad;
-  return json;
+    QJsonObject json;
+    json["id_pedido"] = QJsonValue::fromVariant(info.id_pedido);
+    json["id_instancia"] = QJsonValue::fromVariant(info.id_instancia_plato);
+    json["score"] = info.score_prioridad;
+    return json;
 }
 
 InfoPlatoPrioridad SerializadorJSON::jsonToInfoPlatoPrioridad(const QJsonObject& json) {
-  InfoPlatoPrioridad info;
-  info.id_pedido = json["id_pedido"].toVariant().toLongLong();
-  info.id_instancia_plato = json["id_instancia"].toVariant().toLongLong();
-  info.score_prioridad = json["score"].toDouble();
-  return info;
+
+    // Validación de campos obligatorios
+    if (!json.contains("id_pedido")) throw ExcepcionCampoFaltante("id_pedido");
+    if (!json.contains("id_instancia")) throw ExcepcionCampoFaltante("id_instancia");
+    if (!json.contains("score")) throw ExcepcionCampoFaltante("score");
+
+    // Validación de tipos
+    if (!json["id_pedido"].isDouble())
+        throw ExcepcionTipoIncorrecto("id_pedido", "long long", "otro tipo");
+
+    if (!json["id_instancia"].isDouble())
+        throw ExcepcionTipoIncorrecto("id_instancia", "long long", "otro tipo");
+
+    if (!json["score"].isDouble())
+        throw ExcepcionTipoIncorrecto("score", "double", "otro tipo");
+
+    // Construcción segura del objeto
+    InfoPlatoPrioridad info;
+    info.id_pedido = json["id_pedido"].toVariant().toLongLong();
+    info.id_instancia_plato = json["id_instancia"].toVariant().toLongLong();
+    info.score_prioridad = json["score"].toDouble();
+
+    // Validación de valores
+    if (info.id_pedido <= 0)
+        throw ExcepcionModeloInvalido("InfoPlatoPrioridad", "El ID de pedido debe ser mayor que 0");
+    if (info.id_instancia_plato <= 0)
+        throw ExcepcionModeloInvalido("InfoPlatoPrioridad", "El ID de instancia de plato debe ser mayor que 0");
+    if (info.score_prioridad < 0)
+        throw ExcepcionModeloInvalido("InfoPlatoPrioridad", "El score de prioridad no puede ser negativo");
+
+    return info;
 }
