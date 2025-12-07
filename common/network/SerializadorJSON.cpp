@@ -68,22 +68,10 @@ PlatoInstancia SerializadorJSON::jsonToPlatoInstancia(const QJsonObject& json) {
 }
 
 QJsonObject SerializadorJSON::pedidoMesaToJson(const PedidoMesa& pedido) {
-    // Validaciones básicas antes de serializar
-    if (pedido.id_pedido <= 0) {
-        throw ExcepcionJSON("El campo 'id_pedido' es inválido (<= 0)");
-    }
-
-    if (pedido.numero_mesa <= 0) {
-        throw ExcepcionJSON("El campo 'numero_mesa' es inválido (<= 0)");
-    }
-
-    if (pedido.id_recepcionista <= 0) {
-        throw ExcepcionJSON("El campo 'id_recepcionista' es inválido (<= 0)");
-    }
-
-    if (estadoPedidoToString(pedido.estado_general).isEmpty()) {
-        throw ExcepcionJSON("El estado_general no es válido");
-    }
+    if (pedido.id_pedido <= 0) throw ExcepcionJSON("El campo 'id_pedido' es inválido (<= 0)");
+    if (pedido.numero_mesa <= 0) throw ExcepcionJSON("El campo 'numero_mesa' es inválido (<= 0)");
+    if (pedido.id_recepcionista <= 0) throw ExcepcionJSON("El campo 'id_recepcionista' es inválido (<= 0)");
+    if (estadoPedidoToString(pedido.estado_general).isEmpty()) throw ExcepcionJSON("El estado_general no es válido");
 
     QJsonObject json;
     json["id_pedido"] = QJsonValue::fromVariant(QVariant::fromValue(pedido.id_pedido));
@@ -95,39 +83,24 @@ QJsonObject SerializadorJSON::pedidoMesaToJson(const PedidoMesa& pedido) {
     for (const auto& plato : pedido.platos) {
         platosArray.append(platoInstanciaToJson(plato));
     }
-
     json["platos"] = platosArray;
 
     return json;
 }
 
 PedidoMesa SerializadorJSON::jsonToPedidoMesa(const QJsonObject& json) {
-
-    // Validación de campos obligatorios
     if (!json.contains("id_pedido")) throw ExcepcionCampoFaltante("id_pedido");
     if (!json.contains("numero_mesa")) throw ExcepcionCampoFaltante("numero_mesa");
     if (!json.contains("id_recepcionista")) throw ExcepcionCampoFaltante("id_recepcionista");
     if (!json.contains("estado_general")) throw ExcepcionCampoFaltante("estado_general");
     if (!json.contains("platos")) throw ExcepcionCampoFaltante("platos");
 
-    // Validación de tipos
-    if (!json["id_pedido"].isDouble())
-        throw ExcepcionTipoIncorrecto("id_pedido", "long long", "otro tipo");
+    if (!json["id_pedido"].isDouble()) throw ExcepcionTipoIncorrecto("id_pedido", "long long", "otro tipo");
+    if (!json["numero_mesa"].isDouble()) throw ExcepcionTipoIncorrecto("numero_mesa", "int", "otro tipo");
+    if (!json["id_recepcionista"].isDouble()) throw ExcepcionTipoIncorrecto("id_recepcionista", "int", "otro tipo");
+    if (!json["estado_general"].isString()) throw ExcepcionTipoIncorrecto("estado_general", "string", "otro tipo");
+    if (!json["platos"].isArray()) throw ExcepcionTipoIncorrecto("platos", "array", "otro tipo");
 
-    if (!json["numero_mesa"].isDouble())
-        throw ExcepcionTipoIncorrecto("numero_mesa", "int", "otro tipo");
-
-    if (!json["id_recepcionista"].isDouble())
-        throw ExcepcionTipoIncorrecto("id_recepcionista", "int", "otro tipo");
-
-    if (!json["estado_general"].isString())
-        throw ExcepcionTipoIncorrecto("estado_general", "string", "otro tipo");
-
-    if (!json["platos"].isArray())
-        throw ExcepcionTipoIncorrecto("platos", "array", "otro tipo");
-
-
-    // Construcción segura del objeto
     PedidoMesa pedido;
     pedido.id_pedido = json["id_pedido"].toVariant().toLongLong();
     pedido.numero_mesa = json["numero_mesa"].toInt();
@@ -136,16 +109,14 @@ PedidoMesa SerializadorJSON::jsonToPedidoMesa(const QJsonObject& json) {
 
     QJsonArray platosArray = json["platos"].toArray();
     for (const QJsonValue& val : platosArray) {
-        if (!val.isObject())
-            throw ExcepcionTipoIncorrecto("plato", "object", "otro tipo");
-
+        if (!val.isObject()) throw ExcepcionTipoIncorrecto("plato", "object", "otro tipo");
         pedido.platos.push_back(jsonToPlatoInstancia(val.toObject()));
     }
 
     return pedido;
 }
 
-// Implementación de helpers para Enums
+// Helpers para Enums
 QString SerializadorJSON::estadoPlatoToString(EstadoPlato estado) {
     switch(estado) {
         case EstadoPlato::EN_ESPERA: return "EN_ESPERA";
@@ -164,7 +135,6 @@ EstadoPlato SerializadorJSON::stringToEstadoPlato(const QString& str) {
     if (str == "FINALIZADO") return EstadoPlato::FINALIZADO;
     if (str == "CANCELADO") return EstadoPlato::CANCELADO;
     if (str == "ENTREGADO") return EstadoPlato::ENTREGADO;
-
     throw ExcepcionValorEnumInvalido("EstadoPlato");
 }
 
@@ -185,7 +155,6 @@ EstadoPedido SerializadorJSON::stringToEstadoPedido(const QString& str) {
     if (str == "LISTO") return EstadoPedido::LISTO;
     if (str == "ENTREGADO" || str == "COMPLETADO") return EstadoPedido::ENTREGADO;
     if (str == "CANCELADO") return EstadoPedido::CANCELADO;
-
     throw ExcepcionValorEnumInvalido("EstadoPedido");
 }
 
@@ -198,35 +167,22 @@ QJsonObject SerializadorJSON::infoPlatoPrioridadToJson(const InfoPlatoPrioridad&
 }
 
 InfoPlatoPrioridad SerializadorJSON::jsonToInfoPlatoPrioridad(const QJsonObject& json) {
-
-    // Validación de campos obligatorios
     if (!json.contains("id_pedido")) throw ExcepcionCampoFaltante("id_pedido");
     if (!json.contains("id_instancia")) throw ExcepcionCampoFaltante("id_instancia");
     if (!json.contains("score")) throw ExcepcionCampoFaltante("score");
 
-    // Validación de tipos
-    if (!json["id_pedido"].isDouble())
-        throw ExcepcionTipoIncorrecto("id_pedido", "long long", "otro tipo");
+    if (!json["id_pedido"].isDouble()) throw ExcepcionTipoIncorrecto("id_pedido", "long long", "otro tipo");
+    if (!json["id_instancia"].isDouble()) throw ExcepcionTipoIncorrecto("id_instancia", "long long", "otro tipo");
+    if (!json["score"].isDouble()) throw ExcepcionTipoIncorrecto("score", "double", "otro tipo");
 
-    if (!json["id_instancia"].isDouble())
-        throw ExcepcionTipoIncorrecto("id_instancia", "long long", "otro tipo");
-
-    if (!json["score"].isDouble())
-        throw ExcepcionTipoIncorrecto("score", "double", "otro tipo");
-
-    // Construcción segura del objeto
     InfoPlatoPrioridad info;
     info.id_pedido = json["id_pedido"].toVariant().toLongLong();
     info.id_instancia_plato = json["id_instancia"].toVariant().toLongLong();
     info.score_prioridad = json["score"].toDouble();
 
-    // Validación de valores
-    if (info.id_pedido <= 0)
-        throw ExcepcionModeloInvalido("InfoPlatoPrioridad", "El ID de pedido debe ser mayor que 0");
-    if (info.id_instancia_plato <= 0)
-        throw ExcepcionModeloInvalido("InfoPlatoPrioridad", "El ID de instancia de plato debe ser mayor que 0");
-    if (info.score_prioridad < 0)
-        throw ExcepcionModeloInvalido("InfoPlatoPrioridad", "El score de prioridad no puede ser negativo");
+    if (info.id_pedido <= 0) throw ExcepcionModeloInvalido("InfoPlatoPrioridad", "El ID de pedido debe ser mayor que 0");
+    if (info.id_instancia_plato <= 0) throw ExcepcionModeloInvalido("InfoPlatoPrioridad", "El ID de instancia de plato debe ser mayor que 0");
+    if (info.score_prioridad < 0) throw ExcepcionModeloInvalido("InfoPlatoPrioridad", "El score de prioridad no puede ser negativo");
 
     return info;
 }
