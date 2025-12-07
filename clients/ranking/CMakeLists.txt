@@ -8,10 +8,8 @@ set(CMAKE_AUTORCC ON)
 
 find_package(Qt6 REQUIRED COMPONENTS Widgets Network)
 
-add_executable(
-  ClienteRanking main.cpp resources.qrc 
+add_executable(ClienteRanking main.cpp
                  network/RankingClient.cpp network/RankingClient.h
-                 ui/RankingWindow.cpp ui/RankingWindow.h
-                 repository/JsonMenuRepository.cpp repository/JsonMenuRepository.h repository/MenuRepository.h)
+                 ui/RankingWindow.cpp ui/RankingWindow.h)
 
 target_link_libraries(ClienteRanking PRIVATE Qt6::Widgets Qt6::Network)

@@ -46,10 +46,9 @@ void RankingClient::onDatosRecibidos() {
     // Verificar si es una actualización de ranking
     if (obj["evento"].toString() == "ACTUALIZACION_RANKING") {
        QJsonObject data = obj["data"].toObject();
-       QJsonArray ranking = data["ranking"].toArray();
        
-       qDebug() << "Ranking recibido con" << ranking.size() << "elementos.";
-       emit rankingActualizado(ranking);
+       qDebug() << "Datos recibidos del servidor (menu + ranking).";
+       emit datosActualizados(data);
     }
   }
 }

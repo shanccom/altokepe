@@ -113,7 +113,7 @@ QJsonObject LogicaNegocio::getEstadoParaRanking() {
     return a.cantidad > b.cantidad;
   });
 
-  // Construir JSON
+  // Construir JSON del ranking
   QJsonArray rankingArray;
   for (const auto& item : lista) {
     QJsonObject obj;
@@ -122,9 +122,19 @@ QJsonObject LogicaNegocio::getEstadoParaRanking() {
     rankingArray.append(obj);
   }
 
+  // Incluir el menú completo para el cliente
+  QJsonArray menuArray;
+  for (const auto& par : m_menu) {
+    menuArray.append(SerializadorJSON::platoDefinicionToJson(par.second));
+  }
+
+  QJsonObject data;
+  data["ranking"] = rankingArray;
+  data["menu"] = menuArray;
+
   QJsonObject mensaje;
   mensaje[Protocolo::EVENTO] = Protocolo::ACTUALIZACION_RANKING;
-  mensaje[Protocolo::DATA] = QJsonObject{ {"ranking", rankingArray} };
+  mensaje[Protocolo::DATA] = data;
   
   return mensaje;
 }

@@ -2,7 +2,7 @@
 #include <QDebug>
 #include <algorithm>
 
-RankingWindow::RankingWindow(MenuRepository* repository, QWidget *parent) : QWidget(parent) {
+RankingWindow::RankingWindow(QWidget *parent) : QWidget(parent) {
   setWindowTitle("Ranking de Platos Vendidos");
   resize(1000, 600);
   this->setStyleSheet("background-color: #f4f7f6;");
@@ -80,20 +80,25 @@ RankingWindow::RankingWindow(MenuRepository* repository, QWidget *parent) : QWid
   mainLayout->addWidget(menuWidget, 6);     // 60% ancho
   setLayout(mainLayout);
 
-  // --- Cargar Menú usando Repositorio ---
-  if (repository) {
-      m_menu = repository->obtenerMenu();
-      if (!m_menu.isEmpty()) {
-          mostrarMenuAgrupado(m_menu);
-      } else {
-          qWarning() << "El repositorio devolvió un menú vacío.";
-      }
-  } else {
-      qCritical() << "Repositorio nulo en RankingWindow";
-  }
+  // El menú se cargará cuando lleguen los datos del servidor
+  qDebug() << "RankingWindow inicializada. Esperando datos del servidor...";
 }
 
-void RankingWindow::actualizarRanking(const QJsonArray &rankingData) {
+void RankingWindow::actualizarDatos(const QJsonObject &data) {
+  // Extraer el menú si viene en los datos
+  if (data.contains("menu") && data["menu"].isArray()) {
+    m_menu = data["menu"].toArray();
+    mostrarMenuAgrupado(m_menu);
+    qDebug() << "Menú actualizado con" << m_menu.size() << "platos.";
+  }
+
+  // Extraer el ranking
+  QJsonArray rankingData;
+  if (data.contains("ranking") && data["ranking"].isArray()) {
+    rankingData = data["ranking"].toArray();
+  }
+
+  // Actualizar tabla de ranking
   m_tablaRanking->setRowCount(0);
 
   struct ItemVenta {

@@ -15,7 +15,7 @@ public:
 signals:
   // SEÑAL DEL OBSERVER: La Vista se suscribirá a esto.
   // Facade: Ocultamos la complejidad del protocolo de red.
-  void rankingActualizado(const QJsonArray &rankingData);
+  void datosActualizados(const QJsonObject &data);
 
 private slots:
   void onConectado();

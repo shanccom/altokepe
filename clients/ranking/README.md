@@ -5,13 +5,12 @@
 2. [Arquitectura General](#arquitectura-general)
 3. [Patrón Observer](#patrón-observer)
 4. [Patrón Facade](#patrón-facade)
-5. [Patrón Repository](#patrón-repository)
-6. [Implementación Cliente](#implementación-cliente)
-7. [Implementación Servidor](#implementación-servidor)
-8. [Protocolo de Comunicación](#protocolo-de-comunicación)
-9. [Decisiones de Diseño](#decisiones-de-diseño)
-10. [Diagrama de Secuencia](#diagrama-de-secuencia)
-11. [Conclusiones](#conclusiones)
+5. [Implementación Cliente](#implementación-cliente)
+6. [Implementación Servidor](#implementación-servidor)
+7. [Protocolo de Comunicación](#protocolo-de-comunicación)
+8. [Decisiones de Diseño](#decisiones-de-diseño)
+9. [Diagrama de Secuencia](#diagrama-de-secuencia)
+10. [Conclusiones](#conclusiones)
 
 ---
 
@@ -20,8 +19,7 @@
 Este documento describe la implementación del módulo de **Ranking** para el sistema de gestión de restaurante Altokepe. La solución aplica tres patrones de diseño principales:
 
 - **Observer Pattern**: Para notificaciones en tiempo real de cambios en el ranking
-- **Facade Pattern**: Para simplificar el acceso a datos complejos del ranking
-- **Repository Pattern**: Para desacoplar la carga de datos del menú de la interfaz gráfica
+- **Facade Pattern**: Para simplificar el acceso a datos complejos del ranking y proporcionar datos completos al cliente
 
 ### Objetivos Cumplidos
 Transición de simulación mock a conexión TCP real  
@@ -117,16 +115,16 @@ class RankingClient : public QObject {
   Q_OBJECT
 signals:
   // Señal del Observer para la Vista
-  void rankingActualizado(const QJsonArray& rankingData);
+  void datosActualizados(const QJsonObject& data);
   
 private slots:
   void onDatosRecibidos() {
     // Parsear JSON del servidor
     if (obj["evento"].toString() == "ACTUALIZACION_RANKING") {
-      QJsonArray ranking = data["ranking"].toArray();
+      QJsonObject data = obj["data"].toObject();
       
-      // NOTIFICACIÓN a la Vista (Observer)
-      emit rankingActualizado(ranking);
+      // NOTIFICACIÓN a la Vista (Observer) con datos completos
+      emit datosActualizados(data);
     }
   }
 };
@@ -157,10 +155,10 @@ private slots:
    ↓
 7. RankingClient::onDatosRecibidos()
    ↓
-8. emit rankingActualizado(ranking)
-   ↓
-9. RankingWindow::actualizarLista(ranking)
-   ↓
+8. emit datosActualizados(data)
+    ↓
+9. RankingWindow::actualizarDatos(data)
+    ↓
 10. UI actualizada 
 ```
 
@@ -220,7 +218,7 @@ QJsonObject LogicaNegocio::getEstadoParaRanking() {
         }
     );
 
-    // 4. SERIALIZACIÓN: Construir JSON
+    // 4. SERIALIZACIÓN: Construir JSON del ranking
     QJsonArray rankingArray;
     for (const auto& item : lista) {
         QJsonObject obj;
@@ -229,10 +227,20 @@ QJsonObject LogicaNegocio::getEstadoParaRanking() {
         rankingArray.append(obj);
     }
 
-    // 5. FORMATO PROTOCOLO: Envolver en estructura esperada
+    // 5. INCLUIR MENÚ COMPLETO: El cliente necesita el menú para mostrar la carta
+    QJsonArray menuArray;
+    for (const auto& par : m_menu) {
+        menuArray.append(SerializadorJSON::platoDefinicionToJson(par.second));
+    }
+
+    // 6. FORMATO PROTOCOLO: Envolver en estructura esperada
+    QJsonObject data;
+    data["ranking"] = rankingArray;
+    data["menu"] = menuArray;
+
     QJsonObject mensaje;
     mensaje["evento"] = "ACTUALIZACION_RANKING";
-    mensaje["data"] = QJsonObject{ {"ranking", rankingArray} };
+    mensaje["data"] = data;
     
     return mensaje;
 }
@@ -323,158 +331,50 @@ private:
 
 ---
 
-## Patrón Repository
+## Decisión Arquitectónica: Eliminación del Repository en el Cliente
 
-### Definición
-El patrón Repository media entre el dominio y las capas de mapeo de datos usando una interfaz similar a una colección para acceder a los objetos de dominio. Desacopla la lógica de negocio de los detalles de acceso a datos.
+### Contexto
 
-### Implementación en el Proyecto
+Inicialmente, el cliente ranking implementaba el patrón Repository para cargar el menú desde un archivo JSON local embebido. Sin embargo, esto creaba duplicación con la implementación del Repository en el servidor (realizada por otro miembro del equipo).
 
-#### Estructura de Archivos
+### Problema Identificado
+
+1. **Duplicación de Patrón**: Tanto el servidor como el cliente implementaban Repository para los mismos datos
+2. **Desincronización Potencial**: El menú local podría diferir del menú del servidor
+3. **Responsabilidad Incorrecta**: El cliente no debería manejar persistencia de datos
+4. **Conflicto de Implementación**: Reducía los patrones disponibles para otros módulos del servidor
+
+### Solución Implementada
+
+Se eliminó completamente el patrón Repository del cliente ranking. En su lugar:
+
+1. **Servidor como Fuente Única**: El servidor mantiene el Repository y es la única fuente de verdad
+2. **Facade Mejorado**: `getEstadoParaRanking()` ahora incluye tanto el ranking como el menú completo
+3. **Cliente Simplificado**: El cliente solo recibe y muestra datos, sin lógica de persistencia
+
+### Arquitectura Resultante
 
 ```
-clients/ranking/
-├── repository/
-│   ├── MenuRepository.h          # Interfaz abstracta
-│   ├── JsonMenuRepository.h      # Implementación concreta
-│   └── JsonMenuRepository.cpp    # Implementación
-├── ui/
-│   ├── RankingWindow.h
-│   └── RankingWindow.cpp
-└── main.cpp                      # Inyección de dependencias
+┌─────────────────┐                    ┌──────────────────┐
+│     SERVIDOR    │                    │  RANKING CLIENT  │
+│                 │                    │                  │
+│  MenuRepository │                    │                  │
+│  (Persistencia) │                    │                  │
+│       ↓         │                    │                  │
+│    Facade       │  ──── JSON ────→   │  RankingClient   │
+│ getEstadoPara   │   {menu: [...],    │   (recibe)       │
+│    Ranking()    │    ranking: [...]} │       ↓          │
+│                 │                    │  RankingWindow   │
+│                 │                    │   (muestra)      │
+└─────────────────┘                    └──────────────────┘
 ```
 
-#### 1. Interfaz (Contrato)
+### Beneficios
 
-**Archivo**: `repository/MenuRepository.h`  
-**Responsabilidad**: Definir cómo se accede al menú sin revelar la fuente.
-
-```cpp
-#pragma once
-#include <QJsonArray>
-
-class MenuRepository {
-public:
-    virtual ~MenuRepository() = default;
-    virtual QJsonArray obtenerMenu() = 0;  // Método puro virtual
-};
-```
-
-**Características**:
-- Interfaz pura (clase abstracta)
-- Destructor virtual para polimorfismo seguro
-- Un solo método de responsabilidad única
-
-#### 2. Implementación Concreta
-
-**Archivo**: `repository/JsonMenuRepository.h`
-```cpp
-#pragma once
-#include "MenuRepository.h"
-#include <QString>
-
-class JsonMenuRepository : public MenuRepository {
-public:
-    explicit JsonMenuRepository(const QString& rutaArchivo);
-    QJsonArray obtenerMenu() override;
-
-private:
-    QString m_rutaArchivo;
-};
-```
-
-**Archivo**: `repository/JsonMenuRepository.cpp`
-```cpp
-#include "JsonMenuRepository.h"
-#include <QFile>
-#include <QJsonDocument>
-#include <QDebug>
-
-JsonMenuRepository::JsonMenuRepository(const QString& rutaArchivo)
-    : m_rutaArchivo(rutaArchivo) {}
-
-QJsonArray JsonMenuRepository::obtenerMenu() {
-    QFile file(m_rutaArchivo);
-    if (!file.open(QIODevice::ReadOnly)) {
-        qWarning() << "No se pudo abrir el archivo del menú:" << m_rutaArchivo;
-        return QJsonArray();
-    }
-
-    QByteArray data = file.readAll();
-    QJsonDocument doc = QJsonDocument::fromJson(data);
-    
-    if (!doc.isArray()) {
-        qWarning() << "El archivo no contiene un array JSON válido.";
-        return QJsonArray();
-    }
-
-    return doc.array();
-}
-```
-
-**Características**:
-- Manejo de errores robusto
-- Validación de formato JSON
-- Soporte para recursos Qt (`:/menu.json`)
-- Mensajes de debug informativos
-
-#### 3. Inyección de Dependencias
-
-**Archivo**: `ui/RankingWindow.h`
-```cpp
-class RankingWindow : public QWidget {
-  Q_OBJECT
-
-public:
-  // Constructor recibe la abstracción, no la concreción
-  explicit RankingWindow(MenuRepository* repository, QWidget *parent = nullptr);
-  
-private:
-  QJsonArray m_menu;  // Datos cargados del repositorio
-};
-```
-
-**Archivo**: `ui/RankingWindow.cpp`
-```cpp
-RankingWindow::RankingWindow(MenuRepository* repository, QWidget *parent) 
-    : QWidget(parent) {
-  // ...
-  
-  // Inyección de Dependencias: Usar polimorfismo
-  if (repository) {
-      m_menu = repository->obtenerMenu();  // Llamada polimórfica
-      if (!m_menu.isEmpty()) {
-          mostrarMenuAgrupado(m_menu);
-      } else {
-          qWarning() << "El repositorio devolvió un menú vacío.";
-      }
-  } else {
-      qCritical() << "Repositorio nulo en RankingWindow";
-  }
-}
-```
-
-**Archivo**: `main.cpp`
-```cpp
-int main(int argc, char *argv[]) {
-  QApplication app(argc, argv);
-
-  // Crear implementación concreta
-  JsonMenuRepository repositorio(":/menu.json");
-  
-  // Inyectar en la ventana (pasa puntero a la interfaz)
-  RankingWindow ventana(&repositorio);
-  ventana.show();
-  
-  return app.exec();
-}
-```
-
-### Ventajas del Repository en este Contexto
-
-1.  **Desacoplamiento**: La UI no sabe si el menú viene de un JSON, una base de datos o una API REST.
-2.  **Testabilidad**: Permite inyectar un `MockMenuRepository` para pruebas unitarias sin archivos reales.
-3.  **Mantenibilidad**: Cambiar la fuente de datos (ej. a base de datos) solo requiere una nueva implementación de `MenuRepository`, sin tocar la UI.
+1. **Sin Duplicación**: El patrón Repository existe solo en el servidor
+2. **Sincronización Automática**: El cliente siempre tiene los datos actuales del servidor
+3. **Arquitectura Limpia**: Separación clara de responsabilidades (servidor = datos, cliente = visualización)
+4. **Respeto al Trabajo del Equipo**: No interfiere con la implementación del Repository del servidor
 
 ---
 
@@ -558,10 +458,9 @@ void RankingClient::onDatosRecibidos() {
     // Filtrar evento de ranking
     if (obj["evento"].toString() == "ACTUALIZACION_RANKING") {
       QJsonObject data = obj["data"].toObject();
-      QJsonArray ranking = data["ranking"].toArray();
       
-      // Observer: Emitir señal a la Vista
-      emit rankingActualizado(ranking);
+      // Observer: Emitir señal a la Vista con datos completos (menu + ranking)
+      emit datosActualizados(data);
     }
   }
 }
@@ -573,23 +472,19 @@ void RankingClient::onDatosRecibidos() {
 ```cpp
 #include "network/RankingClient.h"
 #include "ui/RankingWindow.h"
-#include "repository/JsonMenuRepository.h"
 #include <QApplication>
 
 int main(int argc, char *argv[]) {
   QApplication app(argc, argv);
 
   RankingClient cliente;
-
-  // Inyección de Dependencias: Usamos el repositorio JSON
-  JsonMenuRepository repositorio(":/menu.json");
-  RankingWindow ventana(&repositorio);
+  RankingWindow ventana;
   
   ventana.show();
 
   // Conectar señal del cliente con slot de la ventana (Observer)
-  QObject::connect(&cliente, &RankingClient::rankingActualizado, 
-                   &ventana, &RankingWindow::actualizarRanking);
+  QObject::connect(&cliente, &RankingClient::datosActualizados, 
+                   &ventana, &RankingWindow::actualizarDatos);
 
   // Conectar al servidor local (Puerto 5555)
   cliente.conectar("127.0.0.1", 5555);
@@ -599,9 +494,9 @@ int main(int argc, char *argv[]) {
 ```
 
 **Cambios clave**:
-- Inyección de dependencias con `JsonMenuRepository`
 - Conexión Observer entre `RankingClient` y `RankingWindow`
-- Uso de recursos Qt (`:/menu.json`)
+- Cliente recibe datos completos (menú + ranking) del servidor
+- No hay dependencias de persistencia local
 
 #### 4. RankingWindow.h
 
@@ -609,20 +504,20 @@ int main(int argc, char *argv[]) {
 ```cpp
 #pragma once
 #include <QJsonArray>
+#include <QJsonObject>
 #include <QTableWidget>
 #include <QWidget>
 #include <QScrollArea>
-#include "../repository/MenuRepository.h"
 
 class RankingWindow : public QWidget {
   Q_OBJECT
 
 public:
-  explicit RankingWindow(MenuRepository* repository, QWidget *parent = nullptr);
+  explicit RankingWindow(QWidget *parent = nullptr);
 
 public slots:
-  // Observer: Reacciona a la señal del cliente
-  void actualizarRanking(const QJsonArray &rankingData);
+  // Observer: Reacciona a la señal del cliente con datos completos
+  void actualizarDatos(const QJsonObject &data);
 
 private:
   void mostrarMenuAgrupado(const QJsonArray& menu);
@@ -639,13 +534,13 @@ private:
 
 #### 5. RankingWindow.cpp
 
-**Constructor** (Inyección de Dependencias + UI Setup):
+**Constructor** (UI Setup):
 ```cpp
-RankingWindow::RankingWindow(MenuRepository* repository, QWidget *parent) 
+RankingWindow::RankingWindow(QWidget *parent) 
     : QWidget(parent) {
   setWindowTitle("Ranking de Platos Vendidos");
   resize(1000, 600);
-  setStyleSheet("background-color: #f4f7f6;");  // Manager Chef palette
+  setStyleSheet("background-color: #f4f7f6;");
 
   // --- Tabla de Ranking (40% izquierda) ---
   m_tablaRanking = new QTableWidget(this);
@@ -655,7 +550,7 @@ RankingWindow::RankingWindow(MenuRepository* repository, QWidget *parent)
   // Estilos Manager Chef
   m_tablaRanking->setStyleSheet(R"(
       QHeaderView::section {
-          background-color: #f0ad4e;  /* Soft orange */
+          background-color: #f0ad4e;
           color: white;
           font-weight: bold;
       }
@@ -668,33 +563,30 @@ RankingWindow::RankingWindow(MenuRepository* repository, QWidget *parent)
   )");
 
   // --- Menú (60% derecha) ---
-  QLabel* tituloMenu = new QLabel("Carta Menú");
-  tituloMenu->setStyleSheet("font-size: 40px; font-weight: bold; color: #e65100;");
-  
-  m_scrollMenu = new QScrollArea(this);
-  m_menuContainer = new QWidget();
-  m_gridMenuLayout = new QGridLayout(m_menuContainer);
-  m_scrollMenu->setWidget(m_menuContainer);
-  m_scrollMenu->setWidgetResizable(true);
+  // ... configuración de UI ...
 
-  // Layout principal (split 40/60)
-  auto* mainLayout = new QHBoxLayout(this);
-  mainLayout->addWidget(m_tablaRanking, 4);  // 40%
-  mainLayout->addWidget(menuWidget, 6);      // 60%
-
-  // --- Cargar Menú usando Repository Pattern ---
-  if (repository) {
-      m_menu = repository->obtenerMenu();  // Polimorfismo
-      if (!m_menu.isEmpty()) {
-          mostrarMenuAgrupado(m_menu);
-      }
-  }
+  // El menú se cargará cuando lleguen los datos del servidor
+  qDebug() << "RankingWindow inicializada. Esperando datos del servidor...";
 }
 ```
 
-**Método `actualizarRanking()`** (Observer Callback):
+**Método `actualizarDatos()`** (Observer Callback):
 ```cpp
-void RankingWindow::actualizarRanking(const QJsonArray &rankingData) {
+void RankingWindow::actualizarDatos(const QJsonObject &data) {
+  // Extraer el menú si viene en los datos
+  if (data.contains("menu") && data["menu"].isArray()) {
+    m_menu = data["menu"].toArray();
+    mostrarMenuAgrupado(m_menu);
+    qDebug() << "Menú actualizado con" << m_menu.size() << "platos.";
+  }
+
+  // Extraer el ranking
+  QJsonArray rankingData;
+  if (data.contains("ranking") && data["ranking"].isArray()) {
+    rankingData = data["ranking"].toArray();
+  }
+
+  // Actualizar tabla de ranking
   m_tablaRanking->setRowCount(0);
 
   // Estructura temporal para ordenamiento
@@ -960,7 +852,8 @@ Cliente                          Servidor
   │◄── ACTUALIZACION_RANKING ───────┤
   │    {"evento":"ACTUALIZACION_    │
   │     RANKING",                   │
-  │     "data":{"ranking":[...]}}   │
+  │     "data":{"ranking":[...],    │
+  │            "menu":[...]}}       │
   │                                 │
 ```
 
@@ -983,15 +876,26 @@ Cliente                          Servidor
         "nombre": "Panipuri",
         "cantidad": 8
       }
+    ],
+    "menu": [
+      {
+        "id": 1,
+        "nombre": "Aalopuri",
+        "costo": 20.0,
+        "tiempo_preparacion_estimado": 24,
+        "estacion": "Snack"
+      },
+      // ... más platos ...
     ]
   }
 }
 ```
 
 **Características**:
-- Array ordenado (mayor a menor cantidad)
+- Array `ranking` ordenado (mayor a menor cantidad)
 - Solo incluye platos con ventas > 0
-- Nombres enriquecidos desde `m_menu`
+- Array `menu` completo con todos los platos disponibles
+- Nombres enriquecidos desde `m_menu` del servidor
 
 ---
 
