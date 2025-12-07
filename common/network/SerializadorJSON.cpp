@@ -1,6 +1,8 @@
 #include "SerializadorJSON.h"
 #include <QJsonArray>
 #include <QDebug>
+#include <QJsonArray>
+#include <QDebug>
 
 QJsonObject SerializadorJSON::platoDefinicionToJson(const PlatoDefinicion& plato) {
   QJsonObject json;
@@ -13,12 +15,25 @@ QJsonObject SerializadorJSON::platoDefinicionToJson(const PlatoDefinicion& plato
 }
 
 PlatoDefinicion SerializadorJSON::jsonToPlatoDefinicion(const QJsonObject& json) {
+  if (!json.contains("id")) throw ExcepcionCampoFaltante("id");
+  if (!json.contains("nombre")) throw ExcepcionCampoFaltante("nombre");
+  if (!json.contains("costo")) throw ExcepcionCampoFaltante("costo");
+  if (!json.contains("tiempo_preparacion_estimado")) throw ExcepcionCampoFaltante("tiempo_preparacion_estimado");
+  if (!json.contains("estacion")) throw ExcepcionCampoFaltante("estacion");
+
+  if (!json["id"].isDouble()) throw ExcepcionTipoIncorrecto("id", "int", "otro tipo");
+  if (!json["nombre"].isString()) throw ExcepcionTipoIncorrecto("nombre", "string", "otro tipo");
+  if (!json["costo"].isDouble()) throw ExcepcionTipoIncorrecto("costo", "double", "otro tipo");
+  if (!json["tiempo_preparacion_estimado"].isDouble()) throw ExcepcionTipoIncorrecto("tiempo_preparacion_estimado", "int", "otro tipo");
+  if (!json["estacion"].isString()) throw ExcepcionTipoIncorrecto("estacion", "string", "otro tipo");
+
   PlatoDefinicion plato;
   plato.id = json["id"].toInt();
   plato.nombre = json["nombre"].toString().toStdString();
   plato.costo = json["costo"].toDouble();
   plato.tiempo_preparacion_estimado = json["tiempo_preparacion_estimado"].toInt();
   plato.estacion = json["estacion"].toString().toStdString();
+
   return plato;
 }
 
@@ -27,33 +42,65 @@ QJsonObject SerializadorJSON::platoInstanciaToJson(const PlatoInstancia& plato) 
   json["id_instancia"] = QJsonValue::fromVariant(QVariant::fromValue(plato.id_instancia));
   json["id_plato_definicion"] = plato.id_plato_definicion;
   json["estado"] = estadoPlatoToString(plato.estado);
-  // Timestamps pueden ser convertidos a string ISO 8601 si es necesario
   return json;
 }
 
 PlatoInstancia SerializadorJSON::jsonToPlatoInstancia(const QJsonObject& json) {
+  if (!json.contains("id_instancia")) throw ExcepcionCampoFaltante("id_instancia");
+  if (!json.contains("id_plato_definicion")) throw ExcepcionCampoFaltante("id_plato_definicion");
+  if (!json.contains("estado")) throw ExcepcionCampoFaltante("estado");
+
+  if (!json["id_instancia"].isDouble() && !json["id_instancia"].isString())
+      throw ExcepcionTipoIncorrecto("id_instancia", "long long", "otro tipo");
+
+  if (!json["id_plato_definicion"].isDouble())
+      throw ExcepcionTipoIncorrecto("id_plato_definicion", "int", "otro tipo");
+
+  if (!json["estado"].isString())
+      throw ExcepcionTipoIncorrecto("estado", "string", "otro tipo");
+
   PlatoInstancia plato;
   plato.id_instancia = json["id_instancia"].toVariant().toLongLong();
   plato.id_plato_definicion = json["id_plato_definicion"].toInt();
   plato.estado = stringToEstadoPlato(json["estado"].toString());
+
   return plato;
 }
 
 QJsonObject SerializadorJSON::pedidoMesaToJson(const PedidoMesa& pedido) {
-  QJsonObject json;
-  json["id_pedido"] = QJsonValue::fromVariant(QVariant::fromValue(pedido.id_pedido));
-  json["numero_mesa"] = pedido.numero_mesa;
-  json["id_recepcionista"] = pedido.id_recepcionista;
-  json["estado_general"] = estadoPedidoToString(pedido.estado_general);
-  
-  QJsonArray platosArray;
-  for (const auto& plato : pedido.platos) {
-    platosArray.append(platoInstanciaToJson(plato));
-  }
-  json["platos"] = platosArray;
-  
-  return json;
+    // Validaciones básicas antes de serializar
+    if (pedido.id_pedido <= 0) {
+        throw ExcepcionJSON("El campo 'id_pedido' es inválido (<= 0)");
+    }
+
+    if (pedido.numero_mesa <= 0) {
+        throw ExcepcionJSON("El campo 'numero_mesa' es inválido (<= 0)");
+    }
+
+    if (pedido.id_recepcionista <= 0) {
+        throw ExcepcionJSON("El campo 'id_recepcionista' es inválido (<= 0)");
+    }
+
+    if (estadoPedidoToString(pedido.estado_general).isEmpty()) {
+        throw ExcepcionJSON("El estado_general no es válido");
+    }
+
+    QJsonObject json;
+    json["id_pedido"] = QJsonValue::fromVariant(QVariant::fromValue(pedido.id_pedido));
+    json["numero_mesa"] = pedido.numero_mesa;
+    json["id_recepcionista"] = pedido.id_recepcionista;
+    json["estado_general"] = estadoPedidoToString(pedido.estado_general);
+
+    QJsonArray platosArray;
+    for (const auto& plato : pedido.platos) {
+        platosArray.append(platoInstanciaToJson(plato));
+    }
+
+    json["platos"] = platosArray;
+
+    return json;
 }
+
 
 PedidoMesa SerializadorJSON::jsonToPedidoMesa(const QJsonObject& json) {
   PedidoMesa pedido;
