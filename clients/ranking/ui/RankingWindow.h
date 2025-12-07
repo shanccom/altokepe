@@ -10,17 +10,16 @@
 #include <QGridLayout>
 #include <QGroupBox>
 #include <QHeaderView>
-#include "../repository/MenuRepository.h"
 
 class RankingWindow : public QWidget {
   Q_OBJECT
 
 public:
-  explicit RankingWindow(MenuRepository* repository, QWidget *parent = nullptr);
+  explicit RankingWindow(QWidget *parent = nullptr);
 
 public slots:
-  // Este slot reacciona a la señal del cliente
-  void actualizarRanking(const QJsonArray &rankingData);
+  // Este slot reacciona a la señal del cliente con datos completos (menu + ranking)
+  void actualizarDatos(const QJsonObject &data);
 
 private:
   void mostrarMenuAgrupado(const QJsonArray& menu);
