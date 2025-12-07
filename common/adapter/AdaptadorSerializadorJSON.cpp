@@ -59,15 +59,35 @@ PlatoInstancia AdaptadorSerializadorJSON::jsonToPlatoInstancia(const QJsonObject
         throw ExcepcionAdaptador("jsonToPlatoInstancia", e.what());
     }
 }
-
 // PedidoMesa
 QJsonObject AdaptadorSerializadorJSON::pedidoMesaToJson(const PedidoMesa& pedido) {
-    return SerializadorJSON::pedidoMesaToJson(pedido);
+    try {
+        return SerializadorJSON::pedidoMesaToJson(pedido);
+    }
+    catch (const ExcepcionCommon& e) {
+        qWarning() << "Adaptador: Error al serializar PedidoMesa:" << e.what();
+        throw ExcepcionAdaptador("pedidoMesaToJson", e.obtenerMensaje());
+    }
+    catch (const std::exception& e) {
+        qWarning() << "Adaptador: Error inesperado al serializar PedidoMesa:" << e.what();
+        throw ExcepcionAdaptador("pedidoMesaToJson", e.what());
+    }
 }
 
 PedidoMesa AdaptadorSerializadorJSON::jsonToPedidoMesa(const QJsonObject& json) {
-    return SerializadorJSON::jsonToPedidoMesa(json);
+    try {
+        return SerializadorJSON::jsonToPedidoMesa(json);
+    }
+    catch (const ExcepcionCommon& e) {
+        qWarning() << "Adaptador: Error al deserializar JSON a PedidoMesa:" << e.what();
+        throw ExcepcionAdaptador("jsonToPedidoMesa", e.obtenerMensaje());
+    }
+    catch (const std::exception& e) {
+        qWarning() << "Adaptador: Error inesperado al deserializar JSON a PedidoMesa:" << e.what();
+        throw ExcepcionAdaptador("jsonToPedidoMesa", e.what());
+    }
 }
+
 
 // InfoPlatoPrioridad
 QJsonObject AdaptadorSerializadorJSON::infoPlatoPrioridadToJson(const InfoPlatoPrioridad& info) {
