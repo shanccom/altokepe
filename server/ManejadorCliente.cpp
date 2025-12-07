@@ -75,19 +75,26 @@ void ManejadorCliente::procesarBuffer() {
             qWarning() << "Comando no reconocido o factoría devolvió null.";
         }
       }
+      catch (const ExcepcionProtocolo& e) {
+        qWarning() << "Error de protocolo al ejecutar comando:" << e.what();
+        QJsonObject errorMsg;
+        errorMsg[Protocolo::EVENTO] = Protocolo::ERROR;
+        errorMsg[Protocolo::MENSAJE_ERROR] = QString::fromStdString(e.obtenerMensaje());
+        enviarMensaje(errorMsg);
+      }
       catch (const ExcepcionCommon& e) {
-          qWarning() << "Error al ejecutar comando:" << e.what();
-          QJsonObject errorMsg;
-          errorMsg[Protocolo::EVENTO] = Protocolo::ERROR;
-          errorMsg[Protocolo::MENSAJE_ERROR] = QString::fromStdString(e.obtenerMensaje());
-          enviarMensaje(errorMsg);
+        qWarning() << "Error al ejecutar comando:" << e.what();
+        QJsonObject errorMsg;
+        errorMsg[Protocolo::EVENTO] = Protocolo::ERROR;
+        errorMsg[Protocolo::MENSAJE_ERROR] = QString::fromStdString(e.obtenerMensaje());
+        enviarMensaje(errorMsg);
       }
       catch (const std::exception& e) {
-          qWarning() << "Error inesperado al ejecutar comando:" << e.what();
-          QJsonObject errorMsg;
-          errorMsg[Protocolo::EVENTO] = Protocolo::ERROR;
-          errorMsg[Protocolo::MENSAJE_ERROR] = "Error interno del servidor";
-          enviarMensaje(errorMsg);
+        qWarning() << "Error inesperado al ejecutar comando:" << e.what();
+        QJsonObject errorMsg;
+        errorMsg[Protocolo::EVENTO] = Protocolo::ERROR;
+        errorMsg[Protocolo::MENSAJE_ERROR] = "Error interno del servidor";
+        enviarMensaje(errorMsg);
       }
 
     }
