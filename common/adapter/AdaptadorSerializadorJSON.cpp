@@ -18,7 +18,17 @@ QJsonObject AdaptadorSerializadorJSON::platoDefinicionToJson(const PlatoDefinici
 }
 
 PlatoDefinicion AdaptadorSerializadorJSON::jsonToPlatoDefinicion(const QJsonObject& json) {
-    return SerializadorJSON::jsonToPlatoDefinicion(json);
+    try {
+        return SerializadorJSON::jsonToPlatoDefinicion(json);
+    }
+    catch (const ExcepcionCommon& e) {
+        qWarning() << "Adaptador: Error al deserializar JSON a PlatoDefinicion:" << e.what();
+        throw ExcepcionAdaptador("jsonToPlatoDefinicion", e.obtenerMensaje());
+    }
+    catch (const std::exception& e) {
+        qWarning() << "Adaptador: Error inesperado al deserializar JSON a PlatoDefinicion:" << e.what();
+        throw ExcepcionAdaptador("jsonToPlatoDefinicion", e.what());
+    }
 }
 
 // PlatoInstancia
