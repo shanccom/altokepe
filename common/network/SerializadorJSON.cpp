@@ -101,20 +101,48 @@ QJsonObject SerializadorJSON::pedidoMesaToJson(const PedidoMesa& pedido) {
     return json;
 }
 
-
 PedidoMesa SerializadorJSON::jsonToPedidoMesa(const QJsonObject& json) {
-  PedidoMesa pedido;
-  pedido.id_pedido = json["id_pedido"].toVariant().toLongLong();
-  pedido.numero_mesa = json["numero_mesa"].toInt();
-  pedido.id_recepcionista = json["id_recepcionista"].toInt();
-  pedido.estado_general = stringToEstadoPedido(json["estado_general"].toString());
-  
-  QJsonArray platosArray = json["platos"].toArray();
-  for (const QJsonValue& val : platosArray) {
-    pedido.platos.push_back(jsonToPlatoInstancia(val.toObject()));
-  }
 
-  return pedido;
+    // Validación de campos obligatorios
+    if (!json.contains("id_pedido")) throw ExcepcionCampoFaltante("id_pedido");
+    if (!json.contains("numero_mesa")) throw ExcepcionCampoFaltante("numero_mesa");
+    if (!json.contains("id_recepcionista")) throw ExcepcionCampoFaltante("id_recepcionista");
+    if (!json.contains("estado_general")) throw ExcepcionCampoFaltante("estado_general");
+    if (!json.contains("platos")) throw ExcepcionCampoFaltante("platos");
+
+    // Validación de tipos
+    if (!json["id_pedido"].isDouble())
+        throw ExcepcionTipoIncorrecto("id_pedido", "long long", "otro tipo");
+
+    if (!json["numero_mesa"].isDouble())
+        throw ExcepcionTipoIncorrecto("numero_mesa", "int", "otro tipo");
+
+    if (!json["id_recepcionista"].isDouble())
+        throw ExcepcionTipoIncorrecto("id_recepcionista", "int", "otro tipo");
+
+    if (!json["estado_general"].isString())
+        throw ExcepcionTipoIncorrecto("estado_general", "string", "otro tipo");
+
+    if (!json["platos"].isArray())
+        throw ExcepcionTipoIncorrecto("platos", "array", "otro tipo");
+
+
+    // Construcción segura del objeto
+    PedidoMesa pedido;
+    pedido.id_pedido = json["id_pedido"].toVariant().toLongLong();
+    pedido.numero_mesa = json["numero_mesa"].toInt();
+    pedido.id_recepcionista = json["id_recepcionista"].toInt();
+    pedido.estado_general = stringToEstadoPedido(json["estado_general"].toString());
+
+    QJsonArray platosArray = json["platos"].toArray();
+    for (const QJsonValue& val : platosArray) {
+        if (!val.isObject())
+            throw ExcepcionTipoIncorrecto("plato", "object", "otro tipo");
+
+        pedido.platos.push_back(jsonToPlatoInstancia(val.toObject()));
+    }
+
+    return pedido;
 }
 
 // Implementación de helpers para Enums
