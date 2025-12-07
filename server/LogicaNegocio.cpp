@@ -3,6 +3,7 @@
 #include "common/network/Protocolo.h"
 #include "common/models/Estados.h"
 #include "common/adapter/AdaptadorSerializadorJSON.h"
+#include "common/ExcepcionesCommon.h"
 #include <QFile>
 #include <QJsonDocument>
 #include <QJsonObject>
@@ -46,8 +47,20 @@ void LogicaNegocio::cargarMenuDesdeArchivo(const QString& rutaArchivo) {
   m_menu.clear();
   QJsonArray menuArray = doc.array();
   for (const QJsonValue& val : menuArray) {
-    PlatoDefinicion plato = m_serializador.jsonToPlatoDefinicion(val.toObject());
-    m_menu[plato.id] = plato;
+    try {
+      PlatoDefinicion plato = m_serializador.jsonToPlatoDefinicion(val.toObject());
+      m_menu[plato.id] = plato;
+    } 
+    // Manejo de excepción: Error al deserializar un plato del menú desde JSON
+    catch (const ExcepcionCommon& e) {
+      qWarning() << "Error al deserializar plato del menú:" << e.what();
+      qWarning() << "Plato omitido. JSON:" << val;
+      // Continuar con el siguiente plato
+    } 
+    // Manejo de excepción: Error inesperado durante la carga del menú
+    catch (const std::exception& e) {
+      qWarning() << "Error inesperado al cargar plato:" << e.what();
+    }
   }
   qInfo() << "Menú cargado desde" << rutaArchivo << "con" << m_menu.size() << "platos.";
 }
