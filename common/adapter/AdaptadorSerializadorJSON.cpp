@@ -91,12 +91,33 @@ PedidoMesa AdaptadorSerializadorJSON::jsonToPedidoMesa(const QJsonObject& json) 
 
 // InfoPlatoPrioridad
 QJsonObject AdaptadorSerializadorJSON::infoPlatoPrioridadToJson(const InfoPlatoPrioridad& info) {
-    return SerializadorJSON::infoPlatoPrioridadToJson(info);
+    try {
+        return SerializadorJSON::infoPlatoPrioridadToJson(info);
+    }
+    catch (const ExcepcionCommon& e) {
+        qWarning() << "Adaptador: Error al serializar InfoPlatoPrioridad:" << e.what();
+        throw ExcepcionAdaptador("infoPlatoPrioridadToJson", e.obtenerMensaje());
+    }
+    catch (const std::exception& e) {
+        qWarning() << "Adaptador: Error inesperado al serializar InfoPlatoPrioridad:" << e.what();
+        throw ExcepcionAdaptador("infoPlatoPrioridadToJson", e.what());
+    }
 }
 
 InfoPlatoPrioridad AdaptadorSerializadorJSON::jsonToInfoPlatoPrioridad(const QJsonObject& json) {
-    return SerializadorJSON::jsonToInfoPlatoPrioridad(json);
+    try {
+        return SerializadorJSON::jsonToInfoPlatoPrioridad(json);
+    }
+    catch (const ExcepcionCommon& e) {
+        qWarning() << "Adaptador: Error al deserializar JSON a InfoPlatoPrioridad:" << e.what();
+        throw ExcepcionAdaptador("jsonToInfoPlatoPrioridad", e.obtenerMensaje());
+    }
+    catch (const std::exception& e) {
+        qWarning() << "Adaptador: Error inesperado al deserializar JSON a InfoPlatoPrioridad:" << e.what();
+        throw ExcepcionAdaptador("jsonToInfoPlatoPrioridad", e.what());
+    }
 }
+
 
 // Helpers para Enums
 QString AdaptadorSerializadorJSON::estadoPlatoToString(EstadoPlato estado) {
