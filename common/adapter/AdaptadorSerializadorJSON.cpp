@@ -121,17 +121,57 @@ InfoPlatoPrioridad AdaptadorSerializadorJSON::jsonToInfoPlatoPrioridad(const QJs
 
 // Helpers para Enums
 QString AdaptadorSerializadorJSON::estadoPlatoToString(EstadoPlato estado) {
-    return SerializadorJSON::estadoPlatoToString(estado);
+    try {
+        return SerializadorJSON::estadoPlatoToString(estado);
+    }
+    catch (const ExcepcionCommon& e) {
+        qWarning() << "Adaptador: Error al convertir EstadoPlato a string:" << e.what();
+        throw ExcepcionAdaptador("estadoPlatoToString", e.obtenerMensaje());
+    }
+    catch (const std::exception& e) {
+        qWarning() << "Adaptador: Error inesperado al convertir EstadoPlato a string:" << e.what();
+        throw ExcepcionAdaptador("estadoPlatoToString", e.what());
+    }
 }
 
 EstadoPlato AdaptadorSerializadorJSON::stringToEstadoPlato(const QString& str) {
-    return SerializadorJSON::stringToEstadoPlato(str);
+    try {
+        return SerializadorJSON::stringToEstadoPlato(str);
+    }
+    catch (const ExcepcionCommon& e) {
+        qWarning() << "Adaptador: Error al convertir string a EstadoPlato:" << e.what();
+        throw ExcepcionAdaptador("stringToEstadoPlato", e.obtenerMensaje());
+    }
+    catch (const std::exception& e) {
+        qWarning() << "Adaptador: Error inesperado al convertir string a EstadoPlato:" << e.what();
+        throw ExcepcionAdaptador("stringToEstadoPlato", e.what());
+    }
 }
 
 QString AdaptadorSerializadorJSON::estadoPedidoToString(EstadoPedido estado) {
-    return SerializadorJSON::estadoPedidoToString(estado);
+    try {
+        return SerializadorJSON::estadoPedidoToString(estado);
+    }
+    catch (const ExcepcionCommon& e) {
+        qWarning() << "Adaptador: Error al convertir EstadoPedido a string:" << e.what();
+        throw ExcepcionAdaptador("estadoPedidoToString", e.obtenerMensaje());
+    }
+    catch (const std::exception& e) {
+        qWarning() << "Adaptador: Error inesperado al convertir EstadoPedido a string:" << e.what();
+        throw ExcepcionAdaptador("estadoPedidoToString", e.what());
+    }
 }
 
 EstadoPedido AdaptadorSerializadorJSON::stringToEstadoPedido(const QString& str) {
-    return SerializadorJSON::stringToEstadoPedido(str);
+    try {
+        return SerializadorJSON::stringToEstadoPedido(str);
+    }
+    catch (const ExcepcionCommon& e) {
+        qWarning() << "Adaptador: Error al convertir string a EstadoPedido:" << e.what();
+        throw ExcepcionAdaptador("stringToEstadoPedido", e.obtenerMensaje());
+    }
+    catch (const std::exception& e) {
+        qWarning() << "Adaptador: Error inesperado al convertir string a EstadoPedido:" << e.what();
+        throw ExcepcionAdaptador("stringToEstadoPedido", e.what());
+    }
 }
