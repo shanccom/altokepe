@@ -33,11 +33,31 @@ PlatoDefinicion AdaptadorSerializadorJSON::jsonToPlatoDefinicion(const QJsonObje
 
 // PlatoInstancia
 QJsonObject AdaptadorSerializadorJSON::platoInstanciaToJson(const PlatoInstancia& plato) {
-    return SerializadorJSON::platoInstanciaToJson(plato);
+    try {
+        return SerializadorJSON::platoInstanciaToJson(plato);
+    }
+    catch (const ExcepcionCommon& e) {
+        qWarning() << "Adaptador: Error al serializar PlatoInstancia:" << e.what();
+        throw ExcepcionAdaptador("platoInstanciaToJson", e.obtenerMensaje());
+    }
+    catch (const std::exception& e) {
+        qWarning() << "Adaptador: Error inesperado al serializar PlatoInstancia:" << e.what();
+        throw ExcepcionAdaptador("platoInstanciaToJson", e.what());
+    }
 }
 
 PlatoInstancia AdaptadorSerializadorJSON::jsonToPlatoInstancia(const QJsonObject& json) {
-    return SerializadorJSON::jsonToPlatoInstancia(json);
+    try {
+        return SerializadorJSON::jsonToPlatoInstancia(json);
+    }
+    catch (const ExcepcionCommon& e) {
+        qWarning() << "Adaptador: Error al deserializar JSON a PlatoInstancia:" << e.what();
+        throw ExcepcionAdaptador("jsonToPlatoInstancia", e.obtenerMensaje());
+    }
+    catch (const std::exception& e) {
+        qWarning() << "Adaptador: Error inesperado al deserializar JSON a PlatoInstancia:" << e.what();
+        throw ExcepcionAdaptador("jsonToPlatoInstancia", e.what());
+    }
 }
 
 // PedidoMesa
