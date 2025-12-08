@@ -1,11 +1,25 @@
 #include "RankingWindow.h"
 #include <QDebug>
+#include <QMessageBox>
 #include <algorithm>
 
-RankingWindow::RankingWindow(MenuRepository* repository, QWidget *parent) : QWidget(parent) {
+RankingWindow::RankingWindow(QWidget *parent) : QWidget(parent) {
   setWindowTitle("Ranking de Platos Vendidos");
   resize(1000, 600);
   this->setStyleSheet("background-color: #f4f7f6;");
+
+  // --- Label de Estado de Conexión ---
+  m_labelEstado = new QLabel("Estado: Conectando...");
+  m_labelEstado->setAlignment(Qt::AlignCenter);
+  m_labelEstado->setStyleSheet(
+    "background-color: #ffc107; "
+    "color: white; "
+    "font-weight: bold; "
+    "padding: 8px; "
+    "border-radius: 4px; "
+    "font-size: 14px;"
+  );
+  m_labelEstado->setMaximumHeight(35);
 
   // --- Configuración de la Tabla de Ranking (Izquierda) ---
   m_tablaRanking = new QTableWidget(this);
@@ -75,25 +89,39 @@ RankingWindow::RankingWindow(MenuRepository* repository, QWidget *parent) : QWid
   menuWidget->setLayout(menuLayout);
 
   // --- Layout Principal (Split) ---
-  auto* mainLayout = new QHBoxLayout(this);
-  mainLayout->addWidget(m_tablaRanking, 4); // 40% ancho
-  mainLayout->addWidget(menuWidget, 6);     // 60% ancho
+  auto* contentLayout = new QHBoxLayout();
+  contentLayout->addWidget(m_tablaRanking, 4); // 40% ancho
+  contentLayout->addWidget(menuWidget, 6);     // 60% ancho
+
+  // Layout principal con estado arriba
+  auto* mainLayout = new QVBoxLayout(this);
+  mainLayout->addWidget(m_labelEstado);
+  mainLayout->addLayout(contentLayout);
   setLayout(mainLayout);
 
-  // --- Cargar Menú usando Repositorio ---
-  if (repository) {
-      m_menu = repository->obtenerMenu();
-      if (!m_menu.isEmpty()) {
-          mostrarMenuAgrupado(m_menu);
-      } else {
-          qWarning() << "El repositorio devolvió un menú vacío.";
-      }
-  } else {
-      qCritical() << "Repositorio nulo en RankingWindow";
-  }
+  // El menú se cargará cuando lleguen los datos del servidor
+  qDebug() << "RankingWindow inicializada. Esperando datos del servidor...";
 }
 
-void RankingWindow::actualizarRanking(const QJsonArray &rankingData) {
+
+void RankingWindow::actualizarDatos(const QJsonObject &data) {
+  // Actualizar estado de conexión (datos recibidos correctamente)
+  actualizarEstadoConexion("Conectado - Datos actualizados", "#4caf50");
+  
+  // Extraer el menú si viene en los datos
+  if (data.contains("menu") && data["menu"].isArray()) {
+    m_menu = data["menu"].toArray();
+    mostrarMenuAgrupado(m_menu);
+    qDebug() << "Menú actualizado con" << m_menu.size() << "platos.";
+  }
+
+  // Extraer el ranking
+  QJsonArray rankingData;
+  if (data.contains("ranking") && data["ranking"].isArray()) {
+    rankingData = data["ranking"].toArray();
+  }
+
+  // Actualizar tabla de ranking
   m_tablaRanking->setRowCount(0);
 
   struct ItemVenta {
@@ -248,4 +276,53 @@ void RankingWindow::mostrarMenuAgrupado(const QJsonArray& menu) {
           row++;
       }
   }
+}
+
+void RankingWindow::mostrarErrorConexion(const QString& mensaje) {
+  qCritical() << "Error de conexión:" << mensaje;
+  
+  actualizarEstadoConexion("Error: " + mensaje, "#f44336");
+  
+  QMessageBox::critical(this, "Error de Conexión", 
+    "No se pudo conectar al servidor:\n\n" + mensaje + 
+    "\n\nVerifica que el servidor esté ejecutándose.");
+}
+
+void RankingWindow::mostrarErrorDatos(const QString& mensaje) {
+  qWarning() << "Error de datos:" << mensaje;
+  
+  // No mostramos popup para errores de datos (pueden ser frecuentes)
+  // Solo actualizamos el estado
+  actualizarEstadoConexion("Advertencia: " + mensaje, "#ff9800");
+}
+
+void RankingWindow::mostrarErrorServidor(const QString& mensaje) {
+  qWarning() << "Error del servidor:" << mensaje;
+  
+  actualizarEstadoConexion("Error del servidor: " + mensaje, "#f44336");
+  
+  QMessageBox::warning(this, "Error del Servidor",
+    "El servidor reportó un error:\n\n" + mensaje);
+}
+
+void RankingWindow::mostrarDesconexion() {
+  qWarning() << "Desconectado del servidor";
+  
+  actualizarEstadoConexion("Desconectado del servidor", "#ff9800");
+  
+  QMessageBox::warning(this, "Desconectado",
+    "Se perdió la conexión con el servidor.\n\n"
+    "Intenta reiniciar la aplicación.");
+}
+
+void RankingWindow::actualizarEstadoConexion(const QString& estado, const QString& color) {
+  m_labelEstado->setText(estado);
+  m_labelEstado->setStyleSheet(
+    QString("background-color: %1; "
+            "color: white; "
+            "font-weight: bold; "
+            "padding: 8px; "
+            "border-radius: 4px; "
+            "font-size: 14px;").arg(color)
+  );
 }

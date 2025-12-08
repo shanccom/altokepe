@@ -1,5 +1,6 @@
 #include "common/network/Protocolo.h"
 #include "common/models/Estados.h"
+#include "common/ExcepcionesCommon.h"
 #include "ManejadorCliente.h"
 #include "LogicaNegocio.h"
 #include "patterns/CommandFactory.h"
@@ -66,12 +67,40 @@ void ManejadorCliente::procesarBuffer() {
       }
     } else {
       // Usamos la Factory para crear y ejecutar el comando
-      std::unique_ptr<ICommand> command = CommandFactory::create(mensaje, this);
-      if (command) {
-        command->execute();
-      } else {
-        qWarning() << "Comando no reconocido o factoría devolvió null.";
+      try {
+        std::unique_ptr<ICommand> command = CommandFactory::create(mensaje, this);
+        if (command) {
+            command->execute();
+        } else {
+            qWarning() << "Comando no reconocido o factoría devolvió null.";
+        }
+      } 
+      // Manejo de excepción: Error de protocolo durante la ejecución del comando
+      catch (const ExcepcionProtocolo& e) {
+        qWarning() << "Error de protocolo al ejecutar comando:" << e.what();
+        // Enviar mensaje de error al cliente
+        QJsonObject errorMsg;
+        errorMsg[Protocolo::EVENTO] = Protocolo::ERROR;
+        errorMsg[Protocolo::MENSAJE_ERROR] = QString::fromStdString(e.obtenerMensaje());
+        enviarMensaje(errorMsg);
+      } 
+      // Manejo de excepción: Error general del módulo common durante la ejecución del comando
+      catch (const ExcepcionCommon& e) {
+        qWarning() << "Error al ejecutar comando:" << e.what();
+        QJsonObject errorMsg;
+        errorMsg[Protocolo::EVENTO] = Protocolo::ERROR;
+        errorMsg[Protocolo::MENSAJE_ERROR] = QString::fromStdString(e.obtenerMensaje());
+        enviarMensaje(errorMsg);
+      } 
+      // Manejo de excepción: Error inesperado durante la ejecución del comando
+      catch (const std::exception& e) {
+        qWarning() << "Error inesperado al ejecutar comando:" << e.what();
+        QJsonObject errorMsg;
+        errorMsg[Protocolo::EVENTO] = Protocolo::ERROR;
+        errorMsg[Protocolo::MENSAJE_ERROR] = "Error interno del servidor";
+        enviarMensaje(errorMsg);
       }
+
     }
   }
 }

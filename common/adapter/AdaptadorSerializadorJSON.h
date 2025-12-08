@@ -3,6 +3,7 @@
 
 #include "ISerializador.h"
 #include "../network/SerializadorJSON.h"
+#include "../ExcepcionesCommon.h"
 
 /**
  * @brief Adaptador que implementa ISerializador usando SerializadorJSON (Adapter del patrón)
@@ -10,6 +11,9 @@
  * Esta clase actúa como Adapter entre la interfaz genérica ISerializador (Target)
  * y la implementación concreta SerializadorJSON (Adaptee). Permite usar SerializadorJSON
  * a través de la interfaz genérica, facilitando futuros cambios de formato.
+ * 
+ * @throws ExcepcionAdaptador cuando ocurre un error en la capa de adaptación
+ * @throws ExcepcionSerializacion propagada desde SerializadorJSON
  */
 class AdaptadorSerializadorJSON : public ISerializador {
 public:

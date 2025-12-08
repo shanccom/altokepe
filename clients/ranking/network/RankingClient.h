@@ -15,13 +15,22 @@ public:
 signals:
   // SEÑAL DEL OBSERVER: La Vista se suscribirá a esto.
   // Facade: Ocultamos la complejidad del protocolo de red.
-  void rankingActualizado(const QJsonArray &rankingData);
+  void datosActualizados(const QJsonObject &data);
+  
+  // SEÑALES DE ERROR: Notifican diferentes tipos de errores
+  void errorConexion(const QString& mensaje);
+  void errorDatos(const QString& mensaje);
+  void errorServidor(const QString& mensaje);
+  void desconectado();
 
 private slots:
   void onConectado();
   void onDatosRecibidos();
+  void onErrorSocket(QAbstractSocket::SocketError error);
+  void onDesconectado();
 
 private:
   QTcpSocket *m_socket;
   QByteArray m_buffer;
 };
+
