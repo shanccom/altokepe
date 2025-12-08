@@ -8,6 +8,20 @@ El proyecto busca optimizar los procesos de atención, reducir tiempos de espera
 El desarrollo se llevará a cabo bajo la **metodología ágil SCRUM**, mediante **cinco sprints semanales**. Cada sprint representa una iteración del producto, generando un incremento funcional y verificable. Este enfoque permitirá adaptar los entregables según la retroalimentación del equipo y los objetivos del proyecto.
 
 ---
+## Video del Enlace
+Link del viedo: https://www.youtube.com/watch?v=z2ad4dnb1Wg
+
+---
+## Integrantes
+- Ajra Huacso Jeans Anthony -> dev-Anthony  
+- Luque Condori Luis Guillermo -> dev-Luis  
+- Garambel Marin Fernando Miguel -> dev-Fernando  
+- Jorge Luis Mamani Huarsaya -> dev-Jorge  
+- Sergio Danilo Hancco Mullisaca -> dev-Sergio
+- Dolly Yadhira Mollo Chuquicaña -> dev-Dolly
+- Suclle Suca, Michael Benjamin -> dev-Michael
+
+---
 
 ## Objetivos
 
@@ -20,20 +34,7 @@ Desarrollar un sistema distribuido de gestión de pedidos que integre los módul
 - Implementar intercambio de datos en formato JSON para estandarizar la comunicación.  
 - Incorporar un sistema de notificaciones automáticas y gestión de estados.  
 - Desarrollar módulos de facturación, ranking y reportes.  
-- Elaborar documentación técnica y de usuario, así como el informe para registro en Indecopi.
-
----
-
-## Integrantes
-- Ajra Huacso Jeans Anthony -> dev-Anthony  
-- Luque Condori Luis Guillermo -> dev-Luis  
-- Garambel Marin Fernando Miguel -> dev-Fernando  
-- Jorge Luis Mamani Huarsaya -> dev-Jorge  
-- Sergio Danilo Hancco Mullisaca -> dev-Sergio
-- Dolly Yadhira Mollo Chuquicaña -> dev-Dolly
-- Suclle Suca, Michael Benjamin -> dev-Michael
-
-  
+- Elaborar documentación técnica y de usuario, así como el informe para registro en Indecopi.  
 
 ---
 
