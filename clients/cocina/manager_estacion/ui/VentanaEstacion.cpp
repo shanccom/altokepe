@@ -14,6 +14,7 @@ VentanaEstacion::VentanaEstacion(const QString& nombreEstacion, QWidget* parent)
     : QWidget(parent), m_estacion(nombreEstacion) {
 
     setWindowTitle("Estación: " + nombreEstacion);
+    resize(1000, 700);
 
     tabla = new QTableWidget(0, 4, this);
     tabla->setHorizontalHeaderLabels({"Plato", "Prioridad", "Estado", "Observaciones"});
@@ -46,6 +47,10 @@ void VentanaEstacion::cargarPlatosIniciales(const std::vector<InfoPlatoVisual>& 
 }
 
 void VentanaEstacion::agregarNuevoPlato(const InfoPlatoVisual& plato) {
+    for(int i=0; i < tabla->rowCount(); ++i) {
+        if (tabla->item(i, 0)->data(Role_IdInstancia).toLongLong() == plato.id_instancia) return;
+    }
+
     int row = tabla->rowCount();
     tabla->insertRow(row);
 
@@ -57,57 +62,82 @@ void VentanaEstacion::agregarNuevoPlato(const InfoPlatoVisual& plato) {
     tabla->setItem(row, 1, new QTableWidgetItem(QString::number(plato.prioridad)));
     tabla->setItem(row, 2, new QTableWidgetItem(plato.estado));
     tabla->setItem(row, 3, new QTableWidgetItem("Ninguna"));
+
+    if (plato.estado == "PREPARANDO") {
+         tabla->item(row, 2)->setBackground(QColor("#c3e6cb"));
+    }
 }
 
 void VentanaEstacion::onFinalizarMayorPrioridad() {
     if (tabla->rowCount() == 0) return;
 
-    int maxPriorityRow = 0;
-    double maxPriority = tabla->item(0, 1)->text().toDouble();
-
-    for (int i = 1; i < tabla->rowCount(); ++i) {
-        double priority = tabla->item(i, 1)->text().toDouble();
-        if (priority > maxPriority) {
-            maxPriority = priority;
-            maxPriorityRow = i;
-        }
-    }
-
-    auto* item = tabla->item(maxPriorityRow, 0);
-    long long idPedido = item->data(Role_IdPedido).toLongLong();
-    long long idInstancia = item->data(Role_IdInstancia).toLongLong();
-
-    emit marcarListoSolicitado(idPedido, idInstancia);
-}
-
-void VentanaEstacion::actualizarEstadoPlato(long long idPedido, long long idInstancia, const QString& nuevoEstado) {
-    int filaAEliminar = -1;
-
-    for (int fila = 0; fila < tabla->rowCount(); ++fila) {
-        auto* item = tabla->item(fila, 0);
-        if (!item) continue;
-
-        if (item->data(Role_IdPedido).toLongLong() == idPedido &&
-            item->data(Role_IdInstancia).toLongLong() == idInstancia) {
-
-            tabla->item(fila, 2)->setText(nuevoEstado);
-
-            if (nuevoEstado.contains("FINALIZADO", Qt::CaseInsensitive)) {
-                filaAEliminar = fila;
-            }
+    int filaObjetivo = -1;
+    for (int i = 0; i < tabla->rowCount(); ++i) {
+        QString estado = tabla->item(i, 2)->text();
+        if (estado.contains("PREPARANDO")) {
+            filaObjetivo = i;
             break;
         }
     }
 
-    if (filaAEliminar >= 0) {
-        QTimer::singleShot(0, this, [this, filaAEliminar]() {
-            if (filaAEliminar < tabla->rowCount()) {
-                auto* item = tabla->item(filaAEliminar, 0);
+    if (filaObjetivo != -1) {
+        auto* item = tabla->item(filaObjetivo, 0);
+        long long idPedido = item->data(Role_IdPedido).toLongLong();
+        long long idInstancia = item->data(Role_IdInstancia).toLongLong();
+
+        qDebug() << "Solicitando finalizar plato en estado PREPARANDO. ID:" << idInstancia;
+        QTimer::singleShot(0, this, [this, filaObjetivo]() {
+            if (filaObjetivo < tabla->rowCount()) {
+                auto* item = tabla->item(filaObjetivo, 0);
                 if (item) {
-                    qDebug() << "[DEBUG] Eliminando fila segura:" << filaAEliminar;
-                    tabla->removeRow(filaAEliminar);
+                    qDebug() << "[DEBUG] Eliminando fila segura:" << filaObjetivo;
+                    tabla->removeRow(filaObjetivo);
                 }
             }
         });
+        emit marcarListoSolicitado(idPedido, idInstancia);
+    } else {
+        qWarning() << "No se encontró ningún plato en estado PREPARANDO para finalizar.";
+    }
+}
+
+void VentanaEstacion::actualizarEstadoPlato(long long idInstancia, const QString& nuevoEstado) {
+    for (int fila = 0; fila < tabla->rowCount(); ++fila) {
+        auto* item = tabla->item(fila, 0);
+        if (item && item->data(Role_IdInstancia).toLongLong() == idInstancia) {
+            tabla->item(fila, 2)->setText(nuevoEstado);
+
+            qDebug() << "Se actualizó el estado del plato con ID:" << idInstancia;
+
+            // Gestión de Colores según estado
+            if (nuevoEstado == "PREPARANDO") {
+                tabla->item(fila, 2)->setBackground(QColor("#c3e6cb")); // Verde suave
+            } else if (nuevoEstado == "DEVUELTO") {
+                tabla->item(fila, 2)->setBackground(QColor("#f5c6cb")); // Rojo suave
+            } else {
+                tabla->item(fila, 2)->setBackground(Qt::white);
+            }
+            break;
+        }
+    }
+}
+
+void VentanaEstacion::eliminarPlato(long long idInstancia) {
+    for (int fila = 0; fila < tabla->rowCount(); ++fila) {
+        auto* item = tabla->item(fila, 0);
+        if (item && item->data(Role_IdInstancia).toLongLong() == idInstancia) {
+            tabla->removeRow(fila);
+            break;
+        }
+    }
+}
+
+void VentanaEstacion::eliminarPlatosDePedido(long long idPedido) {
+    // Iteramos hacia atrás para evitar problemas de índice al borrar
+    for (int fila = tabla->rowCount() - 1; fila >= 0; --fila) {
+        auto* item = tabla->item(fila, 0);
+        if (item && item->data(Role_IdPedido).toLongLong() == idPedido) {
+            tabla->removeRow(fila);
+        }
     }
 }

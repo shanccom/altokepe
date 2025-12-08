@@ -6,14 +6,14 @@ int main(int argc, char *argv[]) {
   QApplication app(argc, argv);
 
   RankingClient cliente;
-
   RankingWindow ventana;
+  
   ventana.show();
 
-  QObject::connect(&cliente, &RankingClient::rankingActualizado, &ventana,
-                   &RankingWindow::actualizarLista);
+  // Conectar la señal del cliente con el slot de la ventana
+  QObject::connect(&cliente, &RankingClient::datosActualizados, &ventana,
+                   &RankingWindow::actualizarDatos);
 
-  // Conectar al servidor local (Puerto 5555)
   cliente.conectar("127.0.0.1", 5555);
 
   return app.exec();

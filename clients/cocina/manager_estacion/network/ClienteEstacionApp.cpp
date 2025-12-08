@@ -16,7 +16,7 @@ ClienteEstacionApp::ClienteEstacionApp(const QString& nombreEstacion, QObject* p
     connect(m_clienteTCP, &ClienteTCP::conectado, this, &ClienteEstacionApp::onConectado);
     connect(m_clienteTCP, &ClienteTCP::nuevoMensajeRecibido, this, &ClienteEstacionApp::onMensajeRecibido);
 
-    // UI -> Lógica
+    // UI a Lógica
     connect(m_ventana, &VentanaEstacion::marcarListoSolicitado, this, &ClienteEstacionApp::onMarcarListo);
 }
 
@@ -56,10 +56,14 @@ void ClienteEstacionApp::onMensajeRecibido(const QJsonObject& mensaje) {
 
         m_ventana->cargarPlatosIniciales(platos);
 
-    } else if (evento == Protocolo::NUEVO_PLATO_EN_COLA) {
+    } else if (evento == Protocolo::NUEVO_PLATO_EN_COLA ||
+              evento == Protocolo::PLATO_DEVUELTO) {
+        QString estacionDestino = data["estacion"].toString();
+        if (!estacionDestino.isEmpty() && estacionDestino != m_nombreEstacion) return;
+
         VentanaEstacion::InfoPlatoVisual visual;
         visual.nombrePlato = data["nombre"].toString();
-        visual.estado = "EN_ESPERA";
+        visual.estado = data["nuevo_estado"].toString();
         visual.prioridad = data["score"].toDouble();
         visual.id_pedido = data["id_pedido"].toVariant().toLongLong();
         visual.id_instancia = data["id_instancia"].toVariant().toLongLong();
@@ -67,22 +71,33 @@ void ClienteEstacionApp::onMensajeRecibido(const QJsonObject& mensaje) {
         m_ventana->agregarNuevoPlato(visual);
 
     } else if (evento == Protocolo::PLATO_ESTADO_CAMBIADO) {
-        long long idPedido = data["id_pedido"].toVariant().toLongLong();
         long long idInstancia = data["id_instancia"].toVariant().toLongLong();
         QString estado = data["nuevo_estado"].toString();
 
         qDebug() << "[DEBUG] Estado recibido para cambio:" << estado
-                << "Pedido:" << idPedido << "Instancia:" << idInstancia;
+                 << "Instancia:" << idInstancia;
 
-        m_ventana->actualizarEstadoPlato(idPedido, idInstancia, estado);
+        m_ventana->actualizarEstadoPlato(idInstancia, estado);
+
+    } else if (evento == Protocolo::PLATO_TERMINADO) {
+        long long idInstancia = data["id_instancia"].toVariant().toLongLong();
+        m_ventana->eliminarPlato(idInstancia);
+
+    } else if (evento == Protocolo::PEDIDO_CANCELADO) {
+        long long idPedido = data["id_pedido"].toVariant().toLongLong();
+        qDebug() << "[Estacion] Limpiando platos del pedido cancelado:" << idPedido;
+        m_ventana->eliminarPlatosDePedido(idPedido);
     }
-
 }
 
 void ClienteEstacionApp::onMarcarListo(long long idPedido, long long idInstancia) {
     QJsonObject comando;
     comando[Protocolo::COMANDO] = Protocolo::MARCAR_PLATO_TERMINADO;
-    comando["id_pedido"] = QJsonValue::fromVariant(idPedido);
-    comando["id_instancia"] = QJsonValue::fromVariant(idInstancia);
+
+    QJsonObject data;
+    data["id_pedido"]   = QJsonValue::fromVariant(idPedido);
+    data["id_instancia"] = QJsonValue::fromVariant(idInstancia);
+    comando[Protocolo::DATA] = data;
+
     m_clienteTCP->enviarMensaje(comando);
 }

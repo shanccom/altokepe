@@ -22,7 +22,9 @@ public:
 
     void cargarPlatosIniciales(const std::vector<InfoPlatoVisual>& platos);
     void agregarNuevoPlato(const InfoPlatoVisual& plato);
-    void actualizarEstadoPlato(long long idPedido, long long idInstancia, const QString& nuevoEstado);
+    void actualizarEstadoPlato(long long idInstancia, const QString& nuevoEstado);
+    void eliminarPlato(long long idInstancia);
+    void eliminarPlatosDePedido(long long idPedido);
 
 signals:
     void marcarListoSolicitado(long long idPedido, long long idInstancia);

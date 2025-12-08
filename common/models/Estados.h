@@ -4,6 +4,7 @@
 enum class EstadoPlato {
   EN_ESPERA,
   EN_PROGRESO,
+  PREPARANDO,
   FINALIZADO,
   CANCELADO,
   ENTREGADO,

@@ -22,6 +22,7 @@ private slots:
   void onCancelarPedido(long long idPedido);
   void onEnviarPedido(long long idPedido);
   void onRechazarPedido(long long idPedido);
+  void onRechazarPlato(long long idPedido, long long idInstancia);
 
 private:
   VentanaManager* m_ventana;

@@ -13,7 +13,8 @@ public:
   void agregarPedido(TarjetaPedido* pedido);
   void limpiarPedidos();
   bool estaVacia() const;
-  TarjetaPedido* getPrimerPedido() const;
+
+  QList<TarjetaPedido*> obtenerTodosLosPedidos() const;
 
 private:
   QVBoxLayout* m_layoutContenido;
