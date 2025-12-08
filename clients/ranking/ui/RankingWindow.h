@@ -20,9 +20,16 @@ public:
 public slots:
   // Este slot reacciona a la señal del cliente con datos completos (menu + ranking)
   void actualizarDatos(const QJsonObject &data);
+  
+  // Slots para manejo de errores
+  void mostrarErrorConexion(const QString& mensaje);
+  void mostrarErrorDatos(const QString& mensaje);
+  void mostrarErrorServidor(const QString& mensaje);
+  void mostrarDesconexion();
 
 private:
   void mostrarMenuAgrupado(const QJsonArray& menu);
+  void actualizarEstadoConexion(const QString& estado, const QString& color);
 
   QTableWidget *m_tablaRanking;
   QJsonArray m_menu;
@@ -30,4 +37,7 @@ private:
   QScrollArea* m_scrollMenu;
   QWidget* m_menuContainer;
   QGridLayout* m_gridMenuLayout;
+  
+  // Label de estado de conexión
+  QLabel* m_labelEstado;
 };

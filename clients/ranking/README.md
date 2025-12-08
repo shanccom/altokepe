@@ -8,9 +8,10 @@
 5. [Implementación Cliente](#implementación-cliente)
 6. [Implementación Servidor](#implementación-servidor)
 7. [Protocolo de Comunicación](#protocolo-de-comunicación)
-8. [Decisiones de Diseño](#decisiones-de-diseño)
-9. [Diagrama de Secuencia](#diagrama-de-secuencia)
-10. [Conclusiones](#conclusiones)
+8. [Manejo de Excepciones](#manejo-de-excepciones)
+9. [Decisiones de Diseño](#decisiones-de-diseño)
+10. [Diagrama de Secuencia](#diagrama-de-secuencia)
+11. [Conclusiones](#conclusiones)
 
 ---
 
@@ -27,6 +28,7 @@ Aplicación correcta de patrones Observer y Facade
 Separación de responsabilidades (cliente/servidor)  
 Broadcast selectivo solo a clientes Ranking  
 Thread-safety en acceso a datos compartidos  
+Manejo robusto de excepciones y errores  
 
 ---
 
@@ -899,6 +901,233 @@ Cliente                          Servidor
 
 ---
 
+## Manejo de Excepciones
+
+### Filosofía de Implementación
+
+El cliente ranking implementa un sistema robusto de manejo de errores siguiendo la **filosofía Qt** (sin excepciones C++ tradicionales). En su lugar, utiliza:
+
+- **Validaciones exhaustivas** antes de usar datos
+- **Señales Qt** para comunicar errores
+- **Códigos de retorno** y métodos `isValid()`, `isNull()`
+- **Logging** con `qDebug()`, `qWarning()`, `qCritical()`
+
+### Niveles de Validación
+
+El método `RankingClient::onDatosRecibidos()` implementa **5 niveles de validación**:
+
+```cpp
+void RankingClient::onDatosRecibidos() {
+  m_buffer.append(m_socket->readAll());
+  
+  while (m_buffer.contains('\n')) {
+    // ... extracción de línea ...
+    
+    // NIVEL 1: JSON válido
+    QJsonDocument doc = QJsonDocument::fromJson(linea);
+    if (doc.isNull() || !doc.isObject()) {
+      emit errorDatos("Datos malformados recibidos del servidor");
+      continue;
+    }
+    
+    // NIVEL 2: Campo 'evento' existe y es string
+    if (!obj.contains("evento") || !obj["evento"].isString()) {
+      emit errorDatos("Mensaje sin tipo de evento");
+      continue;
+    }
+    
+    // NIVEL 3: Manejo de errores del servidor (Protocolo común)
+    if (evento == Protocolo::ERROR) {
+      QString msg = obj.value(Protocolo::MENSAJE_ERROR).toString(...);
+      emit errorServidor(msg);
+      continue;
+    }
+    
+    // NIVEL 4: Campo 'data' existe y es objeto
+    if (!obj.contains("data") || !obj["data"].isObject()) {
+      emit errorDatos("Estructura de datos de ranking inválida");
+      continue;
+    }
+    
+    // NIVEL 5: Arrays 'menu' y 'ranking' presentes
+    bool menuValido = data.contains("menu") && data["menu"].isArray();
+    bool rankingValido = data.contains("ranking") && data["ranking"].isArray();
+    if (!menuValido || !rankingValido) {
+      emit errorDatos("Datos de ranking incompletos");
+      continue;
+    }
+    
+    // Datos válidos - procesar
+    emit datosActualizados(data);
+  }
+}
+```
+
+### Tipos de Errores Manejados
+
+#### 1. Errores de Conexión (Red/TCP)
+
+**Señal**: `errorConexion(const QString& mensaje)`
+
+```cpp
+void RankingClient::onErrorSocket(QAbstractSocket::SocketError error) {
+  QString mensajeError;
+  
+  switch (error) {
+    case QAbstractSocket::ConnectionRefusedError:
+      mensajeError = "Conexión rechazada. El servidor no está disponible.";
+      break;
+    case QAbstractSocket::RemoteHostClosedError:
+      mensajeError = "El servidor cerró la conexión.";
+      break;
+    case QAbstractSocket::HostNotFoundError:
+      mensajeError = "Servidor no encontrado. Verifica la dirección.";
+      break;
+    case QAbstractSocket::SocketTimeoutError:
+      mensajeError = "Timeout de conexión. El servidor no responde.";
+      break;
+    default:
+      mensajeError = m_socket->errorString();
+      break;
+  }
+  
+  emit errorConexion(mensajeError);
+}
+```
+
+#### 2. Errores de Datos (JSON/Protocolo)
+
+**Señal**: `errorDatos(const QString& mensaje)`
+
+- JSON malformado o inválido
+- Campos requeridos faltantes
+- Tipos de datos incorrectos
+- Estructura de datos incompleta
+
+#### 3. Errores del Servidor
+
+**Señal**: `errorServidor(const QString& mensaje)`
+
+Utiliza el protocolo común definido en `common/network/Protocolo.h`:
+
+```cpp
+if (evento == Protocolo::ERROR) {
+  QString msg = obj.value(Protocolo::MENSAJE_ERROR).toString("Error desconocido");
+  emit errorServidor(msg);
+}
+```
+
+#### 4. Desconexión
+
+**Señal**: `desconectado()`
+
+```cpp
+void RankingClient::onDesconectado() {
+  qWarning() << "Desconectado del servidor";
+  emit desconectado();
+}
+```
+
+### Feedback Visual al Usuario
+
+La interfaz `RankingWindow` proporciona feedback visual mediante:
+
+#### Indicador de Estado
+
+```cpp
+// Label en la parte superior de la ventana
+m_labelEstado = new QLabel("Estado: Conectando...");
+```
+
+**Colores semánticos:**
+
+| Estado | Color | Significado |
+|--------|-------|-------------|
+| 🟡 Amarillo (#ffc107) | Conectando... | Estado inicial |
+| 🟢 Verde (#4caf50) | Conectado - Datos actualizados | Funcionando correctamente |
+| 🟠 Naranja (#ff9800) | Advertencia / Desconectado | Problema menor |
+| 🔴 Rojo (#f44336) | Error | Error crítico |
+
+#### Mensajes al Usuario
+
+```cpp
+// Error crítico de conexión
+void RankingWindow::mostrarErrorConexion(const QString& mensaje) {
+  actualizarEstadoConexion("Error: " + mensaje, "#f44336");
+  QMessageBox::critical(this, "Error de Conexión", 
+    "No se pudo conectar al servidor:\n\n" + mensaje);
+}
+
+// Error de datos (sin popup, solo estado)
+void RankingWindow::mostrarErrorDatos(const QString& mensaje) {
+  actualizarEstadoConexion("Advertencia: " + mensaje, "#ff9800");
+}
+
+// Error del servidor
+void RankingWindow::mostrarErrorServidor(const QString& mensaje) {
+  actualizarEstadoConexion("Error del servidor: " + mensaje, "#f44336");
+  QMessageBox::warning(this, "Error del Servidor",
+    "El servidor reportó un error:\n\n" + mensaje);
+}
+```
+
+### Conexión de Señales
+
+En `main.cpp`, todas las señales de error se conectan a los slots de la ventana:
+
+```cpp
+// Señal de datos
+QObject::connect(&cliente, &RankingClient::datosActualizados, 
+                 &ventana, &RankingWindow::actualizarDatos);
+
+// Señales de error
+QObject::connect(&cliente, &RankingClient::errorConexion,
+                 &ventana, &RankingWindow::mostrarErrorConexion);
+
+QObject::connect(&cliente, &RankingClient::errorDatos,
+                 &ventana, &RankingWindow::mostrarErrorDatos);
+
+QObject::connect(&cliente, &RankingClient::errorServidor,
+                 &ventana, &RankingWindow::mostrarErrorServidor);
+
+QObject::connect(&cliente, &RankingClient::desconectado,
+                 &ventana, &RankingWindow::mostrarDesconexion);
+```
+
+### Ventajas del Enfoque
+
+1. **Robustez**: La aplicación nunca crashea ante errores
+2. **Claridad**: Mensajes de error específicos y útiles
+3. **Estilo Qt**: Compatible con la filosofía del framework
+4. **Desacoplamiento**: Señales/slots separan lógica de red y UI
+5. **Logging**: Todos los errores se registran para debugging
+6. **Extensibilidad**: Fácil agregar nuevos tipos de errores
+7. **Compatibilidad**: Preparado para futuras excepciones en `common/`
+
+### Compatibilidad Futura
+
+Si en el futuro se agregan excepciones C++ en `common/`, el código puede adaptarse fácilmente:
+
+```cpp
+void RankingClient::onDatosRecibidos() {
+  m_buffer.append(m_socket->readAll());
+  
+  while (m_buffer.contains('\n')) {
+    // ... extracción de línea ...
+    
+    try {
+      // Todo el código de validación actual aquí
+      
+    } catch (const std::exception& e) {
+      qWarning() << "Excepción capturada:" << e.what();
+      emit errorDatos(QString::fromUtf8(e.what()));
+    }
+  }
+}
+```
+
+---
+
 ## Decisiones de Diseño
 
 ### 1. ¿Por qué std::sort en lugar de B-Tree?
@@ -1044,10 +1273,11 @@ sequenceDiagram
 
 ### Trabajo Futuro
 
-1. [PENDIENTE] Agregar reconexión automática en `RankingClient` (manejo de señal `disconnected`).
-2. [COMPLETADO] La actualización del ranking ya se realiza automáticamente al confirmar entregas (`procesarConfirmarEntrega`).
-3. [COMPLETADO] Los problemas de visualización (transparencia) en la UI han sido resueltos con la nueva paleta de colores.
-4. [COMPLETADO] El comando `SIMULAR_VENTA` ha sido depurado/removido en favor del flujo real de pedidos.
+1. [COMPLETADO] Manejo robusto de excepciones con validación en 5 niveles y feedback visual al usuario.
+2. [PENDIENTE] Agregar reconexión automática en `RankingClient` (manejo de señal `disconnected`).
+3. [COMPLETADO] La actualización del ranking ya se realiza automáticamente al confirmar entregas (`procesarConfirmarEntrega`).
+4. [COMPLETADO] Los problemas de visualización (transparencia) en la UI han sido resueltos con la nueva paleta de colores.
+5. [COMPLETADO] El comando `SIMULAR_VENTA` ha sido depurado/removido en favor del flujo real de pedidos.
 
 ---
 
