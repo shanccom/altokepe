@@ -858,3 +858,15 @@ void LogicaNegocio::notificarActualizacionRanking() {
   // nullptr indica broadcast (el Servidor maneja el filtro para enviar solo a pantallas Ranking)
   emit enviarRespuesta(nullptr, rankingMsg);
 }
+
+void LogicaNegocio::manejarExcepcion(const QString& contexto, ManejadorCliente* cliente, const std::exception* ex) {
+  if (ex) {
+    qCritical() << "Excepción en" << contexto << ":" << ex->what();
+  } else {
+    qCritical() << "Excepción desconocida en" << contexto;
+  }
+
+  QJsonObject dataContexto;
+  dataContexto["contexto"] = contexto;
+  enviarError(cliente, QStringLiteral("Error interno en el servidor."), dataContexto);
+}
