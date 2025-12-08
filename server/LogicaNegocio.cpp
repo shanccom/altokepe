@@ -10,6 +10,7 @@
 #include <QDebug>
 #include <algorithm>
 #include <set>
+#include <exception>
 
 LogicaNegocio* LogicaNegocio::s_instance = nullptr;
 
@@ -30,103 +31,140 @@ LogicaNegocio* LogicaNegocio::instance() {
 }
 
 void LogicaNegocio::cargarMenuDesdeArchivo(const QString& rutaArchivo) {
-  std::lock_guard<std::mutex> lock(m_mutex);
-  m_menuRepository.cargarDesdeArchivo(rutaArchivo);
+  try {
+    std::lock_guard<std::mutex> lock(m_mutex);
+    m_menuRepository.cargarDesdeArchivo(rutaArchivo);
+  } catch (const std::exception& ex) {
+    manejarExcepcion(QStringLiteral("cargarMenuDesdeArchivo"), nullptr, &ex);
+  } catch (...) {
+    manejarExcepcion(QStringLiteral("cargarMenuDesdeArchivo"), nullptr);
+  }
 }
 
 void LogicaNegocio::registrarManejador(ManejadorCliente* manejador) {
-  std::lock_guard<std::mutex> lock(m_mutex);
-  m_manejadoresActivos.push_back(manejador);
+  try {
+    std::lock_guard<std::mutex> lock(m_mutex);
+    m_manejadoresActivos.push_back(manejador);
+  } catch (const std::exception& ex) {
+    manejarExcepcion(QStringLiteral("registrarManejador"), manejador, &ex);
+  } catch (...) {
+    manejarExcepcion(QStringLiteral("registrarManejador"), manejador);
+  }
 }
 
 void LogicaNegocio::eliminarManejador(ManejadorCliente* manejador) {
-  std::lock_guard<std::mutex> lock(m_mutex);
-  m_manejadoresActivos.erase(std::remove(m_manejadoresActivos.begin(),
-        m_manejadoresActivos.end(), manejador), m_manejadoresActivos.end());
+  try {
+    std::lock_guard<std::mutex> lock(m_mutex);
+    m_manejadoresActivos.erase(std::remove(m_manejadoresActivos.begin(),
+          m_manejadoresActivos.end(), manejador), m_manejadoresActivos.end());
+  } catch (const std::exception& ex) {
+    manejarExcepcion(QStringLiteral("eliminarManejador"), manejador, &ex);
+  } catch (...) {
+    manejarExcepcion(QStringLiteral("eliminarManejador"), manejador);
+  }
 }
 
 void LogicaNegocio::enviarEstadoInicial(ManejadorCliente* cliente) {
-  std::lock_guard<std::mutex> lock(m_mutex);
-  QJsonObject estado;
+  try {
+    std::lock_guard<std::mutex> lock(m_mutex);
+    QJsonObject estado;
 
-  TipoActor tipo = cliente->getTipoActor();
+    TipoActor tipo = cliente->getTipoActor();
 
-  if (tipo == TipoActor::MANAGER_CHEF) {
-    estado = construirEstadoManagerChef();
-    emit enviarRespuesta(cliente, estado);
+    if (tipo == TipoActor::MANAGER_CHEF) {
+      estado = construirEstadoManagerChef();
+      emit enviarRespuesta(cliente, estado);
 
-  } else if (tipo == TipoActor::RANKING) {
-    estado = getEstadoParaRanking();
-    emit enviarRespuesta(cliente, estado);
+    } else if (tipo == TipoActor::RANKING) {
+      estado = getEstadoParaRanking();
+      emit enviarRespuesta(cliente, estado);
 
-  } else if (tipo == TipoActor::ESTACION_COCINA) {
-    // estado = getEstadoParaEstacion(cliente->getNombreEstacion().toStdString());
-  
-  } else if (tipo == TipoActor::RECEPCIONISTA) {
-    QJsonObject mensaje;
-    QJsonArray menuArray;
+    } else if (tipo == TipoActor::ESTACION_COCINA) {
+      // estado = getEstadoParaEstacion(cliente->getNombreEstacion().toStdString());
 
-    for (const auto& par : m_menuRepository.menu()) {
-      const PlatoDefinicion& plato = par.second;
-      menuArray.append(m_serializador.platoDefinicionToJson(plato));
+    } else if (tipo == TipoActor::RECEPCIONISTA) {
+      QJsonObject mensaje;
+      QJsonArray menuArray;
+
+      for (const auto& par : m_menuRepository.menu()) {
+        const PlatoDefinicion& plato = par.second;
+        menuArray.append(m_serializador.platoDefinicionToJson(plato));
+      }
+
+      mensaje[Protocolo::EVENTO] = Protocolo::ACTUALIZACION_MENU;
+      mensaje[Protocolo::DATA] = QJsonObject{ {"menu", menuArray} };
+
+      emit enviarRespuesta(cliente, mensaje);
+      return;
     }
-
-    mensaje[Protocolo::EVENTO] = Protocolo::ACTUALIZACION_MENU;
-    mensaje[Protocolo::DATA] = QJsonObject{ {"menu", menuArray} };
-
-    emit enviarRespuesta(cliente, mensaje);
-    return;
+  } catch (const std::exception& ex) {
+    manejarExcepcion(QStringLiteral("enviarEstadoInicial"), cliente, &ex);
+  } catch (...) {
+    manejarExcepcion(QStringLiteral("enviarEstadoInicial"), cliente);
   }
 }
 
 QJsonObject LogicaNegocio::getEstadoParaRanking() {
-  // Convertir Mapa a Vector para ordenar
-  struct ItemRanking {
-    QString nombre;
-    int cantidad;
-  };
-  std::vector<ItemRanking> lista;
+  try {
+    // Convertir Mapa a Vector para ordenar
+    struct ItemRanking {
+      QString nombre;
+      int cantidad;
+    };
+    std::vector<ItemRanking> lista;
 
-  auto conteo = m_pedidoRepository.obtenerConteoRanking();
+    auto conteo = m_pedidoRepository.obtenerConteoRanking();
 
-  for (auto const& [id, cantidad] : conteo) {
-    const PlatoDefinicion* def = m_menuRepository.obtenerPlato(id);
-    if (def) {
-      lista.push_back({QString::fromStdString(def->nombre), cantidad});
+    for (auto const& [id, cantidad] : conteo) {
+      const PlatoDefinicion* def = m_menuRepository.obtenerPlato(id);
+      if (def) {
+        lista.push_back({QString::fromStdString(def->nombre), cantidad});
+      }
     }
+
+    // Ordenar (Mayor a menor cantidad)
+    std::sort(lista.begin(), lista.end(), [](const ItemRanking& a, const ItemRanking& b) {
+      return a.cantidad > b.cantidad;
+    });
+
+    // Construir JSON
+    QJsonArray rankingArray;
+    for (const auto& item : lista) {
+      QJsonObject obj;
+      obj["nombre"] = item.nombre;
+      obj["cantidad"] = item.cantidad;
+      rankingArray.append(obj);
+    }
+
+    QJsonObject mensaje;
+    mensaje[Protocolo::EVENTO] = Protocolo::ACTUALIZACION_RANKING;
+    mensaje[Protocolo::DATA] = QJsonObject{ {"ranking", rankingArray} };
+
+    return mensaje;
+  } catch (const std::exception& ex) {
+    manejarExcepcion(QStringLiteral("getEstadoParaRanking"), nullptr, &ex);
+  } catch (...) {
+    manejarExcepcion(QStringLiteral("getEstadoParaRanking"), nullptr);
   }
 
-  // Ordenar (Mayor a menor cantidad)
-  std::sort(lista.begin(), lista.end(), [](const ItemRanking& a, const ItemRanking& b) {
-    return a.cantidad > b.cantidad;
-  });
-
-  // Construir JSON
-  QJsonArray rankingArray;
-  for (const auto& item : lista) {
-    QJsonObject obj;
-    obj["nombre"] = item.nombre;
-    obj["cantidad"] = item.cantidad;
-    rankingArray.append(obj);
-  }
-
-  QJsonObject mensaje;
-  mensaje[Protocolo::EVENTO] = Protocolo::ACTUALIZACION_RANKING;
-  mensaje[Protocolo::DATA] = QJsonObject{ {"ranking", rankingArray} };
-
-  return mensaje;
+  return QJsonObject();
 }
 
 
 
 void LogicaNegocio::registrarVenta(int idPlato) {
-  {
-    std::lock_guard<std::mutex> lock(m_mutex);
-    m_pedidoRepository.incrementarConteoRanking(idPlato);
+  try {
+    {
+      std::lock_guard<std::mutex> lock(m_mutex);
+      m_pedidoRepository.incrementarConteoRanking(idPlato);
+    }
+    notificarActualizacionRanking();
+  } catch (const std::exception& ex) {
+    manejarExcepcion(QStringLiteral("registrarVenta"), nullptr, &ex);
+  } catch (...) {
+    manejarExcepcion(QStringLiteral("registrarVenta"), nullptr);
   }
-  notificarActualizacionRanking();
 }
-
 
 void LogicaNegocio::procesarNuevoPedido(const QJsonObject& mensaje, ManejadorCliente* remitente) {
   std::lock_guard<std::mutex> lock(m_mutex);
