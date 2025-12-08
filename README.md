@@ -12,14 +12,14 @@ El desarrollo se llevará a cabo bajo la **metodología ágil SCRUM**, mediante 
 Link del viedo: https://www.youtube.com/watch?v=z2ad4dnb1Wg
 
 ---
-## Integrantes
-- Ajra Huacso Jeans Anthony -> dev-Anthony  
-- Luque Condori Luis Guillermo -> dev-Luis  
-- Garambel Marin Fernando Miguel -> dev-Fernando  
-- Jorge Luis Mamani Huarsaya -> dev-Jorge  
-- Sergio Danilo Hancco Mullisaca -> dev-Sergio
-- Dolly Yadhira Mollo Chuquicaña -> dev-Dolly
-- Suclle Suca, Michael Benjamin -> dev-Michael
+## Integrantes / Porcentaje de Participación
+- Ajra Huacso Jeans Anthony -> dev-Anthony        / 100%
+- Luque Condori Luis Guillermo -> dev-Luis        / 100%
+- Garambel Marin Fernando Miguel -> dev-Fernando  / 100%
+- Jorge Luis Mamani Huarsaya -> dev-Jorge         / 100%
+- Sergio Danilo Hancco Mullisaca -> dev-Sergio    / 100%
+- Dolly Yadhira Mollo Chuquicaña -> dev-Dolly     / 100%
+- Suclle Suca, Michael Benjamin -> dev-Michael    / 100%
 
 ---
 

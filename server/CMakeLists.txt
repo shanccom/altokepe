@@ -32,8 +32,10 @@ add_executable(ServidorAltokepe
   patterns/ServerCommands.cpp
   patterns/CommandFactory.cpp
   identifier/IdentificadorCliente.cpp
+  repository/MenuRepository.cpp
+  repository/PedidoRepository.cpp
   resources.qrc
-  ${COMMON_SERIALIZER_PATH}
+  ${COMMON_SERIALIZER_PATH}  
   ${PROJECT_ROOT_DIR}/common/adapter/AdaptadorSerializadorJSON.cpp
 )
 

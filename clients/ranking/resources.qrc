@@ -1,5 +1,14 @@
+<<<<<<< HEAD
 <!DOCTYPE RCC>
 <RCC version="1.0">
 <qresource prefix="/">
 </qresource>
 </RCC>
+=======
+<!DOCTYPE RCC>
+<RCC version="1.0">
+<qresource prefix="/">
+  <file alias="menu.json">../../data/menu.json</file>
+</qresource>
+</RCC>
+>>>>>>> dev-Dolly
