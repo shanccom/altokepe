@@ -13,7 +13,7 @@ QJsonObject AdaptadorSerializadorJSON::platoDefinicionToJson(const PlatoDefinici
     }
     catch (const std::exception& e) {
         qWarning() << "Adaptador: Error inesperado al serializar PlatoDefinicion:" << e.what();
-        throw ExcepcionAdaptador("platoDefinicionToJson", e.what());
+        throw ExcepcionAdaptador(QString("platoDefinicionToJson"), QString(e.what()));
     }
 }
 
@@ -27,7 +27,7 @@ PlatoDefinicion AdaptadorSerializadorJSON::jsonToPlatoDefinicion(const QJsonObje
     }
     catch (const std::exception& e) {
         qWarning() << "Adaptador: Error inesperado al deserializar JSON a PlatoDefinicion:" << e.what();
-        throw ExcepcionAdaptador("jsonToPlatoDefinicion", e.what());
+        throw ExcepcionAdaptador(QString("jsonToPlatoDefinicion"), QString(e.what()));
     }
 }
 
@@ -42,7 +42,7 @@ QJsonObject AdaptadorSerializadorJSON::platoInstanciaToJson(const PlatoInstancia
     }
     catch (const std::exception& e) {
         qWarning() << "Adaptador: Error inesperado al serializar PlatoInstancia:" << e.what();
-        throw ExcepcionAdaptador("platoInstanciaToJson", e.what());
+        throw ExcepcionAdaptador(QString("platoInstanciaToJson"), QString(e.what()));
     }
 }
 
@@ -56,7 +56,7 @@ PlatoInstancia AdaptadorSerializadorJSON::jsonToPlatoInstancia(const QJsonObject
     }
     catch (const std::exception& e) {
         qWarning() << "Adaptador: Error inesperado al deserializar JSON a PlatoInstancia:" << e.what();
-        throw ExcepcionAdaptador("jsonToPlatoInstancia", e.what());
+        throw ExcepcionAdaptador(QString("jsonToPlatoInstancia"), QString(e.what()));
     }
 }
 // PedidoMesa
@@ -70,7 +70,7 @@ QJsonObject AdaptadorSerializadorJSON::pedidoMesaToJson(const PedidoMesa& pedido
     }
     catch (const std::exception& e) {
         qWarning() << "Adaptador: Error inesperado al serializar PedidoMesa:" << e.what();
-        throw ExcepcionAdaptador("pedidoMesaToJson", e.what());
+        throw ExcepcionAdaptador(QString("pedidoMesaToJson"), QString(e.what()));
     }
 }
 
@@ -84,7 +84,7 @@ PedidoMesa AdaptadorSerializadorJSON::jsonToPedidoMesa(const QJsonObject& json) 
     }
     catch (const std::exception& e) {
         qWarning() << "Adaptador: Error inesperado al deserializar JSON a PedidoMesa:" << e.what();
-        throw ExcepcionAdaptador("jsonToPedidoMesa", e.what());
+        throw ExcepcionAdaptador(QString("jsonToPedidoMesa"), QString(e.what()));
     }
 }
 
@@ -100,7 +100,7 @@ QJsonObject AdaptadorSerializadorJSON::infoPlatoPrioridadToJson(const InfoPlatoP
     }
     catch (const std::exception& e) {
         qWarning() << "Adaptador: Error inesperado al serializar InfoPlatoPrioridad:" << e.what();
-        throw ExcepcionAdaptador("infoPlatoPrioridadToJson", e.what());
+        throw ExcepcionAdaptador(QString("infoPlatoPrioridadToJson"), QString(e.what()));
     }
 }
 
@@ -114,7 +114,7 @@ InfoPlatoPrioridad AdaptadorSerializadorJSON::jsonToInfoPlatoPrioridad(const QJs
     }
     catch (const std::exception& e) {
         qWarning() << "Adaptador: Error inesperado al deserializar JSON a InfoPlatoPrioridad:" << e.what();
-        throw ExcepcionAdaptador("jsonToInfoPlatoPrioridad", e.what());
+        throw ExcepcionAdaptador(QString("jsonToInfoPlatoPrioridad"), QString(e.what()));
     }
 }
 
@@ -130,7 +130,7 @@ QString AdaptadorSerializadorJSON::estadoPlatoToString(EstadoPlato estado) {
     }
     catch (const std::exception& e) {
         qWarning() << "Adaptador: Error inesperado al convertir EstadoPlato a string:" << e.what();
-        throw ExcepcionAdaptador("estadoPlatoToString", e.what());
+        throw ExcepcionAdaptador(QString("estadoPlatoToString"), QString(e.what()));
     }
 }
 
@@ -144,7 +144,7 @@ EstadoPlato AdaptadorSerializadorJSON::stringToEstadoPlato(const QString& str) {
     }
     catch (const std::exception& e) {
         qWarning() << "Adaptador: Error inesperado al convertir string a EstadoPlato:" << e.what();
-        throw ExcepcionAdaptador("stringToEstadoPlato", e.what());
+        throw ExcepcionAdaptador(QString("stringToEstadoPlato"), QString(e.what()));
     }
 }
 
@@ -158,7 +158,7 @@ QString AdaptadorSerializadorJSON::estadoPedidoToString(EstadoPedido estado) {
     }
     catch (const std::exception& e) {
         qWarning() << "Adaptador: Error inesperado al convertir EstadoPedido a string:" << e.what();
-        throw ExcepcionAdaptador("estadoPedidoToString", e.what());
+        throw ExcepcionAdaptador(QString("estadoPedidoToString"), QString(e.what()));
     }
 }
 
@@ -172,6 +172,6 @@ EstadoPedido AdaptadorSerializadorJSON::stringToEstadoPedido(const QString& str)
     }
     catch (const std::exception& e) {
         qWarning() << "Adaptador: Error inesperado al convertir string a EstadoPedido:" << e.what();
-        throw ExcepcionAdaptador("stringToEstadoPedido", e.what());
+        throw ExcepcionAdaptador(QString("stringToEstadoPedido"), QString(e.what()));
     }
 }
