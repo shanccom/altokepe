@@ -197,3 +197,41 @@ Esta etapa busca consolidar los resultados del desarrollo, garantizando que el s
 **Metodología:** SCRUM  
 **Duración Total:** 5 Sprints (10 de noviembre – 14 de diciembre)  
 **Estado:** En planificación
+
+## Evidencias de funcionamiento
+
+### Cliente `Recepcionista`
+Recepcionista realiza pedidos por mesas. En esta ocasión, realiza 3 pedidos.
+
+![Recepcionista](./.github/1765158348.png)
+
+![Recepcionista](./.github/1765158510.png)
+
+
+### Cliente `Manager Chef`
+
+El chef principal recibe los pedidos y administra su rechazo y envio a su respectiva estación en la cocina.
+
+![Manager Chef](./.github/1765158531.png)
+
+![Manager Chef](./.github/1765158547.png)
+
+![Manager Chef](./.github/1765158637.png)
+
+
+### Cliente `Manager Estación`
+
+Cada estacíón recibe sus platos y el sistema sugiere preparar el plato con mayor prioridad. Esta prioridad cambia si el plato es devuelto porque neceita aumentar su prioridad y pueda prepararse antes que otros.
+
+![Manager Estacion](./.github/1765158590.png)
+
+![Manager Estacion](./.github/1765158734.png)
+
+### Cliente `Ranking`
+
+Esta vista es para los comensales, quienes pueden ver el menú del restaurante y pueden ver el ranking de los platos más vendidos en tiempo real.
+
+> [!IMPORTANT]
+> La vista del `Manager Chef` puede ser mostrada tambien para los comensales, para que puedan ver el estado de su pedido en tiempo real.
+
+![Ranking](./.github/1765158857.png)
