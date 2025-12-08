@@ -8,6 +8,9 @@ set(CMAKE_AUTORCC ON)
 
 find_package(Qt6 REQUIRED COMPONENTS Widgets Network)
 
+# Incluir el directorio común del proyecto
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/../..)
+
 add_executable(ClienteRanking main.cpp
                  network/RankingClient.cpp network/RankingClient.h
                  ui/RankingWindow.cpp ui/RankingWindow.h)
