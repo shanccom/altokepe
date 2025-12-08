@@ -20,6 +20,11 @@
 - Thread-safe mediante mutex
 - Gestiona el menú, pedidos activos y colas de preparación
 - Coordina el flujo completo: desde nuevo pedido hasta entrega
+- Aplica manejo robusto de errores mediante:
+  - Validaciones estrictas de payload
+  - Excepciones controladas (`ErrorLogica`)
+  - Conversión de excepciones a mensajes JSON de error enviados al cliente
+  - Mecanismos de recuperación segura para mantener coherencia del estado
 
 ## Flujo de Operación
 
@@ -117,3 +122,5 @@ Los mensajes siguen el formato JSON:
 - **Factory**: Creación de comandos e identificadores
 - **Facade**: Interface simplificada para Ranking
 - **Adapter**: Serialización JSON
+- **Repository**: LogicaNegocio
+
