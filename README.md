@@ -8,6 +8,20 @@ El proyecto busca optimizar los procesos de atención, reducir tiempos de espera
 El desarrollo se llevará a cabo bajo la **metodología ágil SCRUM**, mediante **cinco sprints semanales**. Cada sprint representa una iteración del producto, generando un incremento funcional y verificable. Este enfoque permitirá adaptar los entregables según la retroalimentación del equipo y los objetivos del proyecto.
 
 ---
+## Video del Enlace
+Link del viedo: https://www.youtube.com/watch?v=z2ad4dnb1Wg
+
+---
+## Integrantes
+- Ajra Huacso Jeans Anthony -> dev-Anthony  
+- Luque Condori Luis Guillermo -> dev-Luis  
+- Garambel Marin Fernando Miguel -> dev-Fernando  
+- Jorge Luis Mamani Huarsaya -> dev-Jorge  
+- Sergio Danilo Hancco Mullisaca -> dev-Sergio
+- Dolly Yadhira Mollo Chuquicaña -> dev-Dolly
+- Suclle Suca, Michael Benjamin -> dev-Michael
+
+---
 
 ## Objetivos
 
@@ -20,20 +34,7 @@ Desarrollar un sistema distribuido de gestión de pedidos que integre los módul
 - Implementar intercambio de datos en formato JSON para estandarizar la comunicación.  
 - Incorporar un sistema de notificaciones automáticas y gestión de estados.  
 - Desarrollar módulos de facturación, ranking y reportes.  
-- Elaborar documentación técnica y de usuario, así como el informe para registro en Indecopi.
-
----
-
-## Integrantes
-- Ajra Huacso Jeans Anthony -> dev-Anthony  
-- Luque Condori Luis Guillermo -> dev-Luis  
-- Garambel Marin Fernando Miguel -> dev-Fernando  
-- Jorge Luis Mamani Huarsaya -> dev-Jorge  
-- Sergio Danilo Hancco Mullisaca -> dev-Sergio
-- Dolly Yadhira Mollo Chuquicaña -> dev-Dolly
-- Suclle Suca, Michael Benjamin -> dev-Michael
-
-  
+- Elaborar documentación técnica y de usuario, así como el informe para registro en Indecopi.  
 
 ---
 
@@ -197,3 +198,41 @@ Esta etapa busca consolidar los resultados del desarrollo, garantizando que el s
 **Metodología:** SCRUM  
 **Duración Total:** 5 Sprints (10 de noviembre – 14 de diciembre)  
 **Estado:** En planificación
+
+## Evidencias de funcionamiento
+
+### Cliente `Recepcionista`
+Recepcionista realiza pedidos por mesas. En esta ocasión, realiza 3 pedidos.
+
+![Recepcionista](./.github/1765158348.png)
+
+![Recepcionista](./.github/1765158510.png)
+
+
+### Cliente `Manager Chef`
+
+El chef principal recibe los pedidos y administra su rechazo y envio a su respectiva estación en la cocina.
+
+![Manager Chef](./.github/1765158531.png)
+
+![Manager Chef](./.github/1765158547.png)
+
+![Manager Chef](./.github/1765158637.png)
+
+
+### Cliente `Manager Estación`
+
+Cada estacíón recibe sus platos y el sistema sugiere preparar el plato con mayor prioridad. Esta prioridad cambia si el plato es devuelto porque neceita aumentar su prioridad y pueda prepararse antes que otros.
+
+![Manager Estacion](./.github/1765158590.png)
+
+![Manager Estacion](./.github/1765158734.png)
+
+### Cliente `Ranking`
+
+Esta vista es para los comensales, quienes pueden ver el menú del restaurante y pueden ver el ranking de los platos más vendidos en tiempo real.
+
+> [!IMPORTANT]
+> La vista del `Manager Chef` puede ser mostrada tambien para los comensales, para que puedan ver el estado de su pedido en tiempo real.
+
+![Ranking](./.github/1765158857.png)
