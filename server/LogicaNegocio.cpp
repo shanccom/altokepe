@@ -136,9 +136,20 @@ QJsonObject LogicaNegocio::getEstadoParaRanking() {
       rankingArray.append(obj);
     }
 
+    // Incluir el menú completo para el cliente
+    QJsonArray menuArray;
+    for (const auto& [id, plato] : m_menuRepository.menu()) {
+      menuArray.append(SerializadorJSON::platoDefinicionToJson(plato));
+    }
+
+    // Construir mensaje con ranking Y menu
+    QJsonObject data;
+    data["ranking"] = rankingArray;
+    data["menu"] = menuArray;
+
     QJsonObject mensaje;
     mensaje[Protocolo::EVENTO] = Protocolo::ACTUALIZACION_RANKING;
-    mensaje[Protocolo::DATA] = QJsonObject{ {"ranking", rankingArray} };
+    mensaje[Protocolo::DATA] = data;
 
     return mensaje;
   } catch (const std::exception& ex) {
